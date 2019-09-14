@@ -1,0 +1,42 @@
+{
+  "name": "accessible-housing-app-client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "chokidar-cli": "^2.0.0",
+    "node-sass-chokidar": "^1.3.5",
+    "postcss-cli": "^6.1.3",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "devDependencies": {
+    "react-scripts": "3.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "test-cov": "react-scripts test --coverage --watchAll=false --coverageDirectory=output/coverage/jest",
+    "eject": "react-scripts eject",
+    "build-task:scss-compile": "node-sass-chokidar --source-map true src/styles/scss/ -o public/css",
+    "build-task:autoprefixer": "postcss public/css/*.css --use autoprefixer -d public/css",
+    "sass:build": "npm-run-all -p build-task:*",
+    "sass:watch": "chokidar 'src/styles/scss/' -c 'npm run sass:build'",
+    "dev": "npm-run-all -p sass:*"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
