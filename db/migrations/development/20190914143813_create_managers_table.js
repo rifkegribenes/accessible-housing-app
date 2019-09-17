@@ -1,12 +1,12 @@
 exports.up = function(knex) {
   return Promise.all([
-    knex.schema.hasTable("users").then(function(exists) {
+    knex.schema.hasTable("managers").then(function(exists) {
       if (!exists) {
-        return knex.schema.createTable("users", function(table) {
+        return knex.schema.createTable("managers", function(table) {
           table.uuid("id").primary();
-          table.string("name").notNullable();
-          table.string("email").notNullable();
-          table.string("phone");
+          table.string("contact_name").notNullable();
+          table.string("contact_email").notNullable();
+          table.string("contact_phone");
           table.string("company_name");
           table.string("company_street");
           table.string("company_city");
@@ -25,9 +25,9 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
   return Promise.all([
-    knex.schema.hasTable("users").then(function(exists) {
+    knex.schema.hasTable("managers").then(function(exists) {
       if (exists) {
-        return knex.schema.dropTable("users");
+        return knex.schema.dropTable("managers");
       }
     })
   ]);
