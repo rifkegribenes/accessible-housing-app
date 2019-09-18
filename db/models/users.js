@@ -10,6 +10,7 @@ const { db, TABLES } = require("../../app/config/knex");
 /** Create a user (property manager or renter record)
  *  @param    {String}   name           Full name.
  *  @param    {String}   email          Email.
+ *  @param    {String}   user_type      'manager' or 'renter'.
  *  @param    {String}   phone          Phone.
  *  @param    {String}   company_name   Company name.
  *  @param    {String}   company_street Company street address.
@@ -28,6 +29,7 @@ const createUser = (
   name,
   email,
   phone,
+  user_type,
   company_name,
   company_street,
   company_city,
@@ -40,12 +42,30 @@ const createUser = (
   google_id,
   google_token
 ) => {
+  const requiredFields = [
+    "name",
+    "email",
+    "user_type",
+    "google_id",
+    "google_token"
+  ];
+
+  const missingField = requiredFields.find(field => !(field in req.body));
+  if (missingField) {
+    console.log(`listings.ctrl.js > 56: missing ${missingField}`);
+    return res.status(422).json({
+      reason: "ValidationError",
+      message: `Missing required field ${missingField}`
+    });
+  }
+
   return db
     .insert({
       id: uuid.v4(),
       name,
       email,
       phone,
+      user_type,
       company_name,
       company_street,
       company_city,
