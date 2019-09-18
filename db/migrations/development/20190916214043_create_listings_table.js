@@ -19,9 +19,9 @@ exports.up = function(knex) {
           table.date("available_date").notNullable();
           table.decimal("monthly_rent", 4, 2).notNullable();
           table.string("primary_image").notNullable();
-          table.specificType("gallery", "text ARRAY");
-          table.specificType("views", "text ARRAY");
-          table.specificType("favorites", "text ARRAY");
+          table.specificType("features", "text ARRAY");
+          table.decimal("views", 10, 0);
+          table.decimal("favorites", 10, 0);
           table.timestamp("created_at").defaultTo(knex.fn.now());
           table.timestamp("updated_at").defaultTo(knex.fn.now());
         });
