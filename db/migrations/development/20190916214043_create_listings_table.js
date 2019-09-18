@@ -14,6 +14,7 @@ exports.up = function(knex) {
           table.string("property_lon").notNullable();
           table.string("property_county").notNullable();
           table.string("property_phone").notNullable();
+          table.string("listing_url").notNullable();
           table.boolean("vacant").notNullable();
           table.date("available_date").notNullable();
           table.decimal("monthly_rent", 4, 2).notNullable();
@@ -33,7 +34,7 @@ exports.down = function(knex) {
   return Promise.all([
     knex.schema.hasTable("listings").then(function(exists) {
       if (exists) {
-        return knex.schema.dropTable("listingsf");
+        return knex.schema.dropTable("listings");
       }
     })
   ]);
