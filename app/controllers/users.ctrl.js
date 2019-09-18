@@ -12,16 +12,59 @@ const users = require("../../db/models/users");
 /** Create a new user
  *  @param    {String}   name            Name from google profile.
  *  @param    {String}   email           Email from google profile.
+ *  @param    {String}   user_type       'manager' or 'renter'
+ *  @param    {String}   phone           Phone.
+ *  @param    {String}   company_name    Company name.
+ *  @param    {String}   company_street  Company street address.
+ *  @param    {String}   company_city    Company city.
+ *  @param    {String}   company_state   Company state.
+ *  @param    {String}   company_zip     Company zip.
+ *  @param    {Array}    favorites       Array of ids of favorite listings.
+ *  @param    {Array}    queries         Array of saved search queries.
+ *  @param    {Boolean}  opt_in          Opt in for push notifications.
  *  @param    {String}   avatar_url      Picture from google profile.
  *  @param    {String}   google_id       Google unique ID.
  *  @param    {String}   google_token    Google auth token.
  *  @returns  {Object}                   New user object OR error message.
  */
 const createUser = (req, res, next) => {
-  const { name, email, avatar_url, google_id, google_token } = req.body;
-  if (name && email) {
+  const {
+    name,
+    email,
+    user_type,
+    phone,
+    company_name,
+    company_street,
+    company_city,
+    company_state,
+    company_zip,
+    favorites,
+    queries,
+    opt_in,
+    avatar_url,
+    google_id,
+    google_token
+  } = req.body;
+  // add conditional validation by user type here...
+  if (name && email && user_type) {
     return users
-      .createUser(name, email, avatar_url, google_id, google_token)
+      .createUser(
+        name,
+        email,
+        user_type,
+        phone,
+        company_name,
+        company_street,
+        company_city,
+        company_state,
+        company_zip,
+        favorites,
+        queries,
+        opt_in,
+        avatar_url,
+        google_id,
+        google_token
+      )
       .then(users => {
         const user = users[0];
         res.status(200).json(user);
@@ -40,9 +83,18 @@ const createUser = (req, res, next) => {
 /** Update an existing user
  *  @param    {String}   id              Id of user to update.
  *  @param    {Object}   updates         Key/value pairs for fields to update.
- ****  @param    {String}   name        Updated name.
- ****  @param    {String}   email       Updated email.
- ****  @param    {String}   avatar_url  Updated avatar_url.
+ ****  @param    {String}   name            Updated name.
+ ****  @param    {String}   email           Updated email.
+ ****  @param    {String}   avatar_url      Updated avatar_url.
+ ****  @param    {String}   phone           Updated phone.
+ ****  @param    {String}   company_name    Updated company name.
+ ****  @param    {String}   company_street  Updated company street address.
+ ****  @param    {String}   company_city    Updated company city.
+ ****  @param    {String}   company_state   Updated company state.
+ ****  @param    {String}   company_zip     Updated company zip.
+ ****  @param    {Array}    favorites       Array of ids of favorite listings.
+ ****  @param    {Array}    queries         Array of saved search queries.
+ ****  @param    {Boolean}  opt_in          Opt in for push notifications.
  *  @returns  {Object}                   Updated user object OR error message.
  */
 const updateUser = (req, res, next) => {

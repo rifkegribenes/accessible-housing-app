@@ -1,17 +1,21 @@
 exports.up = function(knex) {
   return Promise.all([
-    knex.schema.hasTable("managers").then(function(exists) {
+    knex.schema.hasTable("users").then(function(exists) {
       if (!exists) {
-        return knex.schema.createTable("managers", function(table) {
+        return knex.schema.createTable("users", function(table) {
           table.uuid("id").primary();
-          table.string("contact_name").notNullable();
-          table.string("contact_email").notNullable();
-          table.string("contact_phone");
+          table.enu("user_type", ["manager", "renter"]).notNullable();
+          table.string("name").notNullable();
+          table.string("email").notNullable();
+          table.string("phone");
           table.string("company_name");
           table.string("company_street");
           table.string("company_city");
           table.string("company_state");
           table.string("company_zip");
+          table.specificType("favorites", "text ARRAY");
+          table.specificType("queries", "text ARRAY");
+          table.boolean("opt_in");
           table.string("avatar_url");
           table.string("google_id").notNullable();
           table.string("google_token").notNullable();
@@ -25,9 +29,9 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
   return Promise.all([
-    knex.schema.hasTable("managers").then(function(exists) {
+    knex.schema.hasTable("users").then(function(exists) {
       if (exists) {
-        return knex.schema.dropTable("managers");
+        return knex.schema.dropTable("users");
       }
     })
   ]);

@@ -1,4 +1,4 @@
-// db/models/managers.js
+// db/models/users.js
 
 /* ================================= SETUP ================================= */
 
@@ -7,7 +7,7 @@ const { db, TABLES } = require("../../app/config/knex");
 
 /* ============================ PUBLIC METHODS ============================= */
 
-/** Create a manager (property manager user record)
+/** Create a user (property manager or renter record)
  *  @param    {String}   name           Full name.
  *  @param    {String}   email          Email.
  *  @param    {String}   phone          Phone.
@@ -16,12 +16,15 @@ const { db, TABLES } = require("../../app/config/knex");
  *  @param    {String}   company_city   Company city.
  *  @param    {String}   company_state  Company state.
  *  @param    {String}   company_zip    Company zip.
+ *  @param    {Array}    favorites      Array of ids of favorite listings.
+ *  @param    {Array}    queries        Array of saved search queries.
+ *  @param    {Boolean}  opt_in         Opt in for push notifications.
  *  @param    {String}   avatar_url     Avatar url.
  *  @param    {String}   google_id      Google id.
  *  @param    {String}   google_token   Google token.
- *  @returns  {Array}    Array of 1 newly-created Manager object.
+ *  @returns  {Array}    Array of 1 newly-created User object.
  */
-const createManager = (
+const createUser = (
   name,
   email,
   phone,
@@ -30,6 +33,9 @@ const createManager = (
   company_city,
   company_state,
   company_zip,
+  favorites,
+  queries,
+  opt_in,
   avatar_url,
   google_id,
   google_token
@@ -45,16 +51,19 @@ const createManager = (
       company_city,
       company_state,
       company_zip,
+      favorites,
+      queries,
+      opt_in,
       avatar_url,
       google_id,
       google_token
     })
-    .into(TABLES.MANAGERS)
+    .into(TABLES.USERS)
     .returning("*");
 };
 
-/** Update a manager
- *  @param    {String}   id             The id of the manager to update.
+/** Update a user
+ *  @param    {String}   id             The id of the user to update.
  *  @param    {Object}   updates        Key/value pairs of fields to update.
  ****  @param    {String}   name            Updated name.
  ****  @param    {String}   email           Updated email.
@@ -65,10 +74,13 @@ const createManager = (
  ****  @param    {String}   company_city    Updated company city.
  ****  @param    {String}   company_state   Updated company state.
  ****  @param    {String}   company_zip     Updated company zip.
- *  @returns  {Object}   Manager object.
+ ****  @param    {Array}    favorites      Array of ids of favorite listings.
+ ****  @param    {Array}    queries        Array of saved search queries.
+ ****  @param    {Boolean}  opt_in         Opt in for push notifications.
+ *  @returns  {Object}   User object.
  */
-const updateManager = (id, updates) => {
-  return db(TABLES.MANAGERS)
+const updateUser = (id, updates) => {
+  return db(TABLES.USERS)
     .where({ id })
     .first()
     .update(updates)
@@ -76,60 +88,60 @@ const updateManager = (id, updates) => {
     .returning("*");
 };
 
-/** Get all managers
- *  @returns   {Array}   Array of manager objects.
+/** Get all users
+ *  @returns   {Array}   Array of user objects.
  */
 
-const getManagers = () => {
-  return db(TABLES.MANAGERS).returning("*");
+const getUsers = () => {
+  return db(TABLES.USERS).returning("*");
 };
 
-/** Find a manager by id
- *  @param    {String}   id   The id of the manager to return.
- *  @returns  {Object}        Manager object.
+/** Find a user by id
+ *  @param    {String}   id   The id of the user to return.
+ *  @returns  {Object}        User object.
  */
 
-const getManagerById = id => {
-  return db(TABLES.MANAGERS)
+const getUserById = id => {
+  return db(TABLES.USERS)
     .where({ id })
     .first()
     .returning("*");
 };
 
-/** Find a manager by google_id
- *  @param    {String}   google_id   The google_id of the manager to return.
- *  @returns  {Object}        Manager object.
+/** Find a user by google_id
+ *  @param    {String}   google_id   The google_id of the user to return.
+ *  @returns  {Object}        User object.
  */
 
-const getManagerByGoogleId = google_id => {
-  return db(TABLES.MANAGERS)
+const getUserByGoogleId = google_id => {
+  return db(TABLES.USERS)
     .where({ google_id })
     .first()
     .returning("*");
 };
 
-/** Delete manager
- *  @param    {String}   id   The id of the manager to delete.
+/** Delete user
+ *  @param    {String}   id   The id of the user to delete.
  *  @returns  success message
  */
 
-const deleteManager = id => {
-  return db(TABLES.MANAGERS)
+const deleteUser = id => {
+  return db(TABLES.USERS)
     .where({ id })
     .del()
     .then(() => {
       // then return success message to client
-      return { message: "Manager deleted successfully" };
+      return { message: "User deleted successfully" };
     });
 };
 
 /* ================================ exports ================================ */
 
 module.exports = {
-  createManager,
-  updateManager,
-  getManagerById,
-  getManagerByGoogleId,
-  getManagers,
-  deleteManager
+  createUser,
+  updateUser,
+  getUserById,
+  getUserByGoogleId,
+  getUsers,
+  deleteUser
 };
