@@ -11,7 +11,7 @@ const passport = require("passport");
 
 const userCtrl = require("../controllers/users.ctrl");
 const authCtrl = require("../controllers/auth.ctrl");
-// const contentCtrl = require("../controllers/content.ctrl");
+const listingCtrl = require("../controllers/listings.ctrl");
 
 /* ============================== AUTH ROUTES =========================== */
 
@@ -51,6 +51,19 @@ router.get(
 //     request body properties : {
 //           email           : String
 //           name            : String
+//           user_type       : String
+//           phone           : String
+//           company_name    : String
+//           company_street  : String
+//           company_city    : String
+//           company_state   : String
+//           company_zip     : String
+//           favorites       : Array
+//           queries         : Array
+//           opt_in          : Boolean
+//           avatar_url      : String
+//           google_id       : String
+//           google_token    : String
 //           avatar_url      : String
 //           google_id       : String
 //           google_token    : String
@@ -65,11 +78,25 @@ router.post("/user", userCtrl.createUser);
 //   Expects:
 //     1) request body properties : {
 //          updates         : Object {
-//              email           : String
-//              name            : String
-//              avatar_url      : String
-//             }
-//        }
+//                email           : String
+//                name            : String
+//                user_type       : String
+//                phone           : String
+//                company_name    : String
+//                company_street  : String
+//                company_city    : String
+//                company_state   : String
+//                company_zip     : String
+//                favorites       : Array
+//                queries         : Array
+//                opt_in          : Boolean
+//                avatar_url      : String
+//                google_id       : String
+//                google_token    : String
+//                avatar_url      : String
+//                google_id       : String
+//                google_token    : String
+//              }
 //      2) request params         : {
 //          id              : String
 //      }
@@ -108,70 +135,70 @@ router.get("/user/", userCtrl.getUsers);
 
 router.delete("/user/:id", authCtrl.requireAuth, userCtrl.deleteUser);
 
-/* ============================= CONTENT ROUTES ============================ */
+/* ============================= LISTING ROUTES ============================ */
 
-// CREATE A CONTENT RECORD
-//   Example: POST >> /api/content
+// CREATE A LISTING RECORD
+//   Example: POST >> /api/listing
 //   Secured: yes
 //   Expects:
 //     request body properties : {
-//           content_type  : String
-//           content       : String
+//        property_name     :  String
+//        property_street   :  String
+//        property_city     :  String
+//        property_state    :  String
+//        property_zip      :  String
+//        property_quadrant :  String
+//        property_lat      :  String
+//        property_lon      :  String
+//        property_county   :  String
+//        property_phone    :  String
+//        listing_url       :  String
+//        vacant            :  Boolean
+//        available_date    :  Date
+//        monthly_rent      :  Number
+//        primary_image     :  String
+//        features          :  Array[String]
 //        }
-//   Returns: JSON content object on success.
+//   Returns: JSON listing object on success.
 //
-// router.post("/content", authCtrl.requireAuth, contentCtrl.createContent);
+router.post("/listing", authCtrl.requireAuth, listingCtrl.createListing);
 
-// UPDATE A CONTENT RECORD
-//   Example: PUT >> /api/content/:id
+// UPDATE A LISTING RECORD
+//   Example: PUT >> /api/listing/:id
 //   Secured: yes
 //   Expects:
 //     1) request body properties : {
-//          updates         : Object {
-//              content_type  : String
-//              content       : String
-//             }
-//        }
+//          updates         : Object
+//          }
 //      2) request params         : {
 //          id              : String
 //      }
-//   Returns: JSON updated content object on success.
+//   Returns: JSON updated listing object on success.
 //
 
-// router.put("/content/:id", authCtrl.requireAuth, contentCtrl.updateContent);
+router.put("/listing/:id", authCtrl.requireAuth, listingCtrl.updateListing);
 
-// GET ONE CONTENT RECORD BY ID
-//   Example: GET >> /api/content/80f5ad9a-9c1f-4df0-813b-c7bdc339d7b3
+// GET ONE LISTING RECORD BY ID
+//   Example: GET >> /api/listing/80f5ad9a-9c1f-4df0-813b-c7bdc339d7b3
 //   Secured: no
 //   Expects:
 //     1) request params : {
 //          id : String
 //        }
-//   Returns: JSON content object on success.
+//   Returns: JSON listing object on success.
 //
-// router.get("/content/:id", contentCtrl.getContentById);
+router.get("/listing/:id", listingCtrl.getListingById);
 
-// GET CONTENT BY TYPE
-//   Example: GET >> /api/contenttype/headline
-//   Secured: yes
-//   Expects:
-//     1) request params : {
-//          id : String
-//        }
-//   Returns: Array of content objects on success.
-//
-// router.get("/contenttype/:content_type", contentCtrl.getContentByType);
-
-// GET ALL CONTENT
-//   Example: GET >> /api/content/
-//   Secured: yes
+// GET ALL LISTINGS
+//   Example: GET >> /api/listing
+//   Secured: no
 //   Expects: null
-//   Returns: Array of content objects on success.
+//   Returns: Array of listing objects on success.
 //
-// router.get("/content/", authCtrl.requireAuth, contentCtrl.getContent);
+router.get("/listing", listingCtrl.getListings);
 
-// DELETE CONTENT
-//   Example: DELETE >> /api/content/80f5ad9a-9c1f-4df0-813b-c7bdc339d7b3
+// DELETE LISTING
+//   Example: DELETE >> /api/listing/80f5ad9a-9c1f-4df0-813b-c7bdc339d7b3
 //   Secured: yes
 //   Expects:
 //     1) request params : {
@@ -179,35 +206,7 @@ router.delete("/user/:id", authCtrl.requireAuth, userCtrl.deleteUser);
 //        }
 //   Returns: success message on success.
 //
-// router.delete("/content/:id", authCtrl.requireAuth, contentCtrl.deleteContent);
-
-/* ========================= IMAGE ROUTES =========================== */
-
-// UPLOAD A SINGLE IMAGE
-//   Example: POST >> /api/image/single
-//   Secured: yes
-//   Expects:
-//     file upload
-//   Returns: Object
-//   {
-//     image: imageName,
-//     location: imageLocation
-//   }
-//
-// router.post("/image/single", imageCtrl.singleImgUpload);
-// router.post("/image/single", authCtrl.requireAuth, imageCtrl.singleImgUpload);
-
-// DELETE AN IMAGE FROM S3 BUCKET
-// (this route is hit after the content is delete from the postgres database)
-//   Example: DELETE >> /api/image/
-//   Secured: yes
-//   Expects:
-//     request body: {
-//        key: S3 object key
-//     }
-//   Returns: Success or Error message
-//
-// router.delete("/image/:key", authCtrl.requireAuth, imageCtrl.deleteImage);
+router.delete("/listing/:id", authCtrl.requireAuth, listingCtrl.deleteListing);
 
 /* ================================ EXPORT ================================= */
 

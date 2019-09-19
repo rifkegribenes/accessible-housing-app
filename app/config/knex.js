@@ -13,7 +13,6 @@ exports.db = knex(config[environment]);
 // we're interacting with.
 
 exports.TABLES = {
-  MANAGERS: "managers",
-  LISTINGS: "listings",
-  RENTERS: "renters"
+  USERS: "users",
+  LISTINGS: "listings"
 };
