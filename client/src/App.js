@@ -22,6 +22,8 @@ import Notifier from "./containers/Notifier";
 import ContentLibrary from "./containers/ContentLibrary";
 import Spinner from "./components/Spinner";
 
+import Hero from "./img/hero_keys_1920x1080.jpg";
+
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -45,7 +47,7 @@ const styles = theme => ({
     width: "100vw",
     height: "100%",
     minHeight: "80vh",
-    // backgroundImage: `url("${SamplePhoto}")`,
+    backgroundImage: `url("${Hero}")`,
     backgroundAttachment: "fixed",
     backgroundPosition: "bottom",
     [theme.breakpoints.down("sm")]: {
@@ -118,6 +120,31 @@ const styles = theme => ({
   },
   form: {
     background: "white"
+  },
+  hero: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "middle"
+  },
+  heroHead: {
+    fontFamily: "'Alfa Slab One', cursive",
+    fontSize: "4.5em",
+    letterSpacing: "2px",
+    color: "white",
+    textShadow: "0 0 20px rgba(0, 0, 0, 0.63)",
+    textAlign: "center"
+  },
+  heroForm: {
+    width: "70vw",
+    margin: "auto"
+  },
+  heroInput: {
+    width: "100%",
+    height: 60,
+    fontSize: "2em",
+    padding: 10,
+    borderRadius: 4
   }
 });
 
