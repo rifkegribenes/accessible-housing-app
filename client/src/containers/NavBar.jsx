@@ -16,7 +16,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Slide from "@material-ui/core/Slide";
 
 import { skip } from "../utils";
-import logo from "../img/RCI_140x100.png";
+import rci_logo from "../img/RCI_140x100.png";
+import mfnw_logo from "../img/mfnw-icon.png";
 
 const styles = theme => ({
   root: {
@@ -28,8 +29,10 @@ const styles = theme => ({
     flexGrow: 1
   },
   appBar: {
-    backgroundColor: theme.palette.primary.main,
-    position: "fixed"
+    backgroundColor: "white",
+    position: "fixed",
+    height: 100,
+    paddingTop: 20
   },
   menuButton: {
     display: "none",
@@ -51,14 +54,14 @@ const styles = theme => ({
   },
   title: {
     flexGrow: 1,
-    color: theme.palette.secondary.light,
-    fontFamily: '"Source Sans Pro", sans-serif',
-    fontSize: "1.7em",
+    color: theme.palette.primary,
+    fontFamily: '"Alegreya Sans", sans-serif',
+    fontSize: "3em",
     textDecoration: "none",
     paddingLeft: 10,
     fontWeight: 200,
     [theme.breakpoints.down("md")]: {
-      fontSize: "1.1rem",
+      fontSize: "2.4rem",
       fontWeight: 400
     },
     [theme.breakpoints.down("xs")]: {
@@ -121,6 +124,9 @@ const styles = theme => ({
     [theme.breakpoints.down("sm")]: {
       height: 40
     }
+  },
+  logoLink: {
+    display: "flex"
   },
   drawer: {
     boxShadow:
@@ -223,7 +229,13 @@ export class NavBar extends React.Component {
             </Button>
             <Link to="/" className={classes.logoLink} data-test="logo-link">
               <img
-                src={logo}
+                src={rci_logo}
+                alt="Accessible Housing Hotsheet"
+                className={classes.logo}
+                data-test="logo-image"
+              />
+              <img
+                src={mfnw_logo}
                 alt="Accessible Housing Hotsheet"
                 className={classes.logo}
                 data-test="logo-image"

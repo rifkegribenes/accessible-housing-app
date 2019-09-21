@@ -88,7 +88,7 @@ const styles = theme => ({
     width: "100vw",
     margin: "auto",
     position: "fixed",
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: "white",
     bottom: 0,
     padding: 25,
     height: 73,
