@@ -50,9 +50,6 @@ const styles = theme => ({
     backgroundImage: `url("${Hero}")`,
     backgroundAttachment: "fixed",
     backgroundPosition: "bottom",
-    [theme.breakpoints.down("sm")]: {
-      backgroundImage: "none"
-    },
     [theme.breakpoints.up("xl")]: {
       backgroundSize: "cover"
     }

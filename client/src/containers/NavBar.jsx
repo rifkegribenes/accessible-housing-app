@@ -17,7 +17,7 @@ import Slide from "@material-ui/core/Slide";
 
 import { skip } from "../utils";
 import rci_logo from "../img/RCI_140x100.png";
-import mfnw_logo from "../img/mfnw-white.png";
+import mfnw_logo from "../img/mfnw-red.svg";
 
 const styles = theme => ({
   root: {
@@ -32,7 +32,10 @@ const styles = theme => ({
     backgroundColor: "white",
     position: "fixed",
     height: 100,
-    paddingTop: 20
+    paddingTop: 20,
+    [theme.breakpoints.down("sm")]: {
+      height: 140
+    }
   },
   menuButton: {
     display: "none",
@@ -56,16 +59,19 @@ const styles = theme => ({
     flexGrow: 1,
     color: theme.palette.primary.main,
     fontFamily: '"Alegreya Sans", sans-serif',
-    fontSize: "2em",
+    fontSize: "2.4rem",
     textDecoration: "none",
     paddingLeft: 10,
     fontWeight: 200,
     [theme.breakpoints.down("md")]: {
-      fontSize: "2.4rem",
+      fontSize: "2rem",
       fontWeight: 400
     },
+    [theme.breakpoints.down("sm")]: {
+      textAlign: "center"
+    },
     [theme.breakpoints.down("xs")]: {
-      display: "none"
+      fontSize: "1.6rem"
     }
   },
   loginButton: {
@@ -121,12 +127,25 @@ const styles = theme => ({
     height: 60,
     width: "auto",
     marginRight: 10,
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       height: 40
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: 60,
+      margin: "0 10px"
     }
   },
   logoLink: {
-    display: "flex"
+    display: "flex",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      justifyContent: "center"
+    }
+  },
+  toolbar: {
+    [theme.breakpoints.down("sm")]: {
+      flexWrap: "wrap"
+    }
   },
   drawer: {
     boxShadow:
@@ -217,7 +236,7 @@ export class NavBar extends React.Component {
     return (
       <div className={classes.root} data-test="component-navbar">
         <AppBar position="fixed" className={classes.appBar}>
-          <Toolbar>
+          <Toolbar className={classes.toolbar}>
             <Button
               color="primary"
               variant="contained"
