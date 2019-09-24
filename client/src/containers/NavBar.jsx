@@ -17,7 +17,7 @@ import Slide from "@material-ui/core/Slide";
 
 import { skip } from "../utils";
 import rci_logo from "../img/RCI_140x100.png";
-import mfnw_logo from "../img/mfnw-icon.png";
+import mfnw_logo from "../img/mfnw-white.png";
 
 const styles = theme => ({
   root: {
@@ -54,9 +54,9 @@ const styles = theme => ({
   },
   title: {
     flexGrow: 1,
-    color: theme.palette.primary,
+    color: theme.palette.primary.main,
     fontFamily: '"Alegreya Sans", sans-serif',
-    fontSize: "3em",
+    fontSize: "2em",
     textDecoration: "none",
     paddingLeft: 10,
     fontWeight: 200,
