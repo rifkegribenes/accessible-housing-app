@@ -17,9 +17,9 @@ import NotFound from "./components/NotFound";
 import Home from "./components/Home";
 import Logout from "./containers/Logout";
 import Dashboard from "./containers/Dashboard";
-import TextInputForm from "./containers/TextInputForm";
+import AddListingContainer from "./containers/AddListingContainer";
 import Notifier from "./containers/Notifier";
-import ContentLibrary from "./containers/ContentLibrary";
+// import ContentLibrary from "./containers/ContentLibrary";
 import Spinner from "./components/Spinner";
 
 import Hero from "./img/hero_keys_1920x1080.jpg";
@@ -202,13 +202,16 @@ export class AppUnconnected extends Component {
             <Route
               path="/new"
               render={routeProps => (
-                <TextInputForm setRedirect={this.setRedirect} {...routeProps} />
+                <AddListingContainer
+                  setRedirect={this.setRedirect}
+                  {...routeProps}
+                />
               )}
             />
             <Route
               path="/edit/:id"
               render={routeProps => (
-                <TextInputForm
+                <AddListingContainer
                   edit={true}
                   setRedirect={this.setRedirect}
                   {...routeProps}

@@ -5,7 +5,7 @@ const Home = props => {
   const { classes } = props;
   return (
     <div className={classes.home} data-test="component-home">
-      <h2 className={classes.heroHead}>Accessible Housing in Portland</h2>
+      <h2 className={classes.heroHead}>Find your accessible home.</h2>
       <form className={classes.heroForm}>
         <input
           className={classes.heroInput}
