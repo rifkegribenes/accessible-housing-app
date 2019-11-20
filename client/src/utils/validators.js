@@ -1,22 +1,21 @@
 export const validate = values => {
   const errors = {};
   const requiredFields = [
-    "firstName",
-    "lastName",
+    "propertyName",
     "dd",
     "mm",
     "yyyy",
-    "preferredLanguage",
-    "homeStreet",
-    "homeZip",
-    "homeState",
-    "homeCity",
-    "homeEmail",
-    "mobilePhone",
-    "employerName",
-    "employerType",
-    "termsAgree",
-    "signature"
+    "propertyStreet",
+    "propertyZip",
+    "propertyState",
+    "propertyCity",
+    "propertyEmail",
+    "propertyPhone",
+    "propertyQuadrant",
+    "propertyCounty",
+    "listingUrl",
+    "availableDate",
+    "monthlyRent"
   ];
   const conditionalRequiredFields = [
     {

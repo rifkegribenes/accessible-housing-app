@@ -217,6 +217,7 @@ export const formStyles = theme => ({
     background: "white",
     padding: "20px 20px 40px 20px",
     borderRadius: "0 0 4px 4px",
+    marginTop: 100,
     [theme.breakpoints.only("xs")]: {
       padding: "15px 15px 40px 15px"
     }
@@ -569,6 +570,8 @@ export const renderTextField = ({
   short,
   mobile,
   additionalOnChange,
+  min,
+  step,
   ...custom
 }) => {
   return (
@@ -589,7 +592,7 @@ export const renderTextField = ({
       {...input}
       {...custom}
       data-test="component-text-field"
-      inputProps={{ id: id }}
+      inputProps={{ id: id, min: min, step: step }}
       onBlur={event => {
         input.onBlur();
         if (additionalOnChange) {
@@ -614,6 +617,7 @@ export const renderSelect = ({
   labelWidth,
   options,
   short,
+  twocol,
   mobile,
   formControlName,
   ...custom
@@ -624,7 +628,15 @@ export const renderSelect = ({
     error={!!(error && touched)}
     {...custom}
     required={touched && error === "Required"}
-    style={short ? { width: 80 } : mobile ? { width: "100%" } : {}}
+    style={
+      short
+        ? { width: 80 }
+        : mobile
+        ? { width: "100%" }
+        : twocol
+        ? { marginRight: 20 }
+        : {}
+    }
   >
     <InputLabel htmlFor={name}>{label}</InputLabel>
     <Select

@@ -46,72 +46,6 @@ export const AddListing = props => {
         className={classes.form}
       >
         <div className={classes.formSection}>
-          <FormGroup row classes={{ root: classes.formGroup2ColShort }}>
-            <Field
-              data-test="select-quadrant"
-              label="Quadrant"
-              name="quadrant"
-              id="quadrant"
-              type="select"
-              classes={classes}
-              component={renderSelect}
-              options={["N", "NE", "NW", "SE", "SW"]}
-              onChange={placeholderOnChange}
-              labelWidth={100}
-            />
-            <Field
-              label="County"
-              name="propertyCounty"
-              id="propertyCounty"
-              type="text"
-              classes={classes}
-              component={renderSelect}
-              options={["Multnomah", "Washington", "Clackamas", "Clark"]}
-              labelWidth={100}
-            />
-          </FormGroup>
-
-          <FormLabel className={classes.formLabel} component="legend">
-            Date Available
-          </FormLabel>
-          <FormGroup row classes={{ root: classes.formGroup2ColShort }}>
-            <Field
-              label="Month"
-              name="mm"
-              id="mm"
-              type="select"
-              classes={classes}
-              formControlName="formControlDate"
-              component={renderSelect}
-              labelWidth={41}
-              options={monthList}
-            />
-
-            <Field
-              label="Day"
-              name="dd"
-              id="dd"
-              type="select"
-              formControlName="formControlDate"
-              classes={classes}
-              component={renderSelect}
-              labelWidth={24}
-              options={dateOptions(props)}
-            />
-
-            <Field
-              label="Year"
-              name="yyyy"
-              id="yyyy"
-              type="select"
-              formControlName="formControlDate"
-              classes={classes}
-              component={renderSelect}
-              labelWidth={30}
-              options={yearOptions()}
-            />
-          </FormGroup>
-
           <Field
             label="Property Name"
             name="propertyName"
@@ -159,7 +93,7 @@ export const AddListing = props => {
               mobile={!isWidthUp("sm", width)}
               classes={classes}
               component={renderSelect}
-              options={["OR", "WA"]}
+              options={["", "OR", "WA"]}
               labelWidth={80}
             />
 
@@ -173,18 +107,98 @@ export const AddListing = props => {
               classes={classes}
               component={renderTextField}
             />
-
+          </FormGroup>
+          <FormGroup row classes={{ root: classes.formGroup2Col }}>
             <Field
-              label="Phone"
-              name="propertyPhone"
-              id="propertyPhone"
-              type="tel"
+              data-test="select-quadrant"
+              label="Quadrant"
+              name="quadrant"
+              id="quadrant"
+              type="select"
               classes={classes}
-              component={renderTextField}
+              component={renderSelect}
+              options={["", "N", "NE", "NW", "SE", "SW"]}
+              onChange={placeholderOnChange}
+              labelWidth={100}
+              twocol
+            />
+            <Field
+              label="County"
+              name="propertyCounty"
+              id="propertyCounty"
+              type="text"
+              classes={classes}
+              component={renderSelect}
+              options={["", "Multnomah", "Washington", "Clackamas", "Clark"]}
+              labelWidth={100}
             />
           </FormGroup>
+          <Field
+            label="Property contact phone"
+            name="propertyPhone"
+            id="propertyPhone"
+            type="tel"
+            classes={classes}
+            component={renderTextField}
+          />
+          <Field
+            label="Link to property listing"
+            name="listingUrl"
+            id="listingUrl"
+            type="url"
+            classes={classes}
+            component={renderTextField}
+          />
+          <Field
+            label="Link to property image"
+            name="primaryImage"
+            id="primaryImage"
+            type="url"
+            classes={classes}
+            component={renderTextField}
+          />
 
-          <FormGroup>
+          <FormLabel className={classes.formLabel} component="legend">
+            Date Available
+          </FormLabel>
+          <FormGroup row classes={{ root: classes.formGroup2ColShort }}>
+            <Field
+              label="Month"
+              name="mm"
+              id="mm"
+              type="select"
+              classes={classes}
+              formControlName="formControlDate"
+              component={renderSelect}
+              labelWidth={41}
+              options={monthList}
+            />
+
+            <Field
+              label="Day"
+              name="dd"
+              id="dd"
+              type="select"
+              formControlName="formControlDate"
+              classes={classes}
+              component={renderSelect}
+              labelWidth={24}
+              options={dateOptions(props)}
+            />
+
+            <Field
+              label="Year"
+              name="yyyy"
+              id="yyyy"
+              type="select"
+              formControlName="formControlDate"
+              classes={classes}
+              component={renderSelect}
+              labelWidth={30}
+              options={yearOptions()}
+            />
+          </FormGroup>
+          <FormGroup row classes={{ root: classes.formGroup2ColShort }}>
             <Field
               label="Currently Vacant?"
               name="vacant"
@@ -193,6 +207,16 @@ export const AddListing = props => {
               formControlName="controlCheckbox"
               classes={classes}
               component={renderCheckbox}
+            />
+            <Field
+              label="Monthly Rent"
+              name="monthlyRent"
+              id="monthlyRent"
+              type="number"
+              min={0.01}
+              step={0.01}
+              classes={classes}
+              component={renderTextField}
             />
           </FormGroup>
           <div className={classes.buttonWrap}>
@@ -204,7 +228,7 @@ export const AddListing = props => {
               data-sitekey="6LdzULcUAAAAAJ37JEr5WQDpAj6dCcPUn1bIXq2O"
               data-callback={verifyCallback}
             >
-              Next
+              Create Listing
             </Button>
           </div>
         </div>
