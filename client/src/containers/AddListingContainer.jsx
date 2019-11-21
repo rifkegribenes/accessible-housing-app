@@ -132,10 +132,8 @@ export class AddListingContainer extends React.Component {
     return body;
   }
 
-  // create an initial CAPE record in postgres to get returned ID
-  // not finalized until payment method added and SFCAPE status updated
   async createListing() {
-    // console.log("createCAPE");
+    console.log("createListing");
     const body = await this.generateListingBody();
     // console.log(body);
     if (body) {
@@ -159,23 +157,23 @@ export class AddListingContainer extends React.Component {
   }
 
   async handleSubmit() {
-    // console.log("handleSubmit");
+    console.log("handleSubmit");
     // const { formValues } = this.props;
 
     // verify recaptcha score
-    await this.verifyRecaptchaScore()
-      .then(score => {
-        // console.log(`score: ${score}`);
-        if (!score || score <= 0.5) {
-          // console.log(`recaptcha failed: ${score}`);
-          return handleError(
-            "Sorry, your session timed out, please reload the page and try again."
-          );
-        }
-      })
-      .catch(err => {
-        console.error(err);
-      });
+    // await this.verifyRecaptchaScore()
+    //   .then(score => {
+    //     // console.log(`score: ${score}`);
+    //     if (!score || score <= 0.5) {
+    //       // console.log(`recaptcha failed: ${score}`);
+    //       return handleError(
+    //         "Sorry, your session timed out, please reload the page and try again."
+    //       );
+    //     }
+    //   })
+    //   .catch(err => {
+    //     console.error(err);
+    //   });
 
     this.createListing()
       .then(() => {

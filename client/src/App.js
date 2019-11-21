@@ -132,6 +132,12 @@ const styles = theme => ({
     textShadow: "0 0 20px rgba(0, 0, 0, 0.63)",
     textAlign: "center"
   },
+  heroSubhead: {
+    fontSize: "3.5em",
+    color: "white",
+    textShadow: "0 0 20px rgba(0, 0, 0, 0.63)",
+    textAlign: "center"
+  },
   heroForm: {
     width: "70vw",
     margin: "auto"
