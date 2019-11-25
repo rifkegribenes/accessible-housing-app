@@ -197,17 +197,6 @@ export const AddListing = props => {
               labelWidth={30}
               options={yearOptions()}
             />
-          </FormGroup>
-          <FormGroup row classes={{ root: classes.formGroup2ColShort }}>
-            <Field
-              label="Currently Vacant?"
-              name="vacant"
-              id="vacant"
-              type="checkbox"
-              formControlName="controlCheckbox"
-              classes={classes}
-              component={renderCheckbox}
-            />
             <Field
               label="Monthly Rent"
               name="monthlyRent"
@@ -217,6 +206,20 @@ export const AddListing = props => {
               step={0.01}
               classes={classes}
               component={renderTextField}
+              formControlName="currency"
+              InputProps={{ style: { paddingLeft: 20 } }}
+              InputLabelProps={{ style: { paddingLeft: 20 } }}
+            />
+          </FormGroup>
+          <FormGroup row classes={{ root: classes.formGroupTopMargin }}>
+            <Field
+              label="Currently Vacant?"
+              name="vacant"
+              id="vacant"
+              type="checkbox"
+              formControlName="controlCheckbox"
+              classes={classes}
+              component={renderCheckbox}
             />
           </FormGroup>
           <div className={classes.buttonWrap}>

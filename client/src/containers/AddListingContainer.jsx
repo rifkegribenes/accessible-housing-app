@@ -161,19 +161,6 @@ export class AddListingContainer extends React.Component {
     // const { formValues } = this.props;
 
     // verify recaptcha score
-    // await this.verifyRecaptchaScore()
-    //   .then(score => {
-    //     // console.log(`score: ${score}`);
-    //     if (!score || score <= 0.5) {
-    //       // console.log(`recaptcha failed: ${score}`);
-    //       return handleError(
-    //         "Sorry, your session timed out, please reload the page and try again."
-    //       );
-    //     }
-    //   })
-    //   .catch(err => {
-    //     console.error(err);
-    //   });
 
     this.createListing()
       .then(() => {

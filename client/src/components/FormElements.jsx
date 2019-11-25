@@ -245,7 +245,7 @@ export const formStyles = theme => ({
     textTransform: "none",
     fontSize: "1.3rem",
     padding: "6px 20px",
-    color: theme.palette.secondary.main,
+    color: "white",
     "&:hover": {
       backgroundColor: theme.palette.primary.light
     }
@@ -335,10 +335,16 @@ export const formStyles = theme => ({
   },
   formControlDate: {
     width: "15%",
-    minWidth: 80
+    minWidth: 80,
+    marginRight: 20
   },
   formLabel: {
     margin: "10px 0"
+  },
+  currency: {
+    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='30px' width='85px'><text x='10' y='20' fill='gray' font-size='20' font-family='arial'>$</text></svg>")`,
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "left center"
   },
   formHelperText: {
     margin: "-25px 0 30px 0"
@@ -365,8 +371,8 @@ export const formStyles = theme => ({
     display: "flex",
     flexDirection: "row",
     flexWrap: "nowrap",
-    justifyContent: "space-between",
-    width: 280
+    justifyContent: "space-between"
+    // width: 280
   },
   formGroupTopMargin: {
     marginTop: 30
@@ -572,6 +578,7 @@ export const renderTextField = ({
   additionalOnChange,
   min,
   step,
+  formControlName,
   ...custom
 }) => {
   return (
@@ -579,7 +586,7 @@ export const renderTextField = ({
       label={label}
       error={!!(touched && error)}
       variant="outlined"
-      className={classes.input}
+      className={classes[formControlName] || classes.input}
       style={
         twocol && !mobile
           ? { width: "48%" }
