@@ -15,6 +15,7 @@ import NavBar from "./containers/NavBar";
 import Footer from "./components/Footer";
 import NotFound from "./components/NotFound";
 import Home from "./components/Home";
+import Login from "./components/Login";
 import Logout from "./containers/Logout";
 import Dashboard from "./containers/Dashboard";
 import AddListingContainer from "./containers/AddListingContainer";
@@ -228,6 +229,12 @@ export class AppUnconnected extends Component {
               path="/logout"
               render={routeProps => (
                 <Logout classes={this.props.classes} {...routeProps} />
+              )}
+            />
+            <Route
+              path="/login"
+              render={routeProps => (
+                <Login classes={this.props.classes} {...routeProps} />
               )}
             />
             <Route
