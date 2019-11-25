@@ -38,6 +38,7 @@ export class AddListingContainer extends React.Component {
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.verifyRecaptchaScore = this.verifyRecaptchaScore.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -132,20 +133,20 @@ export class AddListingContainer extends React.Component {
     return body;
   }
 
-  async createListing() {
-    console.log("createListing");
+  async addListing() {
+    console.log("addListing");
     const body = await this.generateListingBody();
     // console.log(body);
     if (body) {
       const listingResult = await this.props.apiListing
-        .createListing(body)
+        .addListing(body)
         .catch(err => {
           console.error(err);
           return handleError(err);
         });
 
       if (
-        (listingResult && listingResult.type !== "CREATE_LISTING_SUCCESS") ||
+        (listingResult && listingResult.type !== "ADD_LISTING_SUCCESS") ||
         this.props.listing.error
       ) {
         console.log(this.props.listing.error);
@@ -158,11 +159,15 @@ export class AddListingContainer extends React.Component {
 
   async handleSubmit() {
     console.log("handleSubmit");
+    console.log("161");
+    console.log(this.state);
+    console.log(this.props);
     // const { formValues } = this.props;
+    // console.log(formValues);
 
     // verify recaptcha score
 
-    this.createListing()
+    this.addListing()
       .then(() => {
         console.log("listing created");
       })
