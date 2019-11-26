@@ -57,11 +57,41 @@ exports.findUserByEmail = async (profile, token, done) => {
         } else {
           return this.updateUser(profile, token, user.id, done);
         }
+      } else {
+        const google_id = profile.id;
+        const google_token = token;
+        const avatar_url = profile.picture;
+        const email = profile.email;
+        const name = profile.name;
+        const user_type = "manager";
+        return User.createUser(
+          name,
+          email,
+          null,
+          user_type,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          avatar_url,
+          google_id,
+          google_token
+        )
+          .then(user => {
+            return done(null, user);
+          })
+          .catch(err => {
+            console.log(`config/auth.js > 87: ${err}`);
+            return done(err, null);
+          });
       }
-      return done(null, null);
     })
     .catch(err => {
-      console.log(`config/auth.js > 67: ${err}`);
+      console.log(`config/auth.js > 94: ${err}`);
       return done(err, null);
     });
 };

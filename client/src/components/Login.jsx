@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
-console.log(BASE_URL);
 
 export class Login extends React.Component {
   componentDidMount() {

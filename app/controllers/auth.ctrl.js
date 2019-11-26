@@ -61,9 +61,9 @@ exports.googleCallback = (req, res) => {
 };
 
 exports.jwtCallback = (req, res, next) => {
-  // console.log("auth.ctrl.js > 59: jwtCallback");
+  console.log("auth.ctrl.js > 59: jwtCallback");
   if (req.authError) {
-    console.log(`auth.ctrl.js > 61: ${req.authError}`);
+    console.log(`auth.ctrl.js > 66: ${req.authError}`);
     return res.status(422).json({
       success: false,
       message: `jwt auth failed: ${req.authError}`,
@@ -71,7 +71,7 @@ exports.jwtCallback = (req, res, next) => {
     });
   }
   if (req.user && req.user.err) {
-    console.log(`auth.ctrl.js > 69: ${req.user.err}`);
+    console.log(`auth.ctrl.js > 74: ${req.user.err}`);
     return res.status(422).json({
       success: false,
       message: `jwt auth failed: ${req.user.err}`,
@@ -79,15 +79,15 @@ exports.jwtCallback = (req, res, next) => {
     });
   }
   if (!req.user) {
-    console.log(`auth.ctrl.js > 77: no user found`);
+    console.log(`auth.ctrl.js > 82: no user found`);
     return res.status(422).json({
       success: false,
       message: "Sorry, you must log in to view this page."
     });
   }
   if (req.user) {
-    // console.log(`auth.ctrl.js > 84`);
-    // console.log(req.user.id);
+    console.log(`auth.ctrl.js > 89`);
+    console.log(req.user.id);
     req.login(req.user, loginErr => {
       if (loginErr) {
         return next(loginErr);
@@ -107,8 +107,11 @@ exports.noAccess = (req, res) => {
 };
 
 exports.requireAuth = async (req, res, next) => {
-  console.log(`auth.ctrl.js > 97: requireAuth`);
-  await passport.authenticate("jwt", { session: false }, (token, done) =>
-    this.jwtCallback(req, res, next)
-  )(req, res, next);
+  console.log(`auth.ctrl.js > 110: requireAuth`);
+  console.log(req.headers.authorization);
+  console.log(req.body);
+  await passport.authenticate("jwt", { session: false }, (token, done) => {
+    console.log(`auth.ctrl.js > 112`, token);
+    return this.jwtCallback(req, res, next);
+  })(req, res, next);
 };

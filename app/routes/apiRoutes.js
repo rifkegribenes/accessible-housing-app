@@ -161,7 +161,8 @@ router.delete("/user/:id", authCtrl.requireAuth, userCtrl.deleteUser);
 //        }
 //   Returns: JSON listing object on success.
 //
-router.post("/listing", authCtrl.requireAuth, listingCtrl.createListing);
+// router.post("/listing", authCtrl.requireAuth, listingCtrl.createListing);
+router.post("/listing", listingCtrl.createListing);
 
 // UPDATE A LISTING RECORD
 //   Example: PUT >> /api/listing/:id

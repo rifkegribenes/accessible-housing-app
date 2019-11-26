@@ -135,16 +135,18 @@ export class AddListingContainer extends React.Component {
 
   async addListing() {
     console.log("addListing");
+    const token = this.props.appState.authToken;
+    console.log(token);
     const body = await this.generateListingBody();
     // console.log(body);
-    if (body) {
+    if (token && body) {
       const listingResult = await this.props.apiListing
-        .addListing(body)
+        .addListing(token, body)
         .catch(err => {
           console.error(err);
           return handleError(err);
         });
-
+      console.log(listingResult.type);
       if (
         (listingResult && listingResult.type !== "ADD_LISTING_SUCCESS") ||
         this.props.listing.error
@@ -153,7 +155,7 @@ export class AddListingContainer extends React.Component {
         return handleError(this.props.listing.error);
       }
     } else {
-      console.log("no listing body generated");
+      console.log("no listing body or no token");
     }
   }
 

@@ -137,6 +137,8 @@ export function getAllListings(token) {
  *     If database error, hides spinner, displays error toastr
  */
 export function addListing(token, body) {
+  console.log(body);
+  console.log(JSON.stringify(body));
   return {
     [RSAA]: {
       endpoint: `${BASE_URL}/api/listing/`,

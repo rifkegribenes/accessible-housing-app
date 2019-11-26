@@ -29,6 +29,7 @@ const listings = require("../../db/models/listings");
  *  @returns  {Object}                   New listing object OR error message.
  */
 const createListing = (req, res, next) => {
+  console.log(`listings.ctrl.js > 32`, req.body, req.headers.authorization);
   const {
     property_name,
     property_street,
