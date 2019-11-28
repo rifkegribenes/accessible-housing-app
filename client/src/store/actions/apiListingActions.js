@@ -117,7 +117,7 @@ export function getAllListings(token) {
       ],
       headers: {
         Authorization: `Bearer ${token}`,
-        "Listing-Type": "application/json"
+        "Content-Type": "application/json"
       }
     }
   };
@@ -159,11 +159,11 @@ export function addListing(token, body) {
           }
         }
       ],
+      body: JSON.stringify(body),
       headers: {
         Authorization: `Bearer ${token}`,
-        "Listing-Type": "application/json"
-      },
-      body: JSON.stringify(body)
+        "Content-Type": "application/json"
+      }
     }
   };
 }
@@ -204,7 +204,7 @@ export function updateListing(token, id, body) {
       ],
       headers: {
         Authorization: `Bearer ${token}`,
-        "Listing-Type": "application/json"
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(body)
     }

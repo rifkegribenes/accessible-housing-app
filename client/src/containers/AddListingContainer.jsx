@@ -112,6 +112,9 @@ export class AddListingContainer extends React.Component {
     // let availableDate;
     let availableDate = new Date();
 
+    // generate array of features from selected options
+    let features = ["test"];
+
     const userId = window.localStorage.getItem("userId");
 
     // generate body
@@ -131,7 +134,7 @@ export class AddListingContainer extends React.Component {
       available_date: availableDate,
       monthly_rent: formValues.monthlyRent,
       primary_image: formValues.primaryImage,
-      features: formValues.features,
+      features: features,
       user_id: userId
     };
     console.log(body);
