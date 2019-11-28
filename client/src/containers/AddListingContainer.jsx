@@ -16,7 +16,7 @@ import queryString from "query-string";
 
 import { withStyles } from "@material-ui/core/styles";
 
-// import { openSnackbar } from "./Notifier";
+import { openSnackbar } from "./Notifier";
 import AddListingForm from "../components/AddListing";
 // import * as utils from "../utils";
 import * as apiListingActions from "../store/actions/apiListingActions";
@@ -179,7 +179,8 @@ export class AddListingContainer extends React.Component {
 
     this.addListing()
       .then(() => {
-        console.log("listing created");
+        openSnackbar("success", "Listing created");
+        this.props.apiListing.clearForm();
       })
       .catch(err => {
         console.error(err);

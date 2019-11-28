@@ -78,11 +78,7 @@ function Listing(state = INITIAL_STATE, action) {
     case CLEAR_FORM:
       return update(state, {
         form: {
-          listing_type: { $set: null },
-          listing: { $set: "" },
-          created_at: { $set: "" },
-          updated_at: { $set: "" },
-          dialogOpen: { $set: false }
+          $set: {}
         }
       });
 
