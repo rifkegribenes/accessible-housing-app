@@ -105,10 +105,14 @@ export class AddListingContainer extends React.Component {
 
     // cleeanup body fields
     // lookup lat/lon
-    let lat, lon;
+    let lat = "0",
+      lon = "0";
 
     // concatenate availableDate
-    let availableDate;
+    // let availableDate;
+    let availableDate = new Date();
+
+    const userId = window.localStorage.getItem("userId");
 
     // generate body
     const body = {
@@ -117,17 +121,18 @@ export class AddListingContainer extends React.Component {
       property_city: formValues.propertyCity,
       property_state: formValues.propertyState,
       property_zip: formValues.propertyZip,
-      property_quadrant: formValues.propertyQuadrant,
+      property_quadrant: formValues.quadrant,
       property_lat: lat,
       property_lon: lon,
       property_county: formValues.propertyCounty,
       property_phone: formValues.propertyPhone,
       listing_url: formValues.listingUrl,
-      vacant: formValues.vacant,
+      vacant: formValues.vacant || false,
       available_date: availableDate,
       monthly_rent: formValues.monthlyRent,
       primary_image: formValues.primaryImage,
-      features: formValues.features
+      features: formValues.features,
+      user_id: userId
     };
     console.log(body);
     return body;

@@ -46,7 +46,8 @@ const createListing = (req, res, next) => {
     available_date,
     monthly_rent,
     primary_image,
-    features
+    features,
+    user_id
   } = req.body;
 
   const requiredFields = [
@@ -65,7 +66,8 @@ const createListing = (req, res, next) => {
     "available_date",
     "monthly_rent",
     "primary_image",
-    "features"
+    "features",
+    "user_id"
   ];
 
   const missingField = requiredFields.find(field => !(field in req.body));
@@ -94,6 +96,7 @@ const createListing = (req, res, next) => {
       available_date,
       monthly_rent,
       primary_image,
+      user_id,
       features
     )
     .then(listings => {

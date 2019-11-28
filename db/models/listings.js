@@ -24,6 +24,7 @@ const { db, TABLES } = require("../../app/config/knex");
  *  @param {number}   monthly_rent        Monthly rent
  *  @param {string}   primary_image       Image url
  *  @param {array}    features            Array of amenities and features
+ *  @param {uuid}     user_id             User ID of property owner
  *  @returns  {Array}    Array of 1 newly-created Listing object.
  */
 const createListing = (
@@ -42,8 +43,11 @@ const createListing = (
   available_date,
   monthly_rent,
   primary_image,
+  user_id,
   features
 ) => {
+  console.log(`models/listings.js > 49`);
+  console.log(user_id);
   return db
     .insert({
       id: uuid.v4(),
@@ -62,7 +66,8 @@ const createListing = (
       available_date,
       monthly_rent,
       primary_image,
-      features
+      features,
+      user_id
     })
     .into(TABLES.LISTINGS)
     .returning("*");

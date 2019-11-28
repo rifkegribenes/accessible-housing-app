@@ -18,7 +18,7 @@ exports.up = function(knex) {
           table.string("listing_url").notNullable();
           table.boolean("vacant").notNullable();
           table.date("available_date").notNullable();
-          table.decimal("monthly_rent", 4, 2).notNullable();
+          table.decimal("monthly_rent", 6, 2).notNullable();
           table.string("primary_image").notNullable();
           table.specificType("features", "text ARRAY");
           table.decimal("views", 10, 0);
