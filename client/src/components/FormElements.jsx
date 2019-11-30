@@ -346,6 +346,11 @@ export const formStyles = theme => ({
     backgroundRepeat: "no-repeat",
     backgroundPosition: "left center"
   },
+  months: {
+    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='30px' width='85px'><text x='10' y='20' fill='gray' font-size='20' font-family='arial'>mos</text></svg>")`,
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "right center"
+  },
   formHelperText: {
     margin: "-25px 0 30px 0"
   },
@@ -563,6 +568,34 @@ export const formStyles = theme => ({
     textAlign: "center"
   }
 });
+
+export const featuresMap = {
+  dogs: "Dogs OK",
+  cats: "Cats OK",
+  no_pets: "No pets",
+  furnished: "Furnished",
+  no_smoking: "No smoking",
+  gated_entry: "Gated entry",
+  "60_in_circular_space_for_turning": "60-inch circular space for turning",
+  "32_in_wide_doorways": "32-inch wide doorways",
+  accessible_route_to_unit: "Accessible route to unit",
+  bathroom_wall_reinforcements: "Wall reinforcements in bathroom",
+  bathroom_grab_bars: "Grab bars in bathroom",
+  shower_seat: "Shower seat",
+  bathroom_56_x_60_in_floor_clearance: "56x60-inch floor clearance in bathroom",
+  kitchen_40_in_aisle: "40-inch aisle in kitchen",
+  kitchen_60_in_floor_clearance_if_U_shaped:
+    "60-inch floor clearance in U-shaped kitchen",
+  kitchen_sink_knee_and_toe_clearance: "Knee and toe clearance at kitchen sink",
+  kitchen_sink_34_in_above_floor:
+    "Kitchen sink no more than 34 inches above floor",
+  kitchen_work_surface_34_in_above_floor:
+    "Work surface in kitchen no more than 34 inches above floor",
+  front_control_range: "Front-control range",
+  visible_notification_alarm_system: "Visible notification alarm system",
+  operable_parts_48_in_above_floor:
+    "Operable parts (light switches, thermostats, peepholes) no more than 48 inches above floor"
+};
 
 // custom MUI friendly TEXT input with translated label
 export const renderTextField = ({

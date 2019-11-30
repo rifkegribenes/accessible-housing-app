@@ -99,25 +99,48 @@ const styles = theme => ({
 
 export class ContentLibraryUnconnected extends React.Component {
   componentDidMount() {
-    const { authToken } = this.props.appState;
-    this.props.apiListing
-      .getAllListings(authToken)
-      .then(result => {
-        console.log(result.payload);
-        if (
-          result.type === "GET_ALL_LISTING_FAILURE" ||
-          this.props.listing.error
-        ) {
-          openSnackbar(
-            "error",
-            this.props.listing.error ||
-              "An error occured while fetching listing"
-          );
-        }
-      })
-      .catch(err => {
-        openSnackbar("error", err);
-      });
+    const { authToken, userId } = this.props.appState;
+    switch (this.props.type) {
+      case "user":
+        this.props.apiListing
+          .getUserListings(authToken, userId)
+          .then(result => {
+            console.log(result.payload);
+            if (
+              result.type === "GET_USER_LISTINGS_FAILURE" ||
+              this.props.listing.error
+            ) {
+              openSnackbar(
+                "error",
+                this.props.listing.error ||
+                  "An error occured while fetching listing"
+              );
+            }
+          })
+          .catch(err => {
+            openSnackbar("error", err);
+          });
+        break;
+      default:
+        this.props.apiListing
+          .getAllListings(authToken)
+          .then(result => {
+            console.log(result.payload);
+            if (
+              result.type === "GET_ALL_LISTING_FAILURE" ||
+              this.props.listing.error
+            ) {
+              openSnackbar(
+                "error",
+                this.props.listing.error ||
+                  "An error occured while fetching listing"
+              );
+            }
+          })
+          .catch(err => {
+            openSnackbar("error", err);
+          });
+    }
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {

@@ -24,7 +24,8 @@ const {
   yearOptions,
   renderSelect,
   renderTextField,
-  renderCheckbox
+  renderCheckbox,
+  featuresMap
 } = formElements;
 
 export const AddListing = props => {
@@ -38,6 +39,19 @@ export const AddListing = props => {
   } = props;
 
   const placeholderOnChange = () => {};
+
+  const features = Object.keys(featuresMap).map(feature => (
+    <Field
+      label={featuresMap[feature]}
+      name={feature}
+      id={feature}
+      key={feature}
+      type="checkbox"
+      formControlName={`checkbox_${feature}`}
+      classes={classes}
+      component={renderCheckbox}
+    />
+  ));
 
   return (
     <div data-test="component-add-listing" className={classes.sectionContainer}>
@@ -211,10 +225,23 @@ export const AddListing = props => {
               InputProps={{ style: { paddingLeft: 20 } }}
               InputLabelProps={{ style: { paddingLeft: 20 } }}
             />
+            <Field
+              label="Deposit"
+              name="deposit"
+              id="deposit"
+              type="number"
+              min={0.01}
+              step={0.01}
+              classes={classes}
+              component={renderTextField}
+              formControlName="currency"
+              InputProps={{ style: { paddingLeft: 20 } }}
+              InputLabelProps={{ style: { paddingLeft: 20 } }}
+            />
           </FormGroup>
           <FormGroup row classes={{ root: classes.formGroupTopMargin }}>
             <Field
-              label="Currently Vacant?"
+              label="Vacant?"
               name="vacant"
               id="vacant"
               type="checkbox"
@@ -222,6 +249,87 @@ export const AddListing = props => {
               classes={classes}
               component={renderCheckbox}
             />
+          </FormGroup>
+          <FormGroup row classes={{ root: classes.formGroup2Col }}>
+            <Field
+              data-test="input-bedrooms"
+              label="Bedrooms"
+              name="bedrooms"
+              id="bedrooms"
+              min={1}
+              max={4}
+              step={1}
+              classes={classes}
+              component={renderTextField}
+              twocol
+            />
+            <Field
+              data-test="input-lease-length"
+              label="Lease Length"
+              name="leaseLength"
+              id="leaseLength"
+              min={1}
+              max={12}
+              step={1}
+              classes={classes}
+              component={renderTextField}
+              twocol
+              formControlName="months"
+              InputProps={{ style: { paddingRight: 30 } }}
+              InputLabelProps={{ style: { paddingRight: 30 } }}
+            />
+            <Field
+              label="Square Ft"
+              name="squareFt"
+              id="squareFt"
+              type="number"
+              min={0}
+              step={50}
+              classes={classes}
+              component={renderTextField}
+            />
+          </FormGroup>
+          <FormGroup row classes={{ root: classes.formGroup2Col }}>
+            <Field
+              label="Laundry Type"
+              name="laundry"
+              id="laundry"
+              type="select"
+              classes={classes}
+              component={renderSelect}
+              labelWidth={41}
+              options={[
+                "Washer/Dryer In-unit",
+                "Washer/Dryer hookup",
+                "Laundry facilities"
+              ]}
+            />
+            <Field
+              label="Parking Type"
+              name="parking"
+              id="parking"
+              type="select"
+              classes={classes}
+              component={renderSelect}
+              labelWidth={41}
+              options={["Surface lot", "Covered", "Street", "Garage"]}
+            />
+            <Field
+              label="Parking Fee / Month"
+              name="parkingFee"
+              id="parkingFee"
+              type="number"
+              min={0}
+              step={0.5}
+              classes={classes}
+              component={renderTextField}
+              formControlName="currency"
+              InputProps={{ style: { paddingLeft: 20 } }}
+              InputLabelProps={{ style: { paddingLeft: 20 } }}
+            />
+          </FormGroup>
+          <FormGroup row classes={{ root: classes.formGroupFeatures }}>
+            {features}
           </FormGroup>
           <div className={classes.buttonWrap}>
             <Button
