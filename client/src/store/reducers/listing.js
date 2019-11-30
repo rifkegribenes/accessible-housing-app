@@ -76,6 +76,7 @@ function Listing(state = INITIAL_STATE, action) {
       });
 
     case CLEAR_FORM:
+      console.log("clear form");
       return update(state, {
         form: {
           $set: {}

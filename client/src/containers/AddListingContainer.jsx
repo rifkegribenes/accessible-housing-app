@@ -180,7 +180,8 @@ export class AddListingContainer extends React.Component {
     this.addListing()
       .then(() => {
         openSnackbar("success", "Listing created");
-        this.props.apiListing.clearForm();
+        // redirect to manager dashboard here
+        this.props.history.push("/");
       })
       .catch(err => {
         console.error(err);
