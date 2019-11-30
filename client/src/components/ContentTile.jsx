@@ -76,6 +76,7 @@ export const styles = theme => ({
     filter: "contrast(70%)",
     overflow: "hidden",
     position: "relative",
+    height: 200,
     transition: "filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91)",
     margin: "-20px -20px 20px -20px",
     "&::before": {
