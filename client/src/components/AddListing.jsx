@@ -31,6 +31,7 @@ export const AddListing = props => {
   const {
     onSubmit,
     classes,
+    edit,
     // formValues,
     width,
     verifyCallback
@@ -231,7 +232,7 @@ export const AddListing = props => {
               data-sitekey="6LdzULcUAAAAAJ37JEr5WQDpAj6dCcPUn1bIXq2O"
               data-callback={verifyCallback}
             >
-              Create Listing
+              {edit ? "Update Listing" : "Create Listing"}
             </Button>
           </div>
         </div>

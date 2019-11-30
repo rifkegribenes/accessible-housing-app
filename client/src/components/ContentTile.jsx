@@ -94,27 +94,26 @@ export const styles = theme => ({
 
 const ContentTile = props => {
   const { classes, listingTile } = props;
-  const { listing, listing_type } = listingTile;
-  const imageStyle = { backgroundImage: `url(${listing})` };
+  const {
+    primary_image,
+    property_name,
+    property_street,
+    property_city,
+    property_zip
+  } = listingTile;
+  const imageStyle = { backgroundImage: `url(${primary_image})` };
 
   return (
     <div data-test="component-listing-tile">
-      {listing_type === "image" && (
-        <div
-          className={classes.cardImage}
-          style={imageStyle}
-          data-test="image"
-        />
-      )}
+      <div className={classes.cardImage} style={imageStyle} data-test="image" />
       <div className={classes.cardListing} data-test="card-listing">
         <Typography component="h2" className={classes.title} data-test="title">
-          {listing_type}
+          {property_name}
         </Typography>
-        {listing_type !== "image" && (
-          <Typography component="p" className={classes.body} data-test="body">
-            {listing}
-          </Typography>
-        )}
+
+        <Typography component="p" className={classes.body} data-test="body">
+          {property_street}, {property_city} {property_zip}
+        </Typography>
       </div>
     </div>
   );

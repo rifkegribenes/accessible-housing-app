@@ -12,7 +12,7 @@ import {
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import queryString from "query-string";
+// import queryString from "query-string";
 
 import { withStyles } from "@material-ui/core/styles";
 
@@ -42,20 +42,27 @@ export class AddListingContainer extends React.Component {
   }
 
   componentDidMount() {
-    // check for listing id in query string
-    const params = queryString.parse(this.props.location.search);
-    // if find both ids, call API to fetch contact info for prefill
-    if (params.lId) {
-      const { lId } = params;
+    if (this.props.edit && this.props.match.params.id) {
       this.props.apiListing
-        .getListingById(lId)
+        .getListingById(
+          this.props.match.params.id,
+          this.props.appState.userType
+        )
         .then(result => {
-          // console.log(result);
+          if (
+            result.type === "GET_LISTING_BY_ID_FAILURE" ||
+            this.props.listing.error
+          ) {
+            openSnackbar(
+              "error",
+              this.props.listing.error ||
+                "An error occurred while trying to fetch your listing."
+            );
+          } else {
+            // console.log(this.props.listing.form)
+          }
         })
-        .catch(err => {
-          console.error(err);
-          this.props.apiListing.clearForm();
-        });
+        .catch(err => openSnackbar("error", err));
     }
   }
 
@@ -161,31 +168,80 @@ export class AddListingContainer extends React.Component {
       ) {
         console.log(this.props.listing.error);
         return handleError(this.props.listing.error);
+      } else {
+        return listingResult.type;
       }
     } else {
       console.log("no listing body or no token");
     }
   }
 
-  async handleSubmit() {
+  async updateListing() {
+    console.log("updateListing");
+    const token = this.props.appState.authToken;
+    console.log(token);
+    const body = await this.generateListingBody();
+    console.log(body);
+    const id = this.props.match.params.id;
+
+    if (token && id && body) {
+      const listingResult = await this.props.apiListing
+        .updateListing(token, id, body)
+        .catch(err => {
+          console.error(err);
+          return handleError(err);
+        });
+      console.log(listingResult.type);
+      if (
+        (listingResult && listingResult.type !== "UPDATE_LISTING_SUCCESS") ||
+        this.props.listing.error
+      ) {
+        console.log(this.props.listing.error);
+        return handleError(this.props.listing.error);
+      } else {
+        return listingResult.type;
+      }
+    } else {
+      console.log("no listing body or no token or no id");
+      return "no listing body or no token or no id";
+    }
+  }
+
+  async handleSubmit(edit) {
     console.log("handleSubmit");
-    console.log("161");
-    console.log(this.state);
-    console.log(this.props);
-    // const { formValues } = this.props;
-    // console.log(formValues);
+    console.log(edit);
 
     // verify recaptcha score
 
-    this.addListing()
-      .then(() => {
-        openSnackbar("success", "Listing created");
-        // redirect to manager dashboard here
-        this.props.history.push("/");
-      })
-      .catch(err => {
-        console.error(err);
-      });
+    if (edit) {
+      this.updateListing()
+        .then(result => {
+          if (result === "UPDATE_LISTING_SUCCESS") {
+            openSnackbar("success", "Listing updated");
+            // redirect to manager dashboard here
+            this.props.history.push("/library");
+          } else {
+            console.log(result);
+          }
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    } else {
+      this.addListing()
+        .then(result => {
+          if (result === "ADD_LISTING_SUCCESS") {
+            openSnackbar("success", "Listing created");
+            // redirect to manager dashboard here
+            this.props.history.push("/library");
+          } else {
+            console.log(result);
+          }
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    }
   }
 
   render() {

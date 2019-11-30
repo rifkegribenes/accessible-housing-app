@@ -95,12 +95,24 @@ function Listing(state = INITIAL_STATE, action) {
     case GET_LISTING_BY_ID_SUCCESS:
     case ADD_LISTING_SUCCESS:
     case UPDATE_LISTING_SUCCESS:
+      // reverse-engineer available date and features list
       return update(state, {
         form: {
-          listing_type: { $set: action.payload.listing_type },
-          listing: { $set: action.payload.listing },
-          created_at: { $set: action.payload.created_at },
-          updated_at: { $set: action.payload.updated_at },
+          propertyName: { $set: action.payload.property_name },
+          propertyStreet: { $set: action.payload.property_street },
+          propertyCity: { $set: action.payload.property_city },
+          propertyState: { $set: action.payload.property_state },
+          propertyZip: { $set: action.payload.property_zip },
+          quadrant: { $set: action.payload.property_quadrant },
+          propertyCounty: { $set: action.payload.property_county },
+          propertyPhone: { $set: action.payload.property_phone },
+          listingUrl: { $set: action.payload.listing_url },
+          vacant: { $set: action.payload.vacant },
+          // availableDate: { $set: action.payload.available_date },
+          monthlyRent: { $set: action.payload.monthly_rent },
+          primaryImage: { $set: action.payload.primary_image },
+          // features { $set:  },
+          // user_id
           dialogOpen: { $set: false }
         },
         error: { $set: null }

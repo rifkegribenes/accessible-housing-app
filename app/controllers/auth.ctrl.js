@@ -107,9 +107,9 @@ exports.noAccess = (req, res) => {
 };
 
 exports.requireAuth = async (req, res, next) => {
-  console.log(`auth.ctrl.js > 110: requireAuth`);
-  console.log(req.headers.authorization);
-  console.log(req.body);
+  // console.log(`auth.ctrl.js > 110: requireAuth`);
+  // console.log(req.headers.authorization);
+  // console.log(req.body);
   await passport.authenticate("jwt", { session: false }, (token, done) => {
     console.log(`auth.ctrl.js > 112`, token);
     return this.jwtCallback(req, res, next);

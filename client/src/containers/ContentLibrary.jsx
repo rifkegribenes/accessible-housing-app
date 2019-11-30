@@ -11,7 +11,7 @@ import Create from "@material-ui/icons/Create";
 import Delete from "@material-ui/icons/Delete";
 
 import * as apiListingActions from "../store/actions/apiListingActions";
-import * as utils from "../utils";
+// import * as utils from "../utils";
 import ContentTile from "../components/ContentTile";
 import Spinner from "../components/Spinner";
 import AlertDialog from "../components/AlertDialog";
@@ -101,8 +101,9 @@ export class ContentLibraryUnconnected extends React.Component {
   componentDidMount() {
     const { authToken } = this.props.appState;
     this.props.apiListing
-      .getAllListing(authToken)
+      .getAllListings(authToken)
       .then(result => {
+        console.log(result.payload);
         if (
           result.type === "GET_ALL_LISTING_FAILURE" ||
           this.props.listing.error
@@ -126,7 +127,7 @@ export class ContentLibraryUnconnected extends React.Component {
         this.props.listing.allListing.length
     ) {
       this.props.apiListing
-        .getAllListing(this.props.appState.authToken)
+        .getAllListings(this.props.appState.authToken)
         .then(result => {
           if (
             result.type === "GET_ALL_LISTING_FAILURE" ||
@@ -211,7 +212,7 @@ export class ContentLibraryUnconnected extends React.Component {
             style={{ paddingTop: 20 }}
             data-test="headline"
           >
-            Listing Library
+            Listings
           </Typography>
           <div className={classes.gridWrapper}>
             {this.props.listing.allListing.map(tile => {
@@ -259,7 +260,7 @@ ContentLibraryUnconnected.propTypes = {
   listing: PropTypes.shape({
     filteredList: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.number,
+        id: PropTypes.string,
         listing_type: PropTypes.string,
         listing: PropTypes.string,
         updated_at: PropTypes.string
@@ -267,14 +268,14 @@ ContentLibraryUnconnected.propTypes = {
     ),
     allListing: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.number,
+        id: PropTypes.string,
         listing_type: PropTypes.string,
         listing: PropTypes.string,
         updated_at: PropTypes.string
       })
     ),
     currentListing: PropTypes.shape({
-      id: PropTypes.number,
+      id: PropTypes.string,
       listing_type: PropTypes.string,
       listing: PropTypes.string,
       updated_at: PropTypes.string

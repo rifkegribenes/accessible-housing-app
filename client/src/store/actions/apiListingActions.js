@@ -182,6 +182,9 @@ export function addListing(token, body) {
  *     If database error, hides spinner, displays error toastr
  */
 export function updateListing(token, id, body) {
+  console.log("updateListing");
+  console.log(body);
+  console.log(JSON.stringify(body));
   return {
     [RSAA]: {
       endpoint: `${BASE_URL}/api/listing/${id}`,
@@ -202,11 +205,11 @@ export function updateListing(token, id, body) {
           }
         }
       ],
+      body: JSON.stringify(body),
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json"
-      },
-      body: JSON.stringify(body)
+      }
     }
   };
 }
