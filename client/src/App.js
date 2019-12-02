@@ -226,7 +226,7 @@ export class AppUnconnected extends Component {
               )}
             />
             <Route
-              path="/library"
+              path="/listings"
               render={routeProps => (
                 <ContentLibrary
                   setRedirect={this.setRedirect}

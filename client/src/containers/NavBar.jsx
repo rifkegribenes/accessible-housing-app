@@ -183,7 +183,7 @@ export class NavBar extends React.Component {
     const { classes } = this.props;
     const { anchorEl } = this.state;
     const { loggedIn } = this.props.appState;
-    const adminLinks = ["new", "library", "logout"];
+    const adminLinks = ["new", "listings", "logout"];
     const ListItemLink = props => {
       const { primary, handleClose, link } = props;
       return (

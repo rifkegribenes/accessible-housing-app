@@ -219,7 +219,7 @@ export class AddListingContainer extends React.Component {
           if (result === "UPDATE_LISTING_SUCCESS") {
             openSnackbar("success", "Listing updated");
             // redirect to manager dashboard here
-            this.props.history.push("/library");
+            this.props.history.push("/listings");
           } else {
             console.log(result);
           }
@@ -233,7 +233,7 @@ export class AddListingContainer extends React.Component {
           if (result === "ADD_LISTING_SUCCESS") {
             openSnackbar("success", "Listing created");
             // redirect to manager dashboard here
-            this.props.history.push("/library");
+            this.props.history.push("/listings");
           } else {
             console.log(result);
           }

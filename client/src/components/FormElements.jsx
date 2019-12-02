@@ -342,14 +342,29 @@ export const formStyles = theme => ({
     margin: "10px 0"
   },
   currency: {
-    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='30px' width='85px'><text x='10' y='20' fill='gray' font-size='20' font-family='arial'>$</text></svg>")`,
+    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='30px' width='85px'><text x='10' y='20' fill='gray' font-size='20' font-family='source sans pro'>$</text></svg>")`,
     backgroundRepeat: "no-repeat",
-    backgroundPosition: "left center"
+    backgroundPosition: "left center",
+    flexGrow: 0
+  },
+  parking: {
+    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='30px' width='85px'><text x='10' y='20' fill='gray' font-size='20' font-family='source sans pro'>$</text></svg>")`,
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "left center",
+    maxWidth: 188
+  },
+  currency2: {
+    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='30px' width='85px'><text x='10' y='20' fill='gray' font-size='20' font-family='source sans pro'>$</text></svg>")`,
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "left center",
+    marginLeft: 20
   },
   months: {
-    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='30px' width='85px'><text x='10' y='20' fill='gray' font-size='20' font-family='arial'>mos</text></svg>")`,
+    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='30px' width='85px'><text x='40' y='9' fill='gray' font-size='16' font-family='source sans pro'>mos</text></svg>")`,
     backgroundRepeat: "no-repeat",
-    backgroundPosition: "right center"
+    backgroundPosition: "right center",
+    marginRight: 15,
+    minWidth: 188
   },
   formHelperText: {
     margin: "-25px 0 30px 0"
@@ -376,8 +391,8 @@ export const formStyles = theme => ({
     display: "flex",
     flexDirection: "row",
     flexWrap: "nowrap",
-    justifyContent: "space-between"
-    // width: 280
+    justifyContent: "space-between",
+    width: 280
   },
   formGroupTopMargin: {
     marginTop: 30
@@ -393,8 +408,21 @@ export const formStyles = theme => ({
       display: "block"
     }
   },
+  formGroupFeatures: {
+    padding: 20,
+    border: "1px solid rgba(117, 117, 117)"
+  },
+  marginRight: {
+    marginRight: 15,
+    flexGrow: 1
+  },
+  flexStatic: {
+    marginRight: 15,
+    flexShrink: 0,
+    minWidth: 137
+  },
   controlCheckbox: {
-    margin: "-35px 0 0 0"
+    margin: 0
   },
   controlCheckboxMargin: {
     margin: "-35px 0 40px 0"

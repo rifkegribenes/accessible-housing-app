@@ -47,7 +47,7 @@ export const AddListing = props => {
       id={feature}
       key={feature}
       type="checkbox"
-      formControlName={`checkbox_${feature}`}
+      formControlName="controlCheckbox"
       classes={classes}
       component={renderCheckbox}
     />
@@ -212,6 +212,8 @@ export const AddListing = props => {
               labelWidth={30}
               options={yearOptions()}
             />
+          </FormGroup>
+          <FormGroup row classes={{ root: classes.formGroup2Col }}>
             <Field
               label="Monthly Rent"
               name="monthlyRent"
@@ -222,8 +224,8 @@ export const AddListing = props => {
               classes={classes}
               component={renderTextField}
               formControlName="currency"
-              InputProps={{ style: { paddingLeft: 20 } }}
-              InputLabelProps={{ style: { paddingLeft: 20 } }}
+              InputProps={{ style: { paddingLeft: 15 } }}
+              InputLabelProps={{ style: { paddingLeft: 15 } }}
             />
             <Field
               label="Deposit"
@@ -234,20 +236,9 @@ export const AddListing = props => {
               step={0.01}
               classes={classes}
               component={renderTextField}
-              formControlName="currency"
-              InputProps={{ style: { paddingLeft: 20 } }}
-              InputLabelProps={{ style: { paddingLeft: 20 } }}
-            />
-          </FormGroup>
-          <FormGroup row classes={{ root: classes.formGroupTopMargin }}>
-            <Field
-              label="Vacant?"
-              name="vacant"
-              id="vacant"
-              type="checkbox"
-              formControlName="controlCheckbox"
-              classes={classes}
-              component={renderCheckbox}
+              formControlName="currency2"
+              InputProps={{ style: { paddingLeft: 15 } }}
+              InputLabelProps={{ style: { paddingLeft: 15 } }}
             />
           </FormGroup>
           <FormGroup row classes={{ root: classes.formGroup2Col }}>
@@ -256,11 +247,13 @@ export const AddListing = props => {
               label="Bedrooms"
               name="bedrooms"
               id="bedrooms"
+              type="number"
               min={1}
               max={4}
               step={1}
               classes={classes}
               component={renderTextField}
+              formControlName="marginRight"
               twocol
             />
             <Field
@@ -299,10 +292,12 @@ export const AddListing = props => {
               component={renderSelect}
               labelWidth={41}
               options={[
+                "",
                 "Washer/Dryer In-unit",
                 "Washer/Dryer hookup",
                 "Laundry facilities"
               ]}
+              formControlName="marginRight"
             />
             <Field
               label="Parking Type"
@@ -312,7 +307,8 @@ export const AddListing = props => {
               classes={classes}
               component={renderSelect}
               labelWidth={41}
-              options={["Surface lot", "Covered", "Street", "Garage"]}
+              options={["", "Surface lot", "Covered", "Street", "Garage"]}
+              formControlName="flexStatic"
             />
             <Field
               label="Parking Fee / Month"
@@ -323,12 +319,24 @@ export const AddListing = props => {
               step={0.5}
               classes={classes}
               component={renderTextField}
-              formControlName="currency"
+              formControlName="parking"
               InputProps={{ style: { paddingLeft: 20 } }}
               InputLabelProps={{ style: { paddingLeft: 20 } }}
             />
           </FormGroup>
+          <FormLabel className={classes.formLabel} component="legend">
+            Features
+          </FormLabel>
           <FormGroup row classes={{ root: classes.formGroupFeatures }}>
+            <Field
+              label="Vacant?"
+              name="vacant"
+              id="vacant"
+              type="checkbox"
+              formControlName="controlCheckbox"
+              classes={classes}
+              component={renderCheckbox}
+            />
             {features}
           </FormGroup>
           <div className={classes.buttonWrap}>
