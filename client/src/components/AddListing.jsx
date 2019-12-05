@@ -277,7 +277,7 @@ export const AddListing = props => {
               id="squareFt"
               type="number"
               min={0}
-              step={50}
+              step={1}
               classes={classes}
               component={renderTextField}
             />
@@ -316,7 +316,7 @@ export const AddListing = props => {
               id="parkingFee"
               type="number"
               min={0}
-              step={0.5}
+              step={0.01}
               classes={classes}
               component={renderTextField}
               formControlName="parking"

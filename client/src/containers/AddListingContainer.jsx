@@ -26,7 +26,8 @@ import * as actions from "../store/actions";
 import {
   formStyles,
   // formatSFDate,
-  handleError
+  handleError,
+  calcFeatures
 } from "../components/FormElements";
 
 export class AddListingContainer extends React.Component {
@@ -110,7 +111,7 @@ export class AddListingContainer extends React.Component {
     // console.log("generateListingBody");
     const { formValues } = this.props;
 
-    // cleeanup body fields
+    // cleanup body fields
     // lookup lat/lon
     let lat = "0",
       lon = "0";
@@ -120,7 +121,7 @@ export class AddListingContainer extends React.Component {
     let availableDate = new Date();
 
     // generate array of features from selected options
-    let features = ["test"];
+    let features = calcFeatures(formValues);
 
     const userId = window.localStorage.getItem("userId");
 

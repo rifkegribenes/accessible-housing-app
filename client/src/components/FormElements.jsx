@@ -625,6 +625,19 @@ export const featuresMap = {
     "Operable parts (light switches, thermostats, peepholes) no more than 48 inches above floor"
 };
 
+const featuresList = Object.keys(featuresMap);
+
+export const calcFeatures = values => {
+  let featuresArray = [];
+  featuresList.forEach(feature => {
+    if (values[feature]) {
+      featuresArray.push(feature);
+    }
+  });
+  console.log(featuresArray);
+  return featuresArray;
+};
+
 // custom MUI friendly TEXT input with translated label
 export const renderTextField = ({
   input,

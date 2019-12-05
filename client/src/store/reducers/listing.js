@@ -95,26 +95,35 @@ function Listing(state = INITIAL_STATE, action) {
     case GET_LISTING_BY_ID_SUCCESS:
     case ADD_LISTING_SUCCESS:
     case UPDATE_LISTING_SUCCESS:
-      // reverse-engineer available date and features list
+      // reverse-engineer available date
+
+      // reverse-engineer features list
+      const formFeatures = {};
+      if (action.payload.features) {
+        action.payload.features.forEach(feature => {
+          formFeatures[feature] = true;
+        });
+      }
+      const mergeForm = {
+        propertyName: action.payload.property_name,
+        propertyStreet: action.payload.property_street,
+        propertyCity: action.payload.property_city,
+        propertyState: action.payload.property_state,
+        propertyZip: action.payload.property_zip,
+        quadrant: action.payload.property_quadrant,
+        propertyCounty: action.payload.property_county,
+        propertyPhone: action.payload.property_phone,
+        listingUrl: action.payload.listing_url,
+        vacant: action.payload.vacant,
+        // availableDate: action.payload.available_date,
+        monthlyRent: action.payload.monthly_rent,
+        primaryImage: action.payload.primary_image,
+        // user_id
+        dialogOpen: false
+      };
+      const form = { ...mergeForm, ...formFeatures };
       return update(state, {
-        form: {
-          propertyName: { $set: action.payload.property_name },
-          propertyStreet: { $set: action.payload.property_street },
-          propertyCity: { $set: action.payload.property_city },
-          propertyState: { $set: action.payload.property_state },
-          propertyZip: { $set: action.payload.property_zip },
-          quadrant: { $set: action.payload.property_quadrant },
-          propertyCounty: { $set: action.payload.property_county },
-          propertyPhone: { $set: action.payload.property_phone },
-          listingUrl: { $set: action.payload.listing_url },
-          vacant: { $set: action.payload.vacant },
-          // availableDate: { $set: action.payload.available_date },
-          monthlyRent: { $set: action.payload.monthly_rent },
-          primaryImage: { $set: action.payload.primary_image },
-          // features { $set:  },
-          // user_id
-          dialogOpen: { $set: false }
-        },
+        form: { $set: form },
         error: { $set: null }
       });
 
