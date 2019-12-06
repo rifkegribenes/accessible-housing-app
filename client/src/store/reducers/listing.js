@@ -122,7 +122,14 @@ function Listing(state = INITIAL_STATE, action) {
         yyyy: availableDate.yyyy,
         monthlyRent: action.payload.monthly_rent,
         primaryImage: action.payload.primary_image,
-        // user_id
+        deposit: action.payload.deposit,
+        bedrooms: action.payload.bedrooms,
+        leaseLength: action.payload.lease_length,
+        squareFt: action.payload.square_feet,
+        laundryType: action.payload.laundry_type,
+        parkingType: action.payload.parking_type,
+        parkingFee: action.payload.parking_fee,
+        userId: action.payload.user_id,
         dialogOpen: false
       };
       const form = { ...mergeForm, ...formFeatures };

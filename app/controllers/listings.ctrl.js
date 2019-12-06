@@ -45,9 +45,16 @@ const createListing = (req, res, next) => {
     vacant,
     available_date,
     monthly_rent,
+    deposit,
     primary_image,
     features,
-    user_id
+    user_id,
+    bedrooms,
+    lease_length,
+    square_feet,
+    laundry_type,
+    parking_type,
+    parking_fee
   } = req.body;
 
   const requiredFields = [
@@ -67,7 +74,13 @@ const createListing = (req, res, next) => {
     "monthly_rent",
     "primary_image",
     "features",
-    "user_id"
+    "user_id",
+    "bedrooms",
+    "lease_length",
+    "square_feet",
+    "laundry_type",
+    "parking_type",
+    "parking_fee"
   ];
 
   const missingField = requiredFields.find(field => !(field in req.body));
@@ -95,9 +108,16 @@ const createListing = (req, res, next) => {
       vacant,
       available_date,
       monthly_rent,
+      deposit,
       primary_image,
       user_id,
-      features
+      features,
+      bedrooms,
+      lease_length,
+      square_feet,
+      laundry_type,
+      parking_type,
+      parking_fee
     )
     .then(listings => {
       const listing = listings[0];

@@ -42,9 +42,16 @@ const createListing = (
   vacant,
   available_date,
   monthly_rent,
+  deposit,
   primary_image,
   user_id,
-  features
+  features,
+  bedrooms,
+  lease_length,
+  square_feet,
+  laundry_type,
+  parking_type,
+  parking_fee
 ) => {
   console.log(`models/listings.js > 49`);
   console.log(user_id);
@@ -67,7 +74,14 @@ const createListing = (
       monthly_rent,
       primary_image,
       features,
-      user_id
+      user_id,
+      deposit,
+      bedrooms,
+      lease_length,
+      square_feet,
+      laundry_type,
+      parking_type,
+      parking_fee
     })
     .into(TABLES.LISTINGS)
     .returning("*");

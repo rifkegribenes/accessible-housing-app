@@ -147,6 +147,13 @@ export class AddListingContainer extends React.Component {
       available_date: availableDate,
       monthly_rent: formValues.monthlyRent,
       primary_image: formValues.primaryImage,
+      deposit: formValues.deposit,
+      bedrooms: formValues.bedrooms,
+      lease_length: formValues.leaseLength,
+      square_feet: formValues.squareFt,
+      laundry_type: formValues.laundryType,
+      parking_type: formValues.parkingType,
+      parking_fee: formValues.parkingFee,
       features: features,
       user_id: userId
     };
@@ -213,13 +220,13 @@ export class AddListingContainer extends React.Component {
     }
   }
 
-  async handleSubmit(edit) {
+  async handleSubmit() {
     console.log("handleSubmit");
-    console.log(edit);
+    console.log(this.props.edit);
 
     // verify recaptcha score
 
-    if (edit) {
+    if (this.props.edit) {
       this.updateListing()
         .then(result => {
           if (result === "UPDATE_LISTING_SUCCESS") {

@@ -285,14 +285,15 @@ export const AddListing = props => {
           <FormGroup row classes={{ root: classes.formGroup2Col }}>
             <Field
               label="Laundry Type"
-              name="laundry"
-              id="laundry"
+              name="laundryType"
+              id="laundryType"
               type="select"
               classes={classes}
               component={renderSelect}
               labelWidth={41}
               options={[
                 "",
+                "None",
                 "Washer/Dryer In-unit",
                 "Washer/Dryer hookup",
                 "Laundry facilities"
@@ -301,13 +302,20 @@ export const AddListing = props => {
             />
             <Field
               label="Parking Type"
-              name="parking"
-              id="parking"
+              name="parkingType"
+              id="parkingType"
               type="select"
               classes={classes}
               component={renderSelect}
               labelWidth={41}
-              options={["", "Surface lot", "Covered", "Street", "Garage"]}
+              options={[
+                "",
+                "None",
+                "Surface lot",
+                "Covered",
+                "Street",
+                "Garage"
+              ]}
               formControlName="flexStatic"
             />
             <Field
