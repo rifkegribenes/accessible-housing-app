@@ -18,14 +18,13 @@ import { withStyles } from "@material-ui/core/styles";
 
 import { openSnackbar } from "./Notifier";
 import AddListingForm from "../components/AddListing";
-// import * as utils from "../utils";
+import * as utils from "../utils";
 import * as apiListingActions from "../store/actions/apiListingActions";
 import * as apiProfileActions from "../store/actions/apiProfileActions";
 import * as actions from "../store/actions";
 
 import {
   formStyles,
-  // formatSFDate,
   handleError,
   calcFeatures
 } from "../components/FormElements";
@@ -117,8 +116,14 @@ export class AddListingContainer extends React.Component {
       lon = "0";
 
     // concatenate availableDate
-    // let availableDate;
     let availableDate = new Date();
+    if (formValues.mm && formValues.dd && formValues.yyyy) {
+      availableDate = utils.concatDate(
+        formValues.mm,
+        formValues.dd,
+        formValues.yyyy
+      );
+    }
 
     // generate array of features from selected options
     let features = calcFeatures(formValues);

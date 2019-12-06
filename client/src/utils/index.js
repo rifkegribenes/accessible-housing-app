@@ -5,6 +5,18 @@ export const formatDate = date =>
 
 export const formatDateTime = date => new Date(date).toLocaleString();
 
+export const splitDate = date => {
+  const d = new Date(date);
+  let mm = (d.getMonth() + 1).toString();
+  let dd = d.getDate().toString();
+  if (mm.length < 2) mm = `0${mm}`;
+  if (dd.length < 2) dd = `0${dd}`;
+  const yyyy = d.getFullYear().toString();
+  return { mm, dd, yyyy };
+};
+
+export const concatDate = (mm, dd, yyyy) => new Date(`${mm}/${dd}/${yyyy}`);
+
 // force focus on #main when using skip navigation link
 // (some browsers will only focus form inputs, links, and buttons)
 export const skip = targetId => {

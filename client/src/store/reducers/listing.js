@@ -1,4 +1,5 @@
 import update from "immutability-helper";
+import * as utils from "../../utils";
 
 import { LOGOUT } from "../actions";
 import {
@@ -96,6 +97,7 @@ function Listing(state = INITIAL_STATE, action) {
     case ADD_LISTING_SUCCESS:
     case UPDATE_LISTING_SUCCESS:
       // reverse-engineer available date
+      const availableDate = utils.splitDate(action.payload.available_date);
 
       // reverse-engineer features list
       const formFeatures = {};
@@ -115,7 +117,9 @@ function Listing(state = INITIAL_STATE, action) {
         propertyPhone: action.payload.property_phone,
         listingUrl: action.payload.listing_url,
         vacant: action.payload.vacant,
-        // availableDate: action.payload.available_date,
+        mm: availableDate.mm,
+        dd: availableDate.dd,
+        yyyy: availableDate.yyyy,
         monthlyRent: action.payload.monthly_rent,
         primaryImage: action.payload.primary_image,
         // user_id
