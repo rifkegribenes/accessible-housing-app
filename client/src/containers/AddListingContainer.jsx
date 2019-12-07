@@ -111,9 +111,6 @@ export class AddListingContainer extends React.Component {
     const { formValues } = this.props;
 
     // cleanup body fields
-    // lookup lat/lon
-    let lat = "0",
-      lon = "0";
 
     // concatenate availableDate
     let availableDate = new Date();
@@ -138,8 +135,6 @@ export class AddListingContainer extends React.Component {
       property_state: formValues.propertyState,
       property_zip: formValues.propertyZip,
       property_quadrant: formValues.quadrant,
-      property_lat: lat,
-      property_lon: lon,
       property_county: formValues.propertyCounty,
       property_phone: formValues.propertyPhone,
       listing_url: formValues.listingUrl,

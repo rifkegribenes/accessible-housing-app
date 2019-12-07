@@ -6,6 +6,7 @@
 
 // import model
 const listings = require("../../db/models/listings");
+const utils = require("../utils");
 
 /* ============================ ROUTE HANDLERS ============================= */
 
@@ -28,7 +29,7 @@ const listings = require("../../db/models/listings");
  *  @param {array}    features            Array of amenities and features
  *  @returns  {Object}                   New listing object OR error message.
  */
-const createListing = (req, res, next) => {
+const createListing = async (req, res, next) => {
   console.log(`listings.ctrl.js > 32`, req.body, req.headers.authorization);
   const {
     property_name,
@@ -37,8 +38,6 @@ const createListing = (req, res, next) => {
     property_state,
     property_zip,
     property_quadrant,
-    property_lat,
-    property_lon,
     property_county,
     property_phone,
     listing_url,
@@ -64,8 +63,6 @@ const createListing = (req, res, next) => {
     "property_state",
     "property_zip",
     "property_quadrant",
-    "property_lat",
-    "property_lon",
     "property_county",
     "property_phone",
     "listing_url",
@@ -90,6 +87,20 @@ const createListing = (req, res, next) => {
       reason: "ValidationError",
       message: `Missing required field ${missingField}`
     });
+  }
+
+  const geocodeResult = await geocodeAddress(
+    `${property_street} ${property_city}, ${property_state} ${property_zip}`
+  ).catch(err => {
+    console.log(`listings.ctrl.js > 96: ${err}`);
+  });
+
+  const { property_lat, property_lon } = geocodeResult;
+  if (!property_lat) {
+    property_lat = 0;
+  }
+  if (!property_lon) {
+    property_lon = 0;
   }
 
   return listings
@@ -147,13 +158,48 @@ const createListing = (req, res, next) => {
  *  @returns  {Object}                   Updated listing object OR error message.
  */
 
-const updateListing = (req, res, next) => {
+const updateListing = async (req, res, next) => {
   const updates = { ...req.body };
   console.log(`listings.ctrl.js > 132`);
   console.log(updates);
   const { id } = req.params;
   if (!updates || !Object.keys(updates).length) {
     return res.status(404).json({ message: "No updates submitted" });
+  }
+
+  if (
+    updates.property_street &&
+    updates.property_city &&
+    updates.property_state &&
+    updates.property_zip
+  ) {
+    const geocodeResult = await utils
+      .geocodeAddress(
+        `${updates.property_street} ${updates.property_city}, ${updates.property_state} ${updates.property_zip}`
+      )
+      .catch(err => {
+        console.log(`listings.ctrl.js > 96: ${err}`);
+      });
+
+    console.log(`listings.ctrl.js > 173: geocodeResult`);
+    console.log(geocodeResult);
+    let property_lat, property_lon;
+    if (geocodeResult) {
+      property_lat = geocodeResult.property_lat;
+      property_lon = geocodeResult.property_lon;
+    }
+
+    if (!property_lat) {
+      property_lat = 0;
+    }
+    if (!property_lon) {
+      property_lon = 0;
+    }
+
+    updates.property_lat = property_lat;
+    updates.property_lon = property_lon;
+    console.log(`listings.ctrl.js > 193: updates`);
+    console.log(updates);
   }
 
   return listings

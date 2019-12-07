@@ -3,6 +3,32 @@
 const jwt = require("jsonwebtoken");
 const http = require("http");
 const https = require("https");
+const NodeGeocoder = require("node-geocoder");
+
+const options = {
+  provider: "google",
+  apiKey: process.env.GOOGLE_MAPS_API_KEY,
+  formatter: null
+};
+
+const geocoder = NodeGeocoder(options);
+
+const geocodeAddress = async address => {
+  // Get latidude & longitude from address.
+  await geocoder
+    .geocode(address)
+    .then(res => {
+      const { latitude, longitude } = res[0];
+      console.log(`utils/geocodeAddress > 21`);
+      console.log({ property_lat: latitude, property_lon: longitude });
+      return { property_lat: latitude, property_lon: longitude };
+    })
+    .catch(err => {
+      console.log(`utils/geocodeAddress > 26`);
+      console.error(err);
+      return err;
+    });
+};
 
 /** Helper method to generate random text strings for testing */
 const randomText = () => {
@@ -41,5 +67,6 @@ module.exports = {
   randomText,
   handleError,
   setUserInfo,
-  generateToken
+  generateToken,
+  geocodeAddress
 };
