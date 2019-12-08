@@ -13,14 +13,6 @@ const styles = theme => ({
 });
 
 const MapMarker = ({ text }) => <div>{text}</div>;
-const markers = listing =>
-  listing.allListing.map(listing => (
-    <MapMarker
-      lat={listing.property_lat}
-      lng={listing.property_lat}
-      text={listing.property_name}
-    />
-  ));
 
 class ListingsMapUnconnected extends Component {
   static defaultProps = {
@@ -54,6 +46,16 @@ class ListingsMapUnconnected extends Component {
   }
 
   render() {
+    const markers = this.props.listing.allListing.map(listing => (
+      <MapMarker
+        key={listing.id}
+        lat={listing.property_lat}
+        lng={listing.property_lon}
+        text={listing.property_name}
+      />
+    ));
+
+    console.log(markers);
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: "100vh", width: "100%" }}>
