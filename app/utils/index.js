@@ -15,7 +15,7 @@ const geocoder = NodeGeocoder(options);
 
 const geocodeAddress = async address => {
   // Get latidude & longitude from address.
-  await geocoder
+  geocoder
     .geocode(address)
     .then(res => {
       const { latitude, longitude } = res[0];

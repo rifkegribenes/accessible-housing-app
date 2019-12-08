@@ -22,6 +22,7 @@ import AddListingContainer from "./containers/AddListingContainer";
 import Notifier from "./containers/Notifier";
 import ContentLibrary from "./containers/ContentLibrary";
 import Spinner from "./components/Spinner";
+import ListingsMap from "./containers/ListingsMap";
 
 import Hero from "./img/hero_keys_1920x1080.jpg";
 
@@ -210,6 +211,16 @@ export class AppUnconnected extends Component {
               path="/new"
               render={routeProps => (
                 <AddListingContainer
+                  setRedirect={this.setRedirect}
+                  {...routeProps}
+                />
+              )}
+            />
+            <Route
+              path="/map"
+              render={routeProps => (
+                <ListingsMap
+                  listing={this.props.listing}
                   setRedirect={this.setRedirect}
                   {...routeProps}
                 />

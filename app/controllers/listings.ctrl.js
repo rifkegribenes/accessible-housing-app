@@ -7,6 +7,15 @@
 // import model
 const listings = require("../../db/models/listings");
 const utils = require("../utils");
+const NodeGeocoder = require("node-geocoder");
+
+const options = {
+  provider: "google",
+  apiKey: process.env.GOOGLE_MAPS_API_KEY,
+  formatter: null
+};
+
+const geocoder = NodeGeocoder(options);
 
 /* ============================ ROUTE HANDLERS ============================= */
 
@@ -160,8 +169,8 @@ const createListing = async (req, res, next) => {
 
 const updateListing = async (req, res, next) => {
   const updates = { ...req.body };
-  console.log(`listings.ctrl.js > 132`);
-  console.log(updates);
+  // console.log(`listings.ctrl.js > 163`);
+  // console.log(updates);
   const { id } = req.params;
   if (!updates || !Object.keys(updates).length) {
     return res.status(404).json({ message: "No updates submitted" });
@@ -173,28 +182,29 @@ const updateListing = async (req, res, next) => {
     updates.property_state &&
     updates.property_zip
   ) {
-    const geocodeResult = await utils
-      .geocodeAddress(
+    let property_lat, property_lon;
+    await geocoder
+      .geocode(
         `${updates.property_street} ${updates.property_city}, ${updates.property_state} ${updates.property_zip}`
       )
+      .then(result => {
+        const { latitude, longitude } = result[0];
+        console.log(`utils/geocodeAddress > 21`);
+        console.log({ property_lat: latitude, property_lon: longitude });
+        property_lat = latitude;
+        property_lon = longitude;
+        if (!property_lat) {
+          property_lat = 0;
+        }
+        if (!property_lon) {
+          property_lon = 0;
+        }
+      })
       .catch(err => {
-        console.log(`listings.ctrl.js > 96: ${err}`);
+        console.log(`utils/geocodeAddress > 26`);
+        console.error(err);
+        return err;
       });
-
-    console.log(`listings.ctrl.js > 173: geocodeResult`);
-    console.log(geocodeResult);
-    let property_lat, property_lon;
-    if (geocodeResult) {
-      property_lat = geocodeResult.property_lat;
-      property_lon = geocodeResult.property_lon;
-    }
-
-    if (!property_lat) {
-      property_lat = 0;
-    }
-    if (!property_lon) {
-      property_lon = 0;
-    }
 
     updates.property_lat = property_lat;
     updates.property_lon = property_lon;
