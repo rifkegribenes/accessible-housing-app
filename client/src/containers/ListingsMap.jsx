@@ -7,12 +7,51 @@ import { withStyles } from "@material-ui/core/styles";
 import { openSnackbar } from "./Notifier";
 
 import * as apiListingActions from "../store/actions/apiListingActions";
+import ContentTile from "../components/ContentTile";
+import RoomIcon from "@material-ui/icons/Room";
 
 const styles = theme => ({
-  root: {}
+  root: {},
+  markerCard: {
+    // visibility: "hidden",
+    width: 300,
+    padding: 20,
+    margin: "10px",
+    position: "relative",
+    border: `1px solid ${theme.palette.primary.main}`,
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      margin: "10px 0px"
+    }
+  },
+  mapIcon: {
+    "&:hover": {
+      color: "red",
+      cursor: "pointer"
+    },
+    "&:hover $markerCard": {
+      visibility: "visible",
+      width: 300,
+      padding: 20,
+      margin: "10px",
+      position: "relative",
+      border: `1px solid ${theme.palette.primary.main}`,
+      [theme.breakpoints.down("sm")]: {
+        width: "100%",
+        margin: "10px 0px"
+      }
+    }
+  }
 });
 
-const MapMarker = ({ text }) => <div>{text}</div>;
+const MapMarker = props => (
+  <div data-test="component-map-marker" className={props.classes.mapMarker}>
+    <RoomIcon className={props.classes.mapIcon} />
+    <div className={props.classes.markerCard}>
+      <ContentTile listingTile={props.listing} />
+    </div>
+  </div>
+);
 
 class ListingsMapUnconnected extends Component {
   static defaultProps = {
@@ -46,12 +85,13 @@ class ListingsMapUnconnected extends Component {
   }
 
   render() {
-    const markers = this.props.listing.allListing.map(listing => (
+    const markers = this.props.listing.allListing.map(listingData => (
       <MapMarker
-        key={listing.id}
-        lat={listing.property_lat}
-        lng={listing.property_lon}
-        text={listing.property_name}
+        listing={listingData}
+        key={listingData.id}
+        lat={listingData.property_lat}
+        lng={listingData.property_lon}
+        classes={this.props.classes}
       />
     ));
 
