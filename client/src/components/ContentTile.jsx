@@ -10,6 +10,9 @@ export const styles = theme => ({
     padding: 20,
     maxWidth: 1200
   },
+  tile: {
+    border: "1px solid theme.palette.primary.main"
+  },
   button: {
     margin: 8,
     flex: "0 0 auto",
@@ -20,6 +23,12 @@ export const styles = theme => ({
       flex: "1 1 auto"
     }
   },
+  cardListingSmall: {
+    display: "flex",
+    justifyContent: "space-between",
+    padding: "5px 10px 10px 10px",
+    border: "1px solid theme.palette.primary.main"
+  },
   deleteButton: {
     position: "absolute",
     top: 20,
@@ -27,13 +36,13 @@ export const styles = theme => ({
     visibility: "hidden",
     zIndex: 2
   },
-  listingBold: {
+  contentBold: {
     fontWeight: 700
   },
-  listingLight: {
+  contentLight: {
     fontWeight: 100
   },
-  listingRegular: {
+  contentRegular: {
     fontWeight: 400
   },
   title: {
@@ -42,6 +51,15 @@ export const styles = theme => ({
     marginTop: 20,
     textTransform: "capitalize",
     lineHeight: "1em"
+  },
+  titleSmall: {
+    backgroundColor: theme.palette.primary.main,
+    color: "white",
+    margin: "-5px -10px 5px -10px",
+    padding: "10px 20px 15px",
+    textAlign: "center",
+    borderRadius: "4px 4px 0 0",
+    fontSize: "1.5em"
   },
   body: {
     fontSize: "1.1em",
@@ -80,7 +98,29 @@ export const styles = theme => ({
     transition: "filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91)",
     margin: "-20px -20px 20px -20px",
     "&::before": {
-      listing: `""`,
+      content: `""`,
+      paddingTop: "66.6%",
+      display: "block",
+      [theme.breakpoints.down("md")]: {
+        paddingTop: "56.25%"
+      }
+    },
+    "&:hover": {
+      filter: "contrast(100%)"
+    }
+  },
+  cardImageSmall: {
+    backgroundPosition: "center center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    filter: "contrast(70%)",
+    overflow: "hidden",
+    position: "relative",
+    height: 150,
+    transition: "filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91)",
+    margin: "-10px -10px 10px -10px",
+    "&::before": {
+      content: `""`,
       paddingTop: "66.6%",
       display: "block",
       [theme.breakpoints.down("md")]: {
@@ -94,26 +134,41 @@ export const styles = theme => ({
 });
 
 const ContentTile = props => {
-  const { classes, listingTile } = props;
-  const {
-    primary_image,
-    property_name,
-    property_street,
-    property_city,
-    property_zip
-  } = listingTile;
+  const { classes, listingTile, small } = props;
+  const { primary_image, property_name, bedrooms, monthly_rent } = listingTile;
   const imageStyle = { backgroundImage: `url(${primary_image})` };
 
   return (
-    <div data-test="component-listing-tile">
-      <div className={classes.cardImage} style={imageStyle} data-test="image" />
-      <div className={classes.cardListing} data-test="card-listing">
-        <Typography component="h2" className={classes.title} data-test="title">
-          {property_name}
+    <div data-test="component-listing-tile" className={classes.tile}>
+      <Typography
+        component="h2"
+        className={small ? classes.titleSmall : classes.title}
+        data-test="title"
+      >
+        {property_name}
+      </Typography>
+      <div
+        className={small ? classes.cardImageSmall : classes.cardImage}
+        style={imageStyle}
+        data-test="image"
+      />
+      <div
+        className={small ? classes.cardListingSmall : classes.cardListing}
+        data-test="card-listing"
+      >
+        <Typography
+          component="span"
+          className={small ? classes.contentLight : classes.bodyLight}
+          data-test="body"
+        >
+          {bedrooms} BR
         </Typography>
-
-        <Typography component="p" className={classes.body} data-test="body">
-          {property_street}, {property_city} {property_zip}
+        <Typography
+          component="span"
+          className={small ? classes.contentBold : classes.body}
+          data-test="body"
+        >
+          ${Math.trunc(monthly_rent)}
         </Typography>
       </div>
     </div>

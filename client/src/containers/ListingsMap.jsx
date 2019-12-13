@@ -14,12 +14,11 @@ import RoomIcon from "@material-ui/icons/Room";
 const styles = theme => ({
   root: {},
   markerCard: {
-    // visibility: "hidden",
-    width: 300,
-    padding: 20,
-    margin: "10px",
+    width: 200,
+    padding: 0,
+    // margin: 10,
     position: "relative",
-    border: `1px solid ${theme.palette.primary.main}`,
+    backgroundColor: "white",
     [theme.breakpoints.down("sm")]: {
       width: "100%",
       margin: "10px 0px"
@@ -29,18 +28,6 @@ const styles = theme => ({
     "&:hover": {
       color: "red",
       cursor: "pointer"
-    },
-    "&:hover $markerCard": {
-      visibility: "visible",
-      width: 300,
-      padding: 20,
-      margin: "10px",
-      position: "relative",
-      border: `1px solid ${theme.palette.primary.main}`,
-      [theme.breakpoints.down("sm")]: {
-        width: "100%",
-        margin: "10px 0px"
-      }
     }
   }
 });
@@ -50,7 +37,7 @@ const MapMarker = props => (
     <HtmlTooltip
       title={
         <div className={props.classes.markerCard}>
-          <ContentTile listingTile={props.listing} />
+          <ContentTile listingTile={props.listing} small={true} />
         </div>
       }
     >
@@ -59,15 +46,16 @@ const MapMarker = props => (
   </div>
 );
 
+const TooltipInteractive = props => <Tooltip interactive {...props} />;
+
 const HtmlTooltip = withStyles(theme => ({
   tooltip: {
-    backgroundColor: "#f5f5f9",
+    backgroundColor: "white",
     color: "rgba(0, 0, 0, 0.87)",
-    maxWidth: 220,
-    fontSize: theme.typography.pxToRem(12),
-    border: "1px solid #dadde9"
+    fontSize: theme.typography.pxToRem(12)
+    // border: "1px solid #dadde9"
   }
-}))(Tooltip);
+}))(TooltipInteractive);
 
 class ListingsMapUnconnected extends Component {
   static defaultProps = {
