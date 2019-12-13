@@ -8,6 +8,7 @@ import { openSnackbar } from "./Notifier";
 
 import * as apiListingActions from "../store/actions/apiListingActions";
 import ContentTile from "../components/ContentTile";
+import Tooltip from "@material-ui/core/Tooltip";
 import RoomIcon from "@material-ui/icons/Room";
 
 const styles = theme => ({
@@ -46,12 +47,27 @@ const styles = theme => ({
 
 const MapMarker = props => (
   <div data-test="component-map-marker" className={props.classes.mapMarker}>
-    <RoomIcon className={props.classes.mapIcon} />
-    <div className={props.classes.markerCard}>
-      <ContentTile listingTile={props.listing} />
-    </div>
+    <HtmlTooltip
+      title={
+        <div className={props.classes.markerCard}>
+          <ContentTile listingTile={props.listing} />
+        </div>
+      }
+    >
+      <RoomIcon className={props.classes.mapIcon} />
+    </HtmlTooltip>
   </div>
 );
+
+const HtmlTooltip = withStyles(theme => ({
+  tooltip: {
+    backgroundColor: "#f5f5f9",
+    color: "rgba(0, 0, 0, 0.87)",
+    maxWidth: 220,
+    fontSize: theme.typography.pxToRem(12),
+    border: "1px solid #dadde9"
+  }
+}))(Tooltip);
 
 class ListingsMapUnconnected extends Component {
   static defaultProps = {
