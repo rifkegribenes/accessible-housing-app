@@ -34,9 +34,9 @@ export const INITIAL_STATE = {
     created_at: "",
     updated_at: ""
   },
-  form: {
-    listing_type: "",
-    listing: "",
+  searchForm: {
+    bedrooms: "",
+    monthlyRent: "",
     dialogOpen: false
   },
   error: null

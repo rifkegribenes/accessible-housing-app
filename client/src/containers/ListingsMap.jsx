@@ -8,6 +8,7 @@ import { openSnackbar } from "./Notifier";
 
 import * as apiListingActions from "../store/actions/apiListingActions";
 import ContentTile from "../components/ContentTile";
+import SearchBar from "../components/SearchBar";
 import Tooltip from "@material-ui/core/Tooltip";
 import RoomIcon from "@material-ui/icons/Room";
 
@@ -29,6 +30,34 @@ const styles = theme => ({
       color: "red",
       cursor: "pointer"
     }
+  },
+  mapContainer: {
+    marginTop: 100
+  },
+  searchBar: {
+    backgroundColor: "white",
+    padding: 20
+  },
+  searchForm: {
+    display: "flex",
+    flexDirection: "row"
+  },
+  searchZip: {
+    width: 200,
+    marginRight: 20,
+    [theme.breakpoints.down("sm")]: {
+      width: 100
+    }
+  },
+  marginRight: {
+    marginRight: 20
+  },
+  currency: {
+    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='30px' width='85px'><text x='10' y='20' fill='gray' font-size='20' font-family='source sans pro'>$</text></svg>")`,
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "left center",
+    flexGrow: 0,
+    marginRight: 20
   }
 });
 
@@ -88,6 +117,10 @@ class ListingsMapUnconnected extends Component {
       });
   }
 
+  showMore = () => {
+    console.log("showMore");
+  };
+
   render() {
     const markers = this.props.listing.allListing.map(listingData => (
       <MapMarker
@@ -102,7 +135,15 @@ class ListingsMapUnconnected extends Component {
     console.log(markers);
     return (
       // Important! Always set the container height explicitly
-      <div style={{ height: "100vh", width: "100%" }}>
+      <div
+        className={this.props.classes.mapContainer}
+        style={{ height: "100vh", width: "100%" }}
+      >
+        <SearchBar
+          classes={this.props.classes}
+          showMore={this.showMore}
+          listing={this.props.listing}
+        />
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyCzzv8kgYfdr9TIKQVG1Y6iexdL90rWYqg" }}
           defaultCenter={this.props.center}
