@@ -58,6 +58,11 @@ const styles = theme => ({
     backgroundPosition: "left center",
     flexGrow: 0,
     marginRight: 20
+  },
+  bedrooms: {
+    width: 120,
+    marginRight: 20,
+    position: "relative"
   }
 });
 

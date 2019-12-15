@@ -6,13 +6,14 @@ import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
+import OutlinedInput from "@material-ui/core/OutlinedInput";
 
 export default function SearchBar(props) {
-  const [labelWidth, setLabelWidth] = React.useState(0);
+  // const [labelWidth, setLabelWidth] = React.useState(0);
   const inputLabel = React.useRef(null);
-  React.useEffect(() => {
-    setLabelWidth(inputLabel.current.offsetWidth);
-  }, []);
+  // React.useEffect(() => {
+  //   setLabelWidth(inputLabel.current.offsetWidth);
+  // }, []);
   return (
     <div className={props.classes.searchBar} data-test="component-search-bar">
       <form className={props.classes.searchForm}>
@@ -25,16 +26,14 @@ export default function SearchBar(props) {
           value={props.listing.searchForm.zip}
           onChange={props.handleChange}
         />
-        <FormControl variant="outlined" className={props.classes.formControl}>
-          <InputLabel ref={inputLabel} className={props.classes.inputLabel}>
+        <FormControl variant="outlined" className={props.classes.bedrooms}>
+          <InputLabel ref={inputLabel} htmlFor="bedrooms">
             Bedrooms
           </InputLabel>
           <Select
-            labelId="demo-simple-select-outlined-label"
-            id="demo-simple-select-outlined"
             value={props.listing.searchForm.bedrooms}
             onChange={props.handleChange}
-            labelWidth={labelWidth}
+            input={<OutlinedInput name="bedrooms" id="bedrooms" />}
           >
             <MenuItem value="">&nbsp;</MenuItem>
             <MenuItem value={1}>1</MenuItem>
