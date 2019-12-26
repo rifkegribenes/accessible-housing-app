@@ -59,6 +59,12 @@ const styles = theme => ({
     padding: "6px 12px",
     "&:hover": {
       backgroundColor: theme.palette.secondary.light
+    },
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "1rem",
+      textAlign: "center",
+      lineHeight: 1.1,
+      padding: "8px 12px"
     }
   },
   title: {
@@ -70,7 +76,9 @@ const styles = theme => ({
     paddingLeft: 10,
     fontWeight: 200,
     [theme.breakpoints.down("md")]: {
-      fontSize: "2rem",
+      fontSize: "1.6rem",
+      textAlign: "center",
+      lineHeight: 1.1,
       fontWeight: 400
     },
     [theme.breakpoints.down("sm")]: {
