@@ -51,9 +51,15 @@ const styles = theme => ({
     }
   },
   menuLink: {
-    color: theme.palette.secondary.main,
+    backgroundColor: theme.palette.secondary.main,
+    color: "white",
     textTransform: "capitalize",
-    fontSize: "1em"
+    fontSize: "1.5em",
+    fontWeight: "bold",
+    padding: "6px 12px",
+    "&:hover": {
+      backgroundColor: theme.palette.secondary.light
+    }
   },
   title: {
     flexGrow: 1,
@@ -183,7 +189,13 @@ export class NavBar extends React.Component {
     const { classes } = this.props;
     const { anchorEl } = this.state;
     const { loggedIn } = this.props.appState;
-    const adminLinks = ["new", "listings", "map", "logout"];
+    const adminLinks = ["new"];
+    const adminLinksLabels = {
+      new: "Add a Listing",
+      listings: "Browse Listings",
+      map: "Search Listings",
+      logout: "Logout"
+    };
     const ListItemLink = props => {
       const { primary, handleClose, link } = props;
       return (
@@ -213,7 +225,7 @@ export class NavBar extends React.Component {
           return (
             <ListItemLink
               key={index}
-              primary={link}
+              primary={adminLinksLabels[link]}
               handleClose={this.handleClose}
               link={link}
               data-test="mobile-link"
@@ -227,7 +239,7 @@ export class NavBar extends React.Component {
         {adminLinks.map((link, index) => {
           return (
             <Button key={index} className={classes.menuLink} href={`/${link}`}>
-              {link}
+              {adminLinksLabels[link]}
             </Button>
           );
         })}
