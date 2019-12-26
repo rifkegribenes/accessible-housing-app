@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Button from "@material-ui/core/Button";
 
 const Home = props => {
-  const { classes } = props;
+  const { classes, search } = props;
   return (
     <div className={classes.home} data-test="component-home">
       <h2 className={classes.heroHead}>Accessible housing starts here</h2>
@@ -15,6 +16,15 @@ const Home = props => {
           name="zip"
           id="zip"
         />
+        <Button
+          type="button"
+          color="primary"
+          className={props.classes.searchButton}
+          variant="contained"
+          onClick={search}
+        >
+          Search
+        </Button>
       </form>
     </div>
   );

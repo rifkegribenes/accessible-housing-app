@@ -142,7 +142,8 @@ const styles = theme => ({
   },
   heroForm: {
     width: "70vw",
-    margin: "auto"
+    margin: "auto",
+    display: "flex"
   },
   heroInput: {
     width: "100%",
@@ -150,6 +151,13 @@ const styles = theme => ({
     fontSize: "2em",
     padding: 10,
     borderRadius: 4
+  },
+  searchButton: {
+    fontSize: "1.5em",
+    textTransform: "none",
+    padding: "10px 20px",
+    borderRadius: 4,
+    marginLeft: 10
   }
 });
 
