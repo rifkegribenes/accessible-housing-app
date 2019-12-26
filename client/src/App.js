@@ -168,6 +168,7 @@ export class AppUnconnected extends Component {
     this.state = {
       deleteDialogOpen: false
     };
+    this.searchZip = React.createRef();
   }
 
   componentDidMount() {
@@ -194,6 +195,18 @@ export class AppUnconnected extends Component {
     }
   }
 
+  search = () => {
+    console.log(`searching... ${this.searchZip.current.value}`);
+    if (!this.searchZip.current.value) {
+      console.log("no zip provided");
+    } else {
+      this.props.apiListing.handleSearch({
+        target: { name: "propertyZip", value: this.searchZip.current.value }
+      });
+      this.props.history.push("/map");
+    }
+  };
+
   render() {
     const { classes } = this.props;
     return (
@@ -208,7 +221,12 @@ export class AppUnconnected extends Component {
               exact
               path="/"
               render={routeProps => (
-                <Home {...routeProps} classes={this.props.classes} />
+                <Home
+                  {...routeProps}
+                  classes={this.props.classes}
+                  searchZip={this.searchZip}
+                  searchFunc={this.search}
+                />
               )}
             />
             <Route

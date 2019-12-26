@@ -19,6 +19,7 @@ import {
   GET_ALL_LISTINGS_SUCCESS,
   GET_ALL_LISTINGS_FAILURE,
   HANDLE_INPUT,
+  HANDLE_SEARCH,
   HANDLE_DELETE_OPEN,
   HANDLE_DELETE_CLOSE,
   CLEAR_FORM
@@ -37,7 +38,8 @@ export const INITIAL_STATE = {
   searchForm: {
     bedrooms: "",
     monthlyRent: "",
-    dialogOpen: false
+    dialogOpen: false,
+    propertyZip: "97201"
   },
   error: null
 };
@@ -52,6 +54,13 @@ function Listing(state = INITIAL_STATE, action) {
     case HANDLE_INPUT:
       return update(state, {
         form: {
+          [action.payload.name]: { $set: action.payload.value }
+        }
+      });
+
+    case HANDLE_SEARCH:
+      return update(state, {
+        searchForm: {
           [action.payload.name]: { $set: action.payload.value }
         }
       });

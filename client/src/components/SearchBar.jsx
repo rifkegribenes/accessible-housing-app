@@ -23,7 +23,7 @@ export default function SearchBar(props) {
           name="zip"
           id="zip"
           variant="outlined"
-          value={props.listing.searchForm.zip}
+          value={props.listing.searchForm.propertyZip}
           onChange={props.handleChange}
         />
         <FormControl variant="outlined" className={props.classes.bedrooms}>

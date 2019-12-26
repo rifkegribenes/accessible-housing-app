@@ -2,6 +2,7 @@ import { RSAA } from "redux-api-middleware";
 import BASE_URL from "./apiConfig.js";
 
 export const HANDLE_INPUT = "HANDLE_INPUT";
+export const HANDLE_SEARCH = "HANDLE_SEARCH";
 export const HANDLE_DELETE_OPEN = "HANDLE_DELETE_OPEN";
 export const HANDLE_DELETE_CLOSE = "HANDLE_DELETE_CLOSE";
 export const CLEAR_FORM = "CLEAR_FORM";
@@ -24,6 +25,13 @@ export const UPDATE_LISTING_FAILURE = "UPDATE_LISTING_FAILURE";
 export function handleInput({ target: { name, value } }) {
   return {
     type: HANDLE_INPUT,
+    payload: { name, value }
+  };
+}
+
+export function handleSearch({ target: { name, value } }) {
+  return {
+    type: HANDLE_SEARCH,
     payload: { name, value }
   };
 }
