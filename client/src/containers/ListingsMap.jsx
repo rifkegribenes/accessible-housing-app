@@ -32,7 +32,7 @@ const styles = theme => ({
     }
   },
   mapContainer: {
-    marginTop: 100
+    marginTop: 72
   },
   searchBar: {
     backgroundColor: "white",

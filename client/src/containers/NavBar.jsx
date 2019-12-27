@@ -33,11 +33,16 @@ const styles = theme => ({
     position: "fixed",
     height: 60,
     [theme.breakpoints.down("sm")]: {
-      height: 140
+      height: 100
     }
   },
   menuButton: {
-    display: "block"
+    display: "block",
+    [theme.breakpoints.down("sm")]: {
+      position: "absolute",
+      left: 12,
+      top: 12
+    }
   },
   menuWrap: {
     [theme.breakpoints.down("sm")]: {
@@ -76,7 +81,8 @@ const styles = theme => ({
       fontWeight: 400
     },
     [theme.breakpoints.down("sm")]: {
-      textAlign: "center"
+      textAlign: "center",
+      marginTop: 10
     },
     [theme.breakpoints.down("xs")]: {
       fontSize: "1.6rem"
@@ -115,8 +121,8 @@ const styles = theme => ({
     }
   },
   menuItem: {
-    padding: "24px 16px",
-    textAlign: "center",
+    // padding: "24px 16px",
+    textAlign: "left",
     textTransform: "capitalize",
     fontFamily: [
       '"Source Sans Pro"',
@@ -125,7 +131,7 @@ const styles = theme => ({
       "Arial",
       "sans-serif"
     ].join(","),
-    fontWeight: 400,
+    fontWeight: 700,
     color: theme.palette.secondary.main
   },
   ListItemText: {
@@ -151,7 +157,8 @@ const styles = theme => ({
   },
   toolbar: {
     [theme.breakpoints.down("sm")]: {
-      flexWrap: "wrap"
+      flexWrap: "wrap",
+      paddingTop: 20
     }
   },
   drawer: {
@@ -189,8 +196,8 @@ export class NavBar extends React.Component {
   render() {
     const { classes } = this.props;
     const { anchorEl } = this.state;
-    const { loggedIn } = this.props.appState;
-    const adminLinks = ["new"];
+    // const { loggedIn } = this.props.appState;
+    const adminLinks = ["new", "map"];
     const adminLinksLabels = {
       new: "Add a Listing",
       listings: "Browse Listings",

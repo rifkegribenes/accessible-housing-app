@@ -56,7 +56,10 @@ export const theme = {
         borderRadius: "0 !important",
         // bottom: "0 !important",
         // maxHeight: "calc(100vh - 109px) !important",
-        filter: "none !important"
+        filter: "none !important",
+        "@media screen and (max-width: 450px)": {
+          top: "100px !important"
+        }
       }
     },
     MuiButton: {
