@@ -31,19 +31,13 @@ const styles = theme => ({
   appBar: {
     backgroundColor: "white",
     position: "fixed",
-    height: 100,
-    paddingTop: 20,
+    height: 60,
     [theme.breakpoints.down("sm")]: {
       height: 140
     }
   },
   menuButton: {
-    display: "none",
-    [theme.breakpoints.down("sm")]: {
-      display: "block",
-      position: "absolute",
-      right: 20
-    }
+    display: "block"
   },
   menuWrap: {
     [theme.breakpoints.down("sm")]: {
@@ -138,14 +132,10 @@ const styles = theme => ({
     color: theme.palette.secondary.main
   },
   logo: {
-    height: 60,
+    height: 30,
     width: "auto",
     marginRight: 10,
-    [theme.breakpoints.down("md")]: {
-      height: 40
-    },
     [theme.breakpoints.down("sm")]: {
-      height: 60,
       margin: "0 10px"
     }
   },
@@ -156,6 +146,9 @@ const styles = theme => ({
       justifyContent: "center"
     }
   },
+  menuLabel: {
+    marginLeft: 3
+  },
   toolbar: {
     [theme.breakpoints.down("sm")]: {
       flexWrap: "wrap"
@@ -163,7 +156,7 @@ const styles = theme => ({
   },
   drawer: {
     boxShadow:
-      "inset 0px 2px 4px -1px rgba(0,0,0,.2), inset 0px -2px 4px -1px rgba(0,0,0,.2), inset 0px 4px 5px 0px rgba(0, 0, 0, 0.14), inset 0px -4px 5px 0px rgba(0, 0, 0, 0.14), inset 0px 1px 10px 0px rgba(0, 0, 0, 0.12), inset 0px -1px 10px 0px rgba(0, 0, 0, 0.12), -4px 0px 10px -2px rgba(0,0,0,.2)"
+      "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)"
   }
 });
 
@@ -264,8 +257,39 @@ export class NavBar extends React.Component {
               onClick={this.skipToMain}
               data-test="skiplink-button"
             >
-              Skip to listing &rsaquo;
+              Skip to content &rsaquo;
             </Button>
+            <React.Fragment>
+              <IconButton
+                className={classes.menuButton}
+                color="secondary"
+                aria-label="Menu"
+                aria-owns={anchorEl ? "nav-menu" : null}
+                aria-haspopup="true"
+                onClick={e => this.handleClick(e)}
+                data-test="menu-button"
+              >
+                <MenuIcon />
+                <Typography className={classes.menuLabel}>Menu</Typography>
+              </IconButton>
+              <Menu
+                id="nav-menu"
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={this.handleClose}
+                component="nav"
+                className="drawer"
+                elevation={0}
+                anchorOrigin={{ horizontal: "left", vertical: "top" }}
+                transformOrigin={{ horizontal: "left", vertical: "top" }}
+                TransitionComponent={Slide}
+                TransitionProps={{ direction: "right" }}
+                PaperProps={{ className: classes.drawer }}
+                data-test="menu"
+              >
+                {mobileLinks}
+              </Menu>
+            </React.Fragment>
             <Link to="/" className={classes.logoLink} data-test="logo-link">
               <img
                 src={rci_logo}
@@ -290,39 +314,6 @@ export class NavBar extends React.Component {
                 Accessible Housing Hotsheet
               </Link>
             </Typography>
-            {loggedIn && (
-              <React.Fragment>
-                <IconButton
-                  className={classes.menuButton}
-                  color="secondary"
-                  aria-label="Menu"
-                  aria-owns={anchorEl ? "nav-menu" : null}
-                  aria-haspopup="true"
-                  onClick={e => this.handleClick(e)}
-                  data-test="menu-button"
-                >
-                  <MenuIcon />
-                </IconButton>
-                <Menu
-                  id="nav-menu"
-                  anchorEl={anchorEl}
-                  open={Boolean(anchorEl)}
-                  onClose={this.handleClose}
-                  component="nav"
-                  className="drawer"
-                  elevation={0}
-                  anchorOrigin={{ horizontal: "right", vertical: "top" }}
-                  transformOrigin={{ horizontal: "right", vertical: "top" }}
-                  TransitionComponent={Slide}
-                  TransitionProps={{ direction: "left" }}
-                  PaperProps={{ className: classes.drawer }}
-                  data-test="menu"
-                >
-                  {mobileLinks}
-                </Menu>
-                <nav className={classes.menuWrap}>{adminMenuLinks}</nav>
-              </React.Fragment>
-            )}
           </Toolbar>
         </AppBar>
       </div>

@@ -48,12 +48,14 @@ export const theme = {
     MuiMenu: {
       paper: {
         position: "absolute",
-        top: "56px !important",
-        right: "0 !important",
-        left: "50% !important",
+        top: "60px !important",
+        borderTop: "1px solid white",
+        // right: "320px !important",
+        left: "0 !important",
+        width: "200px !important",
         borderRadius: "0 !important",
-        bottom: "0 !important",
-        maxHeight: "calc(100vh - 109px) !important",
+        // bottom: "0 !important",
+        // maxHeight: "calc(100vh - 109px) !important",
         filter: "none !important"
       }
     },
