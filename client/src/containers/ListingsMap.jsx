@@ -32,7 +32,10 @@ const styles = theme => ({
     }
   },
   mapContainer: {
-    marginTop: 72
+    marginTop: 60,
+    [theme.breakpoints.down("sm")]: {
+      marginTop: 100
+    }
   },
   searchBar: {
     backgroundColor: "white",
@@ -40,13 +43,19 @@ const styles = theme => ({
   },
   searchForm: {
     display: "flex",
-    flexDirection: "row"
+    flexDirection: "row",
+    [theme.breakpoints.down("sm")]: {
+      flexWrap: "wrap",
+      justifyContent: "space-between"
+    }
   },
   searchZip: {
     width: 200,
     marginRight: 20,
     [theme.breakpoints.down("sm")]: {
-      width: 100
+      width: "46%",
+      marginBottom: 10,
+      marginRight: 0
     }
   },
   marginRight: {
@@ -57,12 +66,35 @@ const styles = theme => ({
     backgroundRepeat: "no-repeat",
     backgroundPosition: "left center",
     flexGrow: 0,
-    marginRight: 20
+    marginRight: 20,
+    [theme.breakpoints.down("sm")]: {
+      width: "46%",
+      marginRight: 0
+    }
   },
   bedrooms: {
     width: 120,
     marginRight: 20,
-    position: "relative"
+    position: "relative",
+    [theme.breakpoints.down("sm")]: {
+      width: "46%",
+      marginBottom: 10,
+      marginRight: 0
+    }
+  },
+  moreButton: {
+    width: 120,
+    borderRadius: 4,
+    position: "relative",
+    textTransform: "none",
+    fontSize: "1.2em",
+    fontWeight: 700,
+    [theme.breakpoints.down("sm")]: {
+      width: "46%",
+      marginRight: 0,
+      padding: 0,
+      boxShadow: "none"
+    }
   }
 });
 
