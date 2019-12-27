@@ -217,10 +217,15 @@ export const formStyles = theme => ({
     background: "white",
     padding: "20px 20px 40px 20px",
     borderRadius: "0 0 4px 4px",
-    marginTop: 100,
+    marginTop: 60,
     [theme.breakpoints.only("xs")]: {
       padding: "15px 15px 40px 15px"
     }
+  },
+  formTitle: {
+    textAlign: "center",
+    fontSize: "2.5em",
+    color: theme.palette.primary.main
   },
   buttonWrap: {
     width: "100%",
@@ -422,7 +427,8 @@ export const formStyles = theme => ({
     minWidth: 137
   },
   controlCheckbox: {
-    margin: 0
+    margin: 0,
+    color: "rgba(0, 0, 0, 0.54)"
   },
   controlCheckboxMargin: {
     margin: "-35px 0 40px 0"

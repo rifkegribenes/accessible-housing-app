@@ -6,13 +6,14 @@ import {
   getFormSubmitErrors
 } from "redux-form";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import FormLabel from "@material-ui/core/FormLabel";
 // import FormHelperText from "@material-ui/core/FormHelperText";
 import FormGroup from "@material-ui/core/FormGroup";
 import Button from "@material-ui/core/Button";
 import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
-import PropTypes from "prop-types";
+import Typography from "@material-ui/core/Typography";
 
 import * as formElements from "./FormElements";
 import { validate } from "../utils/validators";
@@ -60,6 +61,9 @@ export const AddListing = props => {
         id="addListing"
         className={classes.form}
       >
+        <Typography className={classes.formTitle} variant="h3">
+          Add Listing
+        </Typography>
         <div className={classes.formSection}>
           <Field
             label="Property Name"

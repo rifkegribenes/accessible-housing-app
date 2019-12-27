@@ -7,9 +7,9 @@ export const VALIDATE_TOKEN_FAILURE = "VALIDATE_TOKEN_FAILURE";
 export const GET_PROFILE_REQUEST = "GET_PROFILE_REQUEST";
 export const GET_PROFILE_SUCCESS = "GET_PROFILE_SUCCESS";
 export const GET_PROFILE_FAILURE = "GET_PROFILE_FAILURE";
-export const MODIFY_PROFILE_REQUEST = "MODIFY_PROFILE_REQUEST";
-export const MODIFY_PROFILE_SUCCESS = "MODIFY_PROFILE_SUCCESS";
-export const MODIFY_PROFILE_FAILURE = "MODIFY_PROFILE_FAILURE";
+export const UPDATE_PROFILE_REQUEST = "UPDATE_PROFILE_REQUEST";
+export const UPDATE_PROFILE_SUCCESS = "UPDATE_PROFILE_SUCCESS";
+export const UPDATE_PROFILE_FAILURE = "UPDATE_PROFILE_FAILURE";
 
 /*
  * Function: validateToken - validates a token pulled from user's localStorage
@@ -81,16 +81,16 @@ export function getProfile(token, userId) {
   };
 }
 
-export function modifyProfile(token, userId, body) {
+export function updateProfile(token, userId, body) {
   return {
     [RSAA]: {
       endpoint: `${BASE_URL}/api/user/${userId}`,
       method: "PUT",
       types: [
-        MODIFY_PROFILE_REQUEST,
-        MODIFY_PROFILE_SUCCESS,
+        UPDATE_PROFILE_REQUEST,
+        UPDATE_PROFILE_SUCCESS,
         {
-          type: MODIFY_PROFILE_FAILURE,
+          type: UPDATE_PROFILE_FAILURE,
           payload: (action, state, res) => {
             return res.json().then(data => {
               let message = "Sorry, something went wrong :(";
