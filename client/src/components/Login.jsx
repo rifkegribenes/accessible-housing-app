@@ -18,7 +18,7 @@ export class Login extends React.Component {
           <Button
             type="button"
             color="primary"
-            className={this.props.classes.next}
+            className={this.props.classes.bigButton}
             variant="contained"
             href={`${BASE_URL}/api/auth/google`}
           >

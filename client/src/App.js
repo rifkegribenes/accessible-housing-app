@@ -164,6 +164,12 @@ const styles = theme => ({
     padding: "10px 20px",
     borderRadius: 4,
     marginLeft: 10
+  },
+  bigButton: {
+    fontSize: "2em",
+    textTransform: "none",
+    padding: "10px 20px",
+    borderRadius: 4
   }
 });
 

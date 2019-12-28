@@ -79,7 +79,6 @@ const styles = theme => ({
     fontWeight: 200,
     [theme.breakpoints.down("md")]: {
       fontSize: "1.6rem",
-      textAlign: "center",
       lineHeight: 1.1,
       fontWeight: 400
     },
@@ -97,6 +96,19 @@ const styles = theme => ({
     height: 30,
     margin: "auto",
     backgroundColor: theme.palette.primary.main
+  },
+  buttonRight: {
+    backgroundColor: theme.palette.primary.main,
+    color: "white",
+    position: "absolute",
+    right: 0,
+    top: 0,
+    height: 60,
+    padding: "10px 20px",
+    textTransform: "none",
+    "&:hover": {
+      backgroundColor: theme.palette.secondary.main
+    }
   },
   avatar: {
     marginRight: 20,
@@ -329,42 +341,23 @@ export class NavBar extends React.Component {
                 Accessible Housing Hotsheet
               </Link>
             </Typography>
-            {loggedIn ? (
+            {loggedIn && (
               <div className={classes.admin}>
                 <Avatar
                   alt={this.props.profile.profile.name}
                   src={this.props.profile.profile.avatarUrl}
                   className={classes.avatar}
                 />
-                <Button
-                  variant="contained"
-                  size="small"
-                  color="secondary"
-                  className={classes.loginButton}
-                  href="/logout"
-                >
-                  Logout
-                </Button>
               </div>
-            ) : (
-              <Button
-                variant="contained"
-                color="secondary"
-                size="small"
-                href={`${BASE_URL}/api/auth/google`}
-                className={classes.loginButton}
-                onClick={() => {
-                  if (this.props.location.pathname !== "/logout") {
-                    window.localStorage.setItem(
-                      "redirect",
-                      this.props.location.pathname
-                    );
-                  }
-                }}
-              >
-                Login
-              </Button>
             )}
+            <Button
+              className={classes.buttonRight}
+              data-test="button-right"
+              href="/new"
+              type="button"
+            >
+              Add a Listing
+            </Button>
           </Toolbar>
         </AppBar>
       </div>
