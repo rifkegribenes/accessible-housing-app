@@ -16,7 +16,7 @@ export const INITIAL_STATE = {
     name: "",
     email: "",
     phone: "",
-    avatar_url: "",
+    avatarUrl: "",
     companyName: "",
     companyStreet: "",
     companyCity: "",
@@ -41,13 +41,18 @@ function profile(state = INITIAL_STATE, action) {
 
     case GET_PROFILE_SUCCESS:
     case UPDATE_PROFILE_SUCCESS:
+      const name = action.payload.name
+        ? `${JSON.parse(action.payload.name).givenName} ${
+            JSON.parse(action.payload.name).familyName
+          }`
+        : "";
       return update(state, {
         profile: {
           id: { $set: action.payload.id },
-          name: { $set: action.payload.name },
+          name: { $set: name },
           email: { $set: action.payload.email },
           phone: { $set: action.payload.phone },
-          avatar_url: { $set: action.payload.avatar_url },
+          avatarUrl: { $set: action.payload.avatar_url },
           companyName: { $set: action.payload.company_name },
           companyStreet: { $set: action.payload.company_street },
           companyCity: { $set: action.payload.company_city },

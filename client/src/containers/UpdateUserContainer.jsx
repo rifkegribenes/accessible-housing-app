@@ -18,16 +18,12 @@ import { withStyles } from "@material-ui/core/styles";
 
 import { openSnackbar } from "./Notifier";
 import UpdateUserForm from "../components/UpdateUser";
-import * as utils from "../utils";
+// import * as utils from "../utils";
 import * as apiListingActions from "../store/actions/apiListingActions";
 import * as apiProfileActions from "../store/actions/apiProfileActions";
 import * as actions from "../store/actions";
 
-import {
-  formStyles,
-  handleError,
-  calcFeatures
-} from "../components/FormElements";
+import { formStyles, handleError } from "../components/FormElements";
 
 export class UpdateUserContainer extends React.Component {
   constructor(props) {
@@ -130,8 +126,8 @@ export class UpdateUserContainer extends React.Component {
     return body;
   }
 
-  async updateUser() {
-    console.log("updateUser");
+  async updateProfile() {
+    console.log("updateProfile");
     const token = this.props.appState.authToken;
     console.log(token);
     const body = await this.generateUserBody();
@@ -140,68 +136,51 @@ export class UpdateUserContainer extends React.Component {
 
     if (token && id && body) {
       const userResult = await this.props.apiProfile
-        .updateListing(token, id, body)
+        .updateProfile(token, id, body)
         .catch(err => {
           console.error(err);
           return handleError(err);
         });
-      console.log(listingResult.type);
+      console.log(userResult.type);
       if (
-        (listingResult && listingResult.type !== "UPDATE_LISTING_SUCCESS") ||
-        this.props.listing.error
+        (userResult && userResult.type !== "UPDATE_PROFILE_SUCCESS") ||
+        this.props.profile.error
       ) {
-        console.log(this.props.listing.error);
-        return handleError(this.props.listing.error);
+        console.log(this.props.profile.error);
+        return handleError(this.props.profile.error);
       } else {
-        return listingResult.type;
+        return userResult.type;
       }
     } else {
-      console.log("no listing body or no token or no id");
-      return "no listing body or no token or no id";
+      console.log("no profile body or no token or no id");
+      return "no profile body or no token or no id";
     }
   }
 
   async handleSubmit() {
     console.log("handleSubmit");
-    console.log(this.props.edit);
 
     // verify recaptcha score
 
-    if (this.props.edit) {
-      this.updateListing()
-        .then(result => {
-          if (result === "UPDATE_LISTING_SUCCESS") {
-            openSnackbar("success", "Listing updated");
-            // redirect to manager dashboard here
-            this.props.history.push("/listings");
-          } else {
-            console.log(result);
-          }
-        })
-        .catch(err => {
-          console.error(err);
-        });
-    } else {
-      this.addListing()
-        .then(result => {
-          if (result === "ADD_LISTING_SUCCESS") {
-            openSnackbar("success", "Listing created");
-            // redirect to manager dashboard here
-            this.props.history.push("/listings");
-          } else {
-            console.log(result);
-          }
-        })
-        .catch(err => {
-          console.error(err);
-        });
-    }
+    this.updateProfile()
+      .then(result => {
+        if (result === "UPDATE_PROFILE_SUCCESS") {
+          openSnackbar("success", "Profile updated");
+          // redirect to manager dashboard here
+          this.props.history.push("/new");
+        } else {
+          console.log(result);
+        }
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 
   render() {
     return (
-      <div data-test="container-add-listing">
-        <AddListingForm
+      <div data-test="container-update-user">
+        <UpdateUserForm
           {...this.props}
           onSubmit={this.handleSubmit}
           handleError={handleError}
@@ -217,11 +196,11 @@ const mapStateToProps = state => ({
   appState: state.appState,
   profile: state.profile,
   initialValues: state.listing.form,
-  formValues: getFormValues("addListing")(state) || {},
-  pristine: isPristine("addListing")(state),
-  submitting: isSubmitting("addListing")(state),
-  valid: isValid("addListing")(state),
-  submitErrors: getFormSubmitErrors("addListing")(state),
+  formValues: getFormValues("updateUser")(state) || {},
+  pristine: isPristine("updateUser")(state),
+  submitting: isSubmitting("updateUser")(state),
+  valid: isValid("updateUser")(state),
+  submitErrors: getFormSubmitErrors("updateUser")(state),
   reset: reset
 });
 
@@ -229,12 +208,12 @@ const mapDispatchToProps = dispatch => ({
   apiListing: bindActionCreators(apiListingActions, dispatch),
   apiProfile: bindActionCreators(apiProfileActions, dispatch),
   actions: bindActionCreators(actions, dispatch),
-  submitForm: () => dispatch(submit("addListing"))
+  submitForm: () => dispatch(submit("updateUser"))
 });
 
-export const AddListingContainerConnected = connect(
+export const UpdateUserContainerConnected = connect(
   mapStateToProps,
   mapDispatchToProps
-)(AddListingContainer);
+)(UpdateUserContainer);
 
-export default withStyles(formStyles)(AddListingContainerConnected);
+export default withStyles(formStyles)(UpdateUserContainerConnected);

@@ -14,10 +14,13 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Slide from "@material-ui/core/Slide";
+import Avatar from "@material-ui/core/Avatar";
 
 import { skip } from "../utils";
 import rci_logo from "../img/RCI_140x100.png";
 import mfnw_logo from "../img/mfnw-red.svg";
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const styles = theme => ({
   root: {
@@ -90,7 +93,10 @@ const styles = theme => ({
     }
   },
   loginButton: {
-    textDecoration: "none"
+    textDecoration: "none",
+    height: 30,
+    margin: "auto",
+    backgroundColor: theme.palette.primary.main
   },
   avatar: {
     marginRight: 20,
@@ -197,7 +203,7 @@ export class NavBar extends React.Component {
   render() {
     const { classes } = this.props;
     const { anchorEl } = this.state;
-    // const { loggedIn } = this.props.appState;
+    const { loggedIn } = this.props.appState;
     const adminLinks = ["new", "map"];
     const adminLinksLabels = {
       new: "Add a Listing",
@@ -243,17 +249,18 @@ export class NavBar extends React.Component {
         })}
       </div>
     );
-    const adminMenuLinks = (
-      <div data-test="admin-menu-links">
-        {adminLinks.map((link, index) => {
-          return (
-            <Button key={index} className={classes.menuLink} href={`/${link}`}>
-              {adminLinksLabels[link]}
-            </Button>
-          );
-        })}
-      </div>
-    );
+    // const adminMenuLinks = (
+    //   <div data-test="admin-menu-links">
+    //     {adminLinks.map((link, index) => {
+    //       return (
+    //         <Button key={index} className={classes.menuLink} href={`/${link}`}>
+    //           {adminLinksLabels[link]}
+    //         </Button>
+    //       );
+    //     })}
+    //   </div>
+    // );
+
     return (
       <div className={classes.root} data-test="component-navbar">
         <AppBar position="fixed" className={classes.appBar}>
@@ -322,6 +329,42 @@ export class NavBar extends React.Component {
                 Accessible Housing Hotsheet
               </Link>
             </Typography>
+            {loggedIn ? (
+              <div className={classes.admin}>
+                <Avatar
+                  alt={this.props.profile.profile.name}
+                  src={this.props.profile.profile.avatarUrl}
+                  className={classes.avatar}
+                />
+                <Button
+                  variant="contained"
+                  size="small"
+                  color="secondary"
+                  className={classes.loginButton}
+                  href="/logout"
+                >
+                  Logout
+                </Button>
+              </div>
+            ) : (
+              <Button
+                variant="contained"
+                color="secondary"
+                size="small"
+                href={`${BASE_URL}/api/auth/google`}
+                className={classes.loginButton}
+                onClick={() => {
+                  if (this.props.location.pathname !== "/logout") {
+                    window.localStorage.setItem(
+                      "redirect",
+                      this.props.location.pathname
+                    );
+                  }
+                }}
+              >
+                Login
+              </Button>
+            )}
           </Toolbar>
         </AppBar>
       </div>

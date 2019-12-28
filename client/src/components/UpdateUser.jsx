@@ -34,7 +34,7 @@ export const UpdateUser = props => {
     verifyCallback
   } = props;
 
-  const placeholderOnChange = () => {};
+  // const placeholderOnChange = () => {};
 
   return (
     <div data-test="component-update-user" className={classes.sectionContainer}>

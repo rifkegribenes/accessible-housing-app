@@ -4,9 +4,9 @@ import Button from "@material-ui/core/Button";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export class Login extends React.Component {
-  componentDidMount() {
-    window.location.assign(`${BASE_URL}/api/auth/google`);
-  }
+  // componentDidMount() {
+  //   window.location.assign(`${BASE_URL}/api/auth/google`);
+  // }
 
   render() {
     return (
@@ -22,7 +22,7 @@ export class Login extends React.Component {
             variant="contained"
             href={`${BASE_URL}/api/auth/google`}
           >
-            Log in
+            Log in or Sign Up
           </Button>
         </div>
       </div>
