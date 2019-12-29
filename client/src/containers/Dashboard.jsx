@@ -10,6 +10,11 @@ import * as Actions from "../store/actions";
 import * as apiProfileActions from "../store/actions/apiProfileActions";
 
 import { withStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import Card from "@material-ui/core/Card";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+import Avatar from "@material-ui/core/Avatar";
 
 const styles = theme => ({
   root: {
@@ -106,13 +111,28 @@ export class DashboardUnconnected extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, profile } = this.props;
     const { loggedIn } = this.props.appState;
     const redirect = window.localStorage.getItem("redirect");
 
     return (
       <div className={classes.container} data-test="component-dashboard">
-        {loggedIn && !redirect && ""}
+        {loggedIn && !redirect && (
+          <Card className={classes.card}>
+            <CardMedia className={classes.media}>
+              <Avatar
+                alt={`${profile.profile.name}`}
+                className={classes.avatar}
+                src={profile.profile.avatarUrl}
+              />
+            </CardMedia>
+            <CardContent>
+              <Typography variant="h5" className={classes.name}>
+                {`${profile.profile.name}`}
+              </Typography>
+            </CardContent>
+          </Card>
+        )}
       </div>
     );
   }
