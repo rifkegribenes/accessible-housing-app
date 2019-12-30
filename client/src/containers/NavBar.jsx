@@ -19,8 +19,9 @@ import Avatar from "@material-ui/core/Avatar";
 import { skip } from "../utils";
 import rci_logo from "../img/RCI_140x100.png";
 import mfnw_logo from "../img/mfnw-red.svg";
+// import { openSnackbar } from "./Notifier";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+// const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const styles = theme => ({
   root: {

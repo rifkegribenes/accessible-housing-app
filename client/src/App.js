@@ -24,8 +24,13 @@ import ContentLibrary from "./containers/ContentLibrary";
 import Spinner from "./components/Spinner";
 import UpdateUserContainer from "./containers/UpdateUserContainer";
 import ListingsMap from "./containers/ListingsMap";
+import NoAccess from "./containers/NoAccess";
 
 import Hero from "./img/hero_keys_1920x1080.jpg";
+
+// import { openSnackbar } from "./containers/Notifier";
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const styles = theme => ({
   root: {
@@ -85,7 +90,7 @@ const styles = theme => ({
     width: 100
   },
   buttonWrap: {
-    width: "100vw",
+    width: "100%",
     display: "flex",
     justifyContent: "center"
   },
@@ -225,10 +230,7 @@ export class AppUnconnected extends Component {
                   .then(result => {
                     // console.log(result.type);
                     if (result.type === "GET_PROFILE_SUCCESS") {
-                      // console.log(
-                      //   `setting user type here: ${result.payload.type}`
-                      // );
-                      this.props.actions.setLoggedIn(result.payload.type);
+                      this.props.actions.setLoggedIn(userId, authToken);
                       // check for redirect url in local storage
                       const redirect = window.localStorage.getItem("redirect");
                       if (redirect) {
@@ -267,6 +269,9 @@ export class AppUnconnected extends Component {
 
   render() {
     const { classes } = this.props;
+    const { loggedIn } = this.props.appState;
+    const profileCompleted = !!this.props.profile.profile.phone;
+
     return (
       <div data-test="component-app" className={classes.appRoot}>
         <CssBaseline />
@@ -293,12 +298,35 @@ export class AppUnconnected extends Component {
             />
             <Route
               path="/new"
-              render={routeProps => (
-                <AddListingContainer
-                  setRedirect={this.setRedirect}
-                  {...routeProps}
-                />
-              )}
+              render={routeProps =>
+                loggedIn && profileCompleted ? (
+                  <AddListingContainer
+                    setRedirect={this.setRedirect}
+                    {...routeProps}
+                  />
+                ) : (
+                  <NoAccess
+                    setRedirect={this.setRedirect}
+                    classes={this.props.classes}
+                    link={
+                      !loggedIn || !this.props.profile.profile.id
+                        ? `${BASE_URL}/api/auth/google`
+                        : `/user/${this.props.profile.profile.id}`
+                    }
+                    buttonText={
+                      !loggedIn || !this.props.profile.profile.id
+                        ? "Log in or Sign up"
+                        : "Complete Profile"
+                    }
+                    message={
+                      !loggedIn || !this.props.profile.profile.id
+                        ? "You must log in or sign up to create a listing."
+                        : "Please complete your user profile before creating a listing."
+                    }
+                    {...routeProps}
+                  />
+                )
+              }
             />
             <Route
               path="/map"
@@ -311,7 +339,7 @@ export class AppUnconnected extends Component {
               )}
             />
             <Route
-              path="/user"
+              path="/user/:id"
               render={routeProps => (
                 <UpdateUserContainer
                   setRedirect={this.setRedirect}

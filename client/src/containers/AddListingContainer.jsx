@@ -42,10 +42,6 @@ export class AddListingContainer extends React.Component {
   }
 
   componentDidMount() {
-    if (!this.props.appState.userId) {
-      openSnackbar("error", "You must log in to add or edit a listing");
-      this.props.history.push("/login");
-    }
     if (this.props.edit && this.props.match.params.id) {
       // only listing owners can edit their own listings
       // check this here...

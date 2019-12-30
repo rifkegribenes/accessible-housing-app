@@ -38,6 +38,19 @@ export class UpdateUserContainer extends React.Component {
   }
 
   componentDidMount() {
+    this.getUserProfile();
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (
+      (!prevProps.appState.authToken && this.props.appState.authToken) ||
+      (!prevProps.appState.userId && this.props.appState.userId)
+    ) {
+      this.getUserProfile();
+    }
+  }
+
+  getUserProfile() {
     const token = this.props.appState.authToken;
     const id = this.props.match.params.id;
     if (token && id) {
@@ -54,7 +67,7 @@ export class UpdateUserContainer extends React.Component {
                 "An error occurred while trying to fetch your profile."
             );
           } else {
-            // console.log(this.props.listing.form)
+            console.log(this.props.profile.profile);
           }
         })
         .catch(err => openSnackbar("error", err));
@@ -195,7 +208,7 @@ const mapStateToProps = state => ({
   listing: state.listing,
   appState: state.appState,
   profile: state.profile,
-  initialValues: state.listing.form,
+  initialValues: state.profile.profile,
   formValues: getFormValues("updateUser")(state) || {},
   pristine: isPristine("updateUser")(state),
   submitting: isSubmitting("updateUser")(state),

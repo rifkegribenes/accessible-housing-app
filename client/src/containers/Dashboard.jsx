@@ -25,18 +25,21 @@ const styles = theme => ({
   card: {
     margin: "auto",
     width: "100%",
-    maxWidth: 300
+    maxWidth: 300,
+    position: "relative",
+    backgroundColor: "transparent"
   },
   media: {
     height: 0,
-    paddingTop: "56.25%", // 16:9
-    position: "relative"
+    paddingTop: "20%",
+    position: "relative",
+    backgroundColor: "transparent"
   },
   avatar: {
     width: 80,
     height: 80,
     position: "absolute",
-    top: 100,
+    top: 20,
     left: "calc(50% - 40px)"
   },
   container: {
@@ -47,9 +50,17 @@ const styles = theme => ({
     justifyContent: "center"
   },
   name: {
-    color: "primary",
+    color: theme.palette.primary.main,
     textAlign: "center",
-    marginTop: 15
+    marginTop: 35
+  },
+  secondary: {
+    color: theme.palette.textColor,
+    textAlign: "center"
+  },
+  content: {
+    backgroundColor: "white",
+    borderRadius: 4
   }
 });
 
@@ -65,7 +76,9 @@ export class DashboardUnconnected extends React.Component {
       // save userId & token to local storage
       window.localStorage.setItem("userId", userId);
       window.localStorage.setItem("authToken", token);
-      this.props.actions.setLoggedIn();
+      console.log("setting logged in here");
+      this.props.actions.setLoggedIn(userId, token);
+      console.log(this.props.appState);
       // remove id & token from route params after saving to local storage
       window.history.replaceState(
         null,
@@ -89,10 +102,14 @@ export class DashboardUnconnected extends React.Component {
       .then(result => {
         // console.log(result.type);
         if (result.type === "GET_PROFILE_SUCCESS") {
-          this.props.actions.setLoggedIn();
+          console.log("setting logged in, userId, authToken");
+          console.log(userId, token);
+          this.props.actions.setLoggedIn(userId, token);
+          console.log(this.props.appState);
           // check for redirect url in local storage
           const redirect = window.localStorage.getItem("redirect");
           if (redirect) {
+            console.log(`redirect: ${redirect}`);
             // redirect to originally requested page and then
             // clear value from local storage
             this.props.history.push(redirect);
@@ -114,6 +131,9 @@ export class DashboardUnconnected extends React.Component {
     const { classes, profile } = this.props;
     const { loggedIn } = this.props.appState;
     const redirect = window.localStorage.getItem("redirect");
+    const address2 = profile.profile.companyCity
+      ? `${profile.profile.companyCity}, ${profile.profile.companyState} ${profile.profile.companyZip}`
+      : "";
 
     return (
       <div className={classes.container} data-test="component-dashboard">
@@ -126,10 +146,31 @@ export class DashboardUnconnected extends React.Component {
                 src={profile.profile.avatarUrl}
               />
             </CardMedia>
-            <CardContent>
+            <CardContent className={classes.content}>
               <Typography variant="h5" className={classes.name}>
                 {`${profile.profile.name}`}
               </Typography>
+              <Typography variant="h6" className={classes.secondary}>
+                {`${profile.profile.email}`}
+              </Typography>
+              {profile.profile.phone && (
+                <Typography variant="h6" className={classes.secondary}>
+                  {`${profile.profile.phone}`}
+                </Typography>
+              )}
+              {profile.profile.companyName && (
+                <div>
+                  <Typography variant="h5" className={classes.name}>
+                    {`${profile.profile.companyName}`}
+                  </Typography>
+                  <Typography variant="h6" className={classes.secondary}>
+                    {`${profile.profile.companyStreet}`}
+                  </Typography>
+                  <Typography variant="h6" className={classes.secondary}>
+                    {address2}
+                  </Typography>
+                </div>
+              )}
             </CardContent>
           </Card>
         )}

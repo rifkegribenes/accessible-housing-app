@@ -36,11 +36,13 @@ export const INITIAL_STATE = {
   loggedIn: false,
   authToken: "",
   loading: false,
-  redirect: ""
+  redirect: "",
+  userId: null
 };
 
 function appState(state = INITIAL_STATE, action) {
   // let error;
+  // console.log(action.type);
   switch (action.type) {
     case LOGOUT:
       return INITIAL_STATE;
@@ -68,7 +70,11 @@ function appState(state = INITIAL_STATE, action) {
       return update(state, { redirect: { $set: action.payload } });
 
     case SET_LOGGEDIN:
-      return update(state, { loggedIn: { $set: true } });
+      return update(state, {
+        loggedIn: { $set: true },
+        userId: { $set: action.payload.userId },
+        authToken: { $set: action.payload.token }
+      });
 
     case GET_LISTING_BY_ID_REQUEST:
     case ADD_LISTING_REQUEST:

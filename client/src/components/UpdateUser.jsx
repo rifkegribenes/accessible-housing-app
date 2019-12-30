@@ -168,7 +168,7 @@ UpdateUser.propTypes = {
 
 const mapStateToProps = state => ({
   profile: state.profile,
-  initialValues: state.profile.form,
+  initialValues: state.profile.profile,
   formValues: getFormValues("updateUser")(state) || {},
   submitErrors: getFormSubmitErrors("updateUser")(state)
 });
