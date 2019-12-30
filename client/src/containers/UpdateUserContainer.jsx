@@ -162,7 +162,7 @@ export class UpdateUserContainer extends React.Component {
         console.log(this.props.profile.error);
         return handleError(this.props.profile.error);
       } else {
-        return userResult.type;
+        this.props.history.push("/admin");
       }
     } else {
       console.log("no profile body or no token or no id");

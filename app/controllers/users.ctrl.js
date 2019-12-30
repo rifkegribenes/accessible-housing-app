@@ -98,10 +98,12 @@ const createUser = (req, res, next) => {
  *  @returns  {Object}                   Updated user object OR error message.
  */
 const updateUser = (req, res, next) => {
-  const { updates } = req.body;
+  const updates = { ...req.body };
+  console.log(`users.ctrl.js > 102`);
+  console.log(updates);
   const { id } = req.params;
   if (!updates || !Object.keys(updates).length) {
-    return res.status(404).json({ message: "No updates submitted" });
+    return res.status(500).json({ message: "No updates submitted" });
   }
 
   return users

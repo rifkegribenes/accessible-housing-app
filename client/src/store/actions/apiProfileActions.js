@@ -82,6 +82,7 @@ export function getProfile(token, userId) {
 }
 
 export function updateProfile(token, userId, body) {
+  console.log(body);
   return {
     [RSAA]: {
       endpoint: `${BASE_URL}/api/user/${userId}`,
@@ -104,7 +105,7 @@ export function updateProfile(token, userId, body) {
       ],
       headers: {
         Authorization: `Bearer ${token}`,
-        "Listing-Type": "application/json"
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(body)
     }

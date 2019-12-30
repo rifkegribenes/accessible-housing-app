@@ -16,7 +16,7 @@ import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
 import Typography from "@material-ui/core/Typography";
 
 import * as formElements from "./FormElements";
-import { validate } from "../utils/validators";
+import { validateUser } from "../utils/validators";
 import { scrollToFirstError } from "../utils";
 
 const {
@@ -176,7 +176,7 @@ const mapStateToProps = state => ({
 // add reduxForm to component
 export const UpdateUserForm = reduxForm({
   form: "updateUser",
-  validate,
+  validate: validateUser,
   destroyOnUnmount: true,
   forceUnregisterOnUnmount: true,
   enableReinitialize: true,

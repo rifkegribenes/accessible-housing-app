@@ -41,11 +41,15 @@ function profile(state = INITIAL_STATE, action) {
 
     case GET_PROFILE_SUCCESS:
     case UPDATE_PROFILE_SUCCESS:
-      const name = action.payload.name
-        ? `${JSON.parse(action.payload.name).givenName} ${
-            JSON.parse(action.payload.name).familyName
-          }`
-        : "";
+      console.log(action.payload.name);
+      const name =
+        action.payload.name && action.payload.name.includes(":")
+          ? `${JSON.parse(action.payload.name).givenName} ${
+              JSON.parse(action.payload.name).familyName
+            }`
+          : action.payload.name && typeof action.payload.name === "object"
+          ? `${action.payload.name.givenName} ${action.payload.name.familyName}`
+          : "";
       return update(state, {
         profile: {
           id: { $set: action.payload.id },
