@@ -113,6 +113,7 @@ const styles = theme => ({
   },
   avatar: {
     marginRight: 20,
+    right: 85,
     [theme.breakpoints.down("xs")]: {
       display: "none"
     }
@@ -217,6 +218,7 @@ export class NavBar extends React.Component {
     const { classes } = this.props;
     const { anchorEl } = this.state;
     const { loggedIn } = this.props.appState;
+    console.log(`loggedIn: ${loggedIn}`);
     const adminLinks = ["new", "map"];
     const adminLinksLabels = {
       new: "Add a Listing",

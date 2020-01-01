@@ -58,6 +58,7 @@ const createListing = async (req, res, next) => {
     features,
     user_id,
     bedrooms,
+    notes,
     lease_length,
     square_feet,
     laundry_type,
@@ -98,13 +99,30 @@ const createListing = async (req, res, next) => {
     });
   }
 
-  const geocodeResult = await geocodeAddress(
-    `${property_street} ${property_city}, ${property_state} ${property_zip}`
-  ).catch(err => {
-    console.log(`listings.ctrl.js > 96: ${err}`);
-  });
+  let property_lat, property_lon;
+  const geocodeResult = await geocoder
+    .geocode(
+      `${property_street} ${property_city}, ${property_state} ${property_zip}`
+    )
+    .then(result => {
+      const { latitude, longitude } = result[0];
+      console.log(`listings.ctrl.js > 108`);
+      console.log({ property_lat: latitude, property_lon: longitude });
+      property_lat = latitude;
+      property_lon = longitude;
+      if (!property_lat) {
+        property_lat = 0;
+      }
+      if (!property_lon) {
+        property_lon = 0;
+      }
+    })
+    .catch(err => {
+      console.log(`listings.ctrl.js > 120`);
+      console.error(err);
+      return err;
+    });
 
-  const { property_lat, property_lon } = geocodeResult;
   if (!property_lat) {
     property_lat = 0;
   }
@@ -133,6 +151,7 @@ const createListing = async (req, res, next) => {
       user_id,
       features,
       bedrooms,
+      notes,
       lease_length,
       square_feet,
       laundry_type,
@@ -189,7 +208,7 @@ const updateListing = async (req, res, next) => {
       )
       .then(result => {
         const { latitude, longitude } = result[0];
-        console.log(`utils/geocodeAddress > 21`);
+        console.log(`listings.ctrl.js > 192`);
         console.log({ property_lat: latitude, property_lon: longitude });
         property_lat = latitude;
         property_lon = longitude;
@@ -201,7 +220,7 @@ const updateListing = async (req, res, next) => {
         }
       })
       .catch(err => {
-        console.log(`utils/geocodeAddress > 26`);
+        console.log(`listings.ctrl.js > 204`);
         console.error(err);
         return err;
       });

@@ -83,7 +83,8 @@ const styles = theme => ({
   },
   card: {
     width: "31%",
-    padding: 20,
+    padding: "5px 10px",
+    borderRadius: 4,
     margin: "10px",
     position: "relative",
     border: `1px solid ${theme.palette.primary.main}`,
@@ -263,7 +264,7 @@ export class ContentLibraryUnconnected extends React.Component {
                       <Create />
                     </FAB>
                   </div>
-                  <ContentTile listingTile={tile} />
+                  <ContentTile listingTile={tile} small={true} />
                 </div>
               );
             })}

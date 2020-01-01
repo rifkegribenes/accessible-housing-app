@@ -21,7 +21,8 @@ exports.up = function(knex) {
           table.decimal("monthly_rent", 6, 2).notNullable();
           table.decimal("deposit", 6, 2).notNullable();
           table.decimal("parking_fee", 6, 2).notNullable();
-          table.decimal("bedrooms", 1, 0).notNullable();
+          table.string("bedrooms").notNullable();
+          table.string("notes");
           table.decimal("lease_length", 2, 0).notNullable();
           table.decimal("square_feet", 4, 0);
           table.string("primary_image").notNullable();

@@ -251,12 +251,10 @@ export const AddListing = props => {
               label="Bedrooms"
               name="bedrooms"
               id="bedrooms"
-              type="number"
-              min={1}
-              max={4}
-              step={1}
+              type="select"
+              options={["", "Studio", "1", "2", "3", "4+"]}
               classes={classes}
-              component={renderTextField}
+              component={renderSelect}
               formControlName="marginRight"
               twocol
             />

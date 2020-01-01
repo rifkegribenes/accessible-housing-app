@@ -133,6 +133,7 @@ function Listing(state = INITIAL_STATE, action) {
         primaryImage: action.payload.primary_image,
         deposit: action.payload.deposit,
         bedrooms: action.payload.bedrooms,
+        notes: action.payload.notes,
         leaseLength: action.payload.lease_length,
         squareFt: action.payload.square_feet,
         laundryType: action.payload.laundry_type,
