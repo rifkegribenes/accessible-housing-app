@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { openSnackbar } from "../containers/Notifier";
 
 import TextField from "@material-ui/core/TextField";
+import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import Select from "@material-ui/core/Select";
 import Checkbox from "@material-ui/core/Checkbox";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
@@ -680,6 +681,52 @@ export const renderTextField = ({
       {...custom}
       data-test="component-text-field"
       inputProps={{ id: id, min: min, step: step }}
+      onBlur={event => {
+        input.onBlur();
+        if (additionalOnChange) {
+          additionalOnChange(event);
+        }
+      }}
+    />
+  );
+};
+
+// custom MUI friendly TEXT AREA with translated label
+export const renderTextArea = ({
+  input,
+  id,
+  name,
+  label,
+  meta: { touched, error },
+  classes,
+  twocol,
+  short,
+  mobile,
+  additionalOnChange,
+  formControlName,
+  rows,
+  ...custom
+}) => {
+  return (
+    <TextareaAutosize
+      label={label}
+      rows={rows}
+      error={!!(touched && error)}
+      variant="outlined"
+      className={classes[formControlName] || classes.input}
+      style={
+        twocol && !mobile
+          ? { width: "48%" }
+          : short
+          ? { width: 150 }
+          : { width: "100%", marginBottom: 30 }
+      }
+      helperText={touched && error}
+      required={!!(touched && error)}
+      {...input}
+      {...custom}
+      data-test="component-text-area"
+      inputProps={{ id: id }}
       onBlur={event => {
         input.onBlur();
         if (additionalOnChange) {

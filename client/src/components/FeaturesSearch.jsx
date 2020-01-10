@@ -2,36 +2,31 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import Checkbox from "@material-ui/core/Checkbox";
-import FormHelperText from "@material-ui/core/FormHelperText";
+import FormLabel from "@material-ui/core/FormLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import Button from "@material-ui/core/Button";
 import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
-import Typography from "@material-ui/core/Typography";
 
 import * as formElements from "./FormElements";
-import { validate } from "../utils/validators";
-import { scrollToFirstError } from "../utils";
 
-const {
-  renderSelect,
-  renderTextField,
-  renderCheckbox,
-  featuresMap
-} = formElements;
+import {
+  Field,
+  reduxForm,
+  getFormValues,
+  getFormSubmitErrors
+} from "redux-form";
+
+const { renderCheckbox, featuresMap } = formElements;
 
 export const FeaturesSearch = props => {
-  const { classes, edit, width } = props;
-
-  const placeholderOnChange = () => {};
+  const { classes, clearForm, setAndClose } = props;
 
   const features = Object.keys(featuresMap).map(feature => (
     <Field
-      label="Vacant?"
-      name="vacant"
-      id="vacant"
+      label={featuresMap[feature]}
+      name={feature}
+      id={feature}
+      key={feature}
       type="checkbox"
       formControlName="controlCheckbox"
       classes={classes}
@@ -44,14 +39,43 @@ export const FeaturesSearch = props => {
       data-test="component-features-search"
       className={classes.sectionContainer}
     >
-      <form id="featuresSearch" className={classes.form}>
-        <Typography className={classes.formTitle} variant="h3">
-          Add Listing
-        </Typography>
+      <form id="featuresSearch" className={classes.featuresPanel}>
         <div className={classes.formSection}>
           <FormLabel className={classes.formLabel} component="legend">
             Features
           </FormLabel>
+        </div>
+        <FormGroup row classes={{ root: classes.formGroupFeatures }}>
+          <Field
+            label="Vacant?"
+            name="vacant"
+            id="vacant"
+            type="checkbox"
+            formControlName="controlCheckbox"
+            classes={classes}
+            component={renderCheckbox}
+          />
+          {features}
+        </FormGroup>
+        <div className={classes.buttonWrap}>
+          <Button
+            type="button"
+            color="secondary"
+            className={classes.leftButton}
+            variant="outlined"
+            onClick={clearForm}
+          >
+            Clear
+          </Button>
+          <Button
+            type="button"
+            color="primary"
+            className={classes.next}
+            variant="contained"
+            onClick={setAndClose}
+          >
+            Done
+          </Button>
         </div>
       </form>
     </div>
@@ -61,16 +85,23 @@ export const FeaturesSearch = props => {
 FeaturesSearch.propTypes = {
   classes: PropTypes.object,
   onSubmit: PropTypes.func,
-  employerTypesList: PropTypes.array,
-  employerList: PropTypes.array,
-  updateEmployersPicklist: PropTypes.func,
   renderSelect: PropTypes.func,
   renderTextField: PropTypes.func,
   renderCheckbox: PropTypes.func,
   formValues: PropTypes.object,
   width: PropTypes.string,
-  handleTab: PropTypes.func,
   handleInput: PropTypes.func
 };
 
-export default withWidth()(FeaturesSearch);
+// add reduxForm to component
+export const FeaturesSearchForm = reduxForm({
+  form: "featuresSearch",
+  // validate,
+  destroyOnUnmount: true,
+  forceUnregisterOnUnmount: true,
+  enableReinitialize: true,
+  keepDirtyOnReinitialize: true,
+  updateUnregisteredFields: true
+})(FeaturesSearch);
+
+export default withWidth()(FeaturesSearchForm);

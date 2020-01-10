@@ -9,6 +9,7 @@ import { openSnackbar } from "./Notifier";
 import * as apiListingActions from "../store/actions/apiListingActions";
 import ContentTile from "../components/ContentTile";
 import SearchBar from "../components/SearchBar";
+import FeaturesSearch from "../components/FeaturesSearch";
 import Tooltip from "@material-ui/core/Tooltip";
 import RoomIcon from "@material-ui/icons/Room";
 
@@ -95,6 +96,24 @@ const styles = theme => ({
       padding: 0,
       boxShadow: "none"
     }
+  },
+  featuresPanel: {
+    width: "50%",
+    position: "absolute",
+    right: 0,
+    top: 156,
+    bottom: 0,
+    zIndex: 2,
+    backgroundColor: "white",
+    padding: 20
+  },
+  buttonWrap: {
+    paddingTop: 20,
+    display: "flex",
+    justifyContent: "flex-end"
+  },
+  leftButton: {
+    marginRight: 20
   }
 });
 
@@ -132,6 +151,13 @@ class ListingsMapUnconnected extends Component {
     zoom: 12
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      more: false
+    };
+  }
+
   componentDidMount() {
     const { authToken } = this.props.appState;
     this.props.apiListing
@@ -154,8 +180,20 @@ class ListingsMapUnconnected extends Component {
       });
   }
 
-  showMore = () => {
-    console.log("showMore");
+  toggleMore = () => {
+    console.log("toggleMore");
+    const newState = { ...this.state };
+    newState.more = !this.state.more;
+    this.setState({ ...newState });
+  };
+
+  clearForm = () => {
+    console.log("clearForm");
+  };
+
+  setAndClose = () => {
+    console.log("setAndClose");
+    this.toggleMore();
   };
 
   render() {
@@ -178,7 +216,7 @@ class ListingsMapUnconnected extends Component {
       >
         <SearchBar
           classes={this.props.classes}
-          showMore={this.showMore}
+          toggleMore={this.toggleMore}
           listing={this.props.listing}
         />
         <GoogleMapReact
@@ -188,6 +226,13 @@ class ListingsMapUnconnected extends Component {
         >
           {markers}
         </GoogleMapReact>
+        {this.state.more && (
+          <FeaturesSearch
+            classes={this.props.classes}
+            setAndClose={this.setAndClose}
+            clearForm={this.clearForm}
+          />
+        )}
       </div>
     );
   }

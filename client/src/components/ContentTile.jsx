@@ -161,7 +161,7 @@ const ContentTile = props => {
           className={small ? classes.contentLight : classes.bodyLight}
           data-test="body"
         >
-          {bedrooms} BR
+          {bedrooms.toLowerCase() === "studio" ? "Studio" : `${bedrooms} BR`}
         </Typography>
         <Typography
           component="span"

@@ -47,6 +47,7 @@ const createListing = (
   user_id,
   features,
   bedrooms,
+  notes,
   lease_length,
   square_feet,
   laundry_type,

@@ -25,6 +25,7 @@ const {
   yearOptions,
   renderSelect,
   renderTextField,
+  renderTextArea,
   renderCheckbox,
   featuresMap
 } = formElements;
@@ -254,9 +255,11 @@ export const AddListing = props => {
               type="select"
               options={["", "Studio", "1", "2", "3", "4+"]}
               classes={classes}
+              labelWidth={41}
               component={renderSelect}
-              formControlName="marginRight"
-              twocol
+              formControlName="flexStatic"
+              InputProps={{ style: { paddingLeft: 20 } }}
+              InputLabelProps={{ style: { paddingLeft: 20 } }}
             />
             <Field
               data-test="input-lease-length"
@@ -349,6 +352,19 @@ export const AddListing = props => {
             />
             {features}
           </FormGroup>
+          <FormLabel className={classes.formLabel} component="legend">
+            Additional information about this property
+          </FormLabel>
+          <Field
+            label="Additional information about this property"
+            name="notes"
+            id="notes"
+            type="textarea"
+            formControlName="notes"
+            classes={classes}
+            rows={5}
+            component={renderTextArea}
+          />
           <div className={classes.buttonWrap}>
             <Button
               type="submit"

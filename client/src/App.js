@@ -94,23 +94,34 @@ const styles = theme => ({
     display: "flex",
     justifyContent: "center"
   },
+  fLink: {
+    color: theme.palette.primary.main,
+    textDecoration: "none",
+    borderBottom: "1px dotted theme.palette.secondary.main",
+    "&:hover": {
+      color: theme.palette.secondary.light
+    },
+    "&:visited": {
+      color: theme.palette.primary.main
+    },
+    "&:focus": {
+      color: theme.palette.primary.main
+    }
+  },
   footer: {
     width: "100vw",
     margin: "auto",
     position: "fixed",
     backgroundColor: "white",
     bottom: 0,
-    padding: 25,
-    height: 73,
-    [theme.breakpoints.down("sm")]: {
-      height: 53
-    },
+    padding: 10,
+    height: 40,
     display: "flex",
     justifyContent: "center",
     alignItems: "middle",
     boxShadow: "0 1px 5px 2px rgba(0,0,0,.2)",
     zIndex: 2,
-    color: "white"
+    color: theme.palette.primary.main
   },
   footerIcon: {
     width: 30,

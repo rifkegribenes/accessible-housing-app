@@ -60,7 +60,7 @@ export default function SearchBar(props) {
           color="primary"
           className={props.classes.moreButton}
           variant="contained"
-          onClick={props.showMore}
+          onClick={props.toggleMore}
         >
           More
         </Button>
