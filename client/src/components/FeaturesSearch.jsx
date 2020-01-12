@@ -1,19 +1,18 @@
 import React from "react";
-import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import FormLabel from "@material-ui/core/FormLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import Button from "@material-ui/core/Button";
-import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
+import withWidth from "@material-ui/core/withWidth";
 
 import * as formElements from "./FormElements";
 
 import {
   Field,
-  reduxForm,
-  getFormValues,
-  getFormSubmitErrors
+  reduxForm
+  // getFormValues,
+  // getFormSubmitErrors
 } from "redux-form";
 
 const { renderCheckbox, featuresMap } = formElements;
@@ -95,7 +94,7 @@ FeaturesSearch.propTypes = {
 
 // add reduxForm to component
 export const FeaturesSearchForm = reduxForm({
-  form: "featuresSearch",
+  form: "listingSearch",
   // validate,
   destroyOnUnmount: true,
   forceUnregisterOnUnmount: true,

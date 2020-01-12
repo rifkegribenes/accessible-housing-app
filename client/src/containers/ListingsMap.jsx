@@ -8,8 +8,7 @@ import { openSnackbar } from "./Notifier";
 
 import * as apiListingActions from "../store/actions/apiListingActions";
 import ContentTile from "../components/ContentTile";
-import SearchBar from "../components/SearchBar";
-import FeaturesSearch from "../components/FeaturesSearch";
+import SearchBarForm from "../components/SearchBar";
 import Tooltip from "@material-ui/core/Tooltip";
 import RoomIcon from "@material-ui/icons/Room";
 
@@ -40,7 +39,10 @@ const styles = theme => ({
   },
   searchBar: {
     backgroundColor: "white",
-    padding: 20
+    padding: 20,
+    position: "fixed",
+    zIndex: 2,
+    width: "100%"
   },
   searchForm: {
     display: "flex",
@@ -98,19 +100,22 @@ const styles = theme => ({
     }
   },
   featuresPanel: {
-    width: "50%",
-    position: "absolute",
+    width: 500,
+    maxWidth: "50%",
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "100%"
+    },
+    position: "fixed",
     right: 0,
-    top: 156,
-    bottom: 0,
-    zIndex: 2,
+    top: 64,
+    zIndex: 3,
     backgroundColor: "white",
     padding: 20
   },
   buttonWrap: {
-    paddingTop: 20,
     display: "flex",
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
+    backgroundColor: "white"
   },
   leftButton: {
     marginRight: 20
@@ -196,6 +201,10 @@ class ListingsMapUnconnected extends Component {
     this.toggleMore();
   };
 
+  handleSubmit = () => {
+    console.log("handleSubmit");
+  };
+
   render() {
     const markers = this.props.listing.allListing.map(listingData => (
       <MapMarker
@@ -214,10 +223,14 @@ class ListingsMapUnconnected extends Component {
         className={this.props.classes.mapContainer}
         style={{ height: "100vh", width: "100%" }}
       >
-        <SearchBar
+        <SearchBarForm
           classes={this.props.classes}
           toggleMore={this.toggleMore}
           listing={this.props.listing}
+          more={this.state.more}
+          setAndClose={this.setAndClose}
+          clearForm={this.clearForm}
+          onSubmit={this.handleSubmit}
         />
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyCzzv8kgYfdr9TIKQVG1Y6iexdL90rWYqg" }}
@@ -226,13 +239,6 @@ class ListingsMapUnconnected extends Component {
         >
           {markers}
         </GoogleMapReact>
-        {this.state.more && (
-          <FeaturesSearch
-            classes={this.props.classes}
-            setAndClose={this.setAndClose}
-            clearForm={this.clearForm}
-          />
-        )}
       </div>
     );
   }

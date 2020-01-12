@@ -35,11 +35,11 @@ export const INITIAL_STATE = {
     created_at: "",
     updated_at: ""
   },
-  searchForm: {
+  search: {
     bedrooms: "",
     monthlyRent: "",
     dialogOpen: false,
-    propertyZip: "97201"
+    searchZip: "97201"
   },
   error: null
 };
@@ -60,7 +60,7 @@ function Listing(state = INITIAL_STATE, action) {
 
     case HANDLE_SEARCH:
       return update(state, {
-        searchForm: {
+        search: {
           [action.payload.name]: { $set: action.payload.value }
         }
       });

@@ -54,7 +54,7 @@ export const AddListing = props => {
       component={renderCheckbox}
     />
   ));
-
+  console.log(props);
   return (
     <div data-test="component-add-listing" className={classes.sectionContainer}>
       <form

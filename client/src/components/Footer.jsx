@@ -5,7 +5,7 @@ const Footer = props => (
   <div className={props.classes.footer} data-test="component-footer">
     &copy;{new Date().getFullYear()}&nbsp;
     <a
-      classname={props.classes.fLink}
+      className={props.classes.fLink}
       href="http://realchoiceoregon.com/"
       target="_blank"
       rel="noopener noreferrer"
@@ -14,7 +14,7 @@ const Footer = props => (
     </a>
     &nbsp;•&nbsp;
     <a
-      classname={props.classes.footerLink}
+      className={props.classes.footerLink}
       href="https://www.multifamilynw.org/"
       target="_blank"
       rel="noopener noreferrer"
