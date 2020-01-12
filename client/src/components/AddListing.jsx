@@ -229,8 +229,8 @@ export const AddListing = props => {
               classes={classes}
               component={renderTextField}
               formControlName="currency"
-              InputProps={{ style: { paddingLeft: 15 } }}
-              InputLabelProps={{ style: { paddingLeft: 15 } }}
+              inputProps={{ style: { paddingLeft: 15 } }}
+              inputLabelProps={{ style: { paddingLeft: 15 } }}
             />
             <Field
               label="Deposit"
@@ -242,8 +242,8 @@ export const AddListing = props => {
               classes={classes}
               component={renderTextField}
               formControlName="currency2"
-              InputProps={{ style: { paddingLeft: 15 } }}
-              InputLabelProps={{ style: { paddingLeft: 15 } }}
+              inputProps={{ style: { paddingLeft: 15 } }}
+              inputLabelProps={{ style: { paddingLeft: 15 } }}
             />
           </FormGroup>
           <FormGroup row classes={{ root: classes.formGroup2Col }}>
@@ -258,8 +258,8 @@ export const AddListing = props => {
               labelWidth={41}
               component={renderSelect}
               formControlName="flexStatic"
-              InputProps={{ style: { paddingLeft: 20 } }}
-              InputLabelProps={{ style: { paddingLeft: 20 } }}
+              inputProps={{ style: { paddingLeft: 20 } }}
+              inputLabelProps={{ style: { paddingLeft: 20 } }}
             />
             <Field
               data-test="input-lease-length"
@@ -273,8 +273,8 @@ export const AddListing = props => {
               component={renderTextField}
               twocol
               formControlName="months"
-              InputProps={{ style: { paddingRight: 30 } }}
-              InputLabelProps={{ style: { paddingRight: 30 } }}
+              inputProps={{ style: { paddingRight: 30 } }}
+              inputLabelProps={{ style: { paddingRight: 30 } }}
             />
             <Field
               label="Square Ft"
@@ -333,8 +333,8 @@ export const AddListing = props => {
               classes={classes}
               component={renderTextField}
               formControlName="parking"
-              InputProps={{ style: { paddingLeft: 20 } }}
-              InputLabelProps={{ style: { paddingLeft: 20 } }}
+              inputProps={{ style: { paddingLeft: 20 } }}
+              inputLabelProps={{ style: { paddingLeft: 20 } }}
             />
           </FormGroup>
           <FormLabel className={classes.formLabel} component="legend">

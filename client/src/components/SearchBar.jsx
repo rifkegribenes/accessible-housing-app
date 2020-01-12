@@ -4,13 +4,7 @@ import { connect } from "react-redux";
 
 import withWidth from "@material-ui/core/withWidth";
 import FeaturesSearch from "../components/FeaturesSearch";
-import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
 import * as formElements from "./FormElements";
 
 import {
@@ -28,7 +22,7 @@ const {
 
 export function SearchBar(props) {
   // const [labelWidth, setLabelWidth] = React.useState(0);
-  const inputLabel = React.useRef(null);
+  // const inputLabel = React.useRef(null);
   // React.useEffect(() => {
   //   setLabelWidth(inputLabel.current.offsetWidth);
   // }, []);
@@ -62,8 +56,8 @@ export function SearchBar(props) {
           labelWidth={41}
           component={renderSelect}
           formControlName="flexStatic"
-          InputProps={{ style: { paddingLeft: 20 } }}
-          InputLabelProps={{ style: { paddingLeft: 20 } }}
+          inputProps={{ style: { paddingLeft: 20 } }}
+          inputLabelProps={{ style: { paddingLeft: 20 } }}
         />
         <Field
           label="Max Rent"
@@ -75,8 +69,8 @@ export function SearchBar(props) {
           classes={classes}
           component={renderTextField}
           formControlName="currency"
-          InputProps={{ style: { paddingLeft: 15 } }}
-          InputLabelProps={{ style: { paddingLeft: 15 } }}
+          inputProps={{ style: { paddingLeft: 15 } }}
+          inputLabelProps={{ style: { paddingLeft: 15 } }}
         />
         <Button
           type="button"

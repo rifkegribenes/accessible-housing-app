@@ -660,6 +660,8 @@ export const renderTextField = ({
   min,
   step,
   formControlName,
+  inputProps,
+  inputLabelProps,
   ...custom
 }) => {
   return (
@@ -680,7 +682,8 @@ export const renderTextField = ({
       {...input}
       {...custom}
       data-test="component-text-field"
-      inputProps={{ id: id, min: min, step: step }}
+      inputProps={{ id: id, min: min, step: step, ...inputProps }}
+      InputLabelProps={inputLabelProps}
       onBlur={event => {
         input.onBlur();
         if (additionalOnChange) {
@@ -705,13 +708,14 @@ export const renderTextArea = ({
   additionalOnChange,
   formControlName,
   rows,
+  inputProps,
   ...custom
 }) => {
   return (
     <TextareaAutosize
       label={label}
       rows={rows}
-      error={!!(touched && error)}
+      error={!!(touched && error) || undefined}
       variant="outlined"
       className={classes[formControlName] || classes.input}
       style={
@@ -721,12 +725,11 @@ export const renderTextArea = ({
           ? { width: 150 }
           : { width: "100%", marginBottom: 30 }
       }
-      helperText={touched && error}
       required={!!(touched && error)}
       {...input}
       {...custom}
       data-test="component-text-area"
-      inputProps={{ id: id }}
+      id={id}
       onBlur={event => {
         input.onBlur();
         if (additionalOnChange) {
@@ -754,6 +757,8 @@ export const renderSelect = ({
   twocol,
   mobile,
   formControlName,
+  inputProps,
+  inputLabelProps,
   ...custom
 }) => (
   <FormControl
@@ -775,7 +780,12 @@ export const renderSelect = ({
     <InputLabel htmlFor={name}>{label}</InputLabel>
     <Select
       native
-      input={<OutlinedInput labelWidth={labelWidth} inputProps={{ id: id }} />}
+      input={
+        <OutlinedInput
+          labelWidth={labelWidth}
+          inputProps={{ id: id, ...inputProps }}
+        />
+      }
       className={align === "right" ? classes.selectRight : classes.select}
       value={input.value ? input.value.toLowerCase() : ""}
       onChange={input.onChange}
