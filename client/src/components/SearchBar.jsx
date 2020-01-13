@@ -27,8 +27,6 @@ export function SearchBar(props) {
   //   setLabelWidth(inputLabel.current.offsetWidth);
   // }, []);
   const { onSubmit, classes } = props;
-  console.log(onSubmit);
-  console.log(props);
   return (
     <div className={classes.searchBar} data-test="component-search-bar">
       <form
@@ -62,25 +60,34 @@ export function SearchBar(props) {
         />
         <Field
           label="Max Rent"
-          name="monthlyRent"
-          id="monthlyRent"
+          name="maxRent"
+          id="maxRent"
           type="number"
           min={0.01}
           step={0.01}
           classes={classes}
           component={renderTextField}
           formControlName="maxRent"
-          inputProps={{ style: { paddingLeft: 15 } }}
+          inputProps={{ style: { paddingLeft: 15, textAlign: "right" } }}
           inputLabelProps={{ style: { paddingLeft: 15 } }}
         />
         <Button
           type="button"
-          color="primary"
+          color="secondary"
           className={classes.moreButton}
-          variant="contained"
+          variant="outlined"
           onClick={props.toggleMore}
         >
           More
+        </Button>
+        <Button
+          type="submit"
+          color="primary"
+          className={classes.searchButton}
+          variant="contained"
+          onClick={props.search}
+        >
+          Search
         </Button>
         {props.more && (
           <FeaturesSearch
@@ -112,8 +119,8 @@ const mapStateToProps = state => ({
 export const SearchBarForm = reduxForm({
   form: "listingSearch",
   // validate,
-  destroyOnUnmount: true,
-  forceUnregisterOnUnmount: true,
+  destroyOnUnmount: false,
+  forceUnregisterOnUnmount: false,
   enableReinitialize: true,
   keepDirtyOnReinitialize: true,
   updateUnregisteredFields: true

@@ -12,6 +12,8 @@ import SearchBarForm from "../components/SearchBar";
 import Tooltip from "@material-ui/core/Tooltip";
 import RoomIcon from "@material-ui/icons/Room";
 
+import { getFormValues } from "redux-form";
+
 const styles = theme => ({
   root: {},
   markerCard: {
@@ -51,7 +53,7 @@ const styles = theme => ({
     [theme.breakpoints.down("sm")]: {
       flexWrap: "wrap",
       justifyContent: "space-between",
-      height: 120
+      height: 200
     }
   },
   searchZip: {
@@ -79,11 +81,12 @@ const styles = theme => ({
     flexGrow: 0,
     maxWidth: 150,
     marginRight: 20,
+    textAlign: "right",
     height: 55,
     [theme.breakpoints.down("sm")]: {
       backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='30px' width='85px'><text x='10' y='20' fill='gray' font-size='20' font-family='source sans pro'>$</text></svg>")`,
       width: "46%",
-      marginBottom: 10,
+      marginBottom: `15px !important`,
       marginRight: 0
     }
   },
@@ -119,9 +122,25 @@ const styles = theme => ({
     fontSize: "1.2em",
     fontWeight: 700,
     height: 55,
+    marginRight: 20,
     [theme.breakpoints.down("sm")]: {
       width: "46%",
       marginRight: 0,
+      marginBottom: 10,
+      padding: 0,
+      boxShadow: "none"
+    }
+  },
+  searchButton: {
+    width: 120,
+    borderRadius: 4,
+    position: "relative",
+    textTransform: "none",
+    fontSize: "1.2em",
+    fontWeight: 700,
+    height: 55,
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
       padding: 0,
       boxShadow: "none"
     }
@@ -207,7 +226,7 @@ class ListingsMapUnconnected extends Component {
     this.props.apiListing
       .getAllListings(authToken)
       .then(result => {
-        console.log(result.payload);
+        // console.log(result.payload);
         if (
           result.type === "GET_ALL_LISTING_FAILURE" ||
           this.props.listing.error
@@ -242,6 +261,7 @@ class ListingsMapUnconnected extends Component {
 
   handleSubmit = () => {
     console.log("handleSubmit");
+    console.log(this.props.formValues);
   };
 
   render() {
@@ -255,7 +275,7 @@ class ListingsMapUnconnected extends Component {
       />
     ));
 
-    console.log(markers);
+    // console.log(markers);
     return (
       // Important! Always set the container height explicitly
       <div
@@ -326,7 +346,8 @@ ListingsMapUnconnected.propTypes = {
 const mapStateToProps = state => ({
   appState: state.appState,
   profile: state.profile,
-  listing: state.listing
+  listing: state.listing,
+  formValues: getFormValues("listingSearch")(state) || {}
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -37,9 +37,10 @@ export const INITIAL_STATE = {
   },
   search: {
     bedrooms: "",
-    monthlyRent: "",
+    maxRent: "",
     dialogOpen: false,
-    searchZip: "97201"
+    searchZip: "97201",
+    features: []
   },
   error: null
 };
