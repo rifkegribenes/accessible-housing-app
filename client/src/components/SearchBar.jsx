@@ -42,6 +42,7 @@ export function SearchBar(props) {
           id="searchZip"
           type="text"
           classes={classes}
+          formControlName="searchZip"
           component={renderTextField}
         />
 
@@ -55,7 +56,7 @@ export function SearchBar(props) {
           classes={classes}
           labelWidth={41}
           component={renderSelect}
-          formControlName="flexStatic"
+          formControlName="searchBedrooms"
           inputProps={{ style: { paddingLeft: 20 } }}
           inputLabelProps={{ style: { paddingLeft: 20 } }}
         />
@@ -68,7 +69,7 @@ export function SearchBar(props) {
           step={0.01}
           classes={classes}
           component={renderTextField}
-          formControlName="currency"
+          formControlName="maxRent"
           inputProps={{ style: { paddingLeft: 15 } }}
           inputLabelProps={{ style: { paddingLeft: 15 } }}
         />
@@ -83,9 +84,11 @@ export function SearchBar(props) {
         </Button>
         {props.more && (
           <FeaturesSearch
-            classes={this.classes}
+            classes={classes}
             setAndClose={props.setAndClose}
             clearForm={props.clearForm}
+            more={props.more}
+            toggleDrawer={props.toggleDrawer}
           />
         )}
       </form>

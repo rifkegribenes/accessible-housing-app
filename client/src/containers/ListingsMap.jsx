@@ -47,15 +47,41 @@ const styles = theme => ({
   searchForm: {
     display: "flex",
     flexDirection: "row",
+    height: 55,
     [theme.breakpoints.down("sm")]: {
       flexWrap: "wrap",
-      justifyContent: "space-between"
+      justifyContent: "space-between",
+      height: 120
     }
   },
   searchZip: {
-    width: 200,
+    maxWidth: 200,
     marginRight: 20,
     [theme.breakpoints.down("sm")]: {
+      maxWidth: "46%",
+      marginBottom: `15px !important`,
+      marginRight: 0
+    }
+  },
+  searchBedrooms: {
+    minWidth: 150,
+    marginRight: 20,
+    [theme.breakpoints.down("sm")]: {
+      width: "46%",
+      marginBottom: `15px !important`,
+      marginRight: 0
+    }
+  },
+  maxRent: {
+    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='30px' width='85px'><text x='10' y='20' fill='gray' font-size='20' font-family='source sans pro'>$</text></svg>")`,
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "left center",
+    flexGrow: 0,
+    maxWidth: 150,
+    marginRight: 20,
+    height: 55,
+    [theme.breakpoints.down("sm")]: {
+      backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='30px' width='85px'><text x='10' y='20' fill='gray' font-size='20' font-family='source sans pro'>$</text></svg>")`,
       width: "46%",
       marginBottom: 10,
       marginRight: 0
@@ -92,6 +118,7 @@ const styles = theme => ({
     textTransform: "none",
     fontSize: "1.2em",
     fontWeight: 700,
+    height: 55,
     [theme.breakpoints.down("sm")]: {
       width: "46%",
       marginRight: 0,
@@ -99,18 +126,30 @@ const styles = theme => ({
       boxShadow: "none"
     }
   },
-  featuresPanel: {
+  drawer: {
     width: 500,
     maxWidth: "50%",
     [theme.breakpoints.down("sm")]: {
       maxWidth: "100%"
     },
-    position: "fixed",
+    position: "absolute",
     right: 0,
-    top: 64,
-    zIndex: 3,
+    top: 0,
+    // zIndex: 3,
     backgroundColor: "white",
-    padding: 20
+    padding: 20,
+    minHeight: "100vh"
+  },
+  drawerPaper: {
+    width: 500,
+    padding: 20,
+    position: "absolute",
+    top: 0,
+    paddingBottom: 135,
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "100%",
+      paddingBottom: 160
+    }
   },
   buttonWrap: {
     display: "flex",
@@ -226,6 +265,7 @@ class ListingsMapUnconnected extends Component {
         <SearchBarForm
           classes={this.props.classes}
           toggleMore={this.toggleMore}
+          toggleDrawer={this.toggleMore}
           listing={this.props.listing}
           more={this.state.more}
           setAndClose={this.setAndClose}

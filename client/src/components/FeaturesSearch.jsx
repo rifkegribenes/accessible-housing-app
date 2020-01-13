@@ -5,6 +5,7 @@ import FormLabel from "@material-ui/core/FormLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import Button from "@material-ui/core/Button";
 import withWidth from "@material-ui/core/withWidth";
+import Drawer from "@material-ui/core/Drawer";
 
 import * as formElements from "./FormElements";
 
@@ -18,7 +19,7 @@ import {
 const { renderCheckbox, featuresMap } = formElements;
 
 export const FeaturesSearch = props => {
-  const { classes, clearForm, setAndClose } = props;
+  const { classes, clearForm, setAndClose, more, toggleDrawer } = props;
 
   const features = Object.keys(featuresMap).map(feature => (
     <Field
@@ -34,11 +35,18 @@ export const FeaturesSearch = props => {
   ));
 
   return (
-    <div
+    <Drawer
+      className={classes.drawer}
       data-test="component-features-search"
-      className={classes.sectionContainer}
+      variant="permanent"
+      classes={{
+        paper: classes.drawerPaper
+      }}
+      open={more}
+      onClose={toggleDrawer}
+      anchor="right"
     >
-      <form id="featuresSearch" className={classes.featuresPanel}>
+      <div className={classes.featuresPanel}>
         <div className={classes.formSection}>
           <FormLabel className={classes.formLabel} component="legend">
             Features
@@ -76,8 +84,8 @@ export const FeaturesSearch = props => {
             Done
           </Button>
         </div>
-      </form>
-    </div>
+      </div>
+    </Drawer>
   );
 };
 
