@@ -13,6 +13,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import RoomIcon from "@material-ui/icons/Room";
 
 import { getFormValues } from "redux-form";
+import { calcFeatures, filterListings } from "../components/FormElements";
 
 const styles = theme => ({
   root: {},
@@ -261,7 +262,20 @@ class ListingsMapUnconnected extends Component {
 
   handleSubmit = () => {
     console.log("handleSubmit");
-    console.log(this.props.formValues);
+    const { formValues } = this.props;
+    // generate array of features from selected options
+    let features = calcFeatures(formValues);
+    const query = {
+      features,
+      propertyZip: formValues.searchZip,
+      bedrooms: formValues.bedrooms,
+      maxRent: formValues.maxRent
+    };
+    const filteredListings = filterListings(
+      this.props.listing.allListing,
+      query
+    );
+    console.log(filteredListings);
   };
 
   render() {

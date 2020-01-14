@@ -104,8 +104,8 @@ FeaturesSearch.propTypes = {
 export const FeaturesSearchForm = reduxForm({
   form: "listingSearch",
   // validate,
-  destroyOnUnmount: true,
-  forceUnregisterOnUnmount: true,
+  destroyOnUnmount: false,
+  forceUnregisterOnUnmount: false,
   enableReinitialize: true,
   keepDirtyOnReinitialize: true,
   updateUnregisteredFields: true

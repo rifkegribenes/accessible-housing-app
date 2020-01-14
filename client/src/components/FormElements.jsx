@@ -645,6 +645,37 @@ export const calcFeatures = values => {
   return featuresArray;
 };
 
+export const filterListings = (listings, query) => {
+  const filteredListings = [];
+  listings.map(listing => {
+    Object.keys(query).forEach(key => {
+      console.log(key);
+      if (key === "maxRent") {
+        if (query.maxRent < listing.monthlyRent) {
+          console.log("rent too high for query");
+          return null;
+        }
+      }
+      if (key === "features") {
+        query.features.forEach(feature => {
+          if (!listing.features.includes(feature)) {
+            console.log(`doesn't match ${feature}`);
+            return null;
+          }
+        });
+      }
+      if (query[key] !== listing[key]) {
+        console.log(`doesn't match ${key}`);
+        return null;
+      }
+      filteredListings.push(listing);
+    });
+    return null;
+  });
+  console.log(filteredListings);
+  return filteredListings;
+};
+
 // custom MUI friendly TEXT input with translated label
 export const renderTextField = ({
   input,
