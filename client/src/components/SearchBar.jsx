@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import withWidth from "@material-ui/core/withWidth";
 import FeaturesSearch from "../components/FeaturesSearch";
 import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
 import * as formElements from "./FormElements";
 
 import {
@@ -34,6 +36,14 @@ export function SearchBar(props) {
         onSubmit={props.handleSubmit(onSubmit)}
         id="listingSearch"
       >
+        <IconButton
+          aria-label="close"
+          className={classes.closeButton}
+          size="small"
+          onClick={props.hideSearch}
+        >
+          <CloseIcon fontSize="inherit" />
+        </IconButton>
         <Field
           label="Zip code"
           name="searchZip"
@@ -89,11 +99,20 @@ export function SearchBar(props) {
         >
           Search
         </Button>
+        <Button
+          type="button"
+          color="secondary"
+          className={classes.clearButton}
+          variant="outlined"
+          onClick={props.clearSearch}
+        >
+          Reset Filters
+        </Button>
         {props.more && (
           <FeaturesSearch
             classes={classes}
             setAndClose={props.setAndClose}
-            clearForm={props.clearForm}
+            clearSearch={props.clearSearch}
             more={props.more}
             toggleDrawer={props.toggleDrawer}
           />

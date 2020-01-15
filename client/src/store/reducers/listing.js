@@ -22,12 +22,15 @@ import {
   HANDLE_SEARCH,
   HANDLE_DELETE_OPEN,
   HANDLE_DELETE_CLOSE,
-  CLEAR_FORM
+  CLEAR_FORM,
+  CLEAR_SEARCH,
+  CLEAR_FEATURES,
+  UPDATE_FILTER
 } from "../actions/apiListingActions";
 
 export const INITIAL_STATE = {
-  filteredList: [],
-  allListing: [],
+  filteredListings: [],
+  allListings: [],
   deleteDialogOpen: false,
   currentListing: {
     listing_type: null,
@@ -94,6 +97,31 @@ function Listing(state = INITIAL_STATE, action) {
         }
       });
 
+    case CLEAR_SEARCH:
+      console.log("clear search");
+      return update(state, {
+        search: {
+          $set: {}
+        }
+      });
+
+    case CLEAR_FEATURES:
+      console.log("clear features");
+      return update(state, {
+        search: {
+          features: {
+            $set: []
+          }
+        }
+      });
+
+    case UPDATE_FILTER:
+      console.log("UPDATE_FILTER");
+      console.log(action.payload);
+      return update(state, {
+        filteredListings: { $set: [...action.payload] }
+      });
+
     case GET_LISTING_BY_ID_REQUEST:
     case ADD_LISTING_REQUEST:
     case UPDATE_LISTING_REQUEST:
@@ -151,7 +179,8 @@ function Listing(state = INITIAL_STATE, action) {
 
     case GET_ALL_LISTINGS_SUCCESS:
       return update(state, {
-        allListing: { $set: action.payload },
+        allListings: { $set: action.payload },
+        filteredListings: { $set: action.payload },
         error: { $set: null }
       });
 

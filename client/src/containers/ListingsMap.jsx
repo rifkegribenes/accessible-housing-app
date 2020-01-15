@@ -54,7 +54,8 @@ const styles = theme => ({
     [theme.breakpoints.down("sm")]: {
       flexWrap: "wrap",
       justifyContent: "space-between",
-      height: 200
+      height: 240,
+      paddingTop: 10
     }
   },
   searchZip: {
@@ -178,6 +179,24 @@ const styles = theme => ({
   },
   leftButton: {
     marginRight: 20
+  },
+  closeButton: {
+    display: "none",
+    [theme.breakpoints.down("sm")]: {
+      display: "block",
+      position: "absolute",
+      top: 5,
+      right: 5
+    }
+  },
+  clearButton: {
+    marginLeft: 20,
+    borderRadius: 4,
+    [theme.breakpoints.down("sm")]: {
+      marginTop: 10,
+      marginLeft: 0,
+      width: "100%"
+    }
   }
 });
 
@@ -218,7 +237,8 @@ class ListingsMapUnconnected extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      more: false
+      more: false,
+      search: true
     };
   }
 
@@ -229,7 +249,7 @@ class ListingsMapUnconnected extends Component {
       .then(result => {
         // console.log(result.payload);
         if (
-          result.type === "GET_ALL_LISTING_FAILURE" ||
+          result.type === "GET_ALL_LISTINGS_FAILURE" ||
           this.props.listing.error
         ) {
           openSnackbar(
@@ -251,13 +271,26 @@ class ListingsMapUnconnected extends Component {
     this.setState({ ...newState });
   };
 
-  clearForm = () => {
-    console.log("clearForm");
+  clearSearch = () => {
+    console.log("clearSearch");
+    this.props.apiListing.clearSearch();
+  };
+
+  clearFeatures = () => {
+    console.log("clearFeatures");
+    this.props.apiListing.clearFeatures();
   };
 
   setAndClose = () => {
     console.log("setAndClose");
     this.toggleMore();
+  };
+
+  hideSearch = () => {
+    console.log("hideSearch");
+    const newState = { ...this.state };
+    newState.search = false;
+    this.setState({ ...newState });
   };
 
   handleSubmit = () => {
@@ -272,14 +305,21 @@ class ListingsMapUnconnected extends Component {
       max_rent: formValues.maxRent
     };
     const filteredListings = filterListings(
-      this.props.listing.allListing,
+      this.props.listing.allListings,
       query
     );
     console.log(filteredListings);
+    this.props.apiListing.updateFilter(filteredListings);
+    if (!filteredListings.length) {
+      openSnackbar(
+        "error",
+        "No listings match your search criteria. Try broadening your search."
+      );
+    }
   };
 
   render() {
-    const markers = this.props.listing.allListing.map(listingData => (
+    const markers = this.props.listing.filteredListings.map(listingData => (
       <MapMarker
         listing={listingData}
         key={listingData.id}
@@ -296,16 +336,19 @@ class ListingsMapUnconnected extends Component {
         className={this.props.classes.mapContainer}
         style={{ height: "100vh", width: "100%" }}
       >
-        <SearchBarForm
-          classes={this.props.classes}
-          toggleMore={this.toggleMore}
-          toggleDrawer={this.toggleMore}
-          listing={this.props.listing}
-          more={this.state.more}
-          setAndClose={this.setAndClose}
-          clearForm={this.clearForm}
-          onSubmit={this.handleSubmit}
-        />
+        {this.state.search && (
+          <SearchBarForm
+            classes={this.props.classes}
+            toggleMore={this.toggleMore}
+            toggleDrawer={this.toggleMore}
+            listing={this.props.listing}
+            more={this.state.more}
+            setAndClose={this.setAndClose}
+            clearSearch={this.clearSearch}
+            onSubmit={this.handleSubmit}
+            hideSearch={this.hideSearch}
+          />
+        )}
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyCzzv8kgYfdr9TIKQVG1Y6iexdL90rWYqg" }}
           defaultCenter={this.props.center}
@@ -333,23 +376,27 @@ ListingsMapUnconnected.propTypes = {
         updated_at: PropTypes.string
       })
     ),
-    allListing: PropTypes.arrayOf(
+    allListings: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string,
-        listing_type: PropTypes.string,
-        listing: PropTypes.string,
-        updated_at: PropTypes.string
+        monthly_rent: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+        property_name: PropTypes.string,
+        property_zip: PropTypes.string,
+        bedrooms: PropTypes.string,
+        features: PropTypes.arrayOf(PropTypes.string)
       })
     ),
     currentListing: PropTypes.shape({
       id: PropTypes.string,
-      listing_type: PropTypes.string,
-      listing: PropTypes.string,
-      updated_at: PropTypes.string
+      monthly_rent: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+      property_name: PropTypes.string,
+      property_zip: PropTypes.string,
+      bedrooms: PropTypes.string,
+      features: PropTypes.arrayOf(PropTypes.string)
     }),
     deleteDialogOpen: PropTypes.bool,
     apiListing: PropTypes.shape({
-      getAllListing: PropTypes.func,
+      getAllListings: PropTypes.func,
       handleDeleteOpen: PropTypes.func,
       deleteListing: PropTypes.func,
       deleteImage: PropTypes.func

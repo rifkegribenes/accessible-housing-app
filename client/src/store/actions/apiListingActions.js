@@ -6,6 +6,9 @@ export const HANDLE_SEARCH = "HANDLE_SEARCH";
 export const HANDLE_DELETE_OPEN = "HANDLE_DELETE_OPEN";
 export const HANDLE_DELETE_CLOSE = "HANDLE_DELETE_CLOSE";
 export const CLEAR_FORM = "CLEAR_FORM";
+export const CLEAR_SEARCH = "CLEAR_SEARCH";
+export const CLEAR_FEATURES = "CLEAR_FEATURES";
+export const UPDATE_FILTER = "UPDATE_FILTER";
 export const GET_LISTING_BY_ID_REQUEST = "GET_LISTING_BY_ID_REQUEST";
 export const GET_LISTING_BY_ID_SUCCESS = "GET_LISTING_BY_ID_SUCCESS";
 export const GET_LISTING_BY_ID_FAILURE = "GET_LISTING_BY_ID_FAILURE";
@@ -52,6 +55,25 @@ export function handleDeleteClose() {
 export function clearForm() {
   return {
     type: CLEAR_FORM
+  };
+}
+
+export function clearSearch() {
+  return {
+    type: CLEAR_SEARCH
+  };
+}
+
+export function clearFeatures() {
+  return {
+    type: CLEAR_FEATURES
+  };
+}
+
+export function updateFilter(filteredList) {
+  return {
+    type: UPDATE_FILTER,
+    payload: filteredList
   };
 }
 
