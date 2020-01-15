@@ -267,9 +267,9 @@ class ListingsMapUnconnected extends Component {
     let features = calcFeatures(formValues);
     const query = {
       features,
-      propertyZip: formValues.searchZip,
+      property_zip: formValues.searchZip,
       bedrooms: formValues.bedrooms,
-      maxRent: formValues.maxRent
+      max_rent: formValues.maxRent
     };
     const filteredListings = filterListings(
       this.props.listing.allListing,

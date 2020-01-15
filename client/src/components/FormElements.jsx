@@ -646,33 +646,54 @@ export const calcFeatures = values => {
 };
 
 export const filterListings = (listings, query) => {
-  const filteredListings = [];
-  listings.map(listing => {
-    Object.keys(query).forEach(key => {
-      console.log(key);
-      if (key === "maxRent") {
-        if (query.maxRent < listing.monthlyRent) {
-          console.log("rent too high for query");
-          return null;
-        }
-      }
-      if (key === "features") {
-        query.features.forEach(feature => {
-          if (!listing.features.includes(feature)) {
-            console.log(`doesn't match ${feature}`);
-            return null;
-          }
-        });
-      }
-      if (query[key] !== listing[key]) {
-        console.log(`doesn't match ${key}`);
-        return null;
-      }
-      filteredListings.push(listing);
+  console.log(listings);
+  console.log(query);
+  let filteredListings = [...listings];
+  if (query.max_rent) {
+    console.log(`max_rent: ${parseFloat(query.max_rent)}`);
+    filteredListings = filteredListings.filter(listing => {
+      console.log(`monthly_rent: ${parseFloat(listing.monthly_rent)}`);
+      return parseFloat(listing.monthly_rent) <= parseFloat(query.max_rent);
     });
-    return null;
-  });
-  console.log(filteredListings);
+  }
+  console.log("filteredListings after maxRent filter", filteredListings);
+  if (!filteredListings.length) {
+    return [];
+  }
+  if (query.bedrooms) {
+    filteredListings = filteredListings.filter(
+      listing => listing.bedrooms === query.bedrooms
+    );
+  }
+  console.log("filteredListings after bedrooms filter", filteredListings);
+  if (!filteredListings.length) {
+    return [];
+  }
+  if (query.property_zip) {
+    filteredListings = filteredListings.filter(
+      listing => listing.property_zip === query.property_zip
+    );
+  }
+  console.log("filteredListings after zip filter", filteredListings);
+  if (!filteredListings.length) {
+    return [];
+  }
+  if (query.features) {
+    const featuresFilterArray = [...filteredListings];
+    filteredListings.forEach(listing => {
+      query.features.forEach((feature, index) => {
+        if (!listing.features.includes(feature)) {
+          console.log(`${listing.property_name} doesn't match ${feature}`);
+          featuresFilterArray.splice(index, 1);
+        }
+      });
+    });
+    filteredListings = [...featuresFilterArray];
+  }
+  console.log("filteredListings after features filter", filteredListings);
+  if (!filteredListings.length) {
+    return [];
+  }
   return filteredListings;
 };
 
