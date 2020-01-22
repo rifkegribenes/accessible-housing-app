@@ -272,7 +272,7 @@ export class AppUnconnected extends Component {
       console.log("no zip provided");
     } else {
       this.props.apiListing.handleSearch({
-        target: { name: "propertyZip", value: this.searchZip.current.value }
+        target: { name: "searchZip", value: this.searchZip.current.value }
       });
       this.props.history.push("/map");
     }

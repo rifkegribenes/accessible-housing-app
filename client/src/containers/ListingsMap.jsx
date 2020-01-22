@@ -29,6 +29,7 @@ const styles = theme => ({
     }
   },
   mapIcon: {
+    color: theme.palette.primary.main,
     "&:hover": {
       color: "red",
       cursor: "pointer"
@@ -87,7 +88,8 @@ const styles = theme => ({
     height: 55,
     [theme.breakpoints.down("sm")]: {
       backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='30px' width='85px'><text x='10' y='20' fill='gray' font-size='20' font-family='source sans pro'>$</text></svg>")`,
-      width: "46%",
+      maxWidth: "46%",
+      // width: "100%",
       marginBottom: `15px !important`,
       marginRight: 0
     }
@@ -243,6 +245,10 @@ class ListingsMapUnconnected extends Component {
   }
 
   componentDidMount() {
+    this.getAllListings();
+  }
+
+  getAllListings = () => {
     const { authToken } = this.props.appState;
     this.props.apiListing
       .getAllListings(authToken)
@@ -255,14 +261,14 @@ class ListingsMapUnconnected extends Component {
           openSnackbar(
             "error",
             this.props.listing.error ||
-              "An error occured while fetching listing"
+              "An error occured while fetching listings"
           );
         }
       })
       .catch(err => {
         openSnackbar("error", err);
       });
-  }
+  };
 
   toggleMore = () => {
     console.log("toggleMore");
@@ -274,6 +280,7 @@ class ListingsMapUnconnected extends Component {
   clearSearch = () => {
     console.log("clearSearch");
     this.props.apiListing.clearSearch();
+    this.getAllListings();
   };
 
   clearFeatures = () => {
