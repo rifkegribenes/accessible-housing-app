@@ -18,6 +18,7 @@ const { db, TABLES } = require("../../app/config/knex");
  *  @param {string}   property_lon        Property longitude
  *  @param {string}   property_county     Property county
  *  @param {string}   property_phone      Property phone
+ *  @param {string}   property_email      Property email
  *  @param {string}   listing_url         Property listing url
  *  @param {boolean}  vacant              Vacant?
  *  @param {date}     available_date      Date available
@@ -38,6 +39,7 @@ const createListing = (
   property_lon,
   property_county,
   property_phone,
+  property_email,
   listing_url,
   vacant,
   available_date,
@@ -69,6 +71,7 @@ const createListing = (
       property_lon,
       property_county,
       property_phone,
+      property_email,
       listing_url,
       vacant,
       available_date,
@@ -101,6 +104,7 @@ const createListing = (
  *  @param {string}   property_lon        Property longitude
  *  @param {string}   property_county     Property county
  *  @param {string}   property_phone      Property phone
+ *  @param {string}   property_email      Property_email
  *  @param {string}   listing_url         Property listing url
  *  @param {boolean}  vacant              Vacant?
  *  @param {date}     available_date      Date available

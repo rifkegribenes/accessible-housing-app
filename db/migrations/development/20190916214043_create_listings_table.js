@@ -15,6 +15,7 @@ exports.up = function(knex) {
           table.string("property_lon").notNullable();
           table.string("property_county").notNullable();
           table.string("property_phone").notNullable();
+          table.string("property_email").notNullable();
           table.string("listing_url").notNullable();
           table.boolean("vacant").notNullable();
           table.date("available_date").notNullable();

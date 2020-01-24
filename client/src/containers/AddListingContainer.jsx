@@ -139,6 +139,7 @@ export class AddListingContainer extends React.Component {
       property_quadrant: formValues.quadrant,
       property_county: formValues.propertyCounty,
       property_phone: formValues.propertyPhone,
+      property_email: formValues.propertyEmail,
       listing_url: formValues.listingUrl,
       vacant: formValues.vacant || false,
       available_date: availableDate,

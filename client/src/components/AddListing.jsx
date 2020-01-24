@@ -162,6 +162,14 @@ export const AddListing = props => {
             component={renderTextField}
           />
           <Field
+            label="Property contact email"
+            name="propertyEmail"
+            id="propertyEmail"
+            type="email"
+            classes={classes}
+            component={renderTextField}
+          />
+          <Field
             label="Link to property listing"
             name="listingUrl"
             id="listingUrl"

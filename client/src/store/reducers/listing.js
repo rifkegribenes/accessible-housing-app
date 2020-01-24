@@ -153,6 +153,7 @@ function Listing(state = INITIAL_STATE, action) {
         quadrant: action.payload.property_quadrant,
         propertyCounty: action.payload.property_county,
         propertyPhone: action.payload.property_phone,
+        propertyEmail: action.payload.property_email,
         listingUrl: action.payload.listing_url,
         vacant: action.payload.vacant,
         mm: availableDate.mm,

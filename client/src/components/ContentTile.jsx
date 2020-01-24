@@ -135,8 +135,16 @@ export const styles = theme => ({
 
 const ContentTile = props => {
   const { classes, listingTile, small } = props;
-  const { primary_image, property_name, bedrooms, monthly_rent } = listingTile;
+  const {
+    primary_image,
+    property_name,
+    bedrooms,
+    monthly_rent,
+    property_email,
+    property_phone
+  } = listingTile;
   const imageStyle = { backgroundImage: `url(${primary_image})` };
+  console.log(listingTile);
 
   return (
     <div data-test="component-listing-tile" className={classes.tile}>
@@ -170,6 +178,22 @@ const ContentTile = props => {
         >
           ${Math.trunc(monthly_rent)}
         </Typography>
+        <div className={classes.cardFooter}>
+          <Typography
+            component="span"
+            className={small ? classes.contentBold : classes.body}
+            data-test="body"
+          >
+            {property_phone}
+          </Typography>
+          <Typography
+            component="span"
+            className={small ? classes.contentBold : classes.body}
+            data-test="body"
+          >
+            {property_email}
+          </Typography>
+        </div>
       </div>
     </div>
   );

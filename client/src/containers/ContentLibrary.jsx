@@ -147,8 +147,8 @@ export class ContentLibraryUnconnected extends React.Component {
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (
       (!prevProps.appState.authToken && this.props.appState.authToken) ||
-      prevProps.listing.allListing.length !==
-        this.props.listing.allListing.length
+      prevProps.listing.allListings.length !==
+        this.props.listing.allListings.length
     ) {
       this.props.apiListing
         .getAllListings(this.props.appState.authToken)
@@ -239,7 +239,7 @@ export class ContentLibraryUnconnected extends React.Component {
             Listings
           </Typography>
           <div className={classes.gridWrapper}>
-            {this.props.listing.allListing.map(tile => {
+            {this.props.listing.allListings.map(tile => {
               return (
                 <div className={classes.card} key={tile.id} data-test="tile">
                   <div className={classes.actionArea}>
