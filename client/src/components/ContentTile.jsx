@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 
 import Typography from "@material-ui/core/Typography";
+import Phone from "@material-ui/icons/Phone";
+import Email from "@material-ui/icons/Email";
 
 export const styles = theme => ({
   root: {
@@ -23,10 +25,14 @@ export const styles = theme => ({
       flex: "1 1 auto"
     }
   },
+  cardListing: {
+    display: "flex",
+    flexDirection: "column"
+  },
   cardListingSmall: {
     display: "flex",
-    justifyContent: "space-between",
-    padding: "5px 10px 10px 10px",
+    flexDirection: "column",
+    padding: "5px 0px 0px 0px",
     border: "1px solid theme.palette.primary.main"
   },
   deleteButton: {
@@ -130,6 +136,75 @@ export const styles = theme => ({
     "&:hover": {
       filter: "contrast(100%)"
     }
+  },
+  cardRow: {
+    display: "flex",
+    width: "100%",
+    justifyContent: "space-between",
+    padding: "5px 10px 10px 10px"
+  },
+  cardFooter: {
+    display: "flex",
+    justifyContent: "space-between",
+    padding: "5px 0px 0px 0px",
+    margin: "0px -10px -5px -10px"
+  },
+  cardFooterSmall: {
+    display: "flex",
+    flexDirection: "column",
+    padding: "5px 0px 0px 0px",
+    margin: "0px -10px -5px -10px"
+  },
+  cardPhone: {
+    border: theme.palette.secondary.main,
+    display: "flex",
+    padding: "10px 20px",
+    color: theme.palette.primary.main,
+    borderTop: `1px solid ${theme.palette.primary.main}`,
+    width: "100%"
+  },
+  cardPhoneSmall: {
+    border: theme.palette.secondary.main,
+    display: "flex",
+    padding: 10,
+    justifyContent: "center",
+    color: theme.palette.primary.main,
+    borderTop: `1px solid ${theme.palette.primary.main}`,
+    width: "100%"
+  },
+  cardEmail: {
+    background: theme.palette.secondary.main,
+    color: "white",
+    display: "flex",
+    justifyContent: "center",
+    padding: 10,
+    minWidth: "40%",
+    borderRadius: "0px 0px 4px 0px"
+  },
+  emailLink: {
+    color: "white",
+    textTransform: "uppercase",
+    letterSpacing: 1,
+    textDecoration: "none",
+    "&:hover": {
+      color: "white"
+    },
+    "&:visited": {
+      color: "white"
+    }
+  },
+  phoneLink: {
+    color: theme.palette.primary.main,
+    textDecoration: "none",
+    "&:hover": {
+      color: theme.palette.primary.main
+    },
+    "&:visited": {
+      color: theme.palette.primary.main
+    }
+  },
+  icon: {
+    marginRight: 15
   }
 });
 
@@ -164,35 +239,52 @@ const ContentTile = props => {
         className={small ? classes.cardListingSmall : classes.cardListing}
         data-test="card-listing"
       >
-        <Typography
-          component="span"
-          className={small ? classes.contentLight : classes.bodyLight}
-          data-test="body"
-        >
-          {bedrooms.toLowerCase() === "studio" ? "Studio" : `${bedrooms} BR`}
-        </Typography>
-        <Typography
-          component="span"
-          className={small ? classes.contentBold : classes.body}
-          data-test="body"
-        >
-          ${Math.trunc(monthly_rent)}
-        </Typography>
-        <div className={classes.cardFooter}>
+        <div className={classes.cardRow}>
           <Typography
             component="span"
-            className={small ? classes.contentBold : classes.body}
+            className={small ? classes.contentLight : classes.bodyLight}
             data-test="body"
           >
-            {property_phone}
+            {bedrooms.toLowerCase() === "studio" ? "Studio" : `${bedrooms} BR`}
           </Typography>
           <Typography
             component="span"
             className={small ? classes.contentBold : classes.body}
             data-test="body"
           >
-            {property_email}
+            ${Math.trunc(monthly_rent)}
           </Typography>
+        </div>
+        <div className={small ? classes.cardFooterSmall : classes.cardFooter}>
+          <div className={small ? classes.cardPhoneSmall : classes.cardPhone}>
+            <Phone className={classes.icon} />
+            <a href={`tel:${property_phone}`} className={classes.phoneLink}>
+              <Typography
+                component="span"
+                className={small ? classes.contentBold : classes.body}
+                data-test="body"
+              >
+                {property_phone}
+              </Typography>
+            </a>
+          </div>
+          <div className={classes.cardEmail}>
+            <Email className={classes.icon} />
+            <a
+              href={`mailto:${property_email}`}
+              className={classes.emailLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Typography
+                component="span"
+                className={small ? classes.contentBold : classes.body}
+                data-test="body"
+              >
+                Email
+              </Typography>
+            </a>
+          </div>
         </div>
       </div>
     </div>
