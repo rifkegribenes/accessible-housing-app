@@ -137,6 +137,7 @@ export const AddListing = props => {
               type="select"
               classes={classes}
               component={renderSelect}
+              formControlName="quadrant"
               options={["", "N", "NE", "NW", "SE", "SW"]}
               onChange={placeholderOnChange}
               labelWidth={100}
@@ -239,6 +240,7 @@ export const AddListing = props => {
               formControlName="currency"
               inputProps={{ style: { paddingLeft: 15 } }}
               inputLabelProps={{ style: { paddingLeft: 15 } }}
+              startAdornment="currency"
             />
             <Field
               label="Deposit"
@@ -252,6 +254,7 @@ export const AddListing = props => {
               formControlName="currency2"
               inputProps={{ style: { paddingLeft: 15 } }}
               inputLabelProps={{ style: { paddingLeft: 15 } }}
+              startAdornment="currency"
             />
           </FormGroup>
           <FormGroup row classes={{ root: classes.formGroup2Col }}>
@@ -283,6 +286,7 @@ export const AddListing = props => {
               formControlName="months"
               inputProps={{ style: { paddingRight: 30 } }}
               inputLabelProps={{ style: { paddingRight: 30 } }}
+              endAdornment="months"
             />
             <Field
               label="Square Ft"
@@ -343,6 +347,7 @@ export const AddListing = props => {
               formControlName="parking"
               inputProps={{ style: { paddingLeft: 20 } }}
               inputLabelProps={{ style: { paddingLeft: 20 } }}
+              startAdornment="currency"
             />
           </FormGroup>
           <FormLabel className={classes.formLabel} component="legend">

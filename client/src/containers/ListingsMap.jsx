@@ -78,16 +78,12 @@ const styles = theme => ({
     }
   },
   maxRent: {
-    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='30px' width='85px'><text x='10' y='20' fill='gray' font-size='20' font-family='source sans pro'>$</text></svg>")`,
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "left center",
     flexGrow: 0,
     maxWidth: 150,
     marginRight: 20,
     textAlign: "right",
     height: 55,
     [theme.breakpoints.down("sm")]: {
-      backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='30px' width='85px'><text x='10' y='20' fill='gray' font-size='20' font-family='source sans pro'>$</text></svg>")`,
       maxWidth: "46%",
       // width: "100%",
       marginBottom: `15px !important`,
@@ -96,6 +92,9 @@ const styles = theme => ({
   },
   marginRight: {
     marginRight: 20
+  },
+  iconGray: {
+    color: "rgba(0,0,0,.60)"
   },
   currency: {
     backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='30px' width='85px'><text x='10' y='20' fill='gray' font-size='20' font-family='source sans pro'>$</text></svg>")`,

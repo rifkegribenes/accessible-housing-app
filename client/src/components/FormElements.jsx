@@ -37,6 +37,9 @@ import ViewColumn from "@material-ui/icons/ViewColumn";
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 
+import InputAdornment from "@material-ui/core/InputAdornment";
+import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
+
 export const tableIcons = {
   // Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
   // Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
@@ -348,27 +351,24 @@ export const formStyles = theme => ({
     margin: "10px 0"
   },
   currency: {
-    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='30px' width='85px'><text x='10' y='20' fill='gray' font-size='20' font-family='source sans pro'>$</text></svg>")`,
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "left center",
     flexGrow: 0
   },
   parking: {
-    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='30px' width='85px'><text x='10' y='20' fill='gray' font-size='20' font-family='source sans pro'>$</text></svg>")`,
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "left center",
     maxWidth: 188
   },
+  quadrant: {
+    [theme.breakpoints.only("xs")]: {
+      marginRight: `0 !important`,
+      width: "100%"
+    }
+  },
   currency2: {
-    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='30px' width='85px'><text x='10' y='20' fill='gray' font-size='20' font-family='source sans pro'>$</text></svg>")`,
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "left center",
-    marginLeft: 20
+    marginLeft: 20,
+    [theme.breakpoints.only("xs")]: {
+      marginLeft: 0
+    }
   },
   months: {
-    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='30px' width='85px'><text x='40' y='9' fill='gray' font-size='16' font-family='source sans pro'>mos</text></svg>")`,
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "right center",
     marginRight: 15,
     minWidth: 188
   },
@@ -697,6 +697,18 @@ export const filterListings = (listings, query) => {
   return filteredListings;
 };
 
+const currencyAdornment = classes => (
+  <InputAdornment position="start">
+    <AttachMoneyIcon className={classes.iconGray} />
+  </InputAdornment>
+);
+
+const monthsAdornment = classes => (
+  <InputAdornment position="end">
+    <span className={classes.iconGray}>months</span>
+  </InputAdornment>
+);
+
 // custom MUI friendly TEXT input with translated label
 export const renderTextField = ({
   input,
@@ -714,6 +726,8 @@ export const renderTextField = ({
   formControlName,
   inputProps,
   inputLabelProps,
+  startAdornment,
+  endAdornment,
   ...custom
 }) => {
   return (
@@ -735,6 +749,12 @@ export const renderTextField = ({
       {...custom}
       data-test="component-text-field"
       inputProps={{ id: id, min: min, step: step, ...inputProps }}
+      InputProps={{
+        startAdornment:
+          startAdornment === "currency" ? currencyAdornment(classes) : null,
+        endAdornment:
+          endAdornment === "months" ? monthsAdornment(classes) : null
+      }}
       InputLabelProps={inputLabelProps}
       onBlur={event => {
         input.onBlur();

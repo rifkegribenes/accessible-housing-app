@@ -78,8 +78,11 @@ export function SearchBar(props) {
           classes={classes}
           component={renderTextField}
           formControlName="maxRent"
-          inputProps={{ style: { paddingLeft: 15, textAlign: "right" } }}
+          inputProps={{
+            style: { paddingLeft: 15, textAlign: "right" }
+          }}
           inputLabelProps={{ style: { paddingLeft: 15 } }}
+          startAdornment="currency"
         />
         <Button
           type="button"
