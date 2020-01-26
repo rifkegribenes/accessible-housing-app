@@ -357,6 +357,7 @@ export const formStyles = theme => ({
     maxWidth: 188
   },
   quadrant: {
+    width: "100%",
     [theme.breakpoints.only("xs")]: {
       marginRight: `0 !important`,
       width: "100%"

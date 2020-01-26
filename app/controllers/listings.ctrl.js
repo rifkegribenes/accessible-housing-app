@@ -267,7 +267,7 @@ const deleteListing = (req, res, next) => {
         });
       }
     })
-    .catch(err => res.status(404).json({ message: err.message }));
+    .catch(err => res.status(500).json({ message: err.message }));
 };
 
 /** Get all listings
@@ -277,7 +277,7 @@ const getListings = (req, res, next) => {
   return listings
     .getListings()
     .then(listings => res.status(200).json(listings))
-    .catch(err => res.status(404).json({ message: err.message }));
+    .catch(err => res.status(500).json({ message: err.message }));
 };
 
 /** Get one listing
@@ -297,7 +297,27 @@ const getListingById = (req, res, next) => {
         res.status(200).json(listing);
       }
     })
-    .catch(err => res.status(404).json({ message: err.message }));
+    .catch(err => res.status(500).json({ message: err.message }));
+};
+
+/** Get user listings
+ *  @param    {String}   userId   user Id.
+ *  @returns  {Array|Object}   Array of listing objects OR error message
+ */
+const getUserListings = (req, res, next) => {
+  return listings
+    .getUserListings(req.params.userId)
+    .then(listings => {
+      if (!listings || listings.message) {
+        console.log(listings.message);
+        return res
+          .status(404)
+          .json({ message: listings.message || "No Listings Found" });
+      } else {
+        res.status(200).json(listings);
+      }
+    })
+    .catch(err => res.status(500).json({ message: err.message }));
 };
 
 /* ================================ EXPORT ================================= */
@@ -307,5 +327,6 @@ module.exports = {
   updateListing,
   deleteListing,
   getListingById,
+  getUserListings,
   getListings
 };

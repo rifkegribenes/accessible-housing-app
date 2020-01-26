@@ -93,6 +93,9 @@ export const styles = theme => ({
     display: "flex",
     flexWrap: "wrap"
   },
+  cardAction: {
+    textDecoration: "none"
+  },
   cardImage: {
     backgroundPosition: "center center",
     backgroundRepeat: "no-repeat",
@@ -216,25 +219,33 @@ const ContentTile = props => {
     bedrooms,
     monthly_rent,
     property_email,
-    property_phone
+    property_phone,
+    listing_url
   } = listingTile;
   const imageStyle = { backgroundImage: `url(${primary_image})` };
   console.log(listingTile);
 
   return (
     <div data-test="component-listing-tile" className={classes.tile}>
-      <Typography
-        component="h2"
-        className={small ? classes.titleSmall : classes.title}
-        data-test="title"
+      <a
+        href={listing_url}
+        rel="noopener noreferrer"
+        target="_blank"
+        className={classes.cardAction}
       >
-        {property_name}
-      </Typography>
-      <div
-        className={small ? classes.cardImageSmall : classes.cardImage}
-        style={imageStyle}
-        data-test="image"
-      />
+        <Typography
+          component="h2"
+          className={small ? classes.titleSmall : classes.title}
+          data-test="title"
+        >
+          {property_name}
+        </Typography>
+        <div
+          className={small ? classes.cardImageSmall : classes.cardImage}
+          style={imageStyle}
+          data-test="image"
+        />
+      </a>
       <div
         className={small ? classes.cardListingSmall : classes.cardListing}
         data-test="card-listing"
@@ -256,9 +267,9 @@ const ContentTile = props => {
           </Typography>
         </div>
         <div className={small ? classes.cardFooterSmall : classes.cardFooter}>
-          <div className={small ? classes.cardPhoneSmall : classes.cardPhone}>
-            <Phone className={classes.icon} />
-            <a href={`tel:${property_phone}`} className={classes.phoneLink}>
+          <a href={`tel:${property_phone}`} className={classes.phoneLink}>
+            <div className={small ? classes.cardPhoneSmall : classes.cardPhone}>
+              <Phone className={classes.icon} />
               <Typography
                 component="span"
                 className={small ? classes.contentBold : classes.body}
@@ -266,16 +277,16 @@ const ContentTile = props => {
               >
                 {property_phone}
               </Typography>
-            </a>
-          </div>
-          <div className={classes.cardEmail}>
-            <Email className={classes.icon} />
-            <a
-              href={`mailto:${property_email}`}
-              className={classes.emailLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            </div>
+          </a>
+          <a
+            href={`mailto:${property_email}`}
+            className={classes.emailLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className={classes.cardEmail}>
+              <Email className={classes.icon} />
               <Typography
                 component="span"
                 className={small ? classes.contentBold : classes.body}
@@ -283,8 +294,8 @@ const ContentTile = props => {
               >
                 Email
               </Typography>
-            </a>
-          </div>
+            </div>
+          </a>
         </div>
       </div>
     </div>

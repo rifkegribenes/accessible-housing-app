@@ -18,6 +18,9 @@ import {
   GET_ALL_LISTINGS_REQUEST,
   GET_ALL_LISTINGS_SUCCESS,
   GET_ALL_LISTINGS_FAILURE,
+  GET_USER_LISTINGS_REQUEST,
+  GET_USER_LISTINGS_SUCCESS,
+  GET_USER_LISTINGS_FAILURE,
   HANDLE_INPUT,
   HANDLE_SEARCH,
   HANDLE_DELETE_OPEN,
@@ -31,6 +34,7 @@ import {
 export const INITIAL_STATE = {
   filteredListings: [],
   allListings: [],
+  userListings: [],
   deleteDialogOpen: false,
   currentListing: {
     listing_type: null,
@@ -127,6 +131,7 @@ function Listing(state = INITIAL_STATE, action) {
     case UPDATE_LISTING_REQUEST:
     case DELETE_LISTING_REQUEST:
     case GET_ALL_LISTINGS_REQUEST:
+    case GET_USER_LISTINGS_REQUEST:
       return update(state, {
         error: { $set: null }
       });
@@ -185,11 +190,18 @@ function Listing(state = INITIAL_STATE, action) {
         error: { $set: null }
       });
 
+    case GET_USER_LISTINGS_SUCCESS:
+      return update(state, {
+        userListings: { $set: action.payload },
+        error: { $set: null }
+      });
+
     case GET_LISTING_BY_ID_FAILURE:
     case ADD_LISTING_FAILURE:
     case UPDATE_LISTING_FAILURE:
     case DELETE_LISTING_FAILURE:
     case GET_ALL_LISTINGS_FAILURE:
+    case GET_USER_LISTINGS_FAILURE:
       if (typeof action.payload.message === "string") {
         error = action.payload.message;
       } else {

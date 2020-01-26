@@ -198,6 +198,18 @@ router.get("/listing/:id", listingCtrl.getListingById);
 //
 router.get("/listing", listingCtrl.getListings);
 
+// GET USEER LISTINGS
+//   Example: GET >> /api/listing/user/80f5ad9a-9c1f-4df0-813b-c7bdc339d7b3
+//   Secured: yes
+//   Expects: null
+//   Returns: Array of listing objects on success.
+//
+router.get(
+  "/listing/user/:userId",
+  authCtrl.requireAuth,
+  listingCtrl.getUserListings
+);
+
 // DELETE LISTING
 //   Example: DELETE >> /api/listing/80f5ad9a-9c1f-4df0-813b-c7bdc339d7b3
 //   Secured: yes

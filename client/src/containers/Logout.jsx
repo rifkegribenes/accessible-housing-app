@@ -18,7 +18,7 @@ export class Logout extends React.Component {
   render() {
     return (
       <div
-        className={this.props.classes.container}
+        className={this.props.classes.fullContainer}
         data-test="component-logout"
       >
         <Typography

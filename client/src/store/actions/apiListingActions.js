@@ -18,6 +18,9 @@ export const ADD_LISTING_FAILURE = "ADD_LISTING_FAILURE";
 export const GET_ALL_LISTINGS_REQUEST = "GET_ALL_LISTINGS_REQUEST";
 export const GET_ALL_LISTINGS_SUCCESS = "GET_ALL_LISTINGS_SUCCESS";
 export const GET_ALL_LISTINGS_FAILURE = "GET_ALL_LISTINGS_FAILURE";
+export const GET_USER_LISTINGS_REQUEST = "GET_USER_LISTINGS_REQUEST";
+export const GET_USER_LISTINGS_SUCCESS = "GET_USER_LISTINGS_SUCCESS";
+export const GET_USER_LISTINGS_FAILURE = "GET_USER_LISTINGS_FAILURE";
 export const DELETE_LISTING_REQUEST = "DELETE_LISTING_REQUEST";
 export const DELETE_LISTING_SUCCESS = "DELETE_LISTING_SUCCESS";
 export const DELETE_LISTING_FAILURE = "DELETE_LISTING_FAILURE";
@@ -114,26 +117,26 @@ export function getListingById(id) {
 }
 
 /*
- * Function: getAllListings -- get all Listing items in database
- * @param {string} id
+ * Function: getUserListings -- get all listings belonging to the user
+ * @param {string} userId
  * This action dispatches additional actions as it executes:
- *   GET_ALL_LISTINGS_REQUEST:
+ *   GET_USER_LISTINGS_REQUEST:
  *     Initiates a spinner on the home page.
- *   GET_ALL_LISTINGS_SUCCESS:
+ *   GET_USER_LISTINGS_SUCCESS:
  *     If Listing successfully retrieved, hides spinner
- *   GET_ALL_LISTINGS_FAILURE:
+ *   GET_USER_LISTINGS_FAILURE:
  *     If database error, hides spinner, displays error toastr
  */
-export function getAllListings(token) {
+export function getUserListings(token, userId) {
   return {
     [RSAA]: {
-      endpoint: `${BASE_URL}/api/listing`,
+      endpoint: `${BASE_URL}/api/listing/user/${userId}`,
       method: "GET",
       types: [
-        GET_ALL_LISTINGS_REQUEST,
-        GET_ALL_LISTINGS_SUCCESS,
+        GET_USER_LISTINGS_REQUEST,
+        GET_USER_LISTINGS_SUCCESS,
         {
-          type: GET_ALL_LISTINGS_FAILURE,
+          type: GET_USER_LISTINGS_FAILURE,
           payload: (action, state, res) => {
             return res.json().then(data => {
               let message = "Sorry, something went wrong :(";
@@ -154,10 +157,45 @@ export function getAllListings(token) {
 }
 
 /*
+ * Function: getAllListings -- get all Listing items in database
+ * @param {string} id
+ * This action dispatches additional actions as it executes:
+ *   GET_ALL_LISTINGS_REQUEST:
+ *     Initiates a spinner on the home page.
+ *   GET_ALL_LISTINGS_SUCCESS:
+ *     If Listing successfully retrieved, hides spinner
+ *   GET_ALL_LISTINGS_FAILURE:
+ *     If database error, hides spinner, displays error toastr
+ */
+export function getAllListings() {
+  return {
+    [RSAA]: {
+      endpoint: `${BASE_URL}/api/listing`,
+      method: "GET",
+      types: [
+        GET_ALL_LISTINGS_REQUEST,
+        GET_ALL_LISTINGS_SUCCESS,
+        {
+          type: GET_ALL_LISTINGS_FAILURE,
+          payload: (action, state, res) => {
+            return res.json().then(data => {
+              let message = "Sorry, something went wrong :(";
+              if (data && data.message) {
+                message = data.message;
+              }
+              return { message };
+            });
+          }
+        }
+      ]
+    }
+  };
+}
+
+/*
  * Function: addListing -- add new Listing to db
  * @param {object} body (Listing object)
- *  --  @param {string} listingType,
- *  --  @param {string} listing
+ * @param {string} token
  * This action dispatches additional actions as it executes:
  *   ADD_LISTING_REQUEST:
  *     Initiates a spinner on the home page.

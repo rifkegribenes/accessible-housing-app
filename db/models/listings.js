@@ -144,6 +144,17 @@ const getListingById = id => {
     .returning("*");
 };
 
+/** Get all listings for one user
+ *  @param    {String}   userId   The userId of the listings to return.
+ *  @returns  {Object}        Listing object.
+ */
+
+const getUserListings = userId => {
+  return db(TABLES.LISTINGS)
+    .where({ user_id: userId })
+    .returning("*");
+};
+
 /** Delete listing
  *  @param    {String}   id   The id of the listing to delete.
  *  @returns  success message
@@ -166,5 +177,6 @@ module.exports = {
   updateListing,
   getListingById,
   getListings,
+  getUserListings,
   deleteListing
 };

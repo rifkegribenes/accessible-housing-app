@@ -206,10 +206,10 @@ export class AppUnconnected extends Component {
       // don't run this sequence if landing on admin dash for first time
       // after google auth -- there will be nothing in localstorage yet
       if (!(this.props.match && this.props.match.params.id)) {
-        // console.log("not logged in, looking for id & token in localStorage");
+        console.log("not logged in, looking for id & token in localStorage");
         const authToken = window.localStorage.getItem("authToken");
         const userId = window.localStorage.getItem("userId");
-        // console.log(`authToken: ${!!authToken}, userId: ${userId}`);
+        console.log(`authToken: ${!!authToken}, userId: ${userId}`);
         if (
           authToken &&
           authToken !== "undefined" &&
@@ -221,9 +221,9 @@ export class AppUnconnected extends Component {
           this.props.apiProfile
             .validateToken(authToken, userId)
             .then(result => {
-              // console.log(result.type);
+              console.log(result.type);
               if (result.type === "VALIDATE_TOKEN_FAILURE") {
-                // console.log("VALIDATE_TOKEN_FAILURE: clearing localStorage");
+                console.log("VALIDATE_TOKEN_FAILURE: clearing localStorage");
                 return window.localStorage.clear();
               }
               if (
@@ -233,14 +233,15 @@ export class AppUnconnected extends Component {
                 userId &&
                 userId !== "undefined"
               ) {
-                // console.log(
-                //   `validate token success: ${!!authToken}, ${userId}`
-                // );
+                console.log(
+                  `validate token success: ${!!authToken}, ${userId}`
+                );
                 this.props.apiProfile
                   .getProfile(authToken, userId)
                   .then(result => {
-                    // console.log(result.type);
+                    console.log(result.type);
                     if (result.type === "GET_PROFILE_SUCCESS") {
+                      console.log("setting loggedIn here");
                       this.props.actions.setLoggedIn(userId, authToken);
                       // check for redirect url in local storage
                       const redirect = window.localStorage.getItem("redirect");
@@ -251,8 +252,8 @@ export class AppUnconnected extends Component {
                         window.localStorage.removeItem("redirect");
                       }
                     } else {
-                      // console.log("not logged in", authToken, userId);
-                      // console.log(result.type);
+                      console.log("not logged in", authToken, userId);
+                      console.log(result.type);
                     }
                   });
               }

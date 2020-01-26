@@ -219,13 +219,15 @@ export class NavBar extends React.Component {
     const { anchorEl } = this.state;
     const { loggedIn } = this.props.appState;
     // console.log(`loggedIn: ${loggedIn}`);
-    const adminLinks = ["new", "map"];
+    const links = ["new", "map"];
+    const adminLinks = ["new", "map", "logout"];
     const adminLinksLabels = {
       new: "Add a Listing",
       listings: "Browse Listings",
       map: "Search Listings",
       logout: "Logout"
     };
+    const menuLinks = loggedIn ? adminLinks : links;
     const ListItemLink = props => {
       const { primary, handleClose, link } = props;
       return (
@@ -251,7 +253,7 @@ export class NavBar extends React.Component {
     };
     const mobileLinks = (
       <div data-test="mobile-links">
-        {adminLinks.map((link, index) => {
+        {menuLinks.map((link, index) => {
           return (
             <ListItemLink
               key={index}
@@ -264,17 +266,6 @@ export class NavBar extends React.Component {
         })}
       </div>
     );
-    // const adminMenuLinks = (
-    //   <div data-test="admin-menu-links">
-    //     {adminLinks.map((link, index) => {
-    //       return (
-    //         <Button key={index} className={classes.menuLink} href={`/${link}`}>
-    //           {adminLinksLabels[link]}
-    //         </Button>
-    //       );
-    //     })}
-    //   </div>
-    // );
 
     return (
       <div className={classes.root} data-test="component-navbar">

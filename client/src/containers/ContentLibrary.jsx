@@ -101,66 +101,54 @@ const styles = theme => ({
 export class ContentLibraryUnconnected extends React.Component {
   componentDidMount() {
     const { authToken, userId } = this.props.appState;
-    switch (this.props.type) {
-      case "user":
-        this.props.apiListing
-          .getUserListings(authToken, userId)
-          .then(result => {
-            console.log(result.payload);
-            if (
-              result.type === "GET_USER_LISTINGS_FAILURE" ||
-              this.props.listing.error
-            ) {
-              openSnackbar(
-                "error",
-                this.props.listing.error ||
-                  "An error occured while fetching listing"
-              );
-            }
-          })
-          .catch(err => {
-            openSnackbar("error", err);
-          });
-        break;
-      default:
-        this.props.apiListing
-          .getAllListings(authToken)
-          .then(result => {
-            console.log(result.payload);
-            if (
-              result.type === "GET_ALL_LISTING_FAILURE" ||
-              this.props.listing.error
-            ) {
-              openSnackbar(
-                "error",
-                this.props.listing.error ||
-                  "An error occured while fetching listing"
-              );
-            }
-          })
-          .catch(err => {
-            openSnackbar("error", err);
-          });
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if (
-      (!prevProps.appState.authToken && this.props.appState.authToken) ||
-      prevProps.listing.allListings.length !==
-        this.props.listing.allListings.length
-    ) {
+    console.log(`loggedIn: ${this.props.appState.loggedIn}`);
+    console.log(!!authToken, userId);
+    // switch (this.props.type) {
+    //   case "user":
+    if (authToken && userId) {
       this.props.apiListing
-        .getAllListings(this.props.appState.authToken)
+        .getUserListings(authToken, userId)
         .then(result => {
+          console.log(result.payload);
           if (
-            result.type === "GET_ALL_LISTING_FAILURE" ||
+            result.type === "GET_USER_LISTINGS_FAILURE" ||
             this.props.listing.error
           ) {
             openSnackbar(
               "error",
               this.props.listing.error ||
                 "An error occured while fetching listing"
+            );
+          }
+        })
+        .catch(err => {
+          openSnackbar("error", err);
+        });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log(`content library cDU`);
+    const { authToken, userId } = this.props.appState;
+    console.log(!!authToken, userId);
+    if (
+      ((!prevProps.appState.authToken && authToken) ||
+        (!prevProps.appState.userId && userId)) &&
+      authToken &&
+      userId
+    ) {
+      this.props.apiListing
+        .getUserListings(authToken, userId)
+        .then(result => {
+          console.log(result);
+          if (
+            result.type === "GET_USER_LISTINGS_FAILURE" ||
+            this.props.listing.error
+          ) {
+            openSnackbar(
+              "error",
+              this.props.listing.error ||
+                "An error occured while fetching listings"
             );
           }
         })
@@ -236,10 +224,10 @@ export class ContentLibraryUnconnected extends React.Component {
             style={{ paddingTop: 20 }}
             data-test="headline"
           >
-            Listings
+            My Listings
           </Typography>
           <div className={classes.gridWrapper}>
-            {this.props.listing.allListings.map(tile => {
+            {this.props.listing.userListings.map(tile => {
               return (
                 <div className={classes.card} key={tile.id} data-test="tile">
                   <div className={classes.actionArea}>
