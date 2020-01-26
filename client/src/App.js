@@ -154,13 +154,22 @@ const styles = theme => ({
     letterSpacing: "2px",
     color: "white",
     textShadow: "0 0 20px rgba(0, 0, 0, 0.63)",
-    textAlign: "center"
+    textAlign: "center",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "3em",
+      lineHeight: 1.2,
+      marginTop: 40
+    }
   },
   heroSubhead: {
     fontSize: "3.5em",
     color: "white",
     textShadow: "0 0 20px rgba(0, 0, 0, 0.63)",
-    textAlign: "center"
+    textAlign: "center",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "2em",
+      lineHeight: 1.2
+    }
   },
   heroForm: {
     width: "70vw",

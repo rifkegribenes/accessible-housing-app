@@ -3,6 +3,8 @@ import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
+// import useMediaQuery from '@material-ui/core/useMediaQuery';
+import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
 import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -15,13 +17,16 @@ import MenuItem from "@material-ui/core/MenuItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Slide from "@material-ui/core/Slide";
 import Avatar from "@material-ui/core/Avatar";
+import AddIcon from "@material-ui/icons/Add";
 
 import { skip } from "../utils";
 import rci_logo from "../img/RCI_140x100.png";
 import mfnw_logo from "../img/mfnw-red.svg";
 // import { openSnackbar } from "./Notifier";
 
-// const BASE_URL = process.env.REACT_APP_BASE_URL;
+// import theme from "../styles/theme";
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const styles = theme => ({
   root: {
@@ -163,7 +168,7 @@ const styles = theme => ({
     width: "auto",
     marginRight: 10,
     [theme.breakpoints.down("sm")]: {
-      margin: "0 10px"
+      margin: 0
     }
   },
   logoLink: {
@@ -180,6 +185,23 @@ const styles = theme => ({
     [theme.breakpoints.down("sm")]: {
       flexWrap: "wrap",
       paddingTop: 20
+    }
+  },
+  loginLinkNavBar: {
+    marginRight: 120,
+    color: theme.palette.primary.main,
+    textDecoration: "none",
+    [theme.breakpoints.down("sm")]: {
+      position: "absolute",
+      top: 20,
+      right: 80,
+      marginRight: 0
+    },
+    "&:hover": {
+      borderBottom: `1px dotted ${theme.palette.primary.main}`
+    },
+    "&:focus": {
+      borderBottom: `1px dotted ${theme.palette.primary.main}`
     }
   },
   drawer: {
@@ -266,6 +288,7 @@ export class NavBar extends React.Component {
         })}
       </div>
     );
+    const mobile = !isWidthUp("sm");
 
     return (
       <div className={classes.root} data-test="component-navbar">
@@ -335,7 +358,7 @@ export class NavBar extends React.Component {
                 Accessible Housing Hotsheet
               </Link>
             </Typography>
-            {loggedIn && (
+            {loggedIn ? (
               <div className={classes.admin}>
                 <Avatar
                   alt={this.props.profile.profile.name}
@@ -343,6 +366,13 @@ export class NavBar extends React.Component {
                   className={classes.avatar}
                 />
               </div>
+            ) : (
+              <a
+                className={classes.loginLinkNavBar}
+                href={`${BASE_URL}/api/auth/google`}
+              >
+                {mobile ? "Log in" : "Log in / Sign up"}
+              </a>
             )}
             <Button
               className={classes.buttonRight}
@@ -350,7 +380,7 @@ export class NavBar extends React.Component {
               href="/new"
               type="button"
             >
-              Add a Listing
+              {mobile ? <AddIcon /> : "Add a Listing"}
             </Button>
           </Toolbar>
         </AppBar>
@@ -383,4 +413,6 @@ const mapStateToProps = state => ({
   profile: state.profile
 });
 
-export default withRouter(withStyles(styles)(connect(mapStateToProps)(NavBar)));
+export default withWidth()(
+  withRouter(withStyles(styles)(connect(mapStateToProps)(NavBar)))
+);
