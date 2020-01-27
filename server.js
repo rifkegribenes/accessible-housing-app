@@ -27,8 +27,6 @@ passport.deserializeUser(auth.user.deserialize);
 
 const pg = require("pg");
 const configDB = require("./app/config/knex");
-console.log(`server.js > 30`);
-console.log(configDB);
 const client = new pg.Client(configDB.configConnection);
 client.connect(err => {
   if (err) {
@@ -59,7 +57,7 @@ app.use("/api", apiRoutes);
 app.use("/", staticRoutes);
 
 // launch ======================================================================
-var port = 3001;
+var port = process.env.PORT || 3001;
 if (!module.parent) {
   app.listen(port, function() {
     console.log("Node.js listening on port " + port + "...");
