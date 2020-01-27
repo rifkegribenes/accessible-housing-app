@@ -3,7 +3,9 @@
 */
 
 const knex = require("knex");
-const environment = process.env.NODE_ENV || "development";
+const environment = process.env.NODE_CONFIG_ENV || "development";
+console.log(`################## ENVIRONMENT ###############`);
+console.log(environment);
 const config = require("../../knexfile");
 exports.configConnection = config[environment].connection;
 

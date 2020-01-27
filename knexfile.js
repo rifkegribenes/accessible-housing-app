@@ -32,6 +32,16 @@ module.exports = {
       directory: "./db/seeds/testing"
     }
   },
+  staging: {
+    client: "pg",
+    connection: process.env.STG_DATABASE_ENDPOINT,
+    migrations: {
+      directory: "./db/migrations/production"
+    },
+    seeds: {
+      directory: "./db/seeds/production"
+    }
+  },
   production: {
     client: "pg",
     connection: {
