@@ -47,7 +47,10 @@ const apiRoutes = require("./app/routes/apiRoutes");
 const staticRoutes = require("./app/routes/staticRoutes");
 
 // set static path
-if (process.env.NODE_ENV === "production") {
+if (
+  process.env.NODE_ENV === "production" ||
+  process.env.NODE_ENV === "staging"
+) {
   app.use(express.static(path.join(__dirname, "/client/build/")));
 }
 
