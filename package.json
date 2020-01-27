@@ -90,5 +90,8 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "engines": {
+    "node": "10.15.3"
   }
 }
