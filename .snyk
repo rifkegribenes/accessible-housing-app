@@ -1,0 +1,145 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.5
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  SNYK-JS-KINDOF-537849:
+    - knex > liftoff > findup-sync > micromatch > extglob > to-regex > define-property > is-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.281Z'
+    - knex > liftoff > findup-sync > micromatch > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.281Z'
+    - knex > liftoff > findup-sync > micromatch > define-property > is-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.282Z'
+    - knex > liftoff > findup-sync > micromatch > nanomatch > define-property > is-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.282Z'
+    - knex > liftoff > findup-sync > micromatch > extglob > define-property > is-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.282Z'
+    - knex > liftoff > findup-sync > micromatch > to-regex > define-property > is-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.282Z'
+    - knex > liftoff > findup-sync > micromatch > braces > snapdragon-node > define-property > is-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.282Z'
+    - knex > liftoff > object.map > make-iterator > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.282Z'
+    - knex > liftoff > findup-sync > micromatch > nanomatch > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.282Z'
+    - knex > liftoff > findup-sync > micromatch > nanomatch > to-regex > define-property > is-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.282Z'
+    - knex > liftoff > findup-sync > micromatch > snapdragon > base > define-property > is-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.282Z'
+    - knex > liftoff > findup-sync > micromatch > braces > snapdragon > base > define-property > is-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.282Z'
+    - knex > liftoff > findup-sync > micromatch > extglob > snapdragon > base > define-property > is-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.283Z'
+    - knex > liftoff > findup-sync > micromatch > nanomatch > snapdragon > base > define-property > is-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.283Z'
+    - knex > liftoff > findup-sync > micromatch > extglob > expand-brackets > to-regex > define-property > is-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.283Z'
+    - knex > liftoff > findup-sync > micromatch > extglob > expand-brackets > snapdragon > base > define-property > is-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.283Z'
+    - knex > liftoff > findup-sync > micromatch > braces > to-regex > define-property > is-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.283Z'
+    - knex > liftoff > findup-sync > micromatch > define-property > is-descriptor > is-accessor-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.283Z'
+    - knex > liftoff > findup-sync > micromatch > define-property > is-descriptor > is-data-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.283Z'
+    - knex > liftoff > findup-sync > micromatch > extglob > define-property > is-descriptor > is-data-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.283Z'
+    - knex > liftoff > findup-sync > micromatch > to-regex > define-property > is-descriptor > is-data-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.283Z'
+    - knex > liftoff > findup-sync > micromatch > nanomatch > define-property > is-descriptor > is-accessor-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.283Z'
+    - knex > liftoff > findup-sync > micromatch > to-regex > define-property > is-descriptor > is-accessor-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.283Z'
+    - knex > liftoff > findup-sync > micromatch > nanomatch > define-property > is-descriptor > is-data-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.283Z'
+    - knex > liftoff > findup-sync > micromatch > extglob > define-property > is-descriptor > is-accessor-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.283Z'
+    - knex > liftoff > findup-sync > micromatch > snapdragon > base > define-property > is-descriptor > is-data-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.283Z'
+    - knex > liftoff > findup-sync > micromatch > braces > snapdragon-node > define-property > is-descriptor > is-data-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.283Z'
+    - knex > liftoff > findup-sync > micromatch > braces > to-regex > define-property > is-descriptor > is-accessor-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.283Z'
+    - knex > liftoff > findup-sync > micromatch > braces > to-regex > define-property > is-descriptor > is-data-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.283Z'
+    - knex > liftoff > findup-sync > micromatch > braces > snapdragon-node > define-property > is-descriptor > is-accessor-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.284Z'
+    - knex > liftoff > findup-sync > micromatch > extglob > to-regex > define-property > is-descriptor > is-data-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.284Z'
+    - knex > liftoff > findup-sync > micromatch > snapdragon > base > define-property > is-descriptor > is-accessor-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.284Z'
+    - knex > liftoff > findup-sync > micromatch > nanomatch > to-regex > define-property > is-descriptor > is-accessor-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.284Z'
+    - knex > liftoff > findup-sync > micromatch > extglob > to-regex > define-property > is-descriptor > is-accessor-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.284Z'
+    - knex > liftoff > findup-sync > micromatch > nanomatch > to-regex > define-property > is-descriptor > is-data-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.284Z'
+    - knex > liftoff > findup-sync > micromatch > extglob > expand-brackets > to-regex > define-property > is-descriptor > is-accessor-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.284Z'
+    - knex > liftoff > findup-sync > micromatch > extglob > snapdragon > base > define-property > is-descriptor > is-accessor-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.284Z'
+    - knex > liftoff > findup-sync > micromatch > braces > snapdragon > base > define-property > is-descriptor > is-data-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.284Z'
+    - knex > liftoff > findup-sync > micromatch > nanomatch > snapdragon > base > define-property > is-descriptor > is-accessor-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.284Z'
+    - knex > liftoff > findup-sync > micromatch > extglob > snapdragon > base > define-property > is-descriptor > is-data-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.284Z'
+    - knex > liftoff > findup-sync > micromatch > nanomatch > snapdragon > base > define-property > is-descriptor > is-data-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.284Z'
+    - knex > liftoff > findup-sync > micromatch > braces > snapdragon > base > define-property > is-descriptor > is-accessor-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.284Z'
+    - knex > liftoff > findup-sync > micromatch > extglob > expand-brackets > to-regex > define-property > is-descriptor > is-data-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.284Z'
+    - knex > liftoff > findup-sync > micromatch > extglob > expand-brackets > snapdragon > base > define-property > is-descriptor > is-accessor-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.284Z'
+    - knex > liftoff > findup-sync > micromatch > extglob > expand-brackets > snapdragon > base > define-property > is-descriptor > is-data-descriptor > kind-of:
+        reason: None given
+        expires: '2020-02-26T06:17:23.284Z'
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-TREEKILL-536781:
+    - concurrently > tree-kill:
+        patched: '2020-01-27T06:14:55.475Z'
