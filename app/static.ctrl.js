@@ -13,8 +13,9 @@ const CLIENT_URL =
 /* ============================ ROUTE HANDLERS ============================= */
 
 const serveClient = (req, res) => {
-  console.log("static.ctrl.js > serveClient");
-  res.status(200).sendFile(path.join(__dirname, "client/build/index.html"));
+  console.log("static.ctrl.js > 16");
+  console.log("root route, serving client");
+  res.status(200).sendFile(path.join(__dirname, "../client/build/index.html"));
 };
 
 // REDIRECT HASH
