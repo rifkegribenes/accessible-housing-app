@@ -48,12 +48,14 @@ const staticRoutes = require("./app/routes/staticRoutes");
 
 // set static path
 if (process.env.NODE_ENV === "production") {
+  console.log("server.js > 51");
   app.use(express.static(path.join(__dirname, "/client/build/")));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "/client/build/", "index.html"));
-  });
 }
+
+app.get("/", (req, res) => {
+  console.log("root route, serving client");
+  res.status(200).sendFile(path.join(__dirname, "../client/build/index.html"));
+});
 
 /* ================================ ROUTES ================================= */
 
