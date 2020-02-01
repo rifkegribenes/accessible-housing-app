@@ -218,7 +218,7 @@
         f = a(5),
         b = a(69),
         y = a(10),
-        E = a(512),
+        E = a(508),
         S = a(6),
         x = "LOGOUT",
         v = "SET_LOGGEDIN",
@@ -509,7 +509,7 @@
       }
       var je,
         Te = a(28),
-        Ne = a(509),
+        Ne = a(510),
         Ae = a(486),
         Ie = a(487),
         Re = a(70),
@@ -518,10 +518,10 @@
         Ue = a(209),
         Ge = a.n(Ue),
         Pe = a(245),
-        Fe = a(511),
+        Fe = a(509),
         We = a(485),
         Be = a(435),
-        ze = a(513),
+        ze = a(511),
         Ze = a(211),
         Me = a.n(Ze),
         He = function(e) {
@@ -763,7 +763,7 @@
                               {
                                 className: t.loginLinkNavBar,
                                 href: "".concat(
-                                  "https://accessible-housing-hotsheet.herokuapp.com",
+                                  "http://localhost:3001",
                                   "/api/auth/google"
                                 )
                               },
@@ -1068,7 +1068,7 @@
                           className: this.props.classes.bigButton,
                           variant: "contained",
                           href: "".concat(
-                            "https://accessible-housing-hotsheet.herokuapp.com",
+                            "http://localhost:3001",
                             "/api/auth/google"
                           )
                         },
@@ -1216,7 +1216,7 @@
             )
           );
         }),
-        kt = a(508),
+        kt = a(512),
         Lt = (function(e) {
           function t() {
             var e, a;
@@ -1489,11 +1489,11 @@
         Ut = a.n(_t),
         Gt = a(40),
         Pt = a(29),
-        Ft = a(203),
-        Wt = a(205),
-        Bt = a(204),
+        Ft = a(202),
+        Wt = a(204),
+        Bt = a(205),
         zt = a(191),
-        Zt = a(202),
+        Zt = a(203),
         Mt = a(48),
         Ht = a(199),
         Vt = a(200),
@@ -4762,7 +4762,7 @@
           };
         })(er),
         ar = Object(Ne.a)()(tr),
-        nr = a(510),
+        nr = a(513),
         rr = a(239),
         or = a.n(rr),
         ir = function(e) {
@@ -5257,7 +5257,7 @@
                 value: function() {
                   var e = this;
                   if (
-                    (console.log("NODE_ENV front end: ".concat("staging")),
+                    (console.log("NODE_ENV front end: ".concat("development")),
                     !this.props.appState.loggedIn &&
                       (!this.props.match || !this.props.match.params.id))
                   ) {
@@ -5389,7 +5389,7 @@
                                               e.props.profile.profile.id
                                             )
                                           : "".concat(
-                                              "https://accessible-housing-hotsheet.herokuapp.com",
+                                              "http://localhost:3001",
                                               "/api/auth/google"
                                             ),
                                       buttonText:
@@ -6088,4 +6088,4 @@
   },
   [[283, 1, 2]]
 ]);
-//# sourceMappingURL=main.1bd80fb3.chunk.js.map
+//# sourceMappingURL=main.a7728b87.chunk.js.map
