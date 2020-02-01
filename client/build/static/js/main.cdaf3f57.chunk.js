@@ -644,140 +644,143 @@
                         });
                       })
                     ),
-                    p = !Object(Ne.b)("sm");
-                  return s.a.createElement(
-                    "div",
-                    { className: t.root, "data-test": "component-navbar" },
+                    p = !Object(Ne.b)("sm", this.props.width);
+                  return (
+                    console.log("mobile: ".concat(p)),
                     s.a.createElement(
-                      Ae.a,
-                      { position: "fixed", className: t.appBar },
+                      "div",
+                      { className: t.root, "data-test": "component-navbar" },
                       s.a.createElement(
-                        Ie.a,
-                        { className: t.toolbar },
+                        Ae.a,
+                        { position: "fixed", className: t.appBar },
                         s.a.createElement(
-                          De.a,
-                          {
-                            color: "primary",
-                            variant: "contained",
-                            className: t.skip,
-                            onClick: this.skipToMain,
-                            "data-test": "skiplink-button"
-                          },
-                          "Skip to content \u203a"
-                        ),
-                        s.a.createElement(
-                          s.a.Fragment,
-                          null,
+                          Ie.a,
+                          { className: t.toolbar },
                           s.a.createElement(
-                            _e.a,
+                            De.a,
                             {
-                              className: t.menuButton,
-                              color: "secondary",
-                              "aria-label": "Menu",
-                              "aria-owns": a ? "nav-menu" : null,
-                              "aria-haspopup": "true",
-                              onClick: function(t) {
-                                return e.handleClick(t);
-                              },
-                              "data-test": "menu-button"
+                              color: "primary",
+                              variant: "contained",
+                              className: t.skip,
+                              onClick: this.skipToMain,
+                              "data-test": "skiplink-button"
                             },
-                            s.a.createElement(Ge.a, null),
+                            "Skip to content \u203a"
+                          ),
+                          s.a.createElement(
+                            s.a.Fragment,
+                            null,
                             s.a.createElement(
-                              Re.a,
-                              { className: t.menuLabel },
-                              "Menu"
+                              _e.a,
+                              {
+                                className: t.menuButton,
+                                color: "secondary",
+                                "aria-label": "Menu",
+                                "aria-owns": a ? "nav-menu" : null,
+                                "aria-haspopup": "true",
+                                onClick: function(t) {
+                                  return e.handleClick(t);
+                                },
+                                "data-test": "menu-button"
+                              },
+                              s.a.createElement(Ge.a, null),
+                              s.a.createElement(
+                                Re.a,
+                                { className: t.menuLabel },
+                                "Menu"
+                              )
+                            ),
+                            s.a.createElement(
+                              Pe.a,
+                              {
+                                id: "nav-menu",
+                                anchorEl: a,
+                                open: Boolean(a),
+                                onClose: this.handleClose,
+                                component: "nav",
+                                className: "drawer",
+                                elevation: 0,
+                                anchorOrigin: {
+                                  horizontal: "left",
+                                  vertical: "top"
+                                },
+                                transformOrigin: {
+                                  horizontal: "left",
+                                  vertical: "top"
+                                },
+                                TransitionComponent: Be.a,
+                                TransitionProps: { direction: "right" },
+                                PaperProps: { className: t.drawer },
+                                "data-test": "menu"
+                              },
+                              c
                             )
                           ),
                           s.a.createElement(
-                            Pe.a,
-                            {
-                              id: "nav-menu",
-                              anchorEl: a,
-                              open: Boolean(a),
-                              onClose: this.handleClose,
-                              component: "nav",
-                              className: "drawer",
-                              elevation: 0,
-                              anchorOrigin: {
-                                horizontal: "left",
-                                vertical: "top"
-                              },
-                              transformOrigin: {
-                                horizontal: "left",
-                                vertical: "top"
-                              },
-                              TransitionComponent: Be.a,
-                              TransitionProps: { direction: "right" },
-                              PaperProps: { className: t.drawer },
-                              "data-test": "menu"
-                            },
-                            c
-                          )
-                        ),
-                        s.a.createElement(
-                          l.b,
-                          {
-                            to: "/",
-                            className: t.logoLink,
-                            "data-test": "logo-link"
-                          },
-                          s.a.createElement("img", {
-                            src: Je.a,
-                            alt: "Accessible Housing Hotsheet",
-                            className: t.logo,
-                            "data-test": "logo-image"
-                          }),
-                          s.a.createElement("img", {
-                            src: Qe.a,
-                            alt: "Accessible Housing Hotsheet",
-                            className: t.logo,
-                            "data-test": "logo-image"
-                          })
-                        ),
-                        s.a.createElement(
-                          Re.a,
-                          {
-                            variant: "h6",
-                            color: "inherit",
-                            className: t.title,
-                            "data-test": "title"
-                          },
-                          s.a.createElement(
                             l.b,
-                            { to: "/", className: t.title },
-                            "Accessible Housing Hotsheet"
-                          )
-                        ),
-                        n
-                          ? s.a.createElement(
-                              "div",
-                              { className: t.admin },
-                              s.a.createElement(ze.a, {
-                                alt: this.props.profile.profile.name,
-                                src: this.props.profile.profile.avatarUrl,
-                                className: t.avatar
-                              })
+                            {
+                              to: "/",
+                              className: t.logoLink,
+                              "data-test": "logo-link"
+                            },
+                            s.a.createElement("img", {
+                              src: Je.a,
+                              alt: "Accessible Housing Hotsheet",
+                              className: t.logo,
+                              "data-test": "logo-image"
+                            }),
+                            s.a.createElement("img", {
+                              src: Qe.a,
+                              alt: "Accessible Housing Hotsheet",
+                              className: t.logo,
+                              "data-test": "logo-image"
+                            })
+                          ),
+                          s.a.createElement(
+                            Re.a,
+                            {
+                              variant: "h6",
+                              color: "inherit",
+                              className: t.title,
+                              "data-test": "title"
+                            },
+                            s.a.createElement(
+                              l.b,
+                              { to: "/", className: t.title },
+                              "Accessible Housing Hotsheet"
                             )
-                          : s.a.createElement(
-                              "a",
-                              {
-                                className: t.loginLinkNavBar,
-                                href: "".concat(
-                                  "http://localhost:3001",
-                                  "/api/auth/google"
-                                )
-                              },
-                              p ? "Log in" : "Log in / Sign up"
-                            ),
-                        s.a.createElement(
-                          De.a,
-                          {
-                            className: t.buttonRight,
-                            "data-test": "button-right",
-                            href: "/new",
-                            type: "button"
-                          },
-                          p ? s.a.createElement(Me.a, null) : "Add a Listing"
+                          ),
+                          n
+                            ? s.a.createElement(
+                                "div",
+                                { className: t.admin },
+                                s.a.createElement(ze.a, {
+                                  alt: this.props.profile.profile.name,
+                                  src: this.props.profile.profile.avatarUrl,
+                                  className: t.avatar
+                                })
+                              )
+                            : s.a.createElement(
+                                "a",
+                                {
+                                  className: t.loginLinkNavBar,
+                                  href: "".concat(
+                                    "https://accessible-housing-hotsheet.herokuapp.com",
+                                    "/api/auth/google"
+                                  )
+                                },
+                                p ? "Log in" : "Log in / Sign up"
+                              ),
+                          s.a.createElement(
+                            De.a,
+                            {
+                              className: t.buttonRight,
+                              "data-test": "button-right",
+                              href: "/new",
+                              type: "button"
+                            },
+                            p ? s.a.createElement(Me.a, null) : "Add a Listing"
+                          )
                         )
                       )
                     )
@@ -1068,7 +1071,7 @@
                           className: this.props.classes.bigButton,
                           variant: "contained",
                           href: "".concat(
-                            "http://localhost:3001",
+                            "https://accessible-housing-hotsheet.herokuapp.com",
                             "/api/auth/google"
                           )
                         },
@@ -5257,7 +5260,7 @@
                 value: function() {
                   var e = this;
                   if (
-                    (console.log("NODE_ENV front end: ".concat("development")),
+                    (console.log("NODE_ENV front end: ".concat("staging")),
                     !this.props.appState.loggedIn &&
                       (!this.props.match || !this.props.match.params.id))
                   ) {
@@ -5389,7 +5392,7 @@
                                               e.props.profile.profile.id
                                             )
                                           : "".concat(
-                                              "http://localhost:3001",
+                                              "https://accessible-housing-hotsheet.herokuapp.com",
                                               "/api/auth/google"
                                             ),
                                       buttonText:
@@ -6088,4 +6091,4 @@
   },
   [[283, 1, 2]]
 ]);
-//# sourceMappingURL=main.a7728b87.chunk.js.map
+//# sourceMappingURL=main.cdaf3f57.chunk.js.map
