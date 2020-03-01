@@ -106,7 +106,7 @@ suite("listings.ctrl.js", function() {
     sinon.restore();
   });
 
-  suite("listingCtrl > createListing", function() {
+  suite("listingsCtrl > createListing", function() {
     beforeEach(function() {});
 
     afterEach(() => {
@@ -203,7 +203,7 @@ suite("listings.ctrl.js", function() {
     });
   });
 
-  suite("listingCtrl > updateListing", function() {
+  suite("listingsCtrl > updateListing", function() {
     beforeEach(function() {
       listingBody.property_name = "updatedName";
       return new Promise(resolve => {
@@ -323,74 +323,56 @@ suite("listings.ctrl.js", function() {
     });
   });
 
-  // suite("contCtrl > getContent", function() {
-  //   beforeEach(function() {
-  //     return new Promise(resolve => {
-  //       req = mockReq({
-  //         user: { ...adminBody }
-  //       });
-  //       resolve();
-  //     });
-  //   });
+  suite("listingsCtrl > getListings", function() {
+    beforeEach(function() {
+      return new Promise(resolve => {
+        req = mockReq({
+          user: { ...userBody }
+        });
+        resolve();
+      });
+    });
 
-  //   afterEach(() => {
-  //     sinon.restore();
-  //     res = mockRes();
-  //   });
+    afterEach(() => {
+      sinon.restore();
+      res = mockRes();
+    });
 
-  //   test("gets all content and returns 200", async function() {
-  //     responseStub = [{ ...contentBody }];
-  //     responseStub[0].content = "test";
-  //     try {
-  //       await contCtrl.getContent(req, res);
-  //       assert.calledWith(res.status, 200);
-  //       assert.calledWith(res.json, sinon.match.array);
-  //       let result = res.locals.testData[0];
-  //       // test that reponse matches data submitted
-  //       // for each key that exists in the response
-  //       Object.keys(contentBody).forEach(key => {
-  //         chai.assert.property(result, key);
-  //       });
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   });
+    test("gets all listings and returns 200", async function() {
+      responseStub = [{ ...listingBody }];
+      try {
+        await listingsCtrl.getListings(req, res);
+        assert.calledWith(res.status, 200);
+        assert.calledWith(res.json, sinon.match.array);
+        let result = res.locals.testData[0];
+        // test that reponse matches data submitted
+        // for each key that exists in the response
+        Object.keys(listingBody).forEach(key => {
+          chai.assert.property(result, key);
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    });
 
-  //   test("returns 500 if wrong userType", async function() {
-  //     req = mockReq({
-  //       user: { ...userBody }
-  //     });
-  //     responseStub = {
-  //       message:
-  //         "You do not have permission to do this. Please Consult an administrator."
-  //     };
-  //     try {
-  //       await contCtrl.getContent(req, res, next);
-  //       assert.calledWith(res.status, 500);
-  //       assert.calledWith(res.json, responseStub);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   });
-
-  //   test("returns 500 if server error", async function() {
-  //     req = mockReq({
-  //       user: { ...adminBody }
-  //     });
-  //     errorMsg = "No Content Found";
-  //     contentModelStub = sinon
-  //       .stub(content, "getContent")
-  //       .rejects({ message: errorMsg });
-  //     try {
-  //       await contCtrl.getContent(req, res);
-  //       assert.called(contentModelStub);
-  //       assert.calledWith(res.status, 500);
-  //       assert.calledWith(res.json, { message: errorMsg });
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   });
-  // });
+    test("returns 500 if server error", async function() {
+      req = mockReq({
+        user: { ...userBody }
+      });
+      errorMsg = "No Content Found";
+      listingsModelStub = sinon
+        .stub(listing, "getListings")
+        .rejects({ message: errorMsg });
+      try {
+        await listingsCtrl.getListings(req, res);
+        assert.called(listingsModelStub);
+        assert.calledWith(res.status, 500);
+        assert.calledWith(res.json, { message: errorMsg });
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  });
 
   // suite("contCtrl > getContentById", function() {
   //   beforeEach(function() {

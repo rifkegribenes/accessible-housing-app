@@ -289,7 +289,10 @@ const deleteListing = (req, res, next) => {
 const getListings = (req, res, next) => {
   return listings
     .getListings()
-    .then(listings => res.status(200).json(listings))
+    .then(listings => {
+      res.locals.testData = { ...listings };
+      return res.status(200).json(listings);
+    })
     .catch(err => res.status(500).json({ message: err.message }));
 };
 
