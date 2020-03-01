@@ -374,68 +374,68 @@ suite("listings.ctrl.js", function() {
     });
   });
 
-  // suite("contCtrl > getContentById", function() {
-  //   beforeEach(function() {
-  //     return new Promise(resolve => {
-  //       req = mockReq({
-  //         params: {
-  //           id
-  //         }
-  //       });
-  //       resolve();
-  //     });
-  //   });
+  suite("listingsCtrl > getListingById", function() {
+    beforeEach(function() {
+      return new Promise(resolve => {
+        req = mockReq({
+          params: {
+            id
+          }
+        });
+        resolve();
+      });
+    });
 
-  //   afterEach(() => {
-  //     sinon.restore();
-  //     res = mockRes();
-  //   });
+    afterEach(() => {
+      sinon.restore();
+      res = mockRes();
+    });
 
-  //   test("gets one content by Id and returns 200", async function() {
-  //     try {
-  //       await contCtrl.getContentById(req, res);
-  //       assert.calledWith(res.status, 200);
-  //       let result = res.locals.testData;
-  //       Object.keys(contentBody).forEach(key => {
-  //         chai.assert.property(result, key);
-  //       });
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   });
+    test("gets one listing by Id and returns 200", async function() {
+      try {
+        await listingsCtrl.getListingById(req, res);
+        assert.calledWith(res.status, 200);
+        let result = res.locals.testData;
+        Object.keys(contentBody).forEach(key => {
+          chai.assert.property(result, key);
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    });
 
-  //   test("returns 404 if content not found", async function() {
-  //     errorMsg = "Content not found";
-  //     contentModelsStub = sinon
-  //       .stub(content, "getContentById")
-  //       .resolves({ message: errorMsg });
+    test("returns 404 if listing not found", async function() {
+      errorMsg = "Listing not found";
+      listingModelStub = sinon
+        .stub(listing, "getListingById")
+        .resolves({ message: errorMsg });
 
-  //     try {
-  //       await contCtrl.getContentById(req, res);
-  //       assert.called(contentModelsStub);
-  //       assert.calledWith(res.status, 404);
-  //       assert.calledWith(res.json, { message: errorMsg });
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   });
+      try {
+        await listingsCtrl.getListingById(req, res);
+        assert.called(listingModelStub);
+        assert.calledWith(res.status, 404);
+        assert.calledWith(res.json, { message: errorMsg });
+      } catch (err) {
+        console.log(err);
+      }
+    });
 
-  //   test("returns 500 if server error", async function() {
-  //     errorMsg = "Content not found";
-  //     contentModelsStub = sinon
-  //       .stub(content, "getContentById")
-  //       .rejects({ message: errorMsg });
+    test("returns 500 if server error", async function() {
+      errorMsg = "Listing not found";
+      listingModelStub = sinon
+        .stub(listing, "getListingById")
+        .rejects({ message: errorMsg });
 
-  //     try {
-  //       await contCtrl.getContentById(req, res);
-  //       assert.called(contentModelsStub);
-  //       assert.calledWith(res.status, 500);
-  //       assert.calledWith(res.json, { message: errorMsg });
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   });
-  // });
+      try {
+        await listingsCtrl.getListingById(req, res);
+        assert.called(listingModelStub);
+        assert.calledWith(res.status, 500);
+        assert.calledWith(res.json, { message: errorMsg });
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  });
 
   // suite("contCtrl > getContentByType", function() {
   //   beforeEach(function() {

@@ -310,6 +310,7 @@ const getListingById = (req, res, next) => {
           .status(404)
           .json({ message: listing.message || "Listing not found" });
       } else {
+        res.locals.testData = { ...listing };
         res.status(200).json(listing);
       }
     })
