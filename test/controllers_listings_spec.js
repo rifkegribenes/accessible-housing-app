@@ -106,7 +106,7 @@ suite("listings.ctrl.js", function() {
     sinon.restore();
   });
 
-  suite.only("listingCtrl > createListing", function() {
+  suite("listingCtrl > createListing", function() {
     beforeEach(function() {});
 
     afterEach(() => {
@@ -203,125 +203,125 @@ suite("listings.ctrl.js", function() {
     });
   });
 
-  // suite("contCtrl > updateContent", function() {
-  //   beforeEach(function() {
-  //     contentBody.content_type = "bodyCopy";
-  //     return new Promise(resolve => {
-  //       req = mockReq({
-  //         body: {
-  //           ...contentBody
-  //         },
-  //         user: { ...adminBody },
-  //         params: {
-  //           id
-  //         }
-  //       });
-  //       next = sinon.stub();
-  //       resolve();
-  //     });
-  //   });
+  suite("listingCtrl > updateListing", function() {
+    beforeEach(function() {
+      listingBody.property_name = "updatedName";
+      return new Promise(resolve => {
+        req = mockReq({
+          body: {
+            ...listingBody
+          },
+          user: { ...userBody },
+          headers: { authorization: "test" },
+          params: {
+            id
+          }
+        });
+        next = sinon.stub();
+        resolve();
+      });
+    });
 
-  //   afterEach(() => {
-  //     sinon.restore();
-  //     res = mockRes();
-  //   });
+    afterEach(() => {
+      sinon.restore();
+      res = mockRes();
+    });
 
-  //   test("updates a content record and returns content to client", async function() {
-  //     try {
-  //       await contCtrl.updateContent(req, res, next);
-  //       id = res.locals.testData.id;
-  //       chai.assert(res.locals.testData.id);
-  //       assert.calledWith(res.status, 200);
-  //       chai.assert.property(res.locals.testData, "id");
-  //       chai.assert.property(res.locals.testData, "content_type");
-  //       chai.assert(res.locals.testData.content_type, "bodyCopy");
-  //       chai.assert.property(res.locals.testData, "content");
-  //       chai.assert.property(res.locals.testData, "created_at");
-  //       chai.assert.property(res.locals.testData, "updated_at");
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   });
+    test("updates a listing and returns listing to client", async function() {
+      try {
+        await listingsCtrl.updateListing(req, res, next);
+        id = res.locals.testData.id;
+        chai.assert(res.locals.testData.id);
+        assert.calledWith(res.status, 200);
+        chai.assert.property(res.locals.testData, "id");
+        chai.assert.property(res.locals.testData, "property_name");
+        chai.assert.property(res.locals.testData, "property_street");
+        chai.assert.property(res.locals.testData, "created_at");
+        chai.assert.property(res.locals.testData, "updated_at");
+        chai.assert.equal(res.locals.testData.property_name, "updatedName");
+      } catch (err) {
+        console.log(err);
+      }
+    });
 
-  //   test("returns 422 if req.body missing", async function() {
-  //     req = mockReq({
-  //       body: {},
-  //       user: { ...adminBody },
-  //       params: {
-  //         id
-  //       }
-  //     });
-  //     responseStub = {
-  //       message: "No updates submitted"
-  //     };
-  //     try {
-  //       await contCtrl.updateContent(req, res, next);
-  //       assert.calledWith(res.status, 422);
-  //       assert.calledWith(res.json, responseStub);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   });
+    test("returns 422 if req.body missing", async function() {
+      req = mockReq({
+        body: {},
+        user: { ...userBody },
+        params: {
+          id
+        }
+      });
+      responseStub = {
+        message: "No updates submitted"
+      };
+      try {
+        await listingsCtrl.updateListing(req, res, next);
+        assert.calledWith(res.status, 422);
+        assert.calledWith(res.json, responseStub);
+      } catch (err) {
+        console.log(err);
+      }
+    });
 
-  //   test("returns 422 if req.params.id missing", async function() {
-  //     contentBody.content_type = "bodyCopy";
-  //     req = mockReq({
-  //       body: { ...contentBody },
-  //       user: { ...adminBody }
-  //     });
-  //     responseStub = {
-  //       message: "No Id Provided in URL"
-  //     };
-  //     try {
-  //       await contCtrl.updateContent(req, res, next);
-  //       assert.calledWith(res.status, 422);
-  //       assert.calledWith(res.json, responseStub);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   });
+    test("returns 422 if req.params.id missing", async function() {
+      req = mockReq({
+        body: { ...listingBody },
+        user: { ...userBody }
+      });
+      responseStub = {
+        message: "No Id Provided in URL"
+      };
+      try {
+        await listingsCtrl.updateListing(req, res, next);
+        assert.calledWith(res.status, 422);
+        assert.calledWith(res.json, responseStub);
+      } catch (err) {
+        console.log(err);
+      }
+    });
 
-  //   test("returns 500 if wrong userType", async function() {
-  //     req = mockReq({
-  //       body: { ...contentBody },
-  //       user: { ...userBody }
-  //     });
-  //     responseStub = {
-  //       message:
-  //         "You do not have permission to do this. Please Consult an administrator."
-  //     };
-  //     try {
-  //       await contCtrl.updateContent(req, res, next);
-  //       assert.calledWith(res.status, 500);
-  //       assert.calledWith(res.json, responseStub);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   });
+    test("returns 422 if wrong userType", async function() {
+      req = mockReq({
+        body: { ...listingBody },
+        user: { ...renterBody },
+        params: { id }
+      });
+      responseStub = {
+        message: "Permissions error"
+      };
+      try {
+        await listingsCtrl.updateListing(req, res, next);
+        assert.calledWith(res.status, 422);
+        assert.calledWith(res.json, responseStub);
+      } catch (err) {
+        console.log(err);
+      }
+    });
 
-  //   test("returns 500 if server error", async function() {
-  //     req = mockReq({
-  //       body: { ...contentBody },
-  //       params: {
-  //         id
-  //       },
-  //       user: { ...adminBody }
-  //     });
-  //     errorMsg = "An error occurred while trying to update this content";
-  //     contentModelsStub = sinon
-  //       .stub(content, "updateContent")
-  //       .rejects({ message: errorMsg });
+    test("returns 500 if server error", async function() {
+      req = mockReq({
+        body: { ...listingBody },
+        params: {
+          id
+        },
+        user: { ...userBody }
+      });
+      errorMsg = "An error occurred while trying to update this listing";
+      listingModelsStub = sinon
+        .stub(listing, "updateListing")
+        .rejects({ message: errorMsg });
 
-  //     try {
-  //       await contCtrl.updateContent(req, res);
-  //       assert.called(contentModelsStub);
-  //       assert.calledWith(res.status, 500);
-  //       assert.calledWith(res.json, { message: errorMsg });
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   });
-  // });
+      try {
+        await listingsCtrl.updateListing(req, res);
+        assert.called(listingModelsStub);
+        assert.calledWith(res.status, 500);
+        assert.calledWith(res.json, { message: errorMsg });
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  });
 
   // suite("contCtrl > getContent", function() {
   //   beforeEach(function() {

@@ -40,7 +40,7 @@ const geocoder = NodeGeocoder(options);
  *  @returns  {Object}                   New listing object OR error message.
  */
 const createListing = async (req, res, next) => {
-  console.log(`listings.ctrl.js > 32`, req.body, req.headers.authorization);
+  // console.log(`listings.ctrl.js > 32`, req.body, req.headers.authorization);
   const {
     property_name,
     property_street,
@@ -109,8 +109,8 @@ const createListing = async (req, res, next) => {
     )
     .then(result => {
       const { latitude, longitude } = result[0];
-      console.log(`listings.ctrl.js > 108`);
-      console.log({ property_lat: latitude, property_lon: longitude });
+      // console.log(`listings.ctrl.js > 108`);
+      // console.log({ property_lat: latitude, property_lon: longitude });
       property_lat = latitude;
       property_lon = longitude;
       if (!property_lat) {
@@ -194,11 +194,20 @@ const createListing = async (req, res, next) => {
 
 const updateListing = async (req, res, next) => {
   const updates = { ...req.body };
-  // console.log(`listings.ctrl.js > 163`);
+  console.log(`listings.ctrl.js > 197: updateListing`);
   // console.log(updates);
   const { id } = req.params;
   if (!updates || !Object.keys(updates).length) {
-    return res.status(404).json({ message: "No updates submitted" });
+    console.log(`listings.ctrl.js > 201: No updates submitted`);
+    return res.status(422).json({ message: "No updates submitted" });
+  }
+  if (!id) {
+    console.log(`listings.ctrl.js > 205: No Id Provided in URL`);
+    return res.status(422).json({ message: "No Id Provided in URL" });
+  }
+  if (req.user.user_type !== "manager") {
+    console.log(`listings.ctrl.js > 209: wrong user type`);
+    return res.status(422).json({ message: "Permissions error" });
   }
 
   if (
@@ -214,8 +223,8 @@ const updateListing = async (req, res, next) => {
       )
       .then(result => {
         const { latitude, longitude } = result[0];
-        console.log(`listings.ctrl.js > 192`);
-        console.log({ property_lat: latitude, property_lon: longitude });
+        // console.log(`listings.ctrl.js > 192`);
+        // console.log({ property_lat: latitude, property_lon: longitude });
         property_lat = latitude;
         property_lon = longitude;
         if (!property_lat) {
@@ -233,10 +242,7 @@ const updateListing = async (req, res, next) => {
 
     updates.property_lat = property_lat;
     updates.property_lon = property_lon;
-    console.log(`listings.ctrl.js > 193: updates`);
-    console.log(updates);
   }
-
   return listings
     .updateListing(id, updates)
     .then(listing => {
@@ -247,10 +253,15 @@ const updateListing = async (req, res, next) => {
             "An error occured while trying to update this listing"
         });
       } else {
+        res.locals.listingId = listing[0].id;
+        res.locals.testData = { ...listing[0] };
         return res.status(200).json(listing);
       }
     })
-    .catch(err => res.status(500).json({ message: err.message }));
+    .catch(err => {
+      console.log(`listings.ctrl.js > 262: ${err.message}`);
+      return res.status(500).json({ message: err.message });
+    });
 };
 
 /** Delete listing
