@@ -396,7 +396,7 @@ suite("listings.ctrl.js", function() {
         await listingsCtrl.getListingById(req, res);
         assert.calledWith(res.status, 200);
         let result = res.locals.testData;
-        Object.keys(contentBody).forEach(key => {
+        Object.keys(listingBody).forEach(key => {
           chai.assert.property(result, key);
         });
       } catch (err) {
@@ -437,72 +437,72 @@ suite("listings.ctrl.js", function() {
     });
   });
 
-  // suite("contCtrl > getContentByType", function() {
-  //   beforeEach(function() {
-  //     return new Promise(resolve => {
-  //       req = mockReq({
-  //         params: {
-  //           content_type: contentBody.content_type
-  //         },
-  //         user: { ...adminBody }
-  //       });
-  //       resolve();
-  //     });
-  //   });
+  suite("listingsCtrl > getUserListings", function() {
+    beforeEach(function() {
+      return new Promise(resolve => {
+        req = mockReq({
+          params: {
+            userId
+          },
+          user: { ...userBody }
+        });
+        resolve();
+      });
+    });
 
-  //   afterEach(() => {
-  //     sinon.restore();
-  //     res = mockRes();
-  //   });
+    afterEach(() => {
+      sinon.restore();
+      res = mockRes();
+    });
 
-  //   test("gets one content by type and returns 200", async function() {
-  //     contentModelsStub = sinon
-  //       .stub(content, "getContentByType")
-  //       .resolves([{ ...contentBody }]);
-  //     try {
-  //       await contCtrl.getContentByType(req, res);
-  //       assert.calledWith(res.status, 200);
-  //       let result = res.locals.testData;
-  //       Object.keys(contentBody).forEach(key => {
-  //         chai.assert.property(result[0], key);
-  //       });
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   });
+    test("gets all listings by user and returns 200", async function() {
+      listingModelsStub = sinon
+        .stub(listing, "getUserListings")
+        .resolves([{ ...listingBody }]);
+      try {
+        await listingsCtrl.getUserListings(req, res);
+        assert.calledWith(res.status, 200);
+        let result = res.locals.testData;
+        Object.keys(listingBody).forEach(key => {
+          chai.assert.property(result[0], key);
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    });
 
-  //   test("returns 404 if content not found", async function() {
-  //     errorMsg = "Content not found";
-  //     contentModelsStub = sinon
-  //       .stub(content, "getContentByType")
-  //       .resolves({ message: errorMsg });
+    test("returns 404 if listings not found", async function() {
+      errorMsg = "No Listings Found";
+      listingModelsStub = sinon
+        .stub(listing, "getUserListings")
+        .resolves({ message: errorMsg });
 
-  //     try {
-  //       await contCtrl.getContentByType(req, res);
-  //       assert.called(contentModelsStub);
-  //       assert.calledWith(res.status, 404);
-  //       assert.calledWith(res.json, { message: errorMsg });
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   });
+      try {
+        await listingsCtrl.getUserListings(req, res);
+        assert.called(listingModelsStub);
+        assert.calledWith(res.status, 404);
+        assert.calledWith(res.json, { message: errorMsg });
+      } catch (err) {
+        console.log(err);
+      }
+    });
 
-  //   test("returns 500 if server error", async function() {
-  //     errorMsg = "Content not found";
-  //     contentModelsStub = sinon
-  //       .stub(content, "getContentByType")
-  //       .rejects({ message: errorMsg });
+    test("returns 500 if server error", async function() {
+      errorMsg = "No Listings Found";
+      listingModelsStub = sinon
+        .stub(listing, "getUserListings")
+        .rejects({ message: errorMsg });
 
-  //     try {
-  //       await contCtrl.getContentByType(req, res);
-  //       assert.called(contentModelsStub);
-  //       assert.calledWith(res.status, 500);
-  //       assert.calledWith(res.json, { message: errorMsg });
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   });
-  // });
+      try {
+        await listingsCtrl.getUserListings(req, res);
+        assert.called(listingModelsStub);
+        assert.calledWith(res.status, 500);
+        assert.calledWith(res.json, { message: errorMsg });
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  });
 
   // suite("contCtrl > deleteContent", function() {
   //   beforeEach(function() {

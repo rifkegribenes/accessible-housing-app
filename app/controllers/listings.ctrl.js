@@ -331,6 +331,7 @@ const getUserListings = (req, res, next) => {
           .status(404)
           .json({ message: listings.message || "No Listings Found" });
       } else {
+        res.locals.testData = [...listings];
         res.status(200).json(listings);
       }
     })
