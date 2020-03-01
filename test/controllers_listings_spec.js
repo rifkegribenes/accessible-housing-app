@@ -79,6 +79,27 @@ suite("listings.ctrl.js", function() {
   });
   beforeEach(() => {
     authenticateMock = sinon.stub(passport, "authenticate").returns(() => {});
+    // create a user first, return id, and use it as the userId in the listing body
+    return new Promise(resolve => {
+      req = mockReq({
+        body: { ...userBody },
+        headers: { authorization: "test" }
+      });
+      usersCtrl
+        .createUser(req, res, next)
+        .then(newUser => {
+          userId = res.locals.userId;
+          listingBody.user_id = userId;
+          req = mockReq({
+            body: { ...listingBody },
+            user: { ...newUser },
+            headers: { authorization: "test" }
+          });
+          next = sinon.stub();
+          resolve();
+        })
+        .catch(err => console.log(err));
+    });
   });
   afterEach(function() {
     authenticateMock.restore();
@@ -86,11 +107,55 @@ suite("listings.ctrl.js", function() {
   });
 
   suite.only("listingCtrl > createListing", function() {
-    beforeEach(function() {
-      // create a user first, return id, and use it as the userId in the listing body
+    beforeEach(function() {});
+
+    afterEach(() => {
+      sinon.restore();
+      res = mockRes();
+      responseStub = {};
+    });
+
+    test("creates a single Listing and returns it", async function() {
+      responseStub = {};
+      try {
+        result = await listingsCtrl.createListing(req, res, next);
+        id = res.locals.listingId;
+        chai.assert(res.locals.listingId);
+        assert.calledWith(res.status, 200);
+        chai.assert.property(res.locals.testData, "id");
+        chai.assert.property(res.locals.testData, "property_name");
+        chai.assert.property(res.locals.testData, "property_street");
+        chai.assert.property(res.locals.testData, "created_at");
+        chai.assert.property(res.locals.testData, "updated_at");
+      } catch (err) {
+        console.log(err);
+      }
+    });
+
+    test("returns 422 if required field missing", async function() {
+      req = mockReq({
+        body: { ...listingBody },
+        user: { ...userBody },
+        headers: { authorization: "test" }
+      });
+      delete req.body.property_name;
+      responseStub = {
+        reason: "ValidationError",
+        message: "Missing required field property_name"
+      };
+      try {
+        await listingsCtrl.createListing(req, res, next);
+        assert.calledWith(res.status, 422);
+        assert.calledWith(res.json, responseStub);
+      } catch (err) {
+        console.log(err);
+      }
+    });
+
+    test("returns 500 if wrong userType", async function() {
       return new Promise(resolve => {
         req = mockReq({
-          body: { ...userBody },
+          body: { ...renterBody },
           headers: { authorization: "test" }
         });
         usersCtrl
@@ -108,37 +173,6 @@ suite("listings.ctrl.js", function() {
           })
           .catch(err => console.log(err));
       });
-    });
-
-    afterEach(() => {
-      sinon.restore();
-      res = mockRes();
-      responseStub = {};
-    });
-
-    test.only("creates a single Listing and returns it", async function() {
-      responseStub = {};
-      try {
-        result = await listingsCtrl.createListing(req, res, next);
-        id = res.locals.listingId;
-        chai.assert(res.locals.listingId);
-        assert.calledWith(res.status, 200);
-        chai.assert.property(res.locals.testData, "id");
-        chai.assert.property(res.locals.testData, "property_name");
-        chai.assert.property(res.locals.testData, "property_street");
-        chai.assert.property(res.locals.testData, "created_at");
-        chai.assert.property(res.locals.testData, "updated_at");
-      } catch (err) {
-        console.log(err);
-      }
-    });
-
-    test("returns 500 if wrong userType", async function() {
-      req = mockReq({
-        body: { ...listingBody },
-        user: { ...renterBody },
-        headers: { authorization: "test" }
-      });
       responseStub = {
         message:
           "You do not have permission to do this. Please consult an administrator."
@@ -146,26 +180,6 @@ suite("listings.ctrl.js", function() {
       try {
         await listingsCtrl.createListing(req, res, next);
         assert.calledWith(res.status, 500);
-        assert.calledWith(res.json, responseStub);
-      } catch (err) {
-        console.log(err);
-      }
-    });
-
-    test("returns 422 if required field missing", async function() {
-      req = mockReq({
-        body: { ...listingBody },
-        user: { ...userBody },
-        headers: { authorization: "test" }
-      });
-      delete req.body.property_name;
-      responseStub = {
-        // reason: "ValidationError",
-        message: "Missing required field."
-      };
-      try {
-        await listingsCtrl.createListing(req, res, next);
-        assert.calledWith(res.status, 422);
         assert.calledWith(res.json, responseStub);
       } catch (err) {
         console.log(err);
