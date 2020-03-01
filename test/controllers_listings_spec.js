@@ -504,93 +504,92 @@ suite("listings.ctrl.js", function() {
     });
   });
 
-  // suite("contCtrl > deleteContent", function() {
-  //   beforeEach(function() {
-  //     return new Promise(resolve => {
-  //       req = mockReq({
-  //         params: {
-  //           id
-  //         },
-  //         user: { ...adminBody }
-  //       });
-  //       next = sinon.stub();
-  //       resolve();
-  //     });
-  //   });
+  suite("listingsCtrl > deleteListing", function() {
+    beforeEach(function() {
+      return new Promise(resolve => {
+        req = mockReq({
+          params: {
+            id
+          },
+          user: { ...userBody }
+        });
+        next = sinon.stub();
+        resolve();
+      });
+    });
 
-  //   afterEach(() => {
-  //     sinon.restore();
-  //     res = mockRes();
-  //   });
+    afterEach(() => {
+      sinon.restore();
+      res = mockRes();
+    });
 
-  //   test("returns 500 if wrong userType", async function() {
-  //     req = mockReq({
-  //       params: {
-  //         id
-  //       },
-  //       user: { ...userBody }
-  //     });
-  //     responseStub = {
-  //       message:
-  //         "You do not have permission to do this. Please Consult an administrator."
-  //     };
-  //     try {
-  //       await contCtrl.deleteContent(req, res, next);
-  //       assert.called(contentModelsStub);
-  //       assert.calledWith(res.status, 500);
-  //       assert.calledWith(res.json, responseStub);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   });
+    test("returns 422 if wrong userType", async function() {
+      req = mockReq({
+        params: {
+          id
+        },
+        user: { ...renterBody }
+      });
+      responseStub = {
+        message: "Permissions error"
+      };
+      try {
+        await listingsCtrl.deleteListing(req, res, next);
+        assert.called(listingModelsStub);
+        assert.calledWith(res.status, 422);
+        assert.calledWith(res.json, responseStub);
+      } catch (err) {
+        console.log(err);
+      }
+    });
 
-  //   test("deletes a content and returns 200", async function() {
-  //     req = mockReq({
-  //       params: {
-  //         id
-  //       },
-  //       user: { ...adminBody }
-  //     });
-  //     responseStub = { message: "Content deleted successfully" };
-  //     try {
-  //       await contCtrl.deleteContent(req, res, next);
-  //       assert.calledWith(res.status, 200);
-  //       assert.calledWith(res.json, responseStub);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   });
+    test("deletes a listing and returns 200", async function() {
+      req = mockReq({
+        params: {
+          id
+        },
+        user: { ...userBody }
+      });
+      responseStub = { message: "Listing deleted successfully" };
+      try {
+        await listingsCtrl.deleteListing(req, res, next);
+        assert.calledWith(res.status, 200);
+        assert.calledWith(res.json, responseStub);
+      } catch (err) {
+        console.log(err);
+      }
+    });
 
-  //   test("returns 404 if content not found", async function() {
-  //     errorMsg = "An error occurred and the content was not deleted.";
-  //     contentModelsStub = sinon
-  //       .stub(content, "deleteContent")
-  //       .resolves({ message: errorMsg });
+    test("returns 404 if listing not found", async function() {
+      errorMsg = "An error occurred and the listing was not deleted.";
+      listingModelStub = sinon
+        .stub(listing, "deleteListing")
+        .resolves({ message: errorMsg });
 
-  //     try {
-  //       await contCtrl.deleteContent(req, res);
-  //       assert.called(contentModelsStub);
-  //       assert.calledWith(res.status, 404);
-  //       assert.calledWith(res.json, { message: errorMsg });
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   });
+      try {
+        await listingsCtrl.deleteListing(req, res);
+        assert.called(listingModelStub);
+        assert.calledWith(res.status, 404);
+        assert.calledWith(res.json, { message: errorMsg });
+      } catch (err) {
+        console.log(err);
+      }
+    });
 
-  //   test("returns 500 if server error", async function() {
-  //     errorMsg = "An error occurred and the content was not deleted.";
-  //     contentModelsStub = sinon
-  //       .stub(content, "deleteContent")
-  //       .rejects({ message: errorMsg });
+    test("returns 500 if server error", async function() {
+      errorMsg = "An error occurred and the listing was not deleted.";
+      listingModelStub = sinon
+        .stub(listing, "deleteListing")
+        .rejects({ message: errorMsg });
 
-  //     try {
-  //       await contCtrl.deleteContent(req, res);
-  //       assert.called(contentModelsStub);
-  //       assert.calledWith(res.status, 500);
-  //       assert.calledWith(res.json, { message: errorMsg });
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   });
-  // });
+      try {
+        await listingsCtrl.deleteListing(req, res);
+        assert.called(listingModelStub);
+        assert.calledWith(res.status, 500);
+        assert.calledWith(res.json, { message: errorMsg });
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  });
 });

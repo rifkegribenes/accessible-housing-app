@@ -269,6 +269,10 @@ const updateListing = async (req, res, next) => {
  *  @returns  Success or error message.
  */
 const deleteListing = (req, res, next) => {
+  if (req.user.user_type !== "manager") {
+    console.log(`listings.ctrl.js > 273: wrong user type`);
+    return res.status(422).json({ message: "Permissions error" });
+  }
   return listings
     .deleteListing(req.params.id)
     .then(result => {
