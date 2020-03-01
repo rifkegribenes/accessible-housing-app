@@ -164,7 +164,9 @@ const createListing = async (req, res, next) => {
     )
     .then(listings => {
       const listing = listings[0];
-      res.status(200).json(listing);
+      res.locals.listingId = listing.id;
+      res.locals.testData = { ...listing };
+      return res.status(200).json(listing);
     })
     .catch(err => {
       console.log(`listings.ctrl.js > 30: ${err}`);

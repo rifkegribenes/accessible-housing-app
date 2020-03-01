@@ -47,12 +47,13 @@ const createUser = (req, res, next) => {
   } = req.body;
   // add conditional validation by user type here...
   if (name && email && user_type) {
+    console.log(`####################### ${user_type}`);
     return users
       .createUser(
         name,
         email,
-        user_type,
         phone,
+        user_type,
         company_name,
         company_street,
         company_city,
@@ -67,6 +68,7 @@ const createUser = (req, res, next) => {
       )
       .then(users => {
         const user = users[0];
+        res.locals.userId = user.id;
         res.status(200).json(user);
       })
       .catch(err => {
