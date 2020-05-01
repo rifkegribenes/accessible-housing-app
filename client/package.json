@@ -21,7 +21,8 @@
     "redux": "^4.0.4",
     "redux-api-middleware": "^3.0.1",
     "redux-form": "^8.2.6",
-    "shortid": "^2.2.15"
+    "shortid": "^2.2.15",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "eslint-plugin-import": "^2.18.2",
@@ -39,7 +40,9 @@
     "build-task:autoprefixer": "postcss public/css/*.css --use autoprefixer -d public/css",
     "sass:build": "npm-run-all -p build-task:*",
     "sass:watch": "chokidar 'src/styles/scss/' -c 'npm run sass:build'",
-    "dev": "npm-run-all -p sass:*"
+    "dev": "npm-run-all -p sass:*",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -55,5 +58,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "snyk": true
 }
