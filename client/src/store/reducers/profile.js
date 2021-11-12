@@ -43,10 +43,14 @@ function profile(state = INITIAL_STATE, action) {
     case UPDATE_PROFILE_SUCCESS:
       console.log(action.payload.name);
       const name =
-        action.payload.name && action.payload.name.includes(":")
+        action.payload.name &&
+        action.payload.name.includes(":") &&
+        !!action.payload.name.familyName
           ? `${JSON.parse(action.payload.name).givenName} ${
               JSON.parse(action.payload.name).familyName
             }`
+          : action.payload.name && action.payload.name.includes(":")
+          ? JSON.parse(action.payload.name).givenName
           : action.payload.name && typeof action.payload.name === "object"
           ? `${action.payload.name.givenName} ${action.payload.name.familyName}`
           : "";
