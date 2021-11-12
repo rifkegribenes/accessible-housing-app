@@ -765,7 +765,7 @@
                                 {
                                   className: t.loginLinkNavBar,
                                   href: "".concat(
-                                    "https://accessible-housing-hotsheet.herokuapp.com",
+                                    "http://localhost:3001",
                                     "/api/auth/google"
                                   )
                                 },
@@ -1071,7 +1071,7 @@
                           className: this.props.classes.bigButton,
                           variant: "contained",
                           href: "".concat(
-                            "https://accessible-housing-hotsheet.herokuapp.com",
+                            "http://localhost:3001",
                             "/api/auth/google"
                           )
                         },
@@ -5260,7 +5260,7 @@
                 value: function() {
                   var e = this;
                   if (
-                    (console.log("NODE_ENV front end: ".concat("staging")),
+                    (console.log("NODE_ENV front end: ".concat("development")),
                     !this.props.appState.loggedIn &&
                       (!this.props.match || !this.props.match.params.id))
                   ) {
@@ -5392,7 +5392,7 @@
                                               e.props.profile.profile.id
                                             )
                                           : "".concat(
-                                              "https://accessible-housing-hotsheet.herokuapp.com",
+                                              "http://localhost:3001",
                                               "/api/auth/google"
                                             ),
                                       buttonText:
@@ -6091,4 +6091,4 @@
   },
   [[283, 1, 2]]
 ]);
-//# sourceMappingURL=main.cdaf3f57.chunk.js.map
+//# sourceMappingURL=main.e568c8f2.chunk.js.map
