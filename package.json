@@ -12,7 +12,7 @@
     "prod-server": "LOG_LEVEL=debug supervisord --inspect server.js",
     "sass": "cd client && yarn dev",
     "dev": "concurrently --kill-others-on-fail \"yarn dev-server\" \"yarn dev-client\" \"yarn sass\"",
-    "snyk-protect": "snyk protect",
+    "snyk-protect": "snyk-protect",
     "prepare": "yarn run snyk-protect"
   },
   "repository": {
@@ -55,11 +55,11 @@
     "pg": "^7.12.1",
     "request": "^2.88.0",
     "serve-favicon": "^2.5.0",
-    "snyk": "^1.280.1",
     "travis": "^0.1.1",
     "util": "^0.12.1",
     "uuid": "^3.3.2",
-    "yargs": "^14.0.0"
+    "yargs": "^14.0.0",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "aws-sdk-mock": "^4.4.0",
