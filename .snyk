@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.13.5
+version: v1.22.1
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
   SNYK-JS-KINDOF-537849:
@@ -143,3 +143,24 @@ patch:
   SNYK-JS-TREEKILL-536781:
     - concurrently > tree-kill:
         patched: '2020-01-27T06:14:55.475Z'
+  SNYK-JS-LODASH-567746:
+    - knex-migrate > lodash:
+        patched: '2021-11-12T23:52:17.301Z'
+    - snyk > lodash:
+        patched: '2021-11-12T23:52:17.301Z'
+    - snyk > @snyk/dep-graph > lodash:
+        patched: '2021-11-12T23:52:17.301Z'
+    - snyk > inquirer > lodash:
+        patched: '2021-11-12T23:52:17.301Z'
+    - snyk > snyk-nodejs-lockfile-parser > lodash:
+        patched: '2021-11-12T23:52:17.301Z'
+    - snyk > snyk-nuget-plugin > lodash:
+        patched: '2021-11-12T23:52:17.301Z'
+    - snyk > @snyk/snyk-cocoapods-plugin > @snyk/dep-graph > lodash:
+        patched: '2021-11-12T23:52:17.301Z'
+    - snyk > snyk-nuget-plugin > dotnet-deps-parser > lodash:
+        patched: '2021-11-12T23:52:17.301Z'
+    - snyk > snyk-php-plugin > @snyk/composer-lockfile-parser > lodash:
+        patched: '2021-11-12T23:52:17.301Z'
+    - snyk > @snyk/snyk-cocoapods-plugin > @snyk/cocoapods-lockfile-parser > @snyk/ruby-semver > lodash:
+        patched: '2021-11-12T23:52:17.301Z'
