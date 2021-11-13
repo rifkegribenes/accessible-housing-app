@@ -20,8 +20,6 @@ import Avatar from "@material-ui/core/Avatar";
 import AddIcon from "@material-ui/icons/Add";
 
 import { skip } from "../utils";
-import rci_logo from "../img/RCI_140x100.png";
-import mfnw_logo from "../img/mfnw-red.svg";
 import cv_logo from "../img/CV-logo-hdr-horiz.png";
 // import { openSnackbar } from "./Notifier";
 
