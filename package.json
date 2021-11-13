@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/rifkegribenes/accessible-housing-app.github.io#readme",
   "dependencies": {
+    "@snyk/protect": "latest",
     "aws-sdk": "^2.467.0",
     "axios": "^0.21.3",
     "body-parser": "^1.19.0",
@@ -42,7 +43,7 @@
     "knex": "^0.95.14",
     "knex-migrate": "^1.7.4",
     "morgan": "^1.9.1",
-    "multer": "^1.4.1",
+    "multer": "^1.4.3",
     "multer-s3": "^2.10.0",
     "node-geocoder": "^3.25.0",
     "node-sass": "^6.0.1",
@@ -58,8 +59,7 @@
     "travis": "^0.1.1",
     "util": "^0.12.1",
     "uuid": "^3.3.2",
-    "yargs": "^17.2.1",
-    "@snyk/protect": "latest"
+    "yargs": "^17.2.1"
   },
   "devDependencies": {
     "aws-sdk-mock": "^4.4.0",
@@ -71,11 +71,11 @@
     "knex-cleaner": "^1.3.0",
     "lint-staged": "^8.1.7",
     "local-ip-url": "^1.0.2",
-    "mocha": "^6.1.4",
+    "mocha": "^9.1.3",
     "moment": "^2.24.0",
     "moxios": "^0.4.0",
-    "nock": "^10.0.6",
-    "nyc": "^14.1.1",
+    "nock": "^13.2.1",
+    "nyc": "^15.1.0",
     "prettier": "^1.17.1",
     "sinon": "^7.3.2",
     "sinon-chai": "^3.3.0",

@@ -10,6 +10,7 @@
     "classnames": "^2.2.6",
     "env-path": "^1.0.7",
     "google-map-react": "^1.1.5",
+    "immer": "^9.0.6",
     "immutability-helper": "^3.0.1",
     "node-sass-chokidar": "^1.5.0",
     "postcss-cli": "^9.0.2",
@@ -27,7 +28,7 @@
   },
   "devDependencies": {
     "eslint-plugin-import": "^2.18.2",
-    "react-scripts": "^3.3.0"
+    "react-scripts": "^4.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
