@@ -12,7 +12,7 @@
     "prod-server": "LOG_LEVEL=debug supervisord --inspect server.js",
     "sass": "cd client && yarn dev",
     "dev": "concurrently --kill-others-on-fail \"yarn dev-server\" \"yarn dev-client\" \"yarn sass\"",
-    "snyk-protect": "snyk protect",
+    "snyk-protect": "snyk-protect",
     "prepare": "yarn run snyk-protect"
   },
   "repository": {
@@ -30,7 +30,7 @@
     "axios": "^0.21.3",
     "body-parser": "^1.19.0",
     "chokidar": "^3.0.2",
-    "concurrently": "^4.1.0",
+    "concurrently": "^6.3.0",
     "cors": "^2.8.5",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
@@ -43,7 +43,7 @@
     "knex-migrate": "^1.7.4",
     "morgan": "^1.9.1",
     "multer": "^1.4.1",
-    "multer-s3": "^2.9.0",
+    "multer-s3": "^2.10.0",
     "node-geocoder": "^3.25.0",
     "node-sass": "^6.0.1",
     "npm-run-all": "^4.1.5",
@@ -55,11 +55,11 @@
     "pg": "^8.7.1",
     "request": "^2.88.0",
     "serve-favicon": "^2.5.0",
-    "snyk": "^1.316.1",
     "travis": "^0.1.1",
     "util": "^0.12.1",
     "uuid": "^3.3.2",
-    "yargs": "^14.0.0"
+    "yargs": "^17.2.1",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "aws-sdk-mock": "^4.4.0",
