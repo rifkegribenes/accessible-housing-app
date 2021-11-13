@@ -6,20 +6,11 @@ const Footer = props => (
     &copy;{new Date().getFullYear()}&nbsp;
     <a
       className={props.classes.fLink}
-      href="http://realchoiceoregon.com/"
+      href="https://cvision.org/"
       target="_blank"
       rel="noopener noreferrer"
     >
-      Real Choice Initiative
-    </a>
-    &nbsp;•&nbsp;
-    <a
-      className={props.classes.footerLink}
-      href="https://www.multifamilynw.org/"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Multi-Family NW
+      Community Vision
     </a>
   </div>
 );

@@ -5,8 +5,9 @@ import green from "@material-ui/core/colors/green";
 export const theme = {
   palette: {
     primary: {
-      main: "#9f2c2c", // brick red
-      light: "#a94400" // medium brick
+      main: "rgb(0, 170, 164)", // turquoise
+      light: "rgb(120, 192, 75)", // lime green
+      contrastText: "white"
     },
     secondary: {
       main: "#c77137", // orange
@@ -21,7 +22,7 @@ export const theme = {
       light: green[400] // #66BB6A
     },
     textColor: "#333", // dark gray
-    secondaryTextColor: "#9f2c2c", // brick red
+    secondaryTextColor: "rgb(0, 170, 164)", // turquoise
     bodyBackground: "#fff", // white
     type: "light"
   },

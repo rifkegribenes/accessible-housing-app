@@ -22,6 +22,7 @@ import AddIcon from "@material-ui/icons/Add";
 import { skip } from "../utils";
 import rci_logo from "../img/RCI_140x100.png";
 import mfnw_logo from "../img/mfnw-red.svg";
+import cv_logo from "../img/CV-logo-hdr-horiz.png";
 // import { openSnackbar } from "./Notifier";
 
 // import theme from "../styles/theme";
@@ -337,14 +338,8 @@ export class NavBar extends React.Component {
             </React.Fragment>
             <Link to="/" className={classes.logoLink} data-test="logo-link">
               <img
-                src={rci_logo}
-                alt="Accessible Housing Hotsheet"
-                className={classes.logo}
-                data-test="logo-image"
-              />
-              <img
-                src={mfnw_logo}
-                alt="Accessible Housing Hotsheet"
+                src={cv_logo}
+                alt="Community Vision"
                 className={classes.logo}
                 data-test="logo-image"
               />

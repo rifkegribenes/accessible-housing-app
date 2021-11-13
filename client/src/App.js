@@ -188,7 +188,8 @@ const styles = theme => ({
     textTransform: "none",
     padding: "10px 20px",
     borderRadius: 4,
-    marginLeft: 10
+    marginLeft: 10,
+    color: `white !important`
   },
   bigButton: {
     fontSize: "2em",
