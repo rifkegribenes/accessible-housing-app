@@ -36,7 +36,10 @@ module.exports = {
     client: "pg",
     connection: {
       connectionString: process.env.STG_DATABASE_ENDPOINT,
-      ssl: { rejectUnauthorized: false }
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
     },
     migrations: {
       directory: "./db/migrations/production"
