@@ -11,26 +11,40 @@ exports.up = function(knex) {
           table.string("property_state").notNullable();
           table.string("property_zip").notNullable();
           table.string("property_quadrant").notNullable();
-          table.string("property_lat").notNullable();
-          table.string("property_lon").notNullable();
-          table.string("property_county").notNullable();
-          table.string("property_phone").notNullable();
-          table.string("property_email").notNullable();
-          table.string("listing_url").notNullable();
-          table.boolean("vacant").notNullable();
-          table.date("available_date").notNullable();
-          table.decimal("monthly_rent", 6, 2).notNullable();
-          table.decimal("deposit", 6, 2).notNullable();
-          table.decimal("parking_fee", 6, 2).notNullable();
-          table.string("bedrooms").notNullable();
+          table.string("property_lat");
+          table.string("property_lon");
+          table.string("property_county");
+          table.string("property_phone");
+          table.string("property_email");
+          table.string("listing_url");
+          table.string("application_url");
+          table.date("available_date");
+          table.decimal("studio_l", 6, 2);
+          table.decimal("studio_h", 6, 2);
+          table.decimal("1br_l", 6, 2);
+          table.decimal("1br_h", 6, 2);
+          table.decimal("2br_l", 6, 2);
+          table.decimal("2br_h", 6, 2);
+          table.decimal("3br_l", 6, 2);
+          table.decimal("3br_h", 6, 2);
+          table.decimal("4br_l", 6, 2);
+          table.decimal("4br_h", 6, 2);
+          table.decimal("5br_l", 6, 2);
+          table.decimal("5br_h", 6, 2);
+          table.decimal("deposit", 6, 2);
+          table.decimal("parking_fee", 6, 2);
           table.string("notes");
-          table.decimal("lease_length", 2, 0).notNullable();
+          table.decimal("lease_length", 2, 0);
           table.decimal("square_feet", 4, 0);
-          table.string("primary_image").notNullable();
-          table.string("laundry_type").notNullable();
+          table.decimal("age", 2, 0);
+          table.string("primary_image");
+          table.string("availability");
+          table.string("laundry_type");
           // in-unit, hookup, laundry_facilities
-          table.string("parking_type").notNullable();
+          table.string("parking_type");
           // surface_lot, covered, street, garage
+          table.string("accessibility");
+          table.string("pets");
           table.specificType("features", "text ARRAY");
           // dogs, cats, no_pets, furnished, no_smoking, gated_entry
           // 60_in_circular_space_for_turning, 32_in_wide_doorways,
