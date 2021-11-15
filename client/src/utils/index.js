@@ -76,41 +76,50 @@ export const bedroomsPriceString = (
   br5_l,
   br5_h
 ) => {
+  const rawArray = [
+    studio_l,
+    studio_h,
+    br1_l,
+    br1_h,
+    br2_l,
+    br2_h,
+    br3_l,
+    br3_h,
+    br4_l,
+    br4_h,
+    br5_l,
+    br5_h
+  ];
+  const cA = rawArray.map(price => {
+    let cleanedPrice;
+    if (price == null) {
+      cleanedPrice = null;
+    } else if (price < 1) {
+      cleanedPrice = "Subsidized";
+    } else {
+      cleanedPrice = `$${parseInt(price)}`;
+    }
+    return cleanedPrice;
+  });
   const studio =
-    studio_l && studio_h
-      ? `Studio: $${parseInt(studio_l)}–$${parseInt(studio_h)}`
-      : parseInt(studio_l)
-      ? `Studio: $${parseInt(studio_l)}`
+    cA[0] && cA[1]
+      ? `Studio: ${cA[0]}–${cA[1]}`
+      : cA[0]
+      ? `Studio: ${cA[0]}`
       : null;
   const br1 =
-    br1_l && br1_h
-      ? `1BR: $${parseInt(br1_l)}–$${parseInt(br1_h)}`
-      : parseInt(br1_l)
-      ? `1BR: $${parseInt(br1_l)}`
-      : null;
+    cA[2] && cA[3] ? `1BR: ${cA[2]}–${cA[3]}` : cA[2] ? `1BR: ${cA[2]}` : null;
   const br2 =
-    br2_l && br2_h
-      ? `2BR: $${parseInt(br2_l)}–$${parseInt(br1_h)}`
-      : parseInt(br2_l)
-      ? `2BR: $${parseInt(br2_l)}`
-      : null;
+    cA[4] && cA[5] ? `2BR: ${cA[4]}–${cA[5]}` : cA[4] ? `2BR: ${cA[4]}` : null;
   const br3 =
-    br3_l && br3_h
-      ? `3BR: $${parseInt(br3_l)}–$${parseInt(br3_h)}`
-      : parseInt(br3_l)
-      ? `3BR: $${parseInt(br3_l)}`
-      : null;
+    cA[5] && cA[6] ? `3BR: ${cA[5]}–${cA[6]}` : cA[5] ? `3BR: ${cA[5]}` : null;
   const br4 =
-    br4_l && br4_h
-      ? `4BR: $${parseInt(br4_l)}–$${parseInt(br4_h)}`
-      : parseInt(br4_l)
-      ? `4BR: $${parseInt(br4_l)}`
-      : null;
+    cA[7] && cA[8] ? `4BR: ${cA[7]}–${cA[8]}` : cA[7] ? `4BR: ${cA[7]}` : null;
   const br5 =
-    br5_l && br5_h
-      ? `5BR: $${parseInt(br5_l)}–$${parseInt(br5_h)}`
-      : parseInt(br5_l)
-      ? `5BR: $${parseInt(br5_l)}`
+    cA[9] && cA[10]
+      ? `5BR: ${cA[9]}–${cA[10]}`
+      : cA[9]
+      ? `5BR: ${cA[9]}`
       : null;
   const brsArray = [studio, br1, br2, br3, br4, br5];
   const brsString = brsArray.filter(n => n).join("\r\n");
