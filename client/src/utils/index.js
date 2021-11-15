@@ -62,4 +62,65 @@ export const scrollToFirstError = errors => {
   }
 };
 
+export const bedroomsPriceString = (
+  studio_l,
+  studio_h,
+  br1_l,
+  br1_h,
+  br2_l,
+  br2_h,
+  br3_l,
+  br3_h,
+  br4_l,
+  br4_h,
+  br5_l,
+  br5_h
+) => {
+  const studio =
+    studio_l && studio_h
+      ? `Studio: $${studio_l}–$${studio_h}`
+      : studio_l
+      ? `Studio: $${studio_l}`
+      : null;
+  const br1 =
+    br1_l && br1_h
+      ? `1BR: $${br1_l}–$${br1_h}`
+      : br1_l
+      ? `1BR: $${br1_l}`
+      : null;
+  const br2 =
+    br2_l && br2_h
+      ? `2BR: $${br2_l}–$${br1_h}`
+      : br2_l
+      ? `2BR: $${br2_l}`
+      : null;
+  const br3 =
+    br3_l && br3_h
+      ? `3BR: $${br3_l}–$${br3_h}`
+      : br3_l
+      ? `3BR: $${br3_l}`
+      : null;
+  const br4 =
+    br4_l && br4_h
+      ? `4BR: $${br4_l}–$${br4_h}`
+      : br4_l
+      ? `4BR: $${br4_l}`
+      : null;
+  const br5 =
+    br5_l && br5_h
+      ? `5BR: $${br5_l}–$${br5_h}`
+      : br5_l
+      ? `5BR: $${br5_l}`
+      : null;
+  const brsArray = [studio, br1, br2, br3, br4, br5];
+  const brsString = brsArray.map(i => {
+    if (!!i) {
+      return `i \n`;
+    }
+    return null;
+  });
+  console.log(brsString);
+  return brsString;
+};
+
 export const onSubmitFailFn = errors => scrollToFirstError(errors);

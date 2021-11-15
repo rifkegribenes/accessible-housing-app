@@ -21,10 +21,10 @@
           return w;
         }),
         n.d(a, "logout", function() {
-          return k;
+          return _;
         }),
         n.d(a, "setLoggedIn", function() {
-          return _;
+          return k;
         }),
         n.d(a, "setSpinner", function() {
           return L;
@@ -41,10 +41,10 @@
           return I;
         }),
         n.d(o, "VALIDATE_TOKEN_FAILURE", function() {
-          return A;
+          return R;
         }),
         n.d(o, "GET_PROFILE_REQUEST", function() {
-          return R;
+          return A;
         }),
         n.d(o, "GET_PROFILE_SUCCESS", function() {
           return D;
@@ -62,10 +62,10 @@
           return F;
         }),
         n.d(o, "validateToken", function() {
-          return W;
+          return B;
         }),
         n.d(o, "getProfile", function() {
-          return B;
+          return W;
         }),
         n.d(o, "updateProfile", function() {
           return z;
@@ -97,10 +97,10 @@
           return Y;
         }),
         n.d(r, "GET_LISTING_BY_ID_REQUEST", function() {
-          return K;
+          return J;
         }),
         n.d(r, "GET_LISTING_BY_ID_SUCCESS", function() {
-          return J;
+          return K;
         }),
         n.d(r, "GET_LISTING_BY_ID_FAILURE", function() {
           return X;
@@ -181,10 +181,10 @@
           return we;
         }),
         n.d(r, "getAllListings", function() {
-          return ke;
+          return _e;
         }),
         n.d(r, "addListing", function() {
-          return _e;
+          return ke;
         }),
         n.d(r, "updateListing", function() {
           return Le;
@@ -211,10 +211,10 @@
         S = "SET_LOGGEDIN",
         v = "SET_SPINNER",
         w = "SET_REDIRECT_URL";
-      function k() {
+      function _() {
         return { type: O };
       }
-      function _(e, t) {
+      function k(e, t) {
         return { type: S, payload: { userId: e, token: t } };
       }
       function L() {
@@ -227,14 +227,14 @@
         T = "",
         N = "VALIDATE_TOKEN_REQUEST",
         I = "VALIDATE_TOKEN_SUCCESS",
-        A = "VALIDATE_TOKEN_FAILURE",
-        R = "GET_PROFILE_REQUEST",
+        R = "VALIDATE_TOKEN_FAILURE",
+        A = "GET_PROFILE_REQUEST",
         D = "GET_PROFILE_SUCCESS",
         U = "GET_PROFILE_FAILURE",
         P = "UPDATE_PROFILE_REQUEST",
         G = "UPDATE_PROFILE_SUCCESS",
         F = "UPDATE_PROFILE_FAILURE";
-      function W(e, t) {
+      function B(e, t) {
         return Object(b.a)({}, E.RSAA, {
           endpoint: "".concat("", "/api/user/").concat(t),
           method: "GET",
@@ -242,7 +242,7 @@
             N,
             { type: I, payload: { token: e } },
             {
-              type: A,
+              type: R,
               payload: function(e, t, n) {
                 return n.json().then(function(e) {
                   var t = "Sorry, something went wrong :(";
@@ -254,12 +254,12 @@
           headers: { Authorization: "Bearer ".concat(e) }
         });
       }
-      function B(e, t) {
+      function W(e, t) {
         return Object(b.a)({}, E.RSAA, {
           endpoint: "".concat("", "/api/user/").concat(t),
           method: "GET",
           types: [
-            R,
+            A,
             D,
             {
               type: U,
@@ -309,8 +309,8 @@
         q = "CLEAR_SEARCH",
         Q = "CLEAR_FEATURES",
         Y = "UPDATE_FILTER",
-        K = "GET_LISTING_BY_ID_REQUEST",
-        J = "GET_LISTING_BY_ID_SUCCESS",
+        J = "GET_LISTING_BY_ID_REQUEST",
+        K = "GET_LISTING_BY_ID_SUCCESS",
         X = "GET_LISTING_BY_ID_FAILURE",
         ee = "ADD_LISTING_REQUEST",
         te = "ADD_LISTING_SUCCESS",
@@ -362,8 +362,8 @@
           endpoint: "".concat(T, "/api/listing/").concat(e),
           method: "GET",
           types: [
-            K,
             J,
+            K,
             {
               type: X,
               payload: function(e, t, n) {
@@ -399,7 +399,7 @@
           }
         });
       }
-      function ke() {
+      function _e() {
         return Object(b.a)({}, E.RSAA, {
           endpoint: "".concat(T, "/api/listing"),
           method: "GET",
@@ -418,7 +418,7 @@
           ]
         });
       }
-      function _e(e, t) {
+      function ke(e, t) {
         return (
           console.log(t),
           console.log(JSON.stringify(t)),
@@ -499,15 +499,15 @@
         Te = n(40),
         Ne = n(515),
         Ie = n(490),
-        Ae = n(491),
-        Re = n(72),
+        Re = n(491),
+        Ae = n(72),
         De = n(488),
         Ue = n(429),
         Pe = n(202),
         Ge = n.n(Pe),
         Fe = n(236),
-        We = n(514),
-        Be = n(489),
+        Be = n(514),
+        We = n(489),
         ze = n(430),
         $e = n(516),
         Me = n(204),
@@ -536,9 +536,46 @@
             } else console.log("can't find element for ".concat(t));
           }
         },
-        qe = n.p + "static/media/CV-logo-hdr-horiz.7cd78e55.png",
-        Qe = n(2),
-        Ye = (function(e) {
+        qe = function(e, t, n, a, o, r, i, s, c, l, p, d) {
+          var u = [
+            e && t
+              ? "Studio: $".concat(e, "\u2013$").concat(t)
+              : e
+              ? "Studio: $".concat(e)
+              : null,
+            n && a
+              ? "1BR: $".concat(n, "\u2013$").concat(a)
+              : n
+              ? "1BR: $".concat(n)
+              : null,
+            o && r
+              ? "2BR: $".concat(o, "\u2013$").concat(a)
+              : o
+              ? "2BR: $".concat(o)
+              : null,
+            i && s
+              ? "3BR: $".concat(i, "\u2013$").concat(s)
+              : i
+              ? "3BR: $".concat(i)
+              : null,
+            c && l
+              ? "4BR: $".concat(c, "\u2013$").concat(l)
+              : c
+              ? "4BR: $".concat(c)
+              : null,
+            p && d
+              ? "5BR: $".concat(p, "\u2013$").concat(d)
+              : p
+              ? "5BR: $".concat(p)
+              : null
+          ].map(function(e) {
+            return e ? "i \n" : null;
+          });
+          return console.log(u), u;
+        },
+        Qe = n.p + "static/media/CV-logo-hdr-horiz.7cd78e55.png",
+        Ye = n(2),
+        Je = (function(e) {
           Object(h.a)(n, e);
           var t = Object(g.a)(n);
           function n(e) {
@@ -598,7 +635,7 @@
                       var a = n.primary,
                         o = n.handleClose,
                         r = n.link;
-                      return Object(Qe.jsx)(We.a, {
+                      return Object(Ye.jsx)(Be.a, {
                         button: !0,
                         component: De.a,
                         href: "/".concat(r),
@@ -607,16 +644,16 @@
                         },
                         className: t.menuItem,
                         "data-test": "menu-item-mobile",
-                        children: Object(Qe.jsx)(Be.a, {
+                        children: Object(Ye.jsx)(We.a, {
                           primary: a,
                           primaryTypographyProps: { color: "secondary" }
                         })
                       });
                     },
-                    c = Object(Qe.jsx)("div", {
+                    c = Object(Ye.jsx)("div", {
                       "data-test": "mobile-links",
                       children: r.map(function(t, n) {
-                        return Object(Qe.jsx)(
+                        return Object(Ye.jsx)(
                           i,
                           {
                             primary: o[t],
@@ -631,16 +668,16 @@
                     p = !Object(Ne.b)("sm", this.props.width);
                   return (
                     console.log("mobile: ".concat(p)),
-                    Object(Qe.jsx)("div", {
+                    Object(Ye.jsx)("div", {
                       className: t.root,
                       "data-test": "component-navbar",
-                      children: Object(Qe.jsx)(Ie.a, {
+                      children: Object(Ye.jsx)(Ie.a, {
                         position: "fixed",
                         className: t.appBar,
-                        children: Object(Qe.jsxs)(Ae.a, {
+                        children: Object(Ye.jsxs)(Re.a, {
                           className: t.toolbar,
                           children: [
-                            Object(Qe.jsx)(De.a, {
+                            Object(Ye.jsx)(De.a, {
                               color: "primary",
                               variant: "contained",
                               className: t.skip,
@@ -648,9 +685,9 @@
                               "data-test": "skiplink-button",
                               children: "Skip to content \u203a"
                             }),
-                            Object(Qe.jsxs)(s.a.Fragment, {
+                            Object(Ye.jsxs)(s.a.Fragment, {
                               children: [
-                                Object(Qe.jsxs)(Ue.a, {
+                                Object(Ye.jsxs)(Ue.a, {
                                   className: t.menuButton,
                                   color: "secondary",
                                   "aria-label": "Menu",
@@ -661,14 +698,14 @@
                                   },
                                   "data-test": "menu-button",
                                   children: [
-                                    Object(Qe.jsx)(Ge.a, {}),
-                                    Object(Qe.jsx)(Re.a, {
+                                    Object(Ye.jsx)(Ge.a, {}),
+                                    Object(Ye.jsx)(Ae.a, {
                                       className: t.menuLabel,
                                       children: "Menu"
                                     })
                                   ]
                                 }),
-                                Object(Qe.jsx)(Fe.a, {
+                                Object(Ye.jsx)(Fe.a, {
                                   id: "nav-menu",
                                   anchorEl: n,
                                   open: Boolean(n),
@@ -692,49 +729,52 @@
                                 })
                               ]
                             }),
-                            Object(Qe.jsx)(l.b, {
+                            Object(Ye.jsx)(l.b, {
                               to: "/",
                               className: t.logoLink,
                               "data-test": "logo-link",
-                              children: Object(Qe.jsx)("img", {
-                                src: qe,
+                              children: Object(Ye.jsx)("img", {
+                                src: Qe,
                                 alt: "Community Vision",
                                 className: t.logo,
                                 "data-test": "logo-image"
                               })
                             }),
-                            Object(Qe.jsx)(Re.a, {
+                            Object(Ye.jsx)(Ae.a, {
                               variant: "h6",
                               color: "inherit",
                               className: t.title,
                               "data-test": "title",
-                              children: Object(Qe.jsx)(l.b, {
+                              children: Object(Ye.jsx)(l.b, {
                                 to: "/",
                                 className: t.title,
                                 children: "Accessible Housing Hotsheet"
                               })
                             }),
                             a
-                              ? Object(Qe.jsx)("div", {
+                              ? Object(Ye.jsx)("div", {
                                   className: t.admin,
-                                  children: Object(Qe.jsx)($e.a, {
+                                  children: Object(Ye.jsx)($e.a, {
                                     alt: this.props.profile.profile.name,
                                     src: this.props.profile.profile.avatarUrl,
                                     className: t.avatar
                                   })
                                 })
-                              : Object(Qe.jsx)("a", {
+                              : Object(Ye.jsx)("a", {
                                   className: t.loginLinkNavBar,
-                                  href: "".concat("", "/api/auth/google"),
+                                  href: "".concat(
+                                    "http://localhost:3001",
+                                    "/api/auth/google"
+                                  ),
                                   children: p ? "Log in" : "Log in / Sign up"
                                 }),
-                            Object(Qe.jsx)(De.a, {
+                            Object(Ye.jsx)(De.a, {
                               className: t.buttonRight,
                               "data-test": "button-right",
                               href: "/new",
                               type: "button",
                               children: p
-                                ? Object(Qe.jsx)(He.a, {})
+                                ? Object(Ye.jsx)(He.a, {})
                                 : "Add a Listing"
                             })
                           ]
@@ -912,19 +952,19 @@
             })(
               Object(p.b)(function(e) {
                 return { appState: e.appState, profile: e.profile };
-              })(Ye)
+              })(Je)
             )
           )
         ),
-        Je = function(e) {
-          return Object(Qe.jsxs)("div", {
+        Xe = function(e) {
+          return Object(Ye.jsxs)("div", {
             className: e.classes.footer,
             "data-test": "component-footer",
             children: [
               "\xa9",
               new Date().getFullYear(),
               "\xa0",
-              Object(Qe.jsx)("a", {
+              Object(Ye.jsx)("a", {
                 className: e.classes.fLink,
                 href: "https://cvision.org/",
                 target: "_blank",
@@ -934,33 +974,33 @@
             ]
           });
         },
-        Xe = function(e) {
-          return Object(Qe.jsx)("div", {
+        et = function(e) {
+          return Object(Ye.jsx)("div", {
             className: e.classes.container,
             "data-test": "component-not-found",
             children: "404 error. Sorry, page not found."
           });
         },
-        et = function(e) {
+        tt = function(e) {
           var t = e.classes,
             n = e.searchFunc,
             a = e.searchZip;
-          return Object(Qe.jsxs)("div", {
+          return Object(Ye.jsxs)("div", {
             className: t.home,
             "data-test": "component-home",
             children: [
-              Object(Qe.jsx)("h2", {
+              Object(Ye.jsx)("h2", {
                 className: t.heroHead,
                 children: "Accessible housing starts here"
               }),
-              Object(Qe.jsx)("p", {
+              Object(Ye.jsx)("p", {
                 className: t.heroSubhead,
                 children: "What are you searching for?"
               }),
-              Object(Qe.jsxs)("form", {
+              Object(Ye.jsxs)("form", {
                 className: t.heroForm,
                 children: [
-                  Object(Qe.jsx)("input", {
+                  Object(Ye.jsx)("input", {
                     ref: a,
                     className: t.heroInput,
                     type: "text",
@@ -968,7 +1008,7 @@
                     name: "zip",
                     id: "zip"
                   }),
-                  Object(Qe.jsx)(De.a, {
+                  Object(Ye.jsx)(De.a, {
                     type: "button",
                     color: "primary",
                     className: e.classes.searchButton,
@@ -981,7 +1021,7 @@
             ]
           });
         },
-        tt = (function(e) {
+        nt = (function(e) {
           Object(h.a)(n, e);
           var t = Object(g.a)(n);
           function n() {
@@ -992,17 +1032,20 @@
               {
                 key: "render",
                 value: function() {
-                  return Object(Qe.jsx)("div", {
+                  return Object(Ye.jsx)("div", {
                     className: this.props.classes.fullWidthContainer,
                     "data-test": "component-login",
-                    children: Object(Qe.jsx)("div", {
+                    children: Object(Ye.jsx)("div", {
                       className: this.props.classes.buttonWrap,
-                      children: Object(Qe.jsx)(De.a, {
+                      children: Object(Ye.jsx)(De.a, {
                         type: "button",
                         color: "primary",
                         className: this.props.classes.bigButton,
                         variant: "contained",
-                        href: "".concat("", "/api/auth/google"),
+                        href: "".concat(
+                          "http://localhost:3001",
+                          "/api/auth/google"
+                        ),
                         children: "Log in or Sign Up"
                       })
                     })
@@ -1013,8 +1056,8 @@
             n
           );
         })(s.a.Component),
-        nt = tt,
-        at = (function(e) {
+        at = nt,
+        ot = (function(e) {
           Object(h.a)(n, e);
           var t = Object(g.a)(n);
           function n() {
@@ -1035,10 +1078,10 @@
               {
                 key: "render",
                 value: function() {
-                  return Object(Qe.jsx)("div", {
+                  return Object(Ye.jsx)("div", {
                     className: this.props.classes.fullContainer,
                     "data-test": "component-logout",
-                    children: Object(Qe.jsx)(Re.a, {
+                    children: Object(Ye.jsx)(Ae.a, {
                       variant: "h5",
                       className: this.props.classes.message,
                       "data-test": "message",
@@ -1051,35 +1094,35 @@
             n
           );
         })(s.a.Component),
-        ot = Object(p.b)(null, function(e) {
+        rt = Object(p.b)(null, function(e) {
           return { actions: Object(y.b)(a, e) };
-        })(at),
-        rt = n(71),
-        it = n(149),
-        st = n.n(it),
-        ct = n(121),
-        lt = n.n(ct),
-        pt = n(98),
-        dt = n.n(pt),
-        ut = n(209),
-        mt = n.n(ut),
-        ht = n(494),
-        gt = n(205),
-        bt = n.n(gt),
-        ft = n(206),
-        yt = n.n(ft),
-        jt = n(207),
-        xt = n.n(jt),
-        Ot = n(208),
-        St = n.n(Ot),
-        vt = ["classes", "className", "message", "onClose", "variant"],
-        wt = { success: bt.a, warning: yt.a, error: xt.a, info: St.a },
+        })(ot),
+        it = n(71),
+        st = n(149),
+        ct = n.n(st),
+        lt = n(121),
+        pt = n.n(lt),
+        dt = n(98),
+        ut = n.n(dt),
+        mt = n(209),
+        ht = n.n(mt),
+        gt = n(494),
+        bt = n(205),
+        ft = n.n(bt),
+        yt = n(206),
+        jt = n.n(yt),
+        xt = n(207),
+        Ot = n.n(xt),
+        St = n(208),
+        vt = n.n(St),
+        wt = ["classes", "className", "message", "onClose", "variant"],
+        _t = { success: ft.a, warning: jt.a, error: Ot.a, info: vt.a },
         kt = Object(x.a)(function(e) {
           return {
-            success: { backgroundColor: dt.a[600] },
+            success: { backgroundColor: ut.a[600] },
             error: { backgroundColor: e.palette.error.dark },
             info: { backgroundColor: e.palette.primary.dark },
-            warning: { backgroundColor: mt.a[700] },
+            warning: { backgroundColor: ht.a[700] },
             icon: { fontSize: 20 },
             iconVariant: { opacity: 0.9, marginRight: 15 },
             message: { display: "flex", alignItems: "center" },
@@ -1091,29 +1134,29 @@
             a = e.message,
             o = e.onClose,
             r = e.variant,
-            i = Object(rt.a)(e, vt),
-            s = wt[r];
-          return Object(Qe.jsx)(
-            ht.a,
+            i = Object(it.a)(e, wt),
+            s = _t[r];
+          return Object(Ye.jsx)(
+            gt.a,
             Object(d.a)(
               {
-                className: st()(t[r], n),
+                className: ct()(t[r], n),
                 "data-test": "component-custom-snackbar",
                 "aria-describedby": "client-snackbar",
-                message: Object(Qe.jsxs)("span", {
+                message: Object(Ye.jsxs)("span", {
                   id: "client-snackbar",
                   className: t.message,
                   "data-test": "message",
                   children: [
-                    Object(Qe.jsx)(s, {
-                      className: st()(t.icon, t.iconVariant),
+                    Object(Ye.jsx)(s, {
+                      className: ct()(t.icon, t.iconVariant),
                       "data-test": "message-icon"
                     }),
                     a
                   ]
                 }),
                 action: [
-                  Object(Qe.jsx)(
+                  Object(Ye.jsx)(
                     Ue.a,
                     {
                       "aria-label": "Close",
@@ -1121,7 +1164,7 @@
                       className: t.close,
                       onClick: o,
                       "data-test": "icon-button",
-                      children: Object(Qe.jsx)(lt.a, {
+                      children: Object(Ye.jsx)(pt.a, {
                         className: t.icon,
                         "data-test": "close-icon"
                       })
@@ -1134,8 +1177,8 @@
             )
           );
         }),
-        _t = n(517),
-        Lt = (function(e) {
+        Lt = n(517),
+        Ct = (function(e) {
           Object(h.a)(n, e);
           var t = Object(g.a)(n);
           function n() {
@@ -1176,18 +1219,18 @@
               {
                 key: "render",
                 value: function() {
-                  var e = Object(Qe.jsx)("span", {
+                  var e = Object(Ye.jsx)("span", {
                     id: "snackbar-message-id",
                     dangerouslySetInnerHTML: { __html: this.state.message },
                     "data-test": "message-span"
                   });
-                  return Object(Qe.jsx)(_t.a, {
+                  return Object(Ye.jsx)(Lt.a, {
                     anchorOrigin: { vertical: "bottom", horizontal: "right" },
                     open: this.state.open,
                     autoHideDuration: 6e3,
                     onClose: this.handleSnackbarClose,
                     "data-test": "component-notifier",
-                    children: Object(Qe.jsx)(kt, {
+                    children: Object(Ye.jsx)(kt, {
                       variant: this.state.variant,
                       message: e,
                       open: this.state.open,
@@ -1202,16 +1245,16 @@
             n
           );
         })(s.a.Component),
-        Ct = function(e, t, n, a) {
+        Et = function(e, t, n, a) {
           if ("function" === typeof Ee || a) return Ee(e, t);
           setTimeout(function() {
             return Ee(e, t);
           }, 100);
         },
-        Et = Lt,
-        Tt = n(495),
-        Nt = n(496),
-        It = n(497),
+        Tt = Ct,
+        Nt = n(495),
+        It = n(496),
+        Rt = n(497),
         At = (function(e) {
           Object(h.a)(n, e);
           var t = Object(g.a)(n);
@@ -1258,10 +1301,10 @@
                             (console.log("redirect: ".concat(o)),
                             n.props.history.push(o),
                             window.localStorage.removeItem("redirect"));
-                        } else console.log("not logged in"), console.log(a), Ct("error", "Please log in to view this page.");
+                        } else console.log("not logged in"), console.log(a), Et("error", "Please log in to view this page.");
                       })
                       .catch(function(e) {
-                        Ct("error", e);
+                        Et("error", e);
                       });
                 }
               },
@@ -1279,58 +1322,58 @@
                           .concat(n.profile.companyState, " ")
                           .concat(n.profile.companyZip)
                       : "";
-                  return Object(Qe.jsx)("div", {
+                  return Object(Ye.jsx)("div", {
                     className: t.container,
                     "data-test": "component-dashboard",
                     children:
                       a &&
                       !o &&
-                      Object(Qe.jsxs)(Tt.a, {
+                      Object(Ye.jsxs)(Nt.a, {
                         className: t.card,
                         children: [
-                          Object(Qe.jsx)(Nt.a, {
+                          Object(Ye.jsx)(It.a, {
                             className: t.media,
-                            children: Object(Qe.jsx)($e.a, {
+                            children: Object(Ye.jsx)($e.a, {
                               alt: "".concat(n.profile.name),
                               className: t.avatar,
                               src: n.profile.avatarUrl
                             })
                           }),
-                          Object(Qe.jsxs)(It.a, {
+                          Object(Ye.jsxs)(Rt.a, {
                             className: t.content,
                             children: [
-                              Object(Qe.jsx)(Re.a, {
+                              Object(Ye.jsx)(Ae.a, {
                                 variant: "h5",
                                 className: t.name,
                                 children: "".concat(n.profile.name)
                               }),
-                              Object(Qe.jsx)(Re.a, {
+                              Object(Ye.jsx)(Ae.a, {
                                 variant: "h6",
                                 className: t.secondary,
                                 children: "".concat(n.profile.email)
                               }),
                               n.profile.phone &&
-                                Object(Qe.jsx)(Re.a, {
+                                Object(Ye.jsx)(Ae.a, {
                                   variant: "h6",
                                   className: t.secondary,
                                   children: "".concat(n.profile.phone)
                                 }),
                               n.profile.companyName &&
-                                Object(Qe.jsxs)("div", {
+                                Object(Ye.jsxs)("div", {
                                   children: [
-                                    Object(Qe.jsx)(Re.a, {
+                                    Object(Ye.jsx)(Ae.a, {
                                       variant: "h5",
                                       className: t.name,
                                       children: "".concat(n.profile.companyName)
                                     }),
-                                    Object(Qe.jsx)(Re.a, {
+                                    Object(Ye.jsx)(Ae.a, {
                                       variant: "h6",
                                       className: t.secondary,
                                       children: "".concat(
                                         n.profile.companyStreet
                                       )
                                     }),
-                                    Object(Qe.jsx)(Re.a, {
+                                    Object(Ye.jsx)(Ae.a, {
                                       variant: "h6",
                                       className: t.secondary,
                                       children: r
@@ -1348,7 +1391,7 @@
             n
           );
         })(s.a.Component),
-        Rt = Object(p.b)(
+        Dt = Object(p.b)(
           function(e) {
             return { appState: e.appState, profile: e.profile };
           },
@@ -1356,7 +1399,7 @@
             return { actions: Object(y.b)(a, e), api: Object(y.b)(o, e) };
           }
         )(At),
-        Dt = Object(f.f)(
+        Ut = Object(f.f)(
           Object(x.a)(function(e) {
             return {
               root: { margin: 20, padding: 20, maxWidth: 1200 },
@@ -1395,36 +1438,36 @@
               secondary: { color: e.palette.textColor, textAlign: "center" },
               content: { backgroundColor: "white", borderRadius: 4 }
             };
-          })(Rt)
+          })(Dt)
         ),
-        Ut = n(23),
-        Pt = n.n(Ut),
-        Gt = n(41),
-        Ft = n(197),
+        Pt = n(23),
+        Gt = n.n(Pt),
+        Ft = n(41),
+        Bt = n(197),
         Wt = n(199),
-        Bt = n(200),
-        zt = n(185),
-        $t = n(198),
-        Mt = n(48),
-        Ht = n(194),
-        Zt = n(195),
-        Vt = n(436),
-        qt = n(438),
-        Qt = n(88),
-        Yt = n(150),
-        Kt = n.n(Yt),
-        Jt = n(3),
-        Xt = n.n(Jt),
-        en = n(499),
-        tn = n(432),
-        nn = n(439),
-        an = n(513),
-        on = n(440),
-        rn = n(435),
-        sn = n(434),
-        cn = n(500),
-        ln = n(437),
-        pn =
+        zt = n(200),
+        $t = n(185),
+        Mt = n(198),
+        Ht = n(48),
+        Zt = n(194),
+        Vt = n(195),
+        qt = n(436),
+        Qt = n(438),
+        Yt = n(88),
+        Jt = n(150),
+        Kt = n.n(Jt),
+        Xt = n(3),
+        en = n.n(Xt),
+        tn = n(499),
+        nn = n(432),
+        an = n(439),
+        on = n(513),
+        rn = n(440),
+        sn = n(435),
+        cn = n(434),
+        ln = n(500),
+        pn = n(437),
+        dn =
           (n(512),
           n(501),
           n(222),
@@ -1443,9 +1486,9 @@
           n(210),
           n(211),
           n(498)),
-        dn = n(225),
-        un = n.n(dn),
-        mn = [
+        un = n(225),
+        mn = n.n(un),
+        hn = [
           "input",
           "id",
           "name",
@@ -1464,7 +1507,7 @@
           "startAdornment",
           "endAdornment"
         ],
-        hn = [
+        gn = [
           "input",
           "id",
           "name",
@@ -1479,7 +1522,7 @@
           "rows",
           "inputProps"
         ],
-        gn = [
+        bn = [
           "input",
           "name",
           "id",
@@ -1496,7 +1539,7 @@
           "inputProps",
           "inputLabelProps"
         ],
-        bn = [
+        fn = [
           "input",
           "label",
           "id",
@@ -1505,13 +1548,13 @@
           "meta",
           "formControlName"
         ],
-        fn = function(e) {
-          return Ct(
+        yn = function(e) {
+          return Et(
             "error",
             e || "Sorry, something went wrong. Please try again."
           );
         },
-        yn = function(e) {
+        jn = function(e) {
           var t;
           return {
             formContainer:
@@ -1836,7 +1879,7 @@
             }
           };
         },
-        jn = {
+        xn = {
           dogs: "Dogs OK",
           cats: "Cats OK",
           no_pets: "No pets",
@@ -1867,33 +1910,33 @@
           operable_parts_48_in_above_floor:
             "Operable parts (light switches, thermostats, peepholes) no more than 48 inches above floor"
         },
-        xn = Object.keys(jn),
-        On = function(e) {
+        On = Object.keys(xn),
+        Sn = function(e) {
           var t = [];
           return (
-            xn.forEach(function(n) {
+            On.forEach(function(n) {
               e[n] && t.push(n);
             }),
             console.log(t),
             t
           );
         },
-        Sn = function(e) {
-          return Object(Qe.jsx)(pn.a, {
+        vn = function(e) {
+          return Object(Ye.jsx)(dn.a, {
             position: "start",
-            children: Object(Qe.jsx)(un.a, { className: e.iconGray })
+            children: Object(Ye.jsx)(mn.a, { className: e.iconGray })
           });
         },
-        vn = function(e) {
-          return Object(Qe.jsx)(pn.a, {
+        wn = function(e) {
+          return Object(Ye.jsx)(dn.a, {
             position: "end",
-            children: Object(Qe.jsx)("span", {
+            children: Object(Ye.jsx)("span", {
               className: e.iconGray,
               children: "months"
             })
           });
         },
-        wn = function(e) {
+        _n = function(e) {
           var t = e.input,
             n = e.id,
             a = (e.name, e.label),
@@ -1912,9 +1955,9 @@
             f = e.inputLabelProps,
             y = e.startAdornment,
             j = e.endAdornment,
-            x = Object(rt.a)(e, mn);
-          return Object(Qe.jsx)(
-            en.a,
+            x = Object(it.a)(e, hn);
+          return Object(Ye.jsx)(
+            tn.a,
             Object(d.a)(
               Object(d.a)(
                 Object(d.a)(
@@ -1941,8 +1984,8 @@
                 "data-test": "component-text-field",
                 inputProps: Object(d.a)({ id: n, min: m, step: h }, b),
                 InputProps: {
-                  startAdornment: "currency" === y ? Sn(s) : null,
-                  endAdornment: "months" === j ? vn(s) : null
+                  startAdornment: "currency" === y ? vn(s) : null,
+                  endAdornment: "months" === j ? wn(s) : null
                 },
                 InputLabelProps: f,
                 onBlur: function(e) {
@@ -1955,7 +1998,7 @@
         kn = function(e) {
           return "right" === e ? { direction: "ltr" } : {};
         },
-        _n = function(e) {
+        Ln = function(e) {
           var t = e.input,
             n = e.name,
             a = e.id,
@@ -1972,9 +2015,9 @@
             g = e.mobile,
             b = e.formControlName,
             f = e.inputProps,
-            y = (e.inputLabelProps, Object(rt.a)(e, gn));
-          return Object(Qe.jsxs)(
-            sn.a,
+            y = (e.inputLabelProps, Object(it.a)(e, bn));
+          return Object(Ye.jsxs)(
+            cn.a,
             Object(d.a)(
               Object(d.a)(
                 {
@@ -1995,14 +2038,14 @@
                   ? { marginRight: 20 }
                   : {},
                 children: [
-                  Object(Qe.jsx)(rn.a, { htmlFor: n, children: o }),
-                  Object(Qe.jsx)(
-                    nn.a,
+                  Object(Ye.jsx)(sn.a, { htmlFor: n, children: o }),
+                  Object(Ye.jsx)(
+                    an.a,
                     Object(d.a)(
                       Object(d.a)(
                         {
                           native: !0,
-                          input: Object(Qe.jsx)(on.a, {
+                          input: Object(Ye.jsx)(rn.a, {
                             labelWidth: p,
                             inputProps: Object(d.a)({ id: a }, f)
                           }),
@@ -2016,7 +2059,7 @@
                       {
                         "data-test": "component-select",
                         children: u.map(function(e) {
-                          return Object(Qe.jsx)(
+                          return Object(Ye.jsx)(
                             "option",
                             {
                               value: e ? e.toLowerCase() : "",
@@ -2034,7 +2077,7 @@
             )
           );
         },
-        Ln = function(e) {
+        Cn = function(e) {
           var t = e.input,
             n = e.label,
             a = e.id,
@@ -2043,15 +2086,15 @@
             i = r.touched,
             s = r.error,
             c = e.formControlName,
-            l = Object(rt.a)(e, bn);
-          return Object(Qe.jsxs)(sn.a, {
+            l = Object(it.a)(e, fn);
+          return Object(Ye.jsxs)(cn.a, {
             error: !(!i || !s),
             className: o[c] || o.formControl,
             children: [
-              Object(Qe.jsx)(cn.a, {
+              Object(Ye.jsx)(ln.a, {
                 label: n,
-                control: Object(Qe.jsx)(
-                  an.a,
+                control: Object(Ye.jsx)(
+                  on.a,
                   Object(d.a)(
                     Object(d.a)(
                       Object(d.a)({ color: "primary", checked: !!t.value }, l),
@@ -2069,65 +2112,65 @@
               }),
               i &&
                 s &&
-                Object(Qe.jsx)(ln.a, {
+                Object(Ye.jsx)(pn.a, {
                   className: o.checkboxErrorText,
                   children: s
                 })
             ]
           });
         };
-      (en.a.propTypes = {
-        input: Xt.a.shape({
-          onBlur: Xt.a.func,
-          onChange: Xt.a.func,
-          onDragStart: Xt.a.func,
-          onDrop: Xt.a.func,
-          onFocus: Xt.a.func,
-          value: Xt.a.string
+      (tn.a.propTypes = {
+        input: en.a.shape({
+          onBlur: en.a.func,
+          onChange: en.a.func,
+          onDragStart: en.a.func,
+          onDrop: en.a.func,
+          onFocus: en.a.func,
+          value: en.a.string
         }),
-        name: Xt.a.string,
-        label: Xt.a.string,
-        touched: Xt.a.bool,
-        error: Xt.a.oneOfType([Xt.a.string, Xt.a.bool]),
-        helperText: Xt.a.oneOfType([Xt.a.string, Xt.a.bool])
+        name: en.a.string,
+        label: en.a.string,
+        touched: en.a.bool,
+        error: en.a.oneOfType([en.a.string, en.a.bool]),
+        helperText: en.a.oneOfType([en.a.string, en.a.bool])
       }),
-        (nn.a.propTypes = {
-          input: Xt.a.shape({
-            onBlur: Xt.a.func,
-            onChange: Xt.a.func,
-            onDragStart: Xt.a.func,
-            onDrop: Xt.a.func,
-            onFocus: Xt.a.func,
-            value: Xt.a.string
-          }),
-          name: Xt.a.string,
-          label: Xt.a.string,
-          labelWidth: Xt.a.string,
-          formControlName: Xt.a.string,
-          options: Xt.a.array,
-          touched: Xt.a.bool,
-          error: Xt.a.oneOfType([Xt.a.string, Xt.a.bool])
-        }),
         (an.a.propTypes = {
-          input: Xt.a.shape({
-            onBlur: Xt.a.func,
-            onChange: Xt.a.func,
-            onDragStart: Xt.a.func,
-            onDrop: Xt.a.func,
-            onFocus: Xt.a.func,
-            value: Xt.a.string
+          input: en.a.shape({
+            onBlur: en.a.func,
+            onChange: en.a.func,
+            onDragStart: en.a.func,
+            onDrop: en.a.func,
+            onFocus: en.a.func,
+            value: en.a.string
           }),
-          name: Xt.a.string,
-          label: Xt.a.string,
-          touched: Xt.a.bool,
-          error: Xt.a.oneOfType([Xt.a.string, Xt.a.bool]),
-          checked: Xt.a.bool
+          name: en.a.string,
+          label: en.a.string,
+          labelWidth: en.a.string,
+          formControlName: en.a.string,
+          options: en.a.array,
+          touched: en.a.bool,
+          error: en.a.oneOfType([en.a.string, en.a.bool])
         }),
-        (sn.a.propTypes = {
-          touched: Xt.a.bool,
-          error: Xt.a.oneOfType([Xt.a.string, Xt.a.bool])
+        (on.a.propTypes = {
+          input: en.a.shape({
+            onBlur: en.a.func,
+            onChange: en.a.func,
+            onDragStart: en.a.func,
+            onDrop: en.a.func,
+            onFocus: en.a.func,
+            value: en.a.string
+          }),
+          name: en.a.string,
+          label: en.a.string,
+          touched: en.a.bool,
+          error: en.a.oneOfType([en.a.string, en.a.bool]),
+          checked: en.a.bool
+        }),
+        (cn.a.propTypes = {
+          touched: en.a.bool,
+          error: en.a.oneOfType([en.a.string, en.a.bool])
         });
-      var Cn = [
+      var En = [
           "",
           "01",
           "02",
@@ -2142,7 +2185,7 @@
           "11",
           "12"
         ],
-        En = function(e) {
+        Tn = function(e) {
           for (
             var t = (function(e) {
                 switch (e) {
@@ -2165,7 +2208,7 @@
             a < 10 ? n.push("0" + a) : n.push(a.toString());
           return n.unshift(""), n;
         },
-        Tn = function() {
+        Nn = function() {
           for (
             var e = [], t = new Date().getFullYear() - 109;
             t <= new Date().getFullYear();
@@ -2174,8 +2217,8 @@
             e.unshift(t.toString());
           return e.unshift(""), e;
         },
-        Nn = _n,
-        In = wn,
+        In = Ln,
+        Rn = _n,
         An = function(e) {
           var t = e.input,
             n = e.id,
@@ -2190,9 +2233,9 @@
             u = e.additionalOnChange,
             m = e.formControlName,
             h = e.rows,
-            g = (e.inputProps, Object(rt.a)(e, hn));
-          return Object(Qe.jsx)(
-            tn.a,
+            g = (e.inputProps, Object(it.a)(e, gn));
+          return Object(Ye.jsx)(
+            nn.a,
             Object(d.a)(
               Object(d.a)(
                 Object(d.a)(
@@ -2225,9 +2268,9 @@
             )
           );
         },
-        Rn = Ln,
-        Dn = jn,
-        Un = Object(Zt.a)({
+        Dn = Cn,
+        Un = xn,
+        Pn = Object(Vt.a)({
           form: "addListing",
           validate: function(e) {
             var t = {};
@@ -2293,66 +2336,66 @@
             a = e.edit,
             o = e.width,
             r = e.verifyCallback,
-            i = Object.keys(Dn).map(function(e) {
-              return Object(Qe.jsx)(
-                Ht.a,
+            i = Object.keys(Un).map(function(e) {
+              return Object(Ye.jsx)(
+                Zt.a,
                 {
-                  label: Dn[e],
+                  label: Un[e],
                   name: e,
                   id: e,
                   type: "checkbox",
                   formControlName: "controlCheckbox",
                   classes: n,
-                  component: Rn
+                  component: Dn
                 },
                 e
               );
             });
           return (
             console.log(e),
-            Object(Qe.jsx)("div", {
+            Object(Ye.jsx)("div", {
               "data-test": "component-add-listing",
               className: n.sectionContainer,
-              children: Object(Qe.jsxs)("form", {
+              children: Object(Ye.jsxs)("form", {
                 onSubmit: e.handleSubmit(t),
                 id: "addListing",
                 className: n.form,
                 children: [
-                  Object(Qe.jsx)(Re.a, {
+                  Object(Ye.jsx)(Ae.a, {
                     className: n.formTitle,
                     variant: "h3",
                     children: "Add Listing"
                   }),
-                  Object(Qe.jsxs)("div", {
+                  Object(Ye.jsxs)("div", {
                     className: n.formSection,
                     children: [
-                      Object(Qe.jsx)(Ht.a, {
+                      Object(Ye.jsx)(Zt.a, {
                         label: "Property Name",
                         name: "propertyName",
                         id: "propertyName",
                         type: "text",
                         classes: n,
-                        component: In
+                        component: Rn
                       }),
-                      Object(Qe.jsx)(Vt.a, {
+                      Object(Ye.jsx)(qt.a, {
                         className: n.formLabel,
                         component: "legend",
                         children: "Address"
                       }),
-                      Object(Qe.jsx)(Ht.a, {
+                      Object(Ye.jsx)(Zt.a, {
                         label: "Street Address",
                         name: "propertyStreet",
                         id: "propertyStreet",
                         type: "text",
                         classes: n,
-                        component: In
+                        component: Rn
                       }),
-                      Object(Qe.jsxs)(qt.a, {
+                      Object(Ye.jsxs)(Qt.a, {
                         className: n.formGroup,
                         row: !0,
                         classes: { root: n.formGroup2Col },
                         children: [
-                          Object(Qe.jsx)(Ht.a, {
+                          Object(Ye.jsx)(Zt.a, {
                             label: "City",
                             name: "propertyCity",
                             id: "propertyCity",
@@ -2360,9 +2403,9 @@
                             twocol: !0,
                             mobile: !Object(Ne.b)("sm", o),
                             classes: n,
-                            component: In
+                            component: Rn
                           }),
-                          Object(Qe.jsx)(Ht.a, {
+                          Object(Ye.jsx)(Zt.a, {
                             label: "State",
                             name: "propertyState",
                             id: "propertyState",
@@ -2370,11 +2413,11 @@
                             short: !0,
                             mobile: !Object(Ne.b)("sm", o),
                             classes: n,
-                            component: Nn,
+                            component: In,
                             options: ["", "OR", "WA"],
                             labelWidth: 80
                           }),
-                          Object(Qe.jsx)(Ht.a, {
+                          Object(Ye.jsx)(Zt.a, {
                             label: "Zip",
                             name: "propertyZip",
                             id: "propertyZip",
@@ -2382,35 +2425,35 @@
                             mobile: !Object(Ne.b)("sm", o),
                             type: "text",
                             classes: n,
-                            component: In
+                            component: Rn
                           })
                         ]
                       }),
-                      Object(Qe.jsxs)(qt.a, {
+                      Object(Ye.jsxs)(Qt.a, {
                         row: !0,
                         classes: { root: n.formGroup2Col },
                         children: [
-                          Object(Qe.jsx)(Ht.a, {
+                          Object(Ye.jsx)(Zt.a, {
                             "data-test": "select-quadrant",
                             label: "Quadrant",
                             name: "quadrant",
                             id: "quadrant",
                             type: "select",
                             classes: n,
-                            component: Nn,
+                            component: In,
                             formControlName: "quadrant",
                             options: ["", "N", "NE", "NW", "SE", "SW"],
                             onChange: function() {},
                             labelWidth: 100,
                             twocol: !0
                           }),
-                          Object(Qe.jsx)(Ht.a, {
+                          Object(Ye.jsx)(Zt.a, {
                             label: "County",
                             name: "propertyCounty",
                             id: "propertyCounty",
                             type: "text",
                             classes: n,
-                            component: Nn,
+                            component: In,
                             options: [
                               "",
                               "Multnomah",
@@ -2422,87 +2465,87 @@
                           })
                         ]
                       }),
-                      Object(Qe.jsx)(Ht.a, {
+                      Object(Ye.jsx)(Zt.a, {
                         label: "Property contact phone",
                         name: "propertyPhone",
                         id: "propertyPhone",
                         type: "tel",
                         classes: n,
-                        component: In
+                        component: Rn
                       }),
-                      Object(Qe.jsx)(Ht.a, {
+                      Object(Ye.jsx)(Zt.a, {
                         label: "Property contact email",
                         name: "propertyEmail",
                         id: "propertyEmail",
                         type: "email",
                         classes: n,
-                        component: In
+                        component: Rn
                       }),
-                      Object(Qe.jsx)(Ht.a, {
+                      Object(Ye.jsx)(Zt.a, {
                         label: "Link to property listing",
                         name: "listingUrl",
                         id: "listingUrl",
                         type: "url",
                         classes: n,
-                        component: In
+                        component: Rn
                       }),
-                      Object(Qe.jsx)(Ht.a, {
+                      Object(Ye.jsx)(Zt.a, {
                         label: "Link to property image",
                         name: "primaryImage",
                         id: "primaryImage",
                         type: "url",
                         classes: n,
-                        component: In
+                        component: Rn
                       }),
-                      Object(Qe.jsx)(Vt.a, {
+                      Object(Ye.jsx)(qt.a, {
                         className: n.formLabel,
                         component: "legend",
                         children: "Date Available"
                       }),
-                      Object(Qe.jsxs)(qt.a, {
+                      Object(Ye.jsxs)(Qt.a, {
                         row: !0,
                         classes: { root: n.formGroup2ColShort },
                         children: [
-                          Object(Qe.jsx)(Ht.a, {
+                          Object(Ye.jsx)(Zt.a, {
                             label: "Month",
                             name: "mm",
                             id: "mm",
                             type: "select",
                             classes: n,
                             formControlName: "formControlDate",
-                            component: Nn,
+                            component: In,
                             labelWidth: 41,
-                            options: Cn
+                            options: En
                           }),
-                          Object(Qe.jsx)(Ht.a, {
+                          Object(Ye.jsx)(Zt.a, {
                             label: "Day",
                             name: "dd",
                             id: "dd",
                             type: "select",
                             formControlName: "formControlDate",
                             classes: n,
-                            component: Nn,
+                            component: In,
                             labelWidth: 24,
-                            options: En(e)
+                            options: Tn(e)
                           }),
-                          Object(Qe.jsx)(Ht.a, {
+                          Object(Ye.jsx)(Zt.a, {
                             label: "Year",
                             name: "yyyy",
                             id: "yyyy",
                             type: "select",
                             formControlName: "formControlDate",
                             classes: n,
-                            component: Nn,
+                            component: In,
                             labelWidth: 30,
-                            options: Tn()
+                            options: Nn()
                           })
                         ]
                       }),
-                      Object(Qe.jsxs)(qt.a, {
+                      Object(Ye.jsxs)(Qt.a, {
                         row: !0,
                         classes: { root: n.formGroup2Col },
                         children: [
-                          Object(Qe.jsx)(Ht.a, {
+                          Object(Ye.jsx)(Zt.a, {
                             label: "Monthly Rent",
                             name: "monthlyRent",
                             id: "monthlyRent",
@@ -2510,13 +2553,13 @@
                             min: 0.01,
                             step: 0.01,
                             classes: n,
-                            component: In,
+                            component: Rn,
                             formControlName: "currency",
                             inputProps: { style: { paddingLeft: 15 } },
                             inputLabelProps: { style: { paddingLeft: 15 } },
                             startAdornment: "currency"
                           }),
-                          Object(Qe.jsx)(Ht.a, {
+                          Object(Ye.jsx)(Zt.a, {
                             label: "Deposit",
                             name: "deposit",
                             id: "deposit",
@@ -2524,7 +2567,7 @@
                             min: 0.01,
                             step: 0.01,
                             classes: n,
-                            component: In,
+                            component: Rn,
                             formControlName: "currency2",
                             inputProps: { style: { paddingLeft: 15 } },
                             inputLabelProps: { style: { paddingLeft: 15 } },
@@ -2532,11 +2575,11 @@
                           })
                         ]
                       }),
-                      Object(Qe.jsxs)(qt.a, {
+                      Object(Ye.jsxs)(Qt.a, {
                         row: !0,
                         classes: { root: n.formGroup2Col },
                         children: [
-                          Object(Qe.jsx)(Ht.a, {
+                          Object(Ye.jsx)(Zt.a, {
                             "data-test": "input-bedrooms",
                             label: "Bedrooms",
                             name: "bedrooms",
@@ -2545,12 +2588,12 @@
                             options: ["", "Studio", "1", "2", "3", "4+"],
                             classes: n,
                             labelWidth: 41,
-                            component: Nn,
+                            component: In,
                             formControlName: "flexStatic",
                             inputProps: { style: { paddingLeft: 20 } },
                             inputLabelProps: { style: { paddingLeft: 20 } }
                           }),
-                          Object(Qe.jsx)(Ht.a, {
+                          Object(Ye.jsx)(Zt.a, {
                             "data-test": "input-lease-length",
                             label: "Lease Length",
                             name: "leaseLength",
@@ -2559,14 +2602,14 @@
                             max: 12,
                             step: 1,
                             classes: n,
-                            component: In,
+                            component: Rn,
                             twocol: !0,
                             formControlName: "months",
                             inputProps: { style: { paddingRight: 30 } },
                             inputLabelProps: { style: { paddingRight: 30 } },
                             endAdornment: "months"
                           }),
-                          Object(Qe.jsx)(Ht.a, {
+                          Object(Ye.jsx)(Zt.a, {
                             label: "Square Ft",
                             name: "squareFt",
                             id: "squareFt",
@@ -2574,21 +2617,21 @@
                             min: 0,
                             step: 1,
                             classes: n,
-                            component: In
+                            component: Rn
                           })
                         ]
                       }),
-                      Object(Qe.jsxs)(qt.a, {
+                      Object(Ye.jsxs)(Qt.a, {
                         row: !0,
                         classes: { root: n.formGroup2Col },
                         children: [
-                          Object(Qe.jsx)(Ht.a, {
+                          Object(Ye.jsx)(Zt.a, {
                             label: "Laundry Type",
                             name: "laundryType",
                             id: "laundryType",
                             type: "select",
                             classes: n,
-                            component: Nn,
+                            component: In,
                             labelWidth: 41,
                             options: [
                               "",
@@ -2599,13 +2642,13 @@
                             ],
                             formControlName: "marginRight"
                           }),
-                          Object(Qe.jsx)(Ht.a, {
+                          Object(Ye.jsx)(Zt.a, {
                             label: "Parking Type",
                             name: "parkingType",
                             id: "parkingType",
                             type: "select",
                             classes: n,
-                            component: Nn,
+                            component: In,
                             labelWidth: 41,
                             options: [
                               "",
@@ -2617,7 +2660,7 @@
                             ],
                             formControlName: "flexStatic"
                           }),
-                          Object(Qe.jsx)(Ht.a, {
+                          Object(Ye.jsx)(Zt.a, {
                             label: "Parking Fee / Month",
                             name: "parkingFee",
                             id: "parkingFee",
@@ -2625,7 +2668,7 @@
                             min: 0,
                             step: 0.01,
                             classes: n,
-                            component: In,
+                            component: Rn,
                             formControlName: "parking",
                             inputProps: { style: { paddingLeft: 20 } },
                             inputLabelProps: { style: { paddingLeft: 20 } },
@@ -2633,33 +2676,33 @@
                           })
                         ]
                       }),
-                      Object(Qe.jsx)(Vt.a, {
+                      Object(Ye.jsx)(qt.a, {
                         className: n.formLabel,
                         component: "legend",
                         children: "Features"
                       }),
-                      Object(Qe.jsxs)(qt.a, {
+                      Object(Ye.jsxs)(Qt.a, {
                         row: !0,
                         classes: { root: n.formGroupFeatures },
                         children: [
-                          Object(Qe.jsx)(Ht.a, {
+                          Object(Ye.jsx)(Zt.a, {
                             label: "Vacant?",
                             name: "vacant",
                             id: "vacant",
                             type: "checkbox",
                             formControlName: "controlCheckbox",
                             classes: n,
-                            component: Rn
+                            component: Dn
                           }),
                           i
                         ]
                       }),
-                      Object(Qe.jsx)(Vt.a, {
+                      Object(Ye.jsx)(qt.a, {
                         className: n.formLabel,
                         component: "legend",
                         children: "Additional information about this property"
                       }),
-                      Object(Qe.jsx)(Ht.a, {
+                      Object(Ye.jsx)(Zt.a, {
                         label: "Additional information about this property",
                         name: "notes",
                         id: "notes",
@@ -2669,9 +2712,9 @@
                         rows: 5,
                         component: An
                       }),
-                      Object(Qe.jsx)("div", {
+                      Object(Ye.jsx)("div", {
                         className: n.buttonWrap,
-                        children: Object(Qe.jsx)(De.a, {
+                        children: Object(Ye.jsx)(De.a, {
                           type: "submit",
                           color: "primary",
                           className: "".concat(n.next, " g-recaptcha"),
@@ -2689,16 +2732,16 @@
             })
           );
         }),
-        Pn = Object(p.b)(function(e) {
+        Gn = Object(p.b)(function(e) {
           return {
             listing: e.listing,
             initialValues: e.listing.form,
-            formValues: Object(Ft.a)("addListing")(e) || {},
-            submitErrors: Object($t.a)("addListing")(e)
+            formValues: Object(Bt.a)("addListing")(e) || {},
+            submitErrors: Object(Mt.a)("addListing")(e)
           };
-        })(Un),
-        Gn = Object(Ne.a)()(Pn),
-        Fn = (function(e) {
+        })(Pn),
+        Fn = Object(Ne.a)()(Gn),
+        Bn = (function(e) {
           Object(h.a)(n, e);
           var t = Object(g.a)(n);
           function n(e) {
@@ -2731,14 +2774,14 @@
                       .then(function(t) {
                         ("GET_LISTING_BY_ID_FAILURE" === t.type ||
                           e.props.listing.error) &&
-                          Ct(
+                          Et(
                             "error",
                             e.props.listing.error ||
                               "An error occurred while trying to fetch your listing."
                           );
                       })
                       .catch(function(e) {
-                        return Ct("error", e);
+                        return Et("error", e);
                       });
                 }
               },
@@ -2759,10 +2802,10 @@
               {
                 key: "verifyRecaptchaScore",
                 value: (function() {
-                  var e = Object(Gt.a)(
-                    Pt.a.mark(function e() {
+                  var e = Object(Ft.a)(
+                    Gt.a.mark(function e() {
                       var t, n;
-                      return Pt.a.wrap(
+                      return Gt.a.wrap(
                         function(e) {
                           for (;;)
                             switch ((e.prev = e.next)) {
@@ -2773,9 +2816,9 @@
                               case 2:
                                 if (
                                   ((t = this.props.listing.form.reCaptchaValue),
-                                  Object(Gt.a)(
-                                    Pt.a.mark(function e() {
-                                      return Pt.a.wrap(function(e) {
+                                  Object(Ft.a)(
+                                    Gt.a.mark(function e() {
+                                      return Gt.a.wrap(function(e) {
                                         for (;;)
                                           switch ((e.prev = e.next)) {
                                             case 0:
@@ -2811,7 +2854,7 @@
                                     .catch(function(e) {
                                       return (
                                         console.error(e),
-                                        fn(
+                                        yn(
                                           "ReCaptcha verification failed, please reload the page and try again."
                                         )
                                       );
@@ -2841,10 +2884,10 @@
               {
                 key: "generateListingBody",
                 value: (function() {
-                  var e = Object(Gt.a)(
-                    Pt.a.mark(function e() {
+                  var e = Object(Ft.a)(
+                    Gt.a.mark(function e() {
                       var t, n, a, o, r;
-                      return Pt.a.wrap(
+                      return Gt.a.wrap(
                         function(e) {
                           for (;;)
                             switch ((e.prev = e.next)) {
@@ -2864,7 +2907,7 @@
                                         .concat(s, "/")
                                         .concat(c)
                                     ))),
-                                  (a = On(t)),
+                                  (a = Sn(t)),
                                   (o = window.localStorage.getItem("userId")),
                                   (r = {
                                     property_name: t.propertyName,
@@ -2913,10 +2956,10 @@
               {
                 key: "addListing",
                 value: (function() {
-                  var e = Object(Gt.a)(
-                    Pt.a.mark(function e() {
+                  var e = Object(Ft.a)(
+                    Gt.a.mark(function e() {
                       var t, n, a;
-                      return Pt.a.wrap(
+                      return Gt.a.wrap(
                         function(e) {
                           for (;;)
                             switch ((e.prev = e.next)) {
@@ -2938,7 +2981,7 @@
                                   this.props.apiListing
                                     .addListing(t, n)
                                     .catch(function(e) {
-                                      return console.error(e), fn(e);
+                                      return console.error(e), yn(e);
                                     })
                                 );
                               case 9:
@@ -2957,7 +3000,7 @@
                                   console.log(this.props.listing.error),
                                   e.abrupt(
                                     "return",
-                                    fn(this.props.listing.error)
+                                    yn(this.props.listing.error)
                                   )
                                 );
                               case 16:
@@ -2985,10 +3028,10 @@
               {
                 key: "updateListing",
                 value: (function() {
-                  var e = Object(Gt.a)(
-                    Pt.a.mark(function e() {
+                  var e = Object(Ft.a)(
+                    Gt.a.mark(function e() {
                       var t, n, a, o;
-                      return Pt.a.wrap(
+                      return Gt.a.wrap(
                         function(e) {
                           for (;;)
                             switch ((e.prev = e.next)) {
@@ -3015,7 +3058,7 @@
                                   this.props.apiListing
                                     .updateListing(t, a, n)
                                     .catch(function(e) {
-                                      return console.error(e), fn(e);
+                                      return console.error(e), yn(e);
                                     })
                                 );
                               case 11:
@@ -3035,7 +3078,7 @@
                                   console.log(this.props.listing.error),
                                   e.abrupt(
                                     "return",
-                                    fn(this.props.listing.error)
+                                    yn(this.props.listing.error)
                                   )
                                 );
                               case 18:
@@ -3071,10 +3114,10 @@
               {
                 key: "handleSubmit",
                 value: (function() {
-                  var e = Object(Gt.a)(
-                    Pt.a.mark(function e() {
+                  var e = Object(Ft.a)(
+                    Gt.a.mark(function e() {
                       var t = this;
-                      return Pt.a.wrap(
+                      return Gt.a.wrap(
                         function(e) {
                           for (;;)
                             switch ((e.prev = e.next)) {
@@ -3085,7 +3128,7 @@
                                     ? this.updateListing()
                                         .then(function(e) {
                                           "UPDATE_LISTING_SUCCESS" === e
-                                            ? (Ct("success", "Listing updated"),
+                                            ? (Et("success", "Listing updated"),
                                               t.props.history.push("/listings"))
                                             : console.log(e);
                                         })
@@ -3095,7 +3138,7 @@
                                     : this.addListing()
                                         .then(function(e) {
                                           "ADD_LISTING_SUCCESS" === e
-                                            ? (Ct("success", "Listing created"),
+                                            ? (Et("success", "Listing created"),
                                               t.props.history.push("/listings"))
                                             : console.log(e);
                                         })
@@ -3120,16 +3163,16 @@
               {
                 key: "render",
                 value: function() {
-                  return Object(Qe.jsx)("div", {
+                  return Object(Ye.jsx)("div", {
                     "data-test": "container-add-listing",
-                    children: Object(Qe.jsx)(
-                      Gn,
+                    children: Object(Ye.jsx)(
+                      Fn,
                       Object(d.a)(
                         Object(d.a)({}, this.props),
                         {},
                         {
                           onSubmit: this.handleSubmit,
-                          handleError: fn,
+                          handleError: yn,
                           verifyRecaptchaScore: this.verifyRecaptchaScore
                         }
                       )
@@ -3148,12 +3191,12 @@
               appState: e.appState,
               profile: e.profile,
               initialValues: e.listing.form,
-              formValues: Object(Ft.a)("addListing")(e) || {},
+              formValues: Object(Bt.a)("addListing")(e) || {},
               pristine: Object(Wt.a)("addListing")(e),
-              submitting: Object(Bt.a)("addListing")(e),
-              valid: Object(zt.a)("addListing")(e),
-              submitErrors: Object($t.a)("addListing")(e),
-              reset: Mt.a
+              submitting: Object(zt.a)("addListing")(e),
+              valid: Object($t.a)("addListing")(e),
+              submitErrors: Object(Mt.a)("addListing")(e),
+              reset: Ht.a
             };
           },
           function(e) {
@@ -3162,21 +3205,21 @@
               apiProfile: Object(y.b)(o, e),
               actions: Object(y.b)(a, e),
               submitForm: function() {
-                return e(Object(Mt.b)("addListing"));
+                return e(Object(Ht.b)("addListing"));
               }
             };
           }
-        )(Fn),
-        Bn = Object(x.a)(yn)(Wn),
-        zn = n(508),
-        $n = n(230),
-        Mn = n.n($n),
-        Hn = n(229),
-        Zn = n.n(Hn),
-        Vn = n(227),
-        qn = n.n(Vn),
-        Qn = n(228),
-        Yn = n.n(Qn),
+        )(Bn),
+        zn = Object(x.a)(jn)(Wn),
+        $n = n(508),
+        Mn = n(230),
+        Hn = n.n(Mn),
+        Zn = n(229),
+        Vn = n.n(Zn),
+        qn = n(227),
+        Qn = n.n(qn),
+        Yn = n(228),
+        Jn = n.n(Yn),
         Kn = Object(x.a)(function(e) {
           return {
             root: { margin: 20, padding: 20, maxWidth: 1200 },
@@ -3339,90 +3382,78 @@
             a = e.small,
             o = n.primary_image,
             r = n.property_name,
-            i = n.bedrooms,
-            s = n.monthly_rent,
-            c = n.property_email,
-            l = n.property_phone,
-            p = n.listing_url,
-            d = { backgroundImage: "url(".concat(o, ")") };
+            i = n.bedroomsPriceString,
+            s = n.property_email,
+            c = n.property_phone,
+            l = n.listing_url,
+            p = { backgroundImage: "url(".concat(o, ")") };
           return (
             console.log(n),
-            Object(Qe.jsxs)("div", {
+            Object(Ye.jsxs)("div", {
               "data-test": "component-listing-tile",
               className: t.tile,
               children: [
-                Object(Qe.jsxs)("a", {
-                  href: p,
+                Object(Ye.jsxs)("a", {
+                  href: l,
                   rel: "noopener noreferrer",
                   target: "_blank",
                   className: t.cardAction,
                   children: [
-                    Object(Qe.jsx)(Re.a, {
+                    Object(Ye.jsx)(Ae.a, {
                       component: "h2",
                       className: a ? t.titleSmall : t.title,
                       "data-test": "title",
                       children: r
                     }),
-                    Object(Qe.jsx)("div", {
+                    Object(Ye.jsx)("div", {
                       className: a ? t.cardImageSmall : t.cardImage,
-                      style: d,
+                      style: p,
                       "data-test": "image"
                     })
                   ]
                 }),
-                Object(Qe.jsxs)("div", {
+                Object(Ye.jsxs)("div", {
                   className: a ? t.cardListingSmall : t.cardListing,
                   "data-test": "card-listing",
                   children: [
-                    Object(Qe.jsxs)("div", {
+                    Object(Ye.jsx)("div", {
                       className: t.cardRow,
-                      children: [
-                        Object(Qe.jsx)(Re.a, {
-                          component: "span",
-                          className: a ? t.contentLight : t.bodyLight,
-                          "data-test": "body",
-                          children:
-                            "studio" === i.toLowerCase()
-                              ? "Studio"
-                              : "".concat(i, " BR")
-                        }),
-                        Object(Qe.jsxs)(Re.a, {
-                          component: "span",
-                          className: a ? t.contentBold : t.body,
-                          "data-test": "body",
-                          children: ["$", Math.trunc(s)]
-                        })
-                      ]
+                      children: Object(Ye.jsx)(Ae.a, {
+                        component: "span",
+                        className: a ? t.contentLight : t.bodyLight,
+                        "data-test": "body",
+                        children: i
+                      })
                     }),
-                    Object(Qe.jsxs)("div", {
+                    Object(Ye.jsxs)("div", {
                       className: a ? t.cardFooterSmall : t.cardFooter,
                       children: [
-                        Object(Qe.jsx)("a", {
-                          href: "tel:".concat(l),
+                        Object(Ye.jsx)("a", {
+                          href: "tel:".concat(c),
                           className: t.phoneLink,
-                          children: Object(Qe.jsxs)("div", {
+                          children: Object(Ye.jsxs)("div", {
                             className: a ? t.cardPhoneSmall : t.cardPhone,
                             children: [
-                              Object(Qe.jsx)(qn.a, { className: t.icon }),
-                              Object(Qe.jsx)(Re.a, {
+                              Object(Ye.jsx)(Qn.a, { className: t.icon }),
+                              Object(Ye.jsx)(Ae.a, {
                                 component: "span",
                                 className: a ? t.contentBold : t.body,
                                 "data-test": "body",
-                                children: l
+                                children: c
                               })
                             ]
                           })
                         }),
-                        Object(Qe.jsx)("a", {
-                          href: "mailto:".concat(c),
+                        Object(Ye.jsx)("a", {
+                          href: "mailto:".concat(s),
                           className: t.emailLink,
                           target: "_blank",
                           rel: "noopener noreferrer",
-                          children: Object(Qe.jsxs)("div", {
+                          children: Object(Ye.jsxs)("div", {
                             className: t.cardEmail,
                             children: [
-                              Object(Qe.jsx)(Yn.a, { className: t.icon }),
-                              Object(Qe.jsx)(Re.a, {
+                              Object(Ye.jsx)(Jn.a, { className: t.icon }),
+                              Object(Ye.jsx)(Ae.a, {
                                 component: "span",
                                 className: a ? t.contentBold : t.body,
                                 "data-test": "body",
@@ -3439,8 +3470,8 @@
             })
           );
         }),
-        Jn = n(502),
-        Xn = {
+        Xn = n(502),
+        ea = {
           display: "flex",
           justifyContent: "center",
           position: "fixed",
@@ -3451,24 +3482,24 @@
           zIndex: 3,
           backgroundColor: "rgba(0,0,0,.4)"
         },
-        ea = { position: "relative", top: "44%" },
-        ta = function(e) {
-          return Object(Qe.jsx)("div", {
-            style: Xn,
-            children: Object(Qe.jsx)(Jn.a, {
-              style: ea,
+        ta = { position: "relative", top: "44%" },
+        na = function(e) {
+          return Object(Ye.jsx)("div", {
+            style: ea,
+            children: Object(Ye.jsx)(Xn.a, {
+              style: ta,
               color: "primary",
               size: 50,
               "data-test": "component-spinner"
             })
           });
         },
-        na = n(503),
-        aa = n(507),
-        oa = n(504),
-        ra = n(505),
-        ia = n(506),
-        sa = Object(x.a)(function(e) {
+        aa = n(503),
+        oa = n(507),
+        ra = n(504),
+        ia = n(505),
+        sa = n(506),
+        ca = Object(x.a)(function(e) {
           return {
             root: { margin: 0, padding: 20 },
             danger: {
@@ -3479,9 +3510,9 @@
             primary: { backgroundColor: e.palette.primary.main }
           };
         })(function(e) {
-          return Object(Qe.jsx)("div", {
+          return Object(Ye.jsx)("div", {
             "data-test": "component-alert-dialog",
-            children: Object(Qe.jsxs)(na.a, {
+            children: Object(Ye.jsxs)(aa.a, {
               "data-test": "dialog",
               open: e.open,
               onClose: e.handleClose,
@@ -3492,28 +3523,28 @@
               PaperProps: { style: { margin: 0 } },
               children: [
                 e.title &&
-                  Object(Qe.jsx)(oa.a, {
+                  Object(Ye.jsx)(ra.a, {
                     id: "alert-dialog-title",
                     "data-test": "dialog-title",
                     children: e.title
                   }),
-                Object(Qe.jsx)(ra.a, {
-                  children: Object(Qe.jsx)(ia.a, {
+                Object(Ye.jsx)(ia.a, {
+                  children: Object(Ye.jsx)(sa.a, {
                     id: "alert-dialog-description",
                     "data-test": "dialog-listing",
                     children: e.listing
                   })
                 }),
-                Object(Qe.jsxs)(aa.a, {
+                Object(Ye.jsxs)(oa.a, {
                   children: [
-                    Object(Qe.jsx)(De.a, {
+                    Object(Ye.jsx)(De.a, {
                       onClick: e.handleClose,
                       variant: "outlined",
                       color: "default",
                       "data-test": "button-cancel",
                       children: "Cancel"
                     }),
-                    Object(Qe.jsx)(De.a, {
+                    Object(Ye.jsx)(De.a, {
                       onClick: e.action,
                       className: e.danger
                         ? e.classes.danger
@@ -3529,7 +3560,7 @@
             })
           });
         }),
-        ca = (function(e) {
+        la = (function(e) {
           Object(h.a)(n, e);
           var t = Object(g.a)(n);
           function n() {
@@ -3570,14 +3601,14 @@
                           console.log(t.payload),
                             ("GET_USER_LISTINGS_FAILURE" === t.type ||
                               e.props.listing.error) &&
-                              Ct(
+                              Et(
                                 "error",
                                 e.props.listing.error ||
                                   "An error occured while fetching listing"
                               );
                         })
                         .catch(function(e) {
-                          Ct("error", e);
+                          Et("error", e);
                         });
                 }
               },
@@ -3600,24 +3631,24 @@
                           console.log(e),
                             ("GET_USER_LISTINGS_FAILURE" === e.type ||
                               a.props.listing.error) &&
-                              Ct(
+                              Et(
                                 "error",
                                 a.props.listing.error ||
                                   "An error occured while fetching listings"
                               );
                         })
                         .catch(function(e) {
-                          Ct("error", e);
+                          Et("error", e);
                         });
                 }
               },
               {
                 key: "deleteListing",
                 value: (function() {
-                  var e = Object(Gt.a)(
-                    Pt.a.mark(function e(t) {
+                  var e = Object(Ft.a)(
+                    Gt.a.mark(function e(t) {
                       var n, a, o, r;
-                      return Pt.a.wrap(
+                      return Gt.a.wrap(
                         function(e) {
                           for (;;)
                             switch ((e.prev = e.next)) {
@@ -3635,7 +3666,7 @@
                                   e.next = 8;
                                   break;
                                 }
-                                Ct("error", this.props.listing.error),
+                                Et("error", this.props.listing.error),
                                   (e.next = 18);
                                 break;
                               case 8:
@@ -3654,7 +3685,7 @@
                                 );
                               case 13:
                                 "DELETE_IMAGE_SUCCESS" === e.sent.type &&
-                                  (Ct(
+                                  (Et(
                                     "success",
                                     "Deleted ".concat(t.listing_type, ".")
                                   ),
@@ -3663,7 +3694,7 @@
                                 break;
                               case 17:
                                 "DELETE_LISTING_SUCCESS" === a.type &&
-                                  (Ct(
+                                  (Et(
                                     "success",
                                     "Deleted ".concat(t.listing_type, ".")
                                   ),
@@ -3688,13 +3719,13 @@
                 value: function() {
                   var e = this,
                     t = this.props.classes;
-                  return Object(Qe.jsxs)("div", {
+                  return Object(Ye.jsxs)("div", {
                     "data-test": "component-listing-library",
                     className: t.root,
                     children: [
-                      this.props.appState.loading && Object(Qe.jsx)(ta, {}),
+                      this.props.appState.loading && Object(Ye.jsx)(na, {}),
                       this.props.listing.deleteDialogOpen &&
-                        Object(Qe.jsx)(sa, {
+                        Object(Ye.jsx)(ca, {
                           open: this.props.listing.deleteDialogOpen,
                           handleClose: this.props.apiListing.handleDeleteClose,
                           title: "Delete Listing",
@@ -3708,10 +3739,10 @@
                           buttonText: "Delete",
                           "data-test": "alert-dialog"
                         }),
-                      Object(Qe.jsxs)("div", {
+                      Object(Ye.jsxs)("div", {
                         className: t.section,
                         children: [
-                          Object(Qe.jsx)(Re.a, {
+                          Object(Ye.jsx)(Ae.a, {
                             variant: "h2",
                             align: "center",
                             gutterBottom: !0,
@@ -3720,20 +3751,20 @@
                             "data-test": "headline",
                             children: "My Listings"
                           }),
-                          Object(Qe.jsx)("div", {
+                          Object(Ye.jsx)("div", {
                             className: t.gridWrapper,
                             children: this.props.listing.userListings.map(
                               function(n) {
-                                return Object(Qe.jsxs)(
+                                return Object(Ye.jsxs)(
                                   "div",
                                   {
                                     className: t.card,
                                     "data-test": "tile",
                                     children: [
-                                      Object(Qe.jsxs)("div", {
+                                      Object(Ye.jsxs)("div", {
                                         className: t.actionArea,
                                         children: [
-                                          Object(Qe.jsx)(zn.a, {
+                                          Object(Ye.jsx)($n.a, {
                                             className: t.buttonDelete,
                                             onClick: function() {
                                               return e.handleDeleteDialogOpen(
@@ -3743,9 +3774,9 @@
                                             color: "primary",
                                             "aria-label": "Delete Listing",
                                             "data-test": "delete",
-                                            children: Object(Qe.jsx)(Zn.a, {})
+                                            children: Object(Ye.jsx)(Vn.a, {})
                                           }),
-                                          Object(Qe.jsx)(zn.a, {
+                                          Object(Ye.jsx)($n.a, {
                                             className: t.buttonEdit,
                                             onClick: function() {
                                               return e.props.history.push(
@@ -3755,11 +3786,11 @@
                                             color: "primary",
                                             "aria-label": "Edit Listing",
                                             "data-test": "edit",
-                                            children: Object(Qe.jsx)(Mn.a, {})
+                                            children: Object(Ye.jsx)(Hn.a, {})
                                           })
                                         ]
                                       }),
-                                      Object(Qe.jsx)(Kn, {
+                                      Object(Ye.jsx)(Kn, {
                                         listingTile: n,
                                         small: !0
                                       })
@@ -3780,7 +3811,7 @@
             n
           );
         })(s.a.Component),
-        la = Object(p.b)(
+        pa = Object(p.b)(
           function(e) {
             return {
               appState: e.appState,
@@ -3791,8 +3822,8 @@
           function(e) {
             return { apiListing: Object(y.b)(r, e) };
           }
-        )(ca),
-        pa = Object(f.f)(
+        )(la),
+        da = Object(f.f)(
           Object(x.a)(function(e) {
             var t;
             return {
@@ -3862,11 +3893,11 @@
                 }),
                 t)
             };
-          })(la)
+          })(pa)
         ),
-        da = _n,
-        ua = wn,
-        ma = Object(Zt.a)({
+        ua = Ln,
+        ma = _n,
+        ha = Object(Vt.a)({
           form: "updateUser",
           validate: function(e) {
             var t = {};
@@ -3908,73 +3939,73 @@
             n = e.classes,
             a = e.width,
             o = e.verifyCallback;
-          return Object(Qe.jsx)("div", {
+          return Object(Ye.jsx)("div", {
             "data-test": "component-update-user",
             className: n.sectionContainer,
-            children: Object(Qe.jsxs)("form", {
+            children: Object(Ye.jsxs)("form", {
               onSubmit: e.handleSubmit(t),
               id: "updateUser",
               className: n.form,
               children: [
-                Object(Qe.jsx)(Re.a, {
+                Object(Ye.jsx)(Ae.a, {
                   className: n.formTitle,
                   variant: "h3",
                   children: "Property Manager Account Information"
                 }),
-                Object(Qe.jsxs)("div", {
+                Object(Ye.jsxs)("div", {
                   className: n.formSection,
                   children: [
-                    Object(Qe.jsx)(Ht.a, {
+                    Object(Ye.jsx)(Zt.a, {
                       label: "Your Name",
                       name: "name",
                       id: "name",
                       type: "text",
                       classes: n,
-                      component: ua
+                      component: ma
                     }),
-                    Object(Qe.jsx)(Ht.a, {
+                    Object(Ye.jsx)(Zt.a, {
                       label: "Email",
                       name: "email",
                       id: "email",
                       type: "email",
                       classes: n,
-                      component: ua
+                      component: ma
                     }),
-                    Object(Qe.jsx)(Ht.a, {
+                    Object(Ye.jsx)(Zt.a, {
                       label: "Phone",
                       name: "phone",
                       id: "phone",
                       type: "tel",
                       classes: n,
-                      component: ua
+                      component: ma
                     }),
-                    Object(Qe.jsx)(Ht.a, {
+                    Object(Ye.jsx)(Zt.a, {
                       label: "Company Name",
                       name: "companyName",
                       id: "companyName",
                       type: "text",
                       classes: n,
-                      component: ua
+                      component: ma
                     }),
-                    Object(Qe.jsx)(Vt.a, {
+                    Object(Ye.jsx)(qt.a, {
                       className: n.formLabel,
                       component: "legend",
                       children: "Company Address"
                     }),
-                    Object(Qe.jsx)(Ht.a, {
+                    Object(Ye.jsx)(Zt.a, {
                       label: "Street Address or PO Box",
                       name: "companyStreet",
                       id: "companyStreet",
                       type: "text",
                       classes: n,
-                      component: ua
+                      component: ma
                     }),
-                    Object(Qe.jsxs)(qt.a, {
+                    Object(Ye.jsxs)(Qt.a, {
                       className: n.formGroup,
                       row: !0,
                       classes: { root: n.formGroup2Col },
                       children: [
-                        Object(Qe.jsx)(Ht.a, {
+                        Object(Ye.jsx)(Zt.a, {
                           label: "City",
                           name: "companyCity",
                           id: "companyCity",
@@ -3982,9 +4013,9 @@
                           twocol: !0,
                           mobile: !Object(Ne.b)("sm", a),
                           classes: n,
-                          component: ua
+                          component: ma
                         }),
-                        Object(Qe.jsx)(Ht.a, {
+                        Object(Ye.jsx)(Zt.a, {
                           label: "State",
                           name: "companyState",
                           id: "companyState",
@@ -3992,11 +4023,11 @@
                           short: !0,
                           mobile: !Object(Ne.b)("sm", a),
                           classes: n,
-                          component: da,
+                          component: ua,
                           options: ["", "OR", "WA"],
                           labelWidth: 80
                         }),
-                        Object(Qe.jsx)(Ht.a, {
+                        Object(Ye.jsx)(Zt.a, {
                           label: "Zip",
                           name: "companyZip",
                           id: "companyZip",
@@ -4004,13 +4035,13 @@
                           mobile: !Object(Ne.b)("sm", a),
                           type: "text",
                           classes: n,
-                          component: ua
+                          component: ma
                         })
                       ]
                     }),
-                    Object(Qe.jsx)("div", {
+                    Object(Ye.jsx)("div", {
                       className: n.buttonWrap,
-                      children: Object(Qe.jsx)(De.a, {
+                      children: Object(Ye.jsx)(De.a, {
                         type: "submit",
                         color: "primary",
                         className: "".concat(n.next, " g-recaptcha"),
@@ -4027,16 +4058,16 @@
             })
           });
         }),
-        ha = Object(p.b)(function(e) {
+        ga = Object(p.b)(function(e) {
           return {
             profile: e.profile,
             initialValues: e.profile.profile,
-            formValues: Object(Ft.a)("updateUser")(e) || {},
-            submitErrors: Object($t.a)("updateUser")(e)
+            formValues: Object(Bt.a)("updateUser")(e) || {},
+            submitErrors: Object(Mt.a)("updateUser")(e)
           };
-        })(ma),
-        ga = Object(Ne.a)()(ha),
-        ba = (function(e) {
+        })(ha),
+        ba = Object(Ne.a)()(ga),
+        fa = (function(e) {
           Object(h.a)(n, e);
           var t = Object(g.a)(n);
           function n(e) {
@@ -4081,7 +4112,7 @@
                         .then(function(t) {
                           "GET_PROFILE_FAILURE" === t.type ||
                           e.props.profile.error
-                            ? Ct(
+                            ? Et(
                                 "error",
                                 e.props.profile.error ||
                                   "An error occurred while trying to fetch your profile."
@@ -4089,7 +4120,7 @@
                             : console.log(e.props.profile.profile);
                         })
                         .catch(function(e) {
-                          return Ct("error", e);
+                          return Et("error", e);
                         })
                     : console.log("missing token or id");
                 }
@@ -4111,10 +4142,10 @@
               {
                 key: "verifyRecaptchaScore",
                 value: (function() {
-                  var e = Object(Gt.a)(
-                    Pt.a.mark(function e() {
+                  var e = Object(Ft.a)(
+                    Gt.a.mark(function e() {
                       var t, n;
-                      return Pt.a.wrap(
+                      return Gt.a.wrap(
                         function(e) {
                           for (;;)
                             switch ((e.prev = e.next)) {
@@ -4125,9 +4156,9 @@
                               case 2:
                                 if (
                                   ((t = this.props.listing.form.reCaptchaValue),
-                                  Object(Gt.a)(
-                                    Pt.a.mark(function e() {
-                                      return Pt.a.wrap(function(e) {
+                                  Object(Ft.a)(
+                                    Gt.a.mark(function e() {
+                                      return Gt.a.wrap(function(e) {
                                         for (;;)
                                           switch ((e.prev = e.next)) {
                                             case 0:
@@ -4163,7 +4194,7 @@
                                     .catch(function(e) {
                                       return (
                                         console.error(e),
-                                        fn(
+                                        yn(
                                           "ReCaptcha verification failed, please reload the page and try again."
                                         )
                                       );
@@ -4193,10 +4224,10 @@
               {
                 key: "generateUserBody",
                 value: (function() {
-                  var e = Object(Gt.a)(
-                    Pt.a.mark(function e() {
+                  var e = Object(Ft.a)(
+                    Gt.a.mark(function e() {
                       var t, n;
-                      return Pt.a.wrap(
+                      return Gt.a.wrap(
                         function(e) {
                           for (;;)
                             switch ((e.prev = e.next)) {
@@ -4236,10 +4267,10 @@
               {
                 key: "updateProfile",
                 value: (function() {
-                  var e = Object(Gt.a)(
-                    Pt.a.mark(function e() {
+                  var e = Object(Ft.a)(
+                    Gt.a.mark(function e() {
                       var t, n, a, o;
-                      return Pt.a.wrap(
+                      return Gt.a.wrap(
                         function(e) {
                           for (;;)
                             switch ((e.prev = e.next)) {
@@ -4266,7 +4297,7 @@
                                   this.props.apiProfile
                                     .updateProfile(t, a, n)
                                     .catch(function(e) {
-                                      return console.error(e), fn(e);
+                                      return console.error(e), yn(e);
                                     })
                                 );
                               case 11:
@@ -4286,7 +4317,7 @@
                                   console.log(this.props.profile.error),
                                   e.abrupt(
                                     "return",
-                                    fn(this.props.profile.error)
+                                    yn(this.props.profile.error)
                                   )
                                 );
                               case 18:
@@ -4322,10 +4353,10 @@
               {
                 key: "handleSubmit",
                 value: (function() {
-                  var e = Object(Gt.a)(
-                    Pt.a.mark(function e() {
+                  var e = Object(Ft.a)(
+                    Gt.a.mark(function e() {
                       var t = this;
-                      return Pt.a.wrap(
+                      return Gt.a.wrap(
                         function(e) {
                           for (;;)
                             switch ((e.prev = e.next)) {
@@ -4334,7 +4365,7 @@
                                   this.updateProfile()
                                     .then(function(e) {
                                       "UPDATE_PROFILE_SUCCESS" === e
-                                        ? (Ct("success", "Profile updated"),
+                                        ? (Et("success", "Profile updated"),
                                           t.props.history.push("/new"))
                                         : console.log(e);
                                     })
@@ -4359,16 +4390,16 @@
               {
                 key: "render",
                 value: function() {
-                  return Object(Qe.jsx)("div", {
+                  return Object(Ye.jsx)("div", {
                     "data-test": "container-update-user",
-                    children: Object(Qe.jsx)(
-                      ga,
+                    children: Object(Ye.jsx)(
+                      ba,
                       Object(d.a)(
                         Object(d.a)({}, this.props),
                         {},
                         {
                           onSubmit: this.handleSubmit,
-                          handleError: fn,
+                          handleError: yn,
                           verifyRecaptchaScore: this.verifyRecaptchaScore
                         }
                       )
@@ -4380,19 +4411,19 @@
             n
           );
         })(s.a.Component),
-        fa = Object(p.b)(
+        ya = Object(p.b)(
           function(e) {
             return {
               listing: e.listing,
               appState: e.appState,
               profile: e.profile,
               initialValues: e.profile.profile,
-              formValues: Object(Ft.a)("updateUser")(e) || {},
+              formValues: Object(Bt.a)("updateUser")(e) || {},
               pristine: Object(Wt.a)("updateUser")(e),
-              submitting: Object(Bt.a)("updateUser")(e),
-              valid: Object(zt.a)("updateUser")(e),
-              submitErrors: Object($t.a)("updateUser")(e),
-              reset: Mt.a
+              submitting: Object(zt.a)("updateUser")(e),
+              valid: Object($t.a)("updateUser")(e),
+              submitErrors: Object(Mt.a)("updateUser")(e),
+              reset: Ht.a
             };
           },
           function(e) {
@@ -4401,18 +4432,18 @@
               apiProfile: Object(y.b)(o, e),
               actions: Object(y.b)(a, e),
               submitForm: function() {
-                return e(Object(Mt.b)("updateUser"));
+                return e(Object(Ht.b)("updateUser"));
               }
             };
           }
-        )(ba),
-        ya = Object(x.a)(yn)(fa),
-        ja = n(231),
-        xa = n.n(ja),
-        Oa = n(509),
-        Sa = Ln,
-        va = jn,
-        wa = Object(Zt.a)({
+        )(fa),
+        ja = Object(x.a)(jn)(ya),
+        xa = n(231),
+        Oa = n.n(xa),
+        Sa = n(509),
+        va = Cn,
+        wa = xn,
+        _a = Object(Vt.a)({
           form: "listingSearch",
           destroyOnUnmount: !1,
           forceUnregisterOnUnmount: !1,
@@ -4425,22 +4456,22 @@
             a = e.setAndClose,
             o = e.more,
             r = e.toggleDrawer,
-            i = Object.keys(va).map(function(e) {
-              return Object(Qe.jsx)(
-                Ht.a,
+            i = Object.keys(wa).map(function(e) {
+              return Object(Ye.jsx)(
+                Zt.a,
                 {
-                  label: va[e],
+                  label: wa[e],
                   name: e,
                   id: e,
                   type: "checkbox",
                   formControlName: "controlCheckbox",
                   classes: t,
-                  component: Sa
+                  component: va
                 },
                 e
               );
             });
-          return Object(Qe.jsx)(Oa.a, {
+          return Object(Ye.jsx)(Sa.a, {
             className: t.drawer,
             "data-test": "component-features-search",
             variant: "permanent",
@@ -4448,37 +4479,37 @@
             open: o,
             onClose: r,
             anchor: "right",
-            children: Object(Qe.jsxs)("div", {
+            children: Object(Ye.jsxs)("div", {
               className: t.featuresPanel,
               children: [
-                Object(Qe.jsx)("div", {
+                Object(Ye.jsx)("div", {
                   className: t.formSection,
-                  children: Object(Qe.jsx)(Vt.a, {
+                  children: Object(Ye.jsx)(qt.a, {
                     className: t.formLabel,
                     component: "legend",
                     children: "Features"
                   })
                 }),
-                Object(Qe.jsxs)(qt.a, {
+                Object(Ye.jsxs)(Qt.a, {
                   row: !0,
                   classes: { root: t.formGroupFeatures },
                   children: [
-                    Object(Qe.jsx)(Ht.a, {
+                    Object(Ye.jsx)(Zt.a, {
                       label: "Vacant?",
                       name: "vacant",
                       id: "vacant",
                       type: "checkbox",
                       formControlName: "controlCheckbox",
                       classes: t,
-                      component: Sa
+                      component: va
                     }),
                     i
                   ]
                 }),
-                Object(Qe.jsxs)("div", {
+                Object(Ye.jsxs)("div", {
                   className: t.buttonWrap,
                   children: [
-                    Object(Qe.jsx)(De.a, {
+                    Object(Ye.jsx)(De.a, {
                       type: "button",
                       color: "secondary",
                       className: t.leftButton,
@@ -4486,7 +4517,7 @@
                       onClick: n,
                       children: "Clear"
                     }),
-                    Object(Qe.jsx)(De.a, {
+                    Object(Ye.jsx)(De.a, {
                       type: "button",
                       color: "primary",
                       className: t.next,
@@ -4500,10 +4531,10 @@
             })
           });
         }),
-        ka = Object(Ne.a)()(wa),
-        _a = _n,
-        La = wn;
-      var Ca = Object(Zt.a)({
+        ka = Object(Ne.a)()(_a),
+        La = Ln,
+        Ca = _n;
+      var Ea = Object(Vt.a)({
           form: "listingSearch",
           destroyOnUnmount: !1,
           forceUnregisterOnUnmount: !1,
@@ -4513,31 +4544,31 @@
         })(function(e) {
           var t = e.onSubmit,
             n = e.classes;
-          return Object(Qe.jsx)("div", {
+          return Object(Ye.jsx)("div", {
             className: n.searchBar,
             "data-test": "component-search-bar",
-            children: Object(Qe.jsxs)("form", {
+            children: Object(Ye.jsxs)("form", {
               className: n.searchForm,
               onSubmit: e.handleSubmit(t),
               id: "listingSearch",
               children: [
-                Object(Qe.jsx)(Ue.a, {
+                Object(Ye.jsx)(Ue.a, {
                   "aria-label": "close",
                   className: n.closeButton,
                   size: "small",
                   onClick: e.hideSearch,
-                  children: Object(Qe.jsx)(lt.a, { fontSize: "inherit" })
+                  children: Object(Ye.jsx)(pt.a, { fontSize: "inherit" })
                 }),
-                Object(Qe.jsx)(Ht.a, {
+                Object(Ye.jsx)(Zt.a, {
                   label: "Zip code",
                   name: "searchZip",
                   id: "searchZip",
                   type: "text",
                   classes: n,
                   formControlName: "searchZip",
-                  component: La
+                  component: Ca
                 }),
-                Object(Qe.jsx)(Ht.a, {
+                Object(Ye.jsx)(Zt.a, {
                   "data-test": "input-bedrooms",
                   label: "Bedrooms",
                   name: "bedrooms",
@@ -4546,12 +4577,12 @@
                   options: ["", "Studio", "1", "2", "3", "4+"],
                   classes: n,
                   labelWidth: 41,
-                  component: _a,
+                  component: La,
                   formControlName: "searchBedrooms",
                   inputProps: { style: { paddingLeft: 20 } },
                   inputLabelProps: { style: { paddingLeft: 20 } }
                 }),
-                Object(Qe.jsx)(Ht.a, {
+                Object(Ye.jsx)(Zt.a, {
                   label: "Max Rent",
                   name: "maxRent",
                   id: "maxRent",
@@ -4559,7 +4590,7 @@
                   min: 0.01,
                   step: 0.01,
                   classes: n,
-                  component: La,
+                  component: Ca,
                   formControlName: "maxRent",
                   inputProps: {
                     style: { paddingLeft: 15, textAlign: "right" }
@@ -4567,7 +4598,7 @@
                   inputLabelProps: { style: { paddingLeft: 15 } },
                   startAdornment: "currency"
                 }),
-                Object(Qe.jsx)(De.a, {
+                Object(Ye.jsx)(De.a, {
                   type: "button",
                   color: "secondary",
                   className: n.moreButton,
@@ -4575,7 +4606,7 @@
                   onClick: e.toggleMore,
                   children: "More"
                 }),
-                Object(Qe.jsx)(De.a, {
+                Object(Ye.jsx)(De.a, {
                   type: "submit",
                   color: "primary",
                   className: n.searchButton,
@@ -4583,7 +4614,7 @@
                   onClick: e.search,
                   children: "Search"
                 }),
-                Object(Qe.jsx)(De.a, {
+                Object(Ye.jsx)(De.a, {
                   type: "button",
                   color: "secondary",
                   className: n.clearButton,
@@ -4592,7 +4623,7 @@
                   children: "Reset Filters"
                 }),
                 e.more &&
-                  Object(Qe.jsx)(ka, {
+                  Object(Ye.jsx)(ka, {
                     classes: n,
                     setAndClose: e.setAndClose,
                     clearSearch: e.clearSearch,
@@ -4603,35 +4634,35 @@
             })
           });
         }),
-        Ea = Object(p.b)(function(e) {
+        Ta = Object(p.b)(function(e) {
           return {
             listing: e.listing,
             initialValues: e.listing.search,
-            formValues: Object(Ft.a)("listingSearch")(e) || {},
-            submitErrors: Object($t.a)("listingSearch")(e)
+            formValues: Object(Bt.a)("listingSearch")(e) || {},
+            submitErrors: Object(Mt.a)("listingSearch")(e)
           };
-        })(Ca),
-        Ta = Object(Ne.a)()(Ea),
-        Na = n(518),
-        Ia = n(232),
-        Aa = n.n(Ia),
-        Ra = function(e) {
-          return Object(Qe.jsx)("div", {
+        })(Ea),
+        Na = Object(Ne.a)()(Ta),
+        Ia = n(518),
+        Ra = n(232),
+        Aa = n.n(Ra),
+        Da = function(e) {
+          return Object(Ye.jsx)("div", {
             "data-test": "component-map-marker",
             className: e.classes.mapMarker,
-            children: Object(Qe.jsx)(Da, {
-              title: Object(Qe.jsx)("div", {
+            children: Object(Ye.jsx)(Ua, {
+              title: Object(Ye.jsx)("div", {
                 className: e.classes.markerCard,
-                children: Object(Qe.jsx)(Kn, {
+                children: Object(Ye.jsx)(Kn, {
                   listingTile: e.listing,
                   small: !0
                 })
               }),
-              children: Object(Qe.jsx)(Aa.a, { className: e.classes.mapIcon })
+              children: Object(Ye.jsx)(Aa.a, { className: e.classes.mapIcon })
             })
           });
         },
-        Da = Object(x.a)(function(e) {
+        Ua = Object(x.a)(function(e) {
           return {
             tooltip: {
               backgroundColor: "white",
@@ -4640,9 +4671,9 @@
             }
           };
         })(function(e) {
-          return Object(Qe.jsx)(Na.a, Object(d.a)({ interactive: !0 }, e));
+          return Object(Ye.jsx)(Ia.a, Object(d.a)({ interactive: !0 }, e));
         }),
-        Ua = (function(e) {
+        Pa = (function(e) {
           Object(h.a)(n, e);
           var t = Object(g.a)(n);
           function n(e) {
@@ -4656,14 +4687,14 @@
                   .then(function(e) {
                     ("GET_ALL_LISTINGS_FAILURE" === e.type ||
                       a.props.listing.error) &&
-                      Ct(
+                      Et(
                         "error",
                         a.props.listing.error ||
                           "An error occured while fetching listings"
                       );
                   })
                   .catch(function(e) {
-                    Ct("error", e);
+                    Et("error", e);
                   });
               }),
               (a.toggleMore = function() {
@@ -4692,14 +4723,14 @@
                 console.log("handleSubmit");
                 var e = a.props.formValues,
                   t = {
-                    features: On(e),
+                    features: Sn(e),
                     property_zip: e.searchZip,
                     bedrooms: e.bedrooms,
                     max_rent: e.maxRent
                   },
                   n = (function(e, t) {
                     console.log(e), console.log(t);
-                    var n = Object(Qt.a)(e);
+                    var n = Object(Yt.a)(e);
                     if (
                       (t.max_rent &&
                         (console.log(
@@ -4738,7 +4769,7 @@
                     )
                       return [];
                     if (t.features) {
-                      var a = Object(Qt.a)(n);
+                      var a = Object(Yt.a)(n);
                       n.forEach(function(e) {
                         t.features.forEach(function(t, n) {
                           e.features.includes(t) ||
@@ -4750,7 +4781,7 @@
                             a.splice(n, 1));
                         });
                       }),
-                        (n = Object(Qt.a)(a));
+                        (n = Object(Yt.a)(a));
                     }
                     return (
                       console.log("filteredListings after features filter", n),
@@ -4760,7 +4791,7 @@
                 console.log(n),
                   a.props.apiListing.updateFilter(n),
                   n.length ||
-                    Ct(
+                    Et(
                       "error",
                       "No listings match your search criteria. Try broadening your search."
                     );
@@ -4782,8 +4813,8 @@
                 value: function() {
                   var e = this,
                     t = this.props.listing.filteredListings.map(function(t) {
-                      return Object(Qe.jsx)(
-                        Ra,
+                      return Object(Ye.jsx)(
+                        Da,
                         {
                           listing: t,
                           lat: t.property_lat,
@@ -4793,12 +4824,12 @@
                         t.id
                       );
                     });
-                  return Object(Qe.jsxs)("div", {
+                  return Object(Ye.jsxs)("div", {
                     className: this.props.classes.mapContainer,
                     style: { height: "100vh", width: "100%" },
                     children: [
                       this.state.search &&
-                        Object(Qe.jsx)(Ta, {
+                        Object(Ye.jsx)(Na, {
                           classes: this.props.classes,
                           toggleMore: this.toggleMore,
                           toggleDrawer: this.toggleMore,
@@ -4809,7 +4840,7 @@
                           onSubmit: this.handleSubmit,
                           hideSearch: this.hideSearch
                         }),
-                      Object(Qe.jsx)(xa.a, {
+                      Object(Ye.jsx)(Oa.a, {
                         bootstrapURLKeys: {
                           key: "AIzaSyCzzv8kgYfdr9TIKQVG1Y6iexdL90rWYqg"
                         },
@@ -4825,21 +4856,21 @@
             n
           );
         })(i.Component);
-      Ua.defaultProps = { center: { lat: 45.5051, lng: -122.675 }, zoom: 12 };
-      var Pa = Object(p.b)(
+      Pa.defaultProps = { center: { lat: 45.5051, lng: -122.675 }, zoom: 12 };
+      var Ga = Object(p.b)(
           function(e) {
             return {
               appState: e.appState,
               profile: e.profile,
               listing: e.listing,
-              formValues: Object(Ft.a)("listingSearch")(e) || {}
+              formValues: Object(Bt.a)("listingSearch")(e) || {}
             };
           },
           function(e) {
             return { apiListing: Object(y.b)(r, e) };
           }
-        )(Ua),
-        Ga = Object(x.a)(function(e) {
+        )(Pa),
+        Fa = Object(x.a)(function(e) {
           var t;
           return {
             root: {},
@@ -4998,10 +5029,10 @@
               { marginTop: 10, marginLeft: 0, width: "100%" }
             )
           };
-        })(Pa),
-        Fa = n(234),
-        Wa = n.n(Fa),
-        Ba = (function(e) {
+        })(Ga),
+        Ba = n(234),
+        Wa = n.n(Ba),
+        za = (function(e) {
           Object(h.a)(n, e);
           var t = Object(g.a)(n);
           function n(e) {
@@ -5027,21 +5058,21 @@
               {
                 key: "render",
                 value: function() {
-                  return Object(Qe.jsxs)("div", {
+                  return Object(Ye.jsxs)("div", {
                     className: this.props.classes.message,
                     "data-test": "component-no-access",
                     children: [
-                      Object(Qe.jsxs)("p", {
+                      Object(Ye.jsxs)("p", {
                         children: [
                           this.props.message
                             ? this.props.message
                             : this.state.message,
-                          Object(Qe.jsx)("br", {})
+                          Object(Ye.jsx)("br", {})
                         ]
                       }),
-                      Object(Qe.jsx)("div", {
+                      Object(Ye.jsx)("div", {
                         className: this.props.classes.buttonWrap,
-                        children: Object(Qe.jsx)(De.a, {
+                        children: Object(Ye.jsx)(De.a, {
                           type: "button",
                           color: "primary",
                           className: this.props.classes.next,
@@ -5059,9 +5090,9 @@
             n
           );
         })(s.a.Component),
-        za = Object(f.f)(Ba),
-        $a = n.p + "static/media/hero_keys_1920x1080.2473bb39.jpg",
-        Ma = (function(e) {
+        $a = Object(f.f)(za),
+        Ma = n.p + "static/media/hero_keys_1920x1080.2473bb39.jpg",
+        Ha = (function(e) {
           Object(h.a)(n, e);
           var t = Object(g.a)(n);
           function n(e) {
@@ -5093,7 +5124,7 @@
                 value: function() {
                   var e = this;
                   if (
-                    (console.log("NODE_ENV front end: ".concat("production")),
+                    (console.log("NODE_ENV front end: ".concat("development")),
                     !this.props.appState.loggedIn &&
                       (!this.props.match || !this.props.match.params.id))
                   ) {
@@ -5165,26 +5196,26 @@
                     t = this.props.classes,
                     n = this.props.appState.loggedIn,
                     a = !!this.props.profile.profile.phone;
-                  return Object(Qe.jsxs)("div", {
+                  return Object(Ye.jsxs)("div", {
                     "data-test": "component-app",
                     className: t.appRoot,
                     children: [
-                      Object(Qe.jsx)(j.a, {}),
-                      Object(Qe.jsx)(Ke, { main_ref: this.main_ref }),
-                      Object(Qe.jsx)(Et, {}),
-                      this.props.appState.loading && Object(Qe.jsx)(ta, {}),
-                      Object(Qe.jsx)("main", {
+                      Object(Ye.jsx)(j.a, {}),
+                      Object(Ye.jsx)(Ke, { main_ref: this.main_ref }),
+                      Object(Ye.jsx)(Tt, {}),
+                      this.props.appState.loading && Object(Ye.jsx)(na, {}),
+                      Object(Ye.jsx)("main", {
                         className: t.container,
                         id: "main",
                         ref: this.main_ref,
-                        children: Object(Qe.jsxs)(f.c, {
+                        children: Object(Ye.jsxs)(f.c, {
                           children: [
-                            Object(Qe.jsx)(f.a, {
+                            Object(Ye.jsx)(f.a, {
                               exact: !0,
                               path: "/",
                               render: function(t) {
-                                return Object(Qe.jsx)(
-                                  et,
+                                return Object(Ye.jsx)(
+                                  tt,
                                   Object(d.a)(
                                     Object(d.a)({}, t),
                                     {},
@@ -5197,25 +5228,25 @@
                                 );
                               }
                             }),
-                            Object(Qe.jsx)(f.a, {
+                            Object(Ye.jsx)(f.a, {
                               path: "/admin/:id?/:token?",
                               render: function(e) {
-                                return Object(Qe.jsx)(Dt, Object(d.a)({}, e));
+                                return Object(Ye.jsx)(Ut, Object(d.a)({}, e));
                               }
                             }),
-                            Object(Qe.jsx)(f.a, {
+                            Object(Ye.jsx)(f.a, {
                               path: "/new",
                               render: function(t) {
                                 return n && a
-                                  ? Object(Qe.jsx)(
-                                      Bn,
+                                  ? Object(Ye.jsx)(
+                                      zn,
                                       Object(d.a)(
                                         { setRedirect: e.setRedirect },
                                         t
                                       )
                                     )
-                                  : Object(Qe.jsx)(
-                                      za,
+                                  : Object(Ye.jsx)(
+                                      $a,
                                       Object(d.a)(
                                         {
                                           setRedirect: e.setRedirect,
@@ -5226,7 +5257,7 @@
                                                   e.props.profile.profile.id
                                                 )
                                               : "".concat(
-                                                  "",
+                                                  "http://localhost:3001",
                                                   "/api/auth/google"
                                                 ),
                                           buttonText:
@@ -5243,11 +5274,11 @@
                                     );
                               }
                             }),
-                            Object(Qe.jsx)(f.a, {
+                            Object(Ye.jsx)(f.a, {
                               path: "/map",
                               render: function(t) {
-                                return Object(Qe.jsx)(
-                                  Ga,
+                                return Object(Ye.jsx)(
+                                  Fa,
                                   Object(d.a)(
                                     {
                                       listing: e.props.listing,
@@ -5258,20 +5289,20 @@
                                 );
                               }
                             }),
-                            Object(Qe.jsx)(f.a, {
+                            Object(Ye.jsx)(f.a, {
                               path: "/user/:id",
                               render: function(t) {
-                                return Object(Qe.jsx)(
-                                  ya,
+                                return Object(Ye.jsx)(
+                                  ja,
                                   Object(d.a)({ setRedirect: e.setRedirect }, t)
                                 );
                               }
                             }),
-                            Object(Qe.jsx)(f.a, {
+                            Object(Ye.jsx)(f.a, {
                               path: "/edit/:id",
                               render: function(t) {
-                                return Object(Qe.jsx)(
-                                  Bn,
+                                return Object(Ye.jsx)(
+                                  zn,
                                   Object(d.a)(
                                     { edit: !0, setRedirect: e.setRedirect },
                                     t
@@ -5279,38 +5310,38 @@
                                 );
                               }
                             }),
-                            Object(Qe.jsx)(f.a, {
+                            Object(Ye.jsx)(f.a, {
                               path: "/listings",
                               render: function(t) {
-                                return Object(Qe.jsx)(
-                                  pa,
+                                return Object(Ye.jsx)(
+                                  da,
                                   Object(d.a)({ setRedirect: e.setRedirect }, t)
                                 );
                               }
                             }),
-                            Object(Qe.jsx)(f.a, {
+                            Object(Ye.jsx)(f.a, {
                               path: "/logout",
                               render: function(t) {
-                                return Object(Qe.jsx)(
-                                  ot,
+                                return Object(Ye.jsx)(
+                                  rt,
                                   Object(d.a)({ classes: e.props.classes }, t)
                                 );
                               }
                             }),
-                            Object(Qe.jsx)(f.a, {
+                            Object(Ye.jsx)(f.a, {
                               path: "/login",
                               render: function(t) {
-                                return Object(Qe.jsx)(
-                                  nt,
+                                return Object(Ye.jsx)(
+                                  at,
                                   Object(d.a)({ classes: e.props.classes }, t)
                                 );
                               }
                             }),
-                            Object(Qe.jsx)(f.a, {
+                            Object(Ye.jsx)(f.a, {
                               path: "*",
                               render: function(t) {
-                                return Object(Qe.jsx)(
-                                  Xe,
+                                return Object(Ye.jsx)(
+                                  et,
                                   Object(d.a)({ classes: e.props.classes }, t)
                                 );
                               }
@@ -5318,7 +5349,7 @@
                           ]
                         })
                       }),
-                      Object(Qe.jsx)(Je, { classes: this.props.classes })
+                      Object(Ye.jsx)(Xe, { classes: this.props.classes })
                     ]
                   });
                 }
@@ -5327,7 +5358,7 @@
             n
           );
         })(i.Component),
-        Ha = Object(p.b)(
+        Za = Object(p.b)(
           function(e) {
             return {
               appState: e.appState,
@@ -5342,8 +5373,8 @@
               apiProfile: Object(y.b)(o, e)
             };
           }
-        )(Ma),
-        Za = Object(x.a)(function(e) {
+        )(Ha),
+        Va = Object(x.a)(function(e) {
           var t, n;
           return {
             root: { flexGrow: 1, boxSizing: "border-box" },
@@ -5362,7 +5393,7 @@
                 width: "100vw",
                 height: "100%",
                 minHeight: "80vh",
-                backgroundImage: 'url("'.concat($a, '")'),
+                backgroundImage: 'url("'.concat(Ma, '")'),
                 backgroundAttachment: "fixed",
                 backgroundPosition: "bottom"
               },
@@ -5484,11 +5515,11 @@
               borderRadius: 4
             }
           };
-        })(Object(f.f)(Ha)),
-        Va = n(196),
-        qa = n(25),
-        Qa = n.n(qa),
-        Ya = {
+        })(Object(f.f)(Za)),
+        qa = n(196),
+        Qa = n(25),
+        Ya = n.n(Qa),
+        Ja = {
           loggedIn: !1,
           authToken: "",
           loading: !1,
@@ -5499,37 +5530,37 @@
           var e =
               arguments.length > 0 && void 0 !== arguments[0]
                 ? arguments[0]
-                : Ya,
+                : Ja,
             t = arguments.length > 1 ? arguments[1] : void 0;
           switch (t.type) {
             case O:
-              return Ya;
+              return Ja;
             case v:
-            case K:
+            case J:
             case ee:
             case ue:
             case le:
             case ae:
             case N:
-            case R:
-              return Qa()(e, { loading: { $set: !0 } });
+            case A:
+              return Ya()(e, { loading: { $set: !0 } });
             case I:
-              return Qa()(e, {
+              return Ya()(e, {
                 loggedIn: { $set: !0 },
                 authToken: { $set: t.payload.token },
                 loading: { $set: !1 }
               });
-            case A:
-              return Qa()(e, { loggedIn: { $set: !1 }, loading: { $set: !1 } });
+            case R:
+              return Ya()(e, { loggedIn: { $set: !1 }, loading: { $set: !1 } });
             case w:
-              return Qa()(e, { redirect: { $set: t.payload } });
+              return Ya()(e, { redirect: { $set: t.payload } });
             case S:
-              return Qa()(e, {
+              return Ya()(e, {
                 loggedIn: { $set: !0 },
                 userId: { $set: t.payload.userId },
                 authToken: { $set: t.payload.token }
               });
-            case J:
+            case K:
             case X:
             case te:
             case ne:
@@ -5541,12 +5572,12 @@
             case re:
             case D:
             case U:
-              return Qa()(e, { loading: { $set: !1 } });
+              return Ya()(e, { loading: { $set: !1 } });
             default:
               return e;
           }
         },
-        Ja = {
+        Xa = {
           profile: {
             id: "",
             name: "",
@@ -5561,19 +5592,19 @@
           },
           error: null
         };
-      var Xa = function() {
+      var eo = function() {
           var e,
             t =
               arguments.length > 0 && void 0 !== arguments[0]
                 ? arguments[0]
-                : Ja,
+                : Xa,
             n = arguments.length > 1 ? arguments[1] : void 0;
           switch (n.type) {
             case O:
-              return Ja;
-            case R:
+              return Xa;
+            case A:
             case P:
-              return Qa()(t, { error: { $set: null } });
+              return Ya()(t, { error: { $set: null } });
             case D:
             case G:
               console.log(n.payload.name);
@@ -5591,7 +5622,7 @@
                       .concat(n.payload.name.givenName, " ")
                       .concat(n.payload.name.familyName)
                   : "";
-              return Qa()(t, {
+              return Ya()(t, {
                 profile: {
                   id: { $set: n.payload.id },
                   name: { $set: a },
@@ -5613,13 +5644,13 @@
                   "string" === typeof n.payload.message
                     ? n.payload.message
                     : "Sorry, something went wrong :(\nPlease try again."),
-                Qa()(t, { error: { $set: e } })
+                Ya()(t, { error: { $set: e } })
               );
             default:
               return t;
           }
         },
-        eo = {
+        to = {
           filteredListings: [],
           allListings: [],
           userListings: [],
@@ -5639,28 +5670,28 @@
           },
           error: null
         };
-      var to = function() {
+      var no = function() {
           var e,
             t =
               arguments.length > 0 && void 0 !== arguments[0]
                 ? arguments[0]
-                : eo,
+                : to,
             n = arguments.length > 1 ? arguments[1] : void 0;
           switch (n.type) {
             case O:
-              return eo;
+              return to;
             case $:
-              return Qa()(t, {
+              return Ya()(t, {
                 form: Object(b.a)({}, n.payload.name, { $set: n.payload.value })
               });
             case M:
-              return Qa()(t, {
+              return Ya()(t, {
                 search: Object(b.a)({}, n.payload.name, {
                   $set: n.payload.value
                 })
               });
             case H:
-              return Qa()(t, {
+              return Ya()(t, {
                 deleteDialogOpen: { $set: !0 },
                 currentListing: {
                   $set: Object(d.a)({}, n.payload.selectedListing)
@@ -5668,7 +5699,7 @@
               });
             case Z:
             case pe:
-              return Qa()(t, {
+              return Ya()(t, {
                 deleteDialogOpen: { $set: !1 },
                 currentListing: {
                   id: { $set: "" },
@@ -5680,39 +5711,39 @@
                 error: { $set: null }
               });
             case V:
-              return console.log("clear form"), Qa()(t, { form: { $set: {} } });
+              return console.log("clear form"), Ya()(t, { form: { $set: {} } });
             case q:
               return (
-                console.log("clear search"), Qa()(t, { search: { $set: {} } })
+                console.log("clear search"), Ya()(t, { search: { $set: {} } })
               );
             case Q:
               return (
                 console.log("clear features"),
-                Qa()(t, { search: { features: { $set: [] } } })
+                Ya()(t, { search: { features: { $set: [] } } })
               );
             case Y:
               return (
                 console.log("UPDATE_FILTER"),
                 console.log(n.payload),
-                Qa()(t, { filteredListings: { $set: Object(Qt.a)(n.payload) } })
+                Ya()(t, { filteredListings: { $set: Object(Yt.a)(n.payload) } })
               );
-            case K:
+            case J:
             case ee:
             case ue:
             case le:
             case ae:
             case ie:
-              return Qa()(t, { error: { $set: null } });
-            case J:
+              return Ya()(t, { error: { $set: null } });
+            case K:
             case te:
             case me:
-              var a = Ze(n.payload.available_date),
-                o = {};
+              Ze(n.payload.available_date);
+              var a = {};
               n.payload.features &&
                 n.payload.features.forEach(function(e) {
-                  o[e] = !0;
+                  a[e] = !0;
                 });
-              var r = {
+              var o = {
                   propertyName: n.payload.property_name,
                   propertyStreet: n.payload.property_street,
                   propertyCity: n.payload.property_city,
@@ -5723,33 +5754,40 @@
                   propertyPhone: n.payload.property_phone,
                   propertyEmail: n.payload.property_email,
                   listingUrl: n.payload.listing_url,
-                  vacant: n.payload.vacant,
-                  mm: a.mm,
-                  dd: a.dd,
-                  yyyy: a.yyyy,
-                  monthlyRent: n.payload.monthly_rent,
-                  primaryImage: n.payload.primary_image,
-                  deposit: n.payload.deposit,
-                  bedrooms: n.payload.bedrooms,
+                  primaryImage:
+                    n.payload.primary_image ||
+                    "https://www.oregonlive.com/resizer/WT8ZztMJGjquhHZQN--FpxQzghA=/1280x0/smart/advancelocal-adapter-image-uploads.s3.amazonaws.com/expo.advance.net/img/1c2d086149/width2048/0ce_bronaughapartmentsportlandoregon.jpeg",
+                  bedroomsPriceString: qe(
+                    n.payload.studio_l,
+                    n.payload.studio_h,
+                    n.payload.br_1l,
+                    n.payload.br_1h,
+                    n.payload.br_2l,
+                    n.payload.br_2h,
+                    n.payload.br_3l,
+                    n.payload.br_3h,
+                    n.payload.br_4l,
+                    n.payload.br_4h,
+                    n.payload.br_5l,
+                    n.payload.br_5h
+                  ),
                   notes: n.payload.notes,
-                  leaseLength: n.payload.lease_length,
-                  squareFt: n.payload.square_feet,
+                  availability: n.payload.availability,
+                  pets: n.payload.pets,
                   laundryType: n.payload.laundry_type,
-                  parkingType: n.payload.parking_type,
-                  parkingFee: n.payload.parking_fee,
                   userId: n.payload.user_id,
                   dialogOpen: !1
                 },
-                i = Object(d.a)(Object(d.a)({}, r), o);
-              return Qa()(t, { form: { $set: i }, error: { $set: null } });
+                r = Object(d.a)(Object(d.a)({}, o), a);
+              return Ya()(t, { form: { $set: r }, error: { $set: null } });
             case oe:
-              return Qa()(t, {
+              return Ya()(t, {
                 allListings: { $set: n.payload },
                 filteredListings: { $set: n.payload },
                 error: { $set: null }
               });
             case se:
-              return Qa()(t, {
+              return Ya()(t, {
                 userListings: { $set: n.payload },
                 error: { $set: null }
               });
@@ -5764,26 +5802,26 @@
                   "string" === typeof n.payload.message
                     ? n.payload.message
                     : "Sorry, something went wrong :(\nPlease try again."),
-                Qa()(t, { error: { $set: e } })
+                Ya()(t, { error: { $set: e } })
               );
             default:
               return t;
           }
         },
-        no = Object(y.c)({
+        ao = Object(y.c)({
           appState: Ka,
-          profile: Xa,
-          listing: to,
-          form: Va.a
+          profile: eo,
+          listing: no,
+          form: qa.a
         }),
-        ao = Object(y.a)(E.apiMiddleware),
-        oo = [E.apiMiddleware],
-        ro =
-          (y.a.apply(void 0, oo)(y.e),
+        oo = Object(y.a)(E.apiMiddleware),
+        ro = [E.apiMiddleware],
+        io =
+          (y.a.apply(void 0, ro)(y.e),
           Object(y.e)(
-            no,
+            ao,
             Object(y.d)(
-              ao,
+              oo,
               window.__REDUX_DEVTOOLS_EXTENSION__
                 ? window.__REDUX_DEVTOOLS_EXTENSION__()
                 : function(e) {
@@ -5798,11 +5836,11 @@
             /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
           )
       );
-      var io = n(511),
-        so = n(235),
-        co = n(153),
-        lo = n.n(co),
-        po = {
+      var so = n(511),
+        co = n(235),
+        lo = n(153),
+        po = n.n(lo),
+        uo = {
           palette: {
             primary: {
               main: "rgb(0, 170, 164)",
@@ -5810,8 +5848,8 @@
               contrastText: "white"
             },
             secondary: { main: "#c77137", light: "#d3a900" },
-            danger: { main: lo.a[900], light: lo.a[700] },
-            success: { main: dt.a[600], light: dt.a[400] },
+            danger: { main: po.a[900], light: po.a[700] },
+            success: { main: ut.a[600], light: ut.a[400] },
             textColor: "#333",
             secondaryTextColor: "rgb(0, 170, 164)",
             bodyBackground: "#fff",
@@ -5876,8 +5914,8 @@
             }
           }
         },
-        uo = Object(so.a)(po),
-        mo = (function(e) {
+        mo = Object(co.a)(uo),
+        ho = (function(e) {
           Object(h.a)(n, e);
           var t = Object(g.a)(n);
           function n() {
@@ -5903,15 +5941,15 @@
             n
           );
         })(s.a.Component),
-        ho = Object(f.f)(mo);
+        go = Object(f.f)(ho);
       Object(c.render)(
-        Object(Qe.jsx)(p.a, {
-          store: ro,
-          children: Object(Qe.jsx)(l.a, {
-            children: Object(Qe.jsx)(ho, {
-              children: Object(Qe.jsx)(io.a, {
-                theme: uo,
-                children: Object(Qe.jsx)(Za, {})
+        Object(Ye.jsx)(p.a, {
+          store: io,
+          children: Object(Ye.jsx)(l.a, {
+            children: Object(Ye.jsx)(go, {
+              children: Object(Ye.jsx)(so.a, {
+                theme: mo,
+                children: Object(Ye.jsx)(Va, {})
               })
             })
           })
@@ -5926,4 +5964,4 @@
   },
   [[427, 1, 2]]
 ]);
-//# sourceMappingURL=main.edd04d6f.chunk.js.map
+//# sourceMappingURL=main.99b567a4.chunk.js.map

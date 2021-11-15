@@ -216,8 +216,7 @@ const ContentTile = props => {
   const {
     primary_image,
     property_name,
-    bedrooms,
-    monthly_rent,
+    bedroomsPriceString,
     property_email,
     property_phone,
     listing_url
@@ -256,14 +255,7 @@ const ContentTile = props => {
             className={small ? classes.contentLight : classes.bodyLight}
             data-test="body"
           >
-            {bedrooms.toLowerCase() === "studio" ? "Studio" : `${bedrooms} BR`}
-          </Typography>
-          <Typography
-            component="span"
-            className={small ? classes.contentBold : classes.body}
-            data-test="body"
-          >
-            ${Math.trunc(monthly_rent)}
+            {bedroomsPriceString}
           </Typography>
         </div>
         <div className={small ? classes.cardFooterSmall : classes.cardFooter}>
