@@ -78,48 +78,43 @@ export const bedroomsPriceString = (
 ) => {
   const studio =
     studio_l && studio_h
-      ? `Studio: $${studio_l}–$${studio_h}`
-      : studio_l
-      ? `Studio: $${studio_l}`
+      ? `Studio: $${parseInt(studio_l)}–$${parseInt(studio_h)}`
+      : parseInt(studio_l)
+      ? `Studio: $${parseInt(studio_l)}`
       : null;
   const br1 =
     br1_l && br1_h
-      ? `1BR: $${br1_l}–$${br1_h}`
-      : br1_l
-      ? `1BR: $${br1_l}`
+      ? `1BR: $${parseInt(br1_l)}–$${parseInt(br1_h)}`
+      : parseInt(br1_l)
+      ? `1BR: $${parseInt(br1_l)}`
       : null;
   const br2 =
     br2_l && br2_h
-      ? `2BR: $${br2_l}–$${br1_h}`
-      : br2_l
-      ? `2BR: $${br2_l}`
+      ? `2BR: $${parseInt(br2_l)}–$${parseInt(br1_h)}`
+      : parseInt(br2_l)
+      ? `2BR: $${parseInt(br2_l)}`
       : null;
   const br3 =
     br3_l && br3_h
-      ? `3BR: $${br3_l}–$${br3_h}`
-      : br3_l
-      ? `3BR: $${br3_l}`
+      ? `3BR: $${parseInt(br3_l)}–$${parseInt(br3_h)}`
+      : parseInt(br3_l)
+      ? `3BR: $${parseInt(br3_l)}`
       : null;
   const br4 =
     br4_l && br4_h
-      ? `4BR: $${br4_l}–$${br4_h}`
-      : br4_l
-      ? `4BR: $${br4_l}`
+      ? `4BR: $${parseInt(br4_l)}–$${parseInt(br4_h)}`
+      : parseInt(br4_l)
+      ? `4BR: $${parseInt(br4_l)}`
       : null;
   const br5 =
     br5_l && br5_h
-      ? `5BR: $${br5_l}–$${br5_h}`
-      : br5_l
-      ? `5BR: $${br5_l}`
+      ? `5BR: $${parseInt(br5_l)}–$${parseInt(br5_h)}`
+      : parseInt(br5_l)
+      ? `5BR: $${parseInt(br5_l)}`
       : null;
   const brsArray = [studio, br1, br2, br3, br4, br5];
-  const brsString = brsArray.map(i => {
-    if (!!i) {
-      return `i \n`;
-    }
-    return null;
-  });
-  console.log(brsString);
+  const brsString = brsArray.filter(n => n).join("\r\n");
+  // console.log(brsString);
   return brsString;
 };
 

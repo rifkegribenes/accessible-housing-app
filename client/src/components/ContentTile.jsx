@@ -6,6 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import Phone from "@material-ui/icons/Phone";
 import Email from "@material-ui/icons/Email";
 
+import * as utils from "../utils";
+
 export const styles = theme => ({
   root: {
     margin: 20,
@@ -216,13 +218,39 @@ const ContentTile = props => {
   const {
     primary_image,
     property_name,
-    bedroomsPriceString,
+    studio_l,
+    studio_h,
+    br1_l,
+    br1_h,
+    br2_l,
+    br2_h,
+    br3_l,
+    br3_h,
+    br4_l,
+    br4_h,
+    br5_l,
+    br5_h,
     property_email,
     property_phone,
     listing_url
   } = listingTile;
+  const bedroomsPriceString = utils.bedroomsPriceString(
+    studio_l,
+    studio_h,
+    br1_l,
+    br1_h,
+    br2_l,
+    br2_h,
+    br3_l,
+    br3_h,
+    br4_l,
+    br4_h,
+    br5_l,
+    br5_h
+  );
+  // console.log(bedroomsPriceString);
   const imageStyle = { backgroundImage: `url(${primary_image})` };
-  console.log(listingTile);
+  // console.log(listingTile);
 
   return (
     <div data-test="component-listing-tile" className={classes.tile}>
@@ -251,7 +279,8 @@ const ContentTile = props => {
       >
         <div className={classes.cardRow}>
           <Typography
-            component="span"
+            style={{ whiteSpace: "pre-line" }}
+            component="p"
             className={small ? classes.contentLight : classes.bodyLight}
             data-test="body"
           >
