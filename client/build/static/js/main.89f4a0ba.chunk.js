@@ -537,41 +537,49 @@
           }
         },
         qe = function(e, t, n, a, o, r, i, s, c, l, p, d) {
-          var u = [
-            e && t
-              ? "Studio: $".concat(e, "\u2013$").concat(t)
-              : e
-              ? "Studio: $".concat(e)
-              : null,
-            n && a
-              ? "1BR: $".concat(n, "\u2013$").concat(a)
-              : n
-              ? "1BR: $".concat(n)
-              : null,
-            o && r
-              ? "2BR: $".concat(o, "\u2013$").concat(a)
-              : o
-              ? "2BR: $".concat(o)
-              : null,
-            i && s
-              ? "3BR: $".concat(i, "\u2013$").concat(s)
-              : i
-              ? "3BR: $".concat(i)
-              : null,
-            c && l
-              ? "4BR: $".concat(c, "\u2013$").concat(l)
-              : c
-              ? "4BR: $".concat(c)
-              : null,
-            p && d
-              ? "5BR: $".concat(p, "\u2013$").concat(d)
-              : p
-              ? "5BR: $".concat(p)
-              : null
-          ].map(function(e) {
-            return e ? "i \n" : null;
+          var u = [e, t, n, a, o, r, i, s, c, l, p, d].map(function(e) {
+            return null == e
+              ? null
+              : e < 1
+              ? "Subsidized"
+              : "$".concat(parseInt(e));
           });
-          return console.log(u), u;
+          return [
+            u[0] && u[1]
+              ? "Studio: ".concat(u[0], "\u2013").concat(u[1])
+              : u[0]
+              ? "Studio: ".concat(u[0])
+              : null,
+            u[2] && u[3]
+              ? "1BR: ".concat(u[2], "\u2013").concat(u[3])
+              : u[2]
+              ? "1BR: ".concat(u[2])
+              : null,
+            u[4] && u[5]
+              ? "2BR: ".concat(u[4], "\u2013").concat(u[5])
+              : u[4]
+              ? "2BR: ".concat(u[4])
+              : null,
+            u[5] && u[6]
+              ? "3BR: ".concat(u[5], "\u2013").concat(u[6])
+              : u[5]
+              ? "3BR: ".concat(u[5])
+              : null,
+            u[7] && u[8]
+              ? "4BR: ".concat(u[7], "\u2013").concat(u[8])
+              : u[7]
+              ? "4BR: ".concat(u[7])
+              : null,
+            u[9] && u[10]
+              ? "5BR: ".concat(u[9], "\u2013").concat(u[10])
+              : u[9]
+              ? "5BR: ".concat(u[9])
+              : null
+          ]
+            .filter(function(e) {
+              return e;
+            })
+            .join("\r\n");
         },
         Qe = n.p + "static/media/CV-logo-hdr-horiz.7cd78e55.png",
         Ye = n(2),
@@ -762,10 +770,7 @@
                                 })
                               : Object(Ye.jsx)("a", {
                                   className: t.loginLinkNavBar,
-                                  href: "".concat(
-                                    "http://localhost:3001",
-                                    "/api/auth/google"
-                                  ),
+                                  href: "".concat("", "/api/auth/google"),
                                   children: p ? "Log in" : "Log in / Sign up"
                                 }),
                             Object(Ye.jsx)(De.a, {
@@ -1042,10 +1047,7 @@
                         color: "primary",
                         className: this.props.classes.bigButton,
                         variant: "contained",
-                        href: "".concat(
-                          "http://localhost:3001",
-                          "/api/auth/google"
-                        ),
+                        href: "".concat("", "/api/auth/google"),
                         children: "Log in or Sign Up"
                       })
                     })
@@ -3382,93 +3384,113 @@
             a = e.small,
             o = n.primary_image,
             r = n.property_name,
-            i = n.bedroomsPriceString,
-            s = n.property_email,
-            c = n.property_phone,
-            l = n.listing_url,
-            p = { backgroundImage: "url(".concat(o, ")") };
-          return (
-            console.log(n),
-            Object(Ye.jsxs)("div", {
-              "data-test": "component-listing-tile",
-              className: t.tile,
-              children: [
-                Object(Ye.jsxs)("a", {
-                  href: l,
-                  rel: "noopener noreferrer",
-                  target: "_blank",
-                  className: t.cardAction,
-                  children: [
-                    Object(Ye.jsx)(Ae.a, {
-                      component: "h2",
-                      className: a ? t.titleSmall : t.title,
-                      "data-test": "title",
-                      children: r
-                    }),
-                    Object(Ye.jsx)("div", {
-                      className: a ? t.cardImageSmall : t.cardImage,
-                      style: p,
-                      "data-test": "image"
+            i = n.studio_l,
+            s = n.studio_h,
+            c = n.br1_l,
+            l = n.br1_h,
+            p = n.br2_l,
+            d = n.br2_h,
+            u = n.br3_l,
+            m = n.br3_h,
+            h = n.br4_l,
+            g = n.br4_h,
+            b = n.br5_l,
+            f = n.br5_h,
+            y = n.property_email,
+            j = n.property_phone,
+            x = n.listing_url,
+            O = n.notes,
+            S = qe(i, s, c, l, p, d, u, m, h, g, b, f),
+            v = { backgroundImage: "url(".concat(o, ")") };
+          return Object(Ye.jsxs)("div", {
+            "data-test": "component-listing-tile",
+            className: t.tile,
+            children: [
+              Object(Ye.jsxs)("a", {
+                href: x,
+                rel: "noopener noreferrer",
+                target: "_blank",
+                className: t.cardAction,
+                children: [
+                  Object(Ye.jsx)(Ae.a, {
+                    component: "h2",
+                    className: a ? t.titleSmall : t.title,
+                    "data-test": "title",
+                    children: r
+                  }),
+                  Object(Ye.jsx)("div", {
+                    className: a ? t.cardImageSmall : t.cardImage,
+                    style: v,
+                    "data-test": "image"
+                  })
+                ]
+              }),
+              Object(Ye.jsxs)("div", {
+                className: a ? t.cardListingSmall : t.cardListing,
+                "data-test": "card-listing",
+                children: [
+                  Object(Ye.jsx)("div", {
+                    className: t.cardRow,
+                    children: Object(Ye.jsx)(Ae.a, {
+                      style: { whiteSpace: "pre-line" },
+                      component: "p",
+                      className: a ? t.contentLight : t.bodyLight,
+                      "data-test": "body",
+                      children: S
                     })
-                  ]
-                }),
-                Object(Ye.jsxs)("div", {
-                  className: a ? t.cardListingSmall : t.cardListing,
-                  "data-test": "card-listing",
-                  children: [
-                    Object(Ye.jsx)("div", {
-                      className: t.cardRow,
-                      children: Object(Ye.jsx)(Ae.a, {
-                        component: "span",
-                        className: a ? t.contentLight : t.bodyLight,
-                        "data-test": "body",
-                        children: i
-                      })
-                    }),
-                    Object(Ye.jsxs)("div", {
-                      className: a ? t.cardFooterSmall : t.cardFooter,
-                      children: [
-                        Object(Ye.jsx)("a", {
-                          href: "tel:".concat(c),
-                          className: t.phoneLink,
-                          children: Object(Ye.jsxs)("div", {
-                            className: a ? t.cardPhoneSmall : t.cardPhone,
-                            children: [
-                              Object(Ye.jsx)(Qn.a, { className: t.icon }),
-                              Object(Ye.jsx)(Ae.a, {
-                                component: "span",
-                                className: a ? t.contentBold : t.body,
-                                "data-test": "body",
-                                children: c
-                              })
-                            ]
-                          })
-                        }),
-                        Object(Ye.jsx)("a", {
-                          href: "mailto:".concat(s),
-                          className: t.emailLink,
-                          target: "_blank",
-                          rel: "noopener noreferrer",
-                          children: Object(Ye.jsxs)("div", {
-                            className: t.cardEmail,
-                            children: [
-                              Object(Ye.jsx)(Jn.a, { className: t.icon }),
-                              Object(Ye.jsx)(Ae.a, {
-                                component: "span",
-                                className: a ? t.contentBold : t.body,
-                                "data-test": "body",
-                                children: "Email"
-                              })
-                            ]
-                          })
+                  }),
+                  Object(Ye.jsx)("div", {
+                    className: t.cardRow,
+                    children: Object(Ye.jsx)(Ae.a, {
+                      component: "p",
+                      className: a ? t.contentLight : t.bodyLight,
+                      "data-test": "body2",
+                      children: O
+                    })
+                  }),
+                  Object(Ye.jsxs)("div", {
+                    className: a ? t.cardFooterSmall : t.cardFooter,
+                    children: [
+                      Object(Ye.jsx)("a", {
+                        href: "tel:".concat(j),
+                        className: t.phoneLink,
+                        children: Object(Ye.jsxs)("div", {
+                          className: a ? t.cardPhoneSmall : t.cardPhone,
+                          children: [
+                            Object(Ye.jsx)(Qn.a, { className: t.icon }),
+                            Object(Ye.jsx)(Ae.a, {
+                              component: "span",
+                              className: a ? t.contentBold : t.body,
+                              "data-test": "body",
+                              children: j
+                            })
+                          ]
                         })
-                      ]
-                    })
-                  ]
-                })
-              ]
-            })
-          );
+                      }),
+                      Object(Ye.jsx)("a", {
+                        href: "mailto:".concat(y),
+                        className: t.emailLink,
+                        target: "_blank",
+                        rel: "noopener noreferrer",
+                        children: Object(Ye.jsxs)("div", {
+                          className: t.cardEmail,
+                          children: [
+                            Object(Ye.jsx)(Jn.a, { className: t.icon }),
+                            Object(Ye.jsx)(Ae.a, {
+                              component: "span",
+                              className: a ? t.contentBold : t.body,
+                              "data-test": "body",
+                              children: "Email"
+                            })
+                          ]
+                        })
+                      })
+                    ]
+                  })
+                ]
+              })
+            ]
+          });
         }),
         Xn = n(502),
         ea = {
@@ -4685,13 +4707,14 @@
                 a.props.apiListing
                   .getAllListings(e)
                   .then(function(e) {
-                    ("GET_ALL_LISTINGS_FAILURE" === e.type ||
-                      a.props.listing.error) &&
-                      Et(
-                        "error",
-                        a.props.listing.error ||
-                          "An error occured while fetching listings"
-                      );
+                    console.log(e.payload),
+                      ("GET_ALL_LISTINGS_FAILURE" === e.type ||
+                        a.props.listing.error) &&
+                        Et(
+                          "error",
+                          a.props.listing.error ||
+                            "An error occured while fetching listings"
+                        );
                   })
                   .catch(function(e) {
                     Et("error", e);
@@ -5124,7 +5147,7 @@
                 value: function() {
                   var e = this;
                   if (
-                    (console.log("NODE_ENV front end: ".concat("development")),
+                    (console.log("NODE_ENV front end: ".concat("production")),
                     !this.props.appState.loggedIn &&
                       (!this.props.match || !this.props.match.params.id))
                   ) {
@@ -5257,7 +5280,7 @@
                                                   e.props.profile.profile.id
                                                 )
                                               : "".concat(
-                                                  "http://localhost:3001",
+                                                  "",
                                                   "/api/auth/google"
                                                 ),
                                           buttonText:
@@ -5964,4 +5987,4 @@
   },
   [[427, 1, 2]]
 ]);
-//# sourceMappingURL=main.99b567a4.chunk.js.map
+//# sourceMappingURL=main.89f4a0ba.chunk.js.map

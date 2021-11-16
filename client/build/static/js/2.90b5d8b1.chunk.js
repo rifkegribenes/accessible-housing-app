@@ -1,4 +1,4 @@
-/*! For license information please see 2.a7318eef.chunk.js.LICENSE.txt */
+/*! For license information please see 2.90b5d8b1.chunk.js.LICENSE.txt */
 (this["webpackJsonpaccessible-housing-app-client"] =
   this["webpackJsonpaccessible-housing-app-client"] || []).push([
   [2],
@@ -9673,7 +9673,7 @@
     function(e, t, n) {
       "use strict";
       var r = n(235),
-        o = Object(r.b)();
+        o = Object(r.a)();
       t.a = o;
     },
     function(e, t, n) {
@@ -16820,9 +16820,6 @@
     },
     function(e, t, n) {
       "use strict";
-      n.d(t, "a", function() {
-        return G;
-      });
       var r = n(18),
         o = n(4),
         i = n(486),
@@ -17487,10 +17484,7 @@
           return Object(i.a)(e, t);
         }, b));
       }
-      function G() {
-        return K.apply(void 0, arguments);
-      }
-      t.b = K;
+      t.a = K;
     },
     function(e, t, n) {
       "use strict";
@@ -38260,4 +38254,4 @@
     }
   ]
 ]);
-//# sourceMappingURL=2.a7318eef.chunk.js.map
+//# sourceMappingURL=2.90b5d8b1.chunk.js.map
