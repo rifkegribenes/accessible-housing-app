@@ -252,7 +252,7 @@ class ListingsMapUnconnected extends Component {
     this.props.apiListing
       .getAllListings(authToken)
       .then(result => {
-        // console.log(result.payload);
+        console.log(result.payload);
         if (
           result.type === "GET_ALL_LISTINGS_FAILURE" ||
           this.props.listing.error

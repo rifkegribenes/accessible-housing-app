@@ -232,7 +232,8 @@ const ContentTile = props => {
     br5_h,
     property_email,
     property_phone,
-    listing_url
+    listing_url,
+    notes
   } = listingTile;
   const bedroomsPriceString = utils.bedroomsPriceString(
     studio_l,
@@ -285,6 +286,15 @@ const ContentTile = props => {
             data-test="body"
           >
             {bedroomsPriceString}
+          </Typography>
+        </div>
+        <div className={classes.cardRow}>
+          <Typography
+            component="p"
+            className={small ? classes.contentLight : classes.bodyLight}
+            data-test="body2"
+          >
+            {notes}
           </Typography>
         </div>
         <div className={small ? classes.cardFooterSmall : classes.cardFooter}>
