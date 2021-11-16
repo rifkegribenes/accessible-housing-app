@@ -4710,14 +4710,18 @@
                     console.log(e.payload),
                       ("GET_ALL_LISTINGS_FAILURE" === e.type ||
                         a.props.listing.error) &&
+                        (console.log(
+                          a.props.listing.error ||
+                            "An error occured while fetching listings"
+                        ),
                         Et(
                           "error",
                           a.props.listing.error ||
                             "An error occured while fetching listings"
-                        );
+                        ));
                   })
                   .catch(function(e) {
-                    Et("error", e);
+                    Et("error", e), console.log(e);
                   });
               }),
               (a.toggleMore = function() {
@@ -4828,7 +4832,7 @@
               {
                 key: "componentDidMount",
                 value: function() {
-                  this.getAllListings();
+                  console.log("cDM"), this.getAllListings();
                 }
               },
               {
@@ -5987,4 +5991,4 @@
   },
   [[427, 1, 2]]
 ]);
-//# sourceMappingURL=main.89f4a0ba.chunk.js.map
+//# sourceMappingURL=main.8bda0b00.chunk.js.map

@@ -244,6 +244,7 @@ class ListingsMapUnconnected extends Component {
   }
 
   componentDidMount() {
+    console.log("cDM");
     this.getAllListings();
   }
 
@@ -257,6 +258,10 @@ class ListingsMapUnconnected extends Component {
           result.type === "GET_ALL_LISTINGS_FAILURE" ||
           this.props.listing.error
         ) {
+          console.log(
+            this.props.listing.error ||
+              "An error occured while fetching listings"
+          );
           openSnackbar(
             "error",
             this.props.listing.error ||
@@ -266,6 +271,7 @@ class ListingsMapUnconnected extends Component {
       })
       .catch(err => {
         openSnackbar("error", err);
+        console.log(err);
       });
   };
 
