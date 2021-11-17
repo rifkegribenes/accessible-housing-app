@@ -140,7 +140,7 @@ function Listing(state = INITIAL_STATE, action) {
     case ADD_LISTING_SUCCESS:
     case UPDATE_LISTING_SUCCESS:
       // reverse-engineer available date
-      const availableDate = utils.splitDate(action.payload.available_date);
+      // const availableDate = utils.splitDate(action.payload.available_date);
 
       // reverse-engineer features list
       const formFeatures = {};

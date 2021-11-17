@@ -27,6 +27,7 @@
   "homepage": "https://github.com/rifkegribenes/accessible-housing-app.github.io#readme",
   "dependencies": {
     "@snyk/protect": "latest",
+    "aws": "^0.0.3-2",
     "aws-sdk": "^2.467.0",
     "axios": "^0.21.3",
     "body-parser": "^1.19.0",
