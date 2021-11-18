@@ -760,10 +760,7 @@
                                 })
                               : Object(Qe.jsx)("a", {
                                   className: t.loginLinkNavBar,
-                                  href: "".concat(
-                                    "http://localhost:3001",
-                                    "/api/auth/google"
-                                  ),
+                                  href: "".concat("", "/api/auth/google"),
                                   children: p ? "Log in" : "Log in / Sign up"
                                 }),
                             Object(Qe.jsx)(De.a, {
@@ -1040,10 +1037,7 @@
                         color: "primary",
                         className: this.props.classes.bigButton,
                         variant: "contained",
-                        href: "".concat(
-                          "http://localhost:3001",
-                          "/api/auth/google"
-                        ),
+                        href: "".concat("", "/api/auth/google"),
                         children: "Log in or Sign Up"
                       })
                     })
@@ -3218,7 +3212,7 @@
         qn = n.n(Vn),
         Qn = n(228),
         Yn = n.n(Qn),
-        Jn = n.p + "static/media/apartment.1814d438.png",
+        Jn = n.p + "static/media/apartment.d927d089.png",
         Kn = Object(x.a)(function(e) {
           return {
             root: { margin: 20, padding: 20, maxWidth: 1200 },
@@ -5149,7 +5143,7 @@
                 value: function() {
                   var e = this;
                   if (
-                    (console.log("NODE_ENV front end: ".concat("development")),
+                    (console.log("NODE_ENV front end: ".concat("production")),
                     !this.props.appState.loggedIn &&
                       (!this.props.match || !this.props.match.params.id))
                   ) {
@@ -5282,7 +5276,7 @@
                                                   e.props.profile.profile.id
                                                 )
                                               : "".concat(
-                                                  "http://localhost:3001",
+                                                  "",
                                                   "/api/auth/google"
                                                 ),
                                           buttonText:
@@ -5988,4 +5982,4 @@
   },
   [[427, 1, 2]]
 ]);
-//# sourceMappingURL=main.e5c06dcc.chunk.js.map
+//# sourceMappingURL=main.584666cf.chunk.js.map
