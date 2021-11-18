@@ -6,6 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import Phone from "@material-ui/icons/Phone";
 import Email from "@material-ui/icons/Email";
 
+import defaultImage from "../img/apartment.png";
+
 import * as utils from "../utils";
 
 export const styles = theme => ({
@@ -250,7 +252,9 @@ const ContentTile = props => {
     br5_h
   );
   // console.log(bedroomsPriceString);
-  const imageStyle = { backgroundImage: `url(${primary_image})` };
+  const imageStyle = {
+    backgroundImage: `url(${primary_image ? primary_image : defaultImage})`
+  };
   // console.log(listingTile);
 
   return (

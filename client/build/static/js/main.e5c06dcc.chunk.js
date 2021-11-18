@@ -760,7 +760,10 @@
                                 })
                               : Object(Qe.jsx)("a", {
                                   className: t.loginLinkNavBar,
-                                  href: "".concat("", "/api/auth/google"),
+                                  href: "".concat(
+                                    "http://localhost:3001",
+                                    "/api/auth/google"
+                                  ),
                                   children: p ? "Log in" : "Log in / Sign up"
                                 }),
                             Object(Qe.jsx)(De.a, {
@@ -1037,7 +1040,10 @@
                         color: "primary",
                         className: this.props.classes.bigButton,
                         variant: "contained",
-                        href: "".concat("", "/api/auth/google"),
+                        href: "".concat(
+                          "http://localhost:3001",
+                          "/api/auth/google"
+                        ),
                         children: "Log in or Sign Up"
                       })
                     })
@@ -3212,7 +3218,8 @@
         qn = n.n(Vn),
         Qn = n(228),
         Yn = n.n(Qn),
-        Jn = Object(x.a)(function(e) {
+        Jn = n.p + "static/media/apartment.1814d438.png",
+        Kn = Object(x.a)(function(e) {
           return {
             root: { margin: 20, padding: 20, maxWidth: 1200 },
             tile: { border: "1px solid theme.palette.primary.main" },
@@ -3391,7 +3398,7 @@
             x = n.listing_url,
             O = n.notes,
             S = Ve(i, s, c, l, p, d, u, m, h, g, b, f),
-            v = { backgroundImage: "url(".concat(o, ")") };
+            v = { backgroundImage: "url(".concat(o || Jn, ")") };
           return Object(Qe.jsxs)("div", {
             "data-test": "component-listing-tile",
             className: t.tile,
@@ -3482,8 +3489,8 @@
             ]
           });
         }),
-        Kn = n(502),
-        Xn = {
+        Xn = n(502),
+        ea = {
           display: "flex",
           justifyContent: "center",
           position: "fixed",
@@ -3494,24 +3501,24 @@
           zIndex: 3,
           backgroundColor: "rgba(0,0,0,.4)"
         },
-        ea = { position: "relative", top: "44%" },
-        ta = function(e) {
+        ta = { position: "relative", top: "44%" },
+        na = function(e) {
           return Object(Qe.jsx)("div", {
-            style: Xn,
-            children: Object(Qe.jsx)(Kn.a, {
-              style: ea,
+            style: ea,
+            children: Object(Qe.jsx)(Xn.a, {
+              style: ta,
               color: "primary",
               size: 50,
               "data-test": "component-spinner"
             })
           });
         },
-        na = n(503),
-        aa = n(507),
-        oa = n(504),
-        ra = n(505),
-        ia = n(506),
-        sa = Object(x.a)(function(e) {
+        aa = n(503),
+        oa = n(507),
+        ra = n(504),
+        ia = n(505),
+        sa = n(506),
+        ca = Object(x.a)(function(e) {
           return {
             root: { margin: 0, padding: 20 },
             danger: {
@@ -3524,7 +3531,7 @@
         })(function(e) {
           return Object(Qe.jsx)("div", {
             "data-test": "component-alert-dialog",
-            children: Object(Qe.jsxs)(na.a, {
+            children: Object(Qe.jsxs)(aa.a, {
               "data-test": "dialog",
               open: e.open,
               onClose: e.handleClose,
@@ -3535,19 +3542,19 @@
               PaperProps: { style: { margin: 0 } },
               children: [
                 e.title &&
-                  Object(Qe.jsx)(oa.a, {
+                  Object(Qe.jsx)(ra.a, {
                     id: "alert-dialog-title",
                     "data-test": "dialog-title",
                     children: e.title
                   }),
-                Object(Qe.jsx)(ra.a, {
-                  children: Object(Qe.jsx)(ia.a, {
+                Object(Qe.jsx)(ia.a, {
+                  children: Object(Qe.jsx)(sa.a, {
                     id: "alert-dialog-description",
                     "data-test": "dialog-listing",
                     children: e.listing
                   })
                 }),
-                Object(Qe.jsxs)(aa.a, {
+                Object(Qe.jsxs)(oa.a, {
                   children: [
                     Object(Qe.jsx)(De.a, {
                       onClick: e.handleClose,
@@ -3572,7 +3579,7 @@
             })
           });
         }),
-        ca = (function(e) {
+        la = (function(e) {
           Object(h.a)(n, e);
           var t = Object(g.a)(n);
           function n() {
@@ -3735,9 +3742,9 @@
                     "data-test": "component-listing-library",
                     className: t.root,
                     children: [
-                      this.props.appState.loading && Object(Qe.jsx)(ta, {}),
+                      this.props.appState.loading && Object(Qe.jsx)(na, {}),
                       this.props.listing.deleteDialogOpen &&
-                        Object(Qe.jsx)(sa, {
+                        Object(Qe.jsx)(ca, {
                           open: this.props.listing.deleteDialogOpen,
                           handleClose: this.props.apiListing.handleDeleteClose,
                           title: "Delete Listing",
@@ -3802,7 +3809,7 @@
                                           })
                                         ]
                                       }),
-                                      Object(Qe.jsx)(Jn, {
+                                      Object(Qe.jsx)(Kn, {
                                         listingTile: n,
                                         small: !0
                                       })
@@ -3823,7 +3830,7 @@
             n
           );
         })(s.a.Component),
-        la = Object(p.b)(
+        pa = Object(p.b)(
           function(e) {
             return {
               appState: e.appState,
@@ -3834,8 +3841,8 @@
           function(e) {
             return { apiListing: Object(y.b)(r, e) };
           }
-        )(ca),
-        pa = Object(f.f)(
+        )(la),
+        da = Object(f.f)(
           Object(x.a)(function(e) {
             var t;
             return {
@@ -3905,11 +3912,11 @@
                 }),
                 t)
             };
-          })(la)
+          })(pa)
         ),
-        da = kn,
-        ua = wn,
-        ma = Object(Zt.a)({
+        ua = kn,
+        ma = wn,
+        ha = Object(Zt.a)({
           form: "updateUser",
           validate: function(e) {
             var t = {};
@@ -3973,7 +3980,7 @@
                       id: "name",
                       type: "text",
                       classes: n,
-                      component: ua
+                      component: ma
                     }),
                     Object(Qe.jsx)(Ht.a, {
                       label: "Email",
@@ -3981,7 +3988,7 @@
                       id: "email",
                       type: "email",
                       classes: n,
-                      component: ua
+                      component: ma
                     }),
                     Object(Qe.jsx)(Ht.a, {
                       label: "Phone",
@@ -3989,7 +3996,7 @@
                       id: "phone",
                       type: "tel",
                       classes: n,
-                      component: ua
+                      component: ma
                     }),
                     Object(Qe.jsx)(Ht.a, {
                       label: "Company Name",
@@ -3997,7 +4004,7 @@
                       id: "companyName",
                       type: "text",
                       classes: n,
-                      component: ua
+                      component: ma
                     }),
                     Object(Qe.jsx)(Vt.a, {
                       className: n.formLabel,
@@ -4010,7 +4017,7 @@
                       id: "companyStreet",
                       type: "text",
                       classes: n,
-                      component: ua
+                      component: ma
                     }),
                     Object(Qe.jsxs)(qt.a, {
                       className: n.formGroup,
@@ -4025,7 +4032,7 @@
                           twocol: !0,
                           mobile: !Object(Ne.b)("sm", a),
                           classes: n,
-                          component: ua
+                          component: ma
                         }),
                         Object(Qe.jsx)(Ht.a, {
                           label: "State",
@@ -4035,7 +4042,7 @@
                           short: !0,
                           mobile: !Object(Ne.b)("sm", a),
                           classes: n,
-                          component: da,
+                          component: ua,
                           options: ["", "OR", "WA"],
                           labelWidth: 80
                         }),
@@ -4047,7 +4054,7 @@
                           mobile: !Object(Ne.b)("sm", a),
                           type: "text",
                           classes: n,
-                          component: ua
+                          component: ma
                         })
                       ]
                     }),
@@ -4070,16 +4077,16 @@
             })
           });
         }),
-        ha = Object(p.b)(function(e) {
+        ga = Object(p.b)(function(e) {
           return {
             profile: e.profile,
             initialValues: e.profile.profile,
             formValues: Object(Ft.a)("updateUser")(e) || {},
             submitErrors: Object($t.a)("updateUser")(e)
           };
-        })(ma),
-        ga = Object(Ne.a)()(ha),
-        ba = (function(e) {
+        })(ha),
+        ba = Object(Ne.a)()(ga),
+        fa = (function(e) {
           Object(h.a)(n, e);
           var t = Object(g.a)(n);
           function n(e) {
@@ -4405,7 +4412,7 @@
                   return Object(Qe.jsx)("div", {
                     "data-test": "container-update-user",
                     children: Object(Qe.jsx)(
-                      ga,
+                      ba,
                       Object(d.a)(
                         Object(d.a)({}, this.props),
                         {},
@@ -4423,7 +4430,7 @@
             n
           );
         })(s.a.Component),
-        fa = Object(p.b)(
+        ya = Object(p.b)(
           function(e) {
             return {
               listing: e.listing,
@@ -4448,14 +4455,14 @@
               }
             };
           }
-        )(ba),
-        ya = Object(x.a)(yn)(fa),
-        ja = n(231),
-        xa = n.n(ja),
-        Oa = n(509),
-        Sa = Ln,
-        va = jn,
-        wa = Object(Zt.a)({
+        )(fa),
+        ja = Object(x.a)(yn)(ya),
+        xa = n(231),
+        Oa = n.n(xa),
+        Sa = n(509),
+        va = Ln,
+        wa = jn,
+        _a = Object(Zt.a)({
           form: "listingSearch",
           destroyOnUnmount: !1,
           forceUnregisterOnUnmount: !1,
@@ -4468,22 +4475,22 @@
             a = e.setAndClose,
             o = e.more,
             r = e.toggleDrawer,
-            i = Object.keys(va).map(function(e) {
+            i = Object.keys(wa).map(function(e) {
               return Object(Qe.jsx)(
                 Ht.a,
                 {
-                  label: va[e],
+                  label: wa[e],
                   name: e,
                   id: e,
                   type: "checkbox",
                   formControlName: "controlCheckbox",
                   classes: t,
-                  component: Sa
+                  component: va
                 },
                 e
               );
             });
-          return Object(Qe.jsx)(Oa.a, {
+          return Object(Qe.jsx)(Sa.a, {
             className: t.drawer,
             "data-test": "component-features-search",
             variant: "permanent",
@@ -4513,7 +4520,7 @@
                       type: "checkbox",
                       formControlName: "controlCheckbox",
                       classes: t,
-                      component: Sa
+                      component: va
                     }),
                     i
                   ]
@@ -4543,10 +4550,10 @@
             })
           });
         }),
-        _a = Object(Ne.a)()(wa),
-        ka = kn,
-        La = wn;
-      var Ca = Object(Zt.a)({
+        ka = Object(Ne.a)()(_a),
+        La = kn,
+        Ca = wn;
+      var Ea = Object(Zt.a)({
           form: "listingSearch",
           destroyOnUnmount: !1,
           forceUnregisterOnUnmount: !1,
@@ -4578,7 +4585,7 @@
                   type: "text",
                   classes: n,
                   formControlName: "searchZip",
-                  component: La
+                  component: Ca
                 }),
                 Object(Qe.jsx)(Ht.a, {
                   "data-test": "input-bedrooms",
@@ -4589,7 +4596,7 @@
                   options: ["", "Studio", "1", "2", "3", "4+"],
                   classes: n,
                   labelWidth: 41,
-                  component: ka,
+                  component: La,
                   formControlName: "searchBedrooms",
                   inputProps: { style: { paddingLeft: 20 } },
                   inputLabelProps: { style: { paddingLeft: 20 } }
@@ -4602,7 +4609,7 @@
                   min: 0.01,
                   step: 0.01,
                   classes: n,
-                  component: La,
+                  component: Ca,
                   formControlName: "maxRent",
                   inputProps: {
                     style: { paddingLeft: 15, textAlign: "right" }
@@ -4635,7 +4642,7 @@
                   children: "Reset Filters"
                 }),
                 e.more &&
-                  Object(Qe.jsx)(_a, {
+                  Object(Qe.jsx)(ka, {
                     classes: n,
                     setAndClose: e.setAndClose,
                     clearSearch: e.clearSearch,
@@ -4646,35 +4653,35 @@
             })
           });
         }),
-        Ea = Object(p.b)(function(e) {
+        Ta = Object(p.b)(function(e) {
           return {
             listing: e.listing,
             initialValues: e.listing.search,
             formValues: Object(Ft.a)("listingSearch")(e) || {},
             submitErrors: Object($t.a)("listingSearch")(e)
           };
-        })(Ca),
-        Ta = Object(Ne.a)()(Ea),
-        Na = n(518),
-        Ia = n(232),
-        Ra = n.n(Ia),
-        Aa = function(e) {
+        })(Ea),
+        Na = Object(Ne.a)()(Ta),
+        Ia = n(518),
+        Ra = n(232),
+        Aa = n.n(Ra),
+        Da = function(e) {
           return Object(Qe.jsx)("div", {
             "data-test": "component-map-marker",
             className: e.classes.mapMarker,
-            children: Object(Qe.jsx)(Da, {
+            children: Object(Qe.jsx)(Ua, {
               title: Object(Qe.jsx)("div", {
                 className: e.classes.markerCard,
-                children: Object(Qe.jsx)(Jn, {
+                children: Object(Qe.jsx)(Kn, {
                   listingTile: e.listing,
                   small: !0
                 })
               }),
-              children: Object(Qe.jsx)(Ra.a, { className: e.classes.mapIcon })
+              children: Object(Qe.jsx)(Aa.a, { className: e.classes.mapIcon })
             })
           });
         },
-        Da = Object(x.a)(function(e) {
+        Ua = Object(x.a)(function(e) {
           return {
             tooltip: {
               backgroundColor: "white",
@@ -4683,9 +4690,9 @@
             }
           };
         })(function(e) {
-          return Object(Qe.jsx)(Na.a, Object(d.a)({ interactive: !0 }, e));
+          return Object(Qe.jsx)(Ia.a, Object(d.a)({ interactive: !0 }, e));
         }),
-        Ua = (function(e) {
+        Pa = (function(e) {
           Object(h.a)(n, e);
           var t = Object(g.a)(n);
           function n(e) {
@@ -4832,7 +4839,7 @@
                   var e = this,
                     t = this.props.listing.filteredListings.map(function(t) {
                       return Object(Qe.jsx)(
-                        Aa,
+                        Da,
                         {
                           listing: t,
                           lat: t.property_lat,
@@ -4847,7 +4854,7 @@
                     style: { height: "100vh", width: "100%" },
                     children: [
                       this.state.search &&
-                        Object(Qe.jsx)(Ta, {
+                        Object(Qe.jsx)(Na, {
                           classes: this.props.classes,
                           toggleMore: this.toggleMore,
                           toggleDrawer: this.toggleMore,
@@ -4858,7 +4865,7 @@
                           onSubmit: this.handleSubmit,
                           hideSearch: this.hideSearch
                         }),
-                      Object(Qe.jsx)(xa.a, {
+                      Object(Qe.jsx)(Oa.a, {
                         bootstrapURLKeys: {
                           key: "AIzaSyCzzv8kgYfdr9TIKQVG1Y6iexdL90rWYqg"
                         },
@@ -4874,8 +4881,8 @@
             n
           );
         })(i.Component);
-      Ua.defaultProps = { center: { lat: 45.5051, lng: -122.675 }, zoom: 12 };
-      var Pa = Object(p.b)(
+      Pa.defaultProps = { center: { lat: 45.5051, lng: -122.675 }, zoom: 12 };
+      var Ga = Object(p.b)(
           function(e) {
             return {
               appState: e.appState,
@@ -4887,8 +4894,8 @@
           function(e) {
             return { apiListing: Object(y.b)(r, e) };
           }
-        )(Ua),
-        Ga = Object(x.a)(function(e) {
+        )(Pa),
+        Fa = Object(x.a)(function(e) {
           var t;
           return {
             root: {},
@@ -5047,10 +5054,10 @@
               { marginTop: 10, marginLeft: 0, width: "100%" }
             )
           };
-        })(Pa),
-        Fa = n(234),
-        Ba = n.n(Fa),
-        Wa = (function(e) {
+        })(Ga),
+        Ba = n(234),
+        Wa = n.n(Ba),
+        za = (function(e) {
           Object(h.a)(n, e);
           var t = Object(g.a)(n);
           function n(e) {
@@ -5068,7 +5075,7 @@
               {
                 key: "componentDidMount",
                 value: function() {
-                  var e = Ba.a.parse(this.props.location.search);
+                  var e = Wa.a.parse(this.props.location.search);
                   e.message &&
                     this.setState({ message: decodeURIComponent(e.message) });
                 }
@@ -5108,9 +5115,9 @@
             n
           );
         })(s.a.Component),
-        za = Object(f.f)(Wa),
-        $a = n.p + "static/media/hero_keys_1920x1080.2473bb39.jpg",
-        Ma = (function(e) {
+        $a = Object(f.f)(za),
+        Ma = n.p + "static/media/hero_keys_1920x1080.2473bb39.jpg",
+        Ha = (function(e) {
           Object(h.a)(n, e);
           var t = Object(g.a)(n);
           function n(e) {
@@ -5142,7 +5149,7 @@
                 value: function() {
                   var e = this;
                   if (
-                    (console.log("NODE_ENV front end: ".concat("production")),
+                    (console.log("NODE_ENV front end: ".concat("development")),
                     !this.props.appState.loggedIn &&
                       (!this.props.match || !this.props.match.params.id))
                   ) {
@@ -5221,7 +5228,7 @@
                       Object(Qe.jsx)(j.a, {}),
                       Object(Qe.jsx)(Je, { main_ref: this.main_ref }),
                       Object(Qe.jsx)(Et, {}),
-                      this.props.appState.loading && Object(Qe.jsx)(ta, {}),
+                      this.props.appState.loading && Object(Qe.jsx)(na, {}),
                       Object(Qe.jsx)("main", {
                         className: t.container,
                         id: "main",
@@ -5264,7 +5271,7 @@
                                       )
                                     )
                                   : Object(Qe.jsx)(
-                                      za,
+                                      $a,
                                       Object(d.a)(
                                         {
                                           setRedirect: e.setRedirect,
@@ -5275,7 +5282,7 @@
                                                   e.props.profile.profile.id
                                                 )
                                               : "".concat(
-                                                  "",
+                                                  "http://localhost:3001",
                                                   "/api/auth/google"
                                                 ),
                                           buttonText:
@@ -5296,7 +5303,7 @@
                               path: "/map",
                               render: function(t) {
                                 return Object(Qe.jsx)(
-                                  Ga,
+                                  Fa,
                                   Object(d.a)(
                                     {
                                       listing: e.props.listing,
@@ -5311,7 +5318,7 @@
                               path: "/user/:id",
                               render: function(t) {
                                 return Object(Qe.jsx)(
-                                  ya,
+                                  ja,
                                   Object(d.a)({ setRedirect: e.setRedirect }, t)
                                 );
                               }
@@ -5332,7 +5339,7 @@
                               path: "/listings",
                               render: function(t) {
                                 return Object(Qe.jsx)(
-                                  pa,
+                                  da,
                                   Object(d.a)({ setRedirect: e.setRedirect }, t)
                                 );
                               }
@@ -5376,7 +5383,7 @@
             n
           );
         })(i.Component),
-        Ha = Object(p.b)(
+        Za = Object(p.b)(
           function(e) {
             return {
               appState: e.appState,
@@ -5391,8 +5398,8 @@
               apiProfile: Object(y.b)(o, e)
             };
           }
-        )(Ma),
-        Za = Object(x.a)(function(e) {
+        )(Ha),
+        Va = Object(x.a)(function(e) {
           var t, n;
           return {
             root: { flexGrow: 1, boxSizing: "border-box" },
@@ -5411,7 +5418,7 @@
                 width: "100vw",
                 height: "100%",
                 minHeight: "80vh",
-                backgroundImage: 'url("'.concat($a, '")'),
+                backgroundImage: 'url("'.concat(Ma, '")'),
                 backgroundAttachment: "fixed",
                 backgroundPosition: "bottom"
               },
@@ -5533,26 +5540,26 @@
               borderRadius: 4
             }
           };
-        })(Object(f.f)(Ha)),
-        Va = n(196),
-        qa = n(25),
-        Qa = n.n(qa),
-        Ya = {
+        })(Object(f.f)(Za)),
+        qa = n(196),
+        Qa = n(25),
+        Ya = n.n(Qa),
+        Ja = {
           loggedIn: !1,
           authToken: "",
           loading: !1,
           redirect: "",
           userId: null
         };
-      var Ja = function() {
+      var Ka = function() {
           var e =
               arguments.length > 0 && void 0 !== arguments[0]
                 ? arguments[0]
-                : Ya,
+                : Ja,
             t = arguments.length > 1 ? arguments[1] : void 0;
           switch (t.type) {
             case O:
-              return Ya;
+              return Ja;
             case v:
             case J:
             case ee:
@@ -5561,19 +5568,19 @@
             case ae:
             case N:
             case A:
-              return Qa()(e, { loading: { $set: !0 } });
+              return Ya()(e, { loading: { $set: !0 } });
             case I:
-              return Qa()(e, {
+              return Ya()(e, {
                 loggedIn: { $set: !0 },
                 authToken: { $set: t.payload.token },
                 loading: { $set: !1 }
               });
             case R:
-              return Qa()(e, { loggedIn: { $set: !1 }, loading: { $set: !1 } });
+              return Ya()(e, { loggedIn: { $set: !1 }, loading: { $set: !1 } });
             case w:
-              return Qa()(e, { redirect: { $set: t.payload } });
+              return Ya()(e, { redirect: { $set: t.payload } });
             case S:
-              return Qa()(e, {
+              return Ya()(e, {
                 loggedIn: { $set: !0 },
                 userId: { $set: t.payload.userId },
                 authToken: { $set: t.payload.token }
@@ -5590,12 +5597,12 @@
             case re:
             case D:
             case U:
-              return Qa()(e, { loading: { $set: !1 } });
+              return Ya()(e, { loading: { $set: !1 } });
             default:
               return e;
           }
         },
-        Ka = {
+        Xa = {
           profile: {
             id: "",
             name: "",
@@ -5610,19 +5617,19 @@
           },
           error: null
         };
-      var Xa = function() {
+      var eo = function() {
           var e,
             t =
               arguments.length > 0 && void 0 !== arguments[0]
                 ? arguments[0]
-                : Ka,
+                : Xa,
             n = arguments.length > 1 ? arguments[1] : void 0;
           switch (n.type) {
             case O:
-              return Ka;
+              return Xa;
             case A:
             case P:
-              return Qa()(t, { error: { $set: null } });
+              return Ya()(t, { error: { $set: null } });
             case D:
             case G:
               console.log(n.payload.name);
@@ -5640,7 +5647,7 @@
                       .concat(n.payload.name.givenName, " ")
                       .concat(n.payload.name.familyName)
                   : "";
-              return Qa()(t, {
+              return Ya()(t, {
                 profile: {
                   id: { $set: n.payload.id },
                   name: { $set: a },
@@ -5662,13 +5669,13 @@
                   "string" === typeof n.payload.message
                     ? n.payload.message
                     : "Sorry, something went wrong :(\nPlease try again."),
-                Qa()(t, { error: { $set: e } })
+                Ya()(t, { error: { $set: e } })
               );
             default:
               return t;
           }
         },
-        eo = {
+        to = {
           filteredListings: [],
           allListings: [],
           userListings: [],
@@ -5688,28 +5695,28 @@
           },
           error: null
         };
-      var to = function() {
+      var no = function() {
           var e,
             t =
               arguments.length > 0 && void 0 !== arguments[0]
                 ? arguments[0]
-                : eo,
+                : to,
             n = arguments.length > 1 ? arguments[1] : void 0;
           switch (n.type) {
             case O:
-              return eo;
+              return to;
             case $:
-              return Qa()(t, {
+              return Ya()(t, {
                 form: Object(b.a)({}, n.payload.name, { $set: n.payload.value })
               });
             case M:
-              return Qa()(t, {
+              return Ya()(t, {
                 search: Object(b.a)({}, n.payload.name, {
                   $set: n.payload.value
                 })
               });
             case H:
-              return Qa()(t, {
+              return Ya()(t, {
                 deleteDialogOpen: { $set: !0 },
                 currentListing: {
                   $set: Object(d.a)({}, n.payload.selectedListing)
@@ -5717,7 +5724,7 @@
               });
             case Z:
             case pe:
-              return Qa()(t, {
+              return Ya()(t, {
                 deleteDialogOpen: { $set: !1 },
                 currentListing: {
                   id: { $set: "" },
@@ -5729,21 +5736,21 @@
                 error: { $set: null }
               });
             case V:
-              return console.log("clear form"), Qa()(t, { form: { $set: {} } });
+              return console.log("clear form"), Ya()(t, { form: { $set: {} } });
             case q:
               return (
-                console.log("clear search"), Qa()(t, { search: { $set: {} } })
+                console.log("clear search"), Ya()(t, { search: { $set: {} } })
               );
             case Q:
               return (
                 console.log("clear features"),
-                Qa()(t, { search: { features: { $set: [] } } })
+                Ya()(t, { search: { features: { $set: [] } } })
               );
             case Y:
               return (
                 console.log("UPDATE_FILTER"),
                 console.log(n.payload),
-                Qa()(t, { filteredListings: { $set: Object(Qt.a)(n.payload) } })
+                Ya()(t, { filteredListings: { $set: Object(Qt.a)(n.payload) } })
               );
             case J:
             case ee:
@@ -5751,7 +5758,7 @@
             case le:
             case ae:
             case ie:
-              return Qa()(t, { error: { $set: null } });
+              return Ya()(t, { error: { $set: null } });
             case K:
             case te:
             case me:
@@ -5796,15 +5803,15 @@
                   dialogOpen: !1
                 },
                 r = Object(d.a)(Object(d.a)({}, o), a);
-              return Qa()(t, { form: { $set: r }, error: { $set: null } });
+              return Ya()(t, { form: { $set: r }, error: { $set: null } });
             case oe:
-              return Qa()(t, {
+              return Ya()(t, {
                 allListings: { $set: n.payload },
                 filteredListings: { $set: n.payload },
                 error: { $set: null }
               });
             case se:
-              return Qa()(t, {
+              return Ya()(t, {
                 userListings: { $set: n.payload },
                 error: { $set: null }
               });
@@ -5819,26 +5826,26 @@
                   "string" === typeof n.payload.message
                     ? n.payload.message
                     : "Sorry, something went wrong :(\nPlease try again."),
-                Qa()(t, { error: { $set: e } })
+                Ya()(t, { error: { $set: e } })
               );
             default:
               return t;
           }
         },
-        no = Object(y.c)({
-          appState: Ja,
-          profile: Xa,
-          listing: to,
-          form: Va.a
+        ao = Object(y.c)({
+          appState: Ka,
+          profile: eo,
+          listing: no,
+          form: qa.a
         }),
-        ao = Object(y.a)(E.apiMiddleware),
-        oo = [E.apiMiddleware],
-        ro =
-          (y.a.apply(void 0, oo)(y.e),
+        oo = Object(y.a)(E.apiMiddleware),
+        ro = [E.apiMiddleware],
+        io =
+          (y.a.apply(void 0, ro)(y.e),
           Object(y.e)(
-            no,
+            ao,
             Object(y.d)(
-              ao,
+              oo,
               window.__REDUX_DEVTOOLS_EXTENSION__
                 ? window.__REDUX_DEVTOOLS_EXTENSION__()
                 : function(e) {
@@ -5853,11 +5860,11 @@
             /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
           )
       );
-      var io = n(511),
-        so = n(235),
-        co = n(153),
-        lo = n.n(co),
-        po = {
+      var so = n(511),
+        co = n(235),
+        lo = n(153),
+        po = n.n(lo),
+        uo = {
           palette: {
             primary: {
               main: "rgb(0, 170, 164)",
@@ -5865,7 +5872,7 @@
               contrastText: "white"
             },
             secondary: { main: "#c77137", light: "#d3a900" },
-            danger: { main: lo.a[900], light: lo.a[700] },
+            danger: { main: po.a[900], light: po.a[700] },
             success: { main: dt.a[600], light: dt.a[400] },
             textColor: "#333",
             secondaryTextColor: "rgb(0, 170, 164)",
@@ -5931,8 +5938,8 @@
             }
           }
         },
-        uo = Object(so.a)(po),
-        mo = (function(e) {
+        mo = Object(co.a)(uo),
+        ho = (function(e) {
           Object(h.a)(n, e);
           var t = Object(g.a)(n);
           function n() {
@@ -5958,15 +5965,15 @@
             n
           );
         })(s.a.Component),
-        ho = Object(f.f)(mo);
+        go = Object(f.f)(ho);
       Object(c.render)(
         Object(Qe.jsx)(p.a, {
-          store: ro,
+          store: io,
           children: Object(Qe.jsx)(l.a, {
-            children: Object(Qe.jsx)(ho, {
-              children: Object(Qe.jsx)(io.a, {
-                theme: uo,
-                children: Object(Qe.jsx)(Za, {})
+            children: Object(Qe.jsx)(go, {
+              children: Object(Qe.jsx)(so.a, {
+                theme: mo,
+                children: Object(Qe.jsx)(Va, {})
               })
             })
           })
@@ -5981,4 +5988,4 @@
   },
   [[427, 1, 2]]
 ]);
-//# sourceMappingURL=main.1253c390.chunk.js.map
+//# sourceMappingURL=main.e5c06dcc.chunk.js.map
