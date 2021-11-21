@@ -647,14 +647,25 @@ export const calcFeatures = values => {
 };
 
 export const filterListings = (listings, query) => {
+  console.log("filterListings");
   console.log(listings);
   console.log(query);
   let filteredListings = [...listings];
   if (query.max_rent) {
     console.log(`max_rent: ${parseFloat(query.max_rent)}`);
     filteredListings = filteredListings.filter(listing => {
-      console.log(`monthly_rent: ${parseFloat(listing.monthly_rent)}`);
-      return parseFloat(listing.monthly_rent) <= parseFloat(query.max_rent);
+      console.log("bedroomsPriceObj:", listing.bedroomsPriceObj);
+      const prices = [];
+      listing.bedroomsPriceObj.map(key => {
+        if (!!key.l) {
+          prices.push(key.l);
+        }
+        return null;
+      });
+      console.log(prices);
+      prices.sort((a, b) => a - b);
+      console.log(prices);
+      return parseFloat(prices[0]) <= parseFloat(query.max_rent);
     });
   }
   console.log("filteredListings after maxRent filter", filteredListings);
@@ -662,10 +673,45 @@ export const filterListings = (listings, query) => {
     return [];
   }
   if (query.bedrooms) {
-    filteredListings = filteredListings.filter(
-      listing => listing.bedrooms === query.bedrooms
-    );
+    console.log(`bedrooms: ${query.bedrooms}`);
+    const bedroomsArray = listing => {
+      // console.log(listing);
+      // console.log(listing.bedroomsPriceObj);
+      const tempArray = [];
+      Object.keys(listing.bedroomsPriceObj).map(key => {
+        if (listing.bedroomsPriceObj[key]["l"] !== null) {
+          tempArray.push(key);
+        }
+      });
+      console.log(tempArray);
+      const cleanedArray = [];
+      tempArray.map(item => {
+        if (item === "studio") {
+          cleanedArray.push(item);
+        } else {
+          cleanedArray.push(parseFloat(item.substring(2, 3)));
+        }
+        return null;
+      });
+      return cleanedArray;
+    };
+    filteredListings = filteredListings.filter(listing => {
+      console.log(bedroomsArray(listing));
+      console.log(query.bedrooms, parseFloat(query.bedrooms));
+      if (
+        bedroomsArray(listing).includes(parseFloat(query.bedrooms)) ||
+        bedroomsArray(listing).includes(query.bedrooms.toString())
+      ) {
+        console.log("true");
+        console.log(listing);
+        return listing;
+      } else {
+        console.log("false");
+        return null;
+      }
+    });
   }
+
   console.log("filteredListings after bedrooms filter", filteredListings);
   if (!filteredListings.length) {
     return [];

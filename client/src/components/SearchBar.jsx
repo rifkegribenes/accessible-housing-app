@@ -60,7 +60,7 @@ export function SearchBar(props) {
           name="bedrooms"
           id="bedrooms"
           type="select"
-          options={["", "Studio", "1", "2", "3", "4+"]}
+          options={["", "Studio", "1", "2", "3", "4", "5"]}
           classes={classes}
           labelWidth={41}
           component={renderSelect}

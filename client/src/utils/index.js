@@ -127,4 +127,81 @@ export const bedroomsPriceString = (
   return brsString;
 };
 
+export const bedroomsPriceObj = (
+  studio_l,
+  studio_h,
+  br1_l,
+  br1_h,
+  br2_l,
+  br2_h,
+  br3_l,
+  br3_h,
+  br4_l,
+  br4_h,
+  br5_l,
+  br5_h
+) => {
+  return {
+    studio: {
+      l: studio_l,
+      h: studio_h
+    },
+    br1: {
+      l: br1_l,
+      h: br1_h
+    },
+    br2: {
+      l: br2_l,
+      h: br2_h
+    },
+    br3: {
+      l: br3_l,
+      h: br3_h
+    },
+    br4: {
+      l: br4_l,
+      h: br4_h
+    },
+    br5: {
+      l: br5_l,
+      h: br5_h
+    }
+  };
+};
+
+export const generateBedroomStringAndObj = listings =>
+  listings.map(listing => {
+    return {
+      ...listing,
+      bedroomsPriceObj: bedroomsPriceObj(
+        listing.studio_l,
+        listing.studio_h,
+        listing.br1_l,
+        listing.br1_h,
+        listing.br2_l,
+        listing.br2_h,
+        listing.br3_l,
+        listing.br3_h,
+        listing.br4_l,
+        listing.br4_h,
+        listing.br5_l,
+        listing.br5_h
+      ),
+      bedroomsPriceString: bedroomsPriceString(
+        listing.studio_l,
+        listing.studio_h,
+        listing.br1_l,
+        listing.br1_h,
+        listing.br2_l,
+        listing.br2_h,
+        listing.br3_l,
+        listing.br3_h,
+        listing.br4_l,
+        listing.br4_h,
+        listing.br5_l,
+        listing.br5_h
+      )
+    };
+  });
+
 export const onSubmitFailFn = errors => scrollToFirstError(errors);

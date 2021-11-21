@@ -46,7 +46,7 @@ export const INITIAL_STATE = {
     bedrooms: "",
     maxRent: "",
     dialogOpen: false,
-    searchZip: "97201",
+    searchZip: "97206",
     features: []
   },
   error: null
@@ -182,6 +182,20 @@ function Listing(state = INITIAL_STATE, action) {
           action.payload.br_5l,
           action.payload.br_5h
         ),
+        bedroomsPriceObj: utils.bedroomsPriceObj(
+          action.payload.studio_l,
+          action.payload.studio_h,
+          action.payload.br_1l,
+          action.payload.br_1h,
+          action.payload.br_2l,
+          action.payload.br_2h,
+          action.payload.br_3l,
+          action.payload.br_3h,
+          action.payload.br_4l,
+          action.payload.br_4h,
+          action.payload.br_5l,
+          action.payload.br_5h
+        ),
         // deposit: action.payload.deposit,
         // bedrooms: action.payload.bedrooms,
         notes: action.payload.notes,
@@ -203,7 +217,9 @@ function Listing(state = INITIAL_STATE, action) {
 
     case GET_ALL_LISTINGS_SUCCESS:
       return update(state, {
-        allListings: { $set: action.payload },
+        allListings: {
+          $set: utils.generateBedroomStringAndObj(action.payload)
+        },
         filteredListings: { $set: action.payload },
         error: { $set: null }
       });

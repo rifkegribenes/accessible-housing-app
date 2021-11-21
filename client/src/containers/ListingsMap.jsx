@@ -244,7 +244,6 @@ class ListingsMapUnconnected extends Component {
   }
 
   componentDidMount() {
-    console.log("cDM");
     this.getAllListings();
   }
 
@@ -311,6 +310,7 @@ class ListingsMapUnconnected extends Component {
     const { formValues } = this.props;
     // generate array of features from selected options
     let features = calcFeatures(formValues);
+
     const query = {
       features,
       property_zip: formValues.searchZip,
