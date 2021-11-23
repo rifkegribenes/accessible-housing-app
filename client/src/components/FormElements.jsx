@@ -652,19 +652,19 @@ export const filterListings = (listings, query) => {
   console.log(query);
   let filteredListings = [...listings];
   if (query.max_rent) {
-    console.log(`max_rent: ${parseFloat(query.max_rent)}`);
+    // console.log(`max_rent: ${parseFloat(query.max_rent)}`);
     filteredListings = filteredListings.filter(listing => {
-      console.log("bedroomsPriceObj:", listing.bedroomsPriceObj);
+      // console.log("bedroomsPriceObj:", listing.bedroomsPriceObj);
       const prices = [];
-      listing.bedroomsPriceObj.map(key => {
-        if (!!key.l) {
-          prices.push(key.l);
+      Object.keys(listing.bedroomsPriceObj).map(key => {
+        if (!!listing.bedroomsPriceObj[key]["l"]) {
+          prices.push(parseFloat(listing.bedroomsPriceObj[key]["l"]));
         }
         return null;
       });
-      console.log(prices);
+      console.log("prices", prices);
       prices.sort((a, b) => a - b);
-      console.log(prices);
+      console.log("prices", prices);
       return parseFloat(prices[0]) <= parseFloat(query.max_rent);
     });
   }
