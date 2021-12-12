@@ -16,14 +16,13 @@ import {
   // getFormSubmitErrors
 } from "redux-form";
 
-const { renderCheckboxGroup, featuresMap } = formElements;
+const { useRenderCheckboxGroup, featuresMap } = formElements;
 
 export const FeaturesSearch = props => {
   const { classes, clearForm, setAndClose, more, toggleDrawer } = props;
 
   const features = Object.keys(featuresMap).map(feature => {
-    console.log(feature);
-    console.log(featuresMap[feature][2]);
+    // console.log(featuresMap[feature][2]);
     return (
       <Field
         label={featuresMap[feature][0]}
@@ -33,7 +32,7 @@ export const FeaturesSearch = props => {
         type={featuresMap[feature][1]}
         formControlName="controlCheckbox"
         classes={classes}
-        component={renderCheckboxGroup}
+        component={useRenderCheckboxGroup}
         options={featuresMap[feature][2]}
       />
     );
@@ -52,11 +51,6 @@ export const FeaturesSearch = props => {
       anchor="right"
     >
       <div className={classes.featuresPanel}>
-        <div className={classes.formSection}>
-          <FormLabel className={classes.formLabel} component="legend">
-            Features
-          </FormLabel>
-        </div>
         <FormGroup row classes={{ root: classes.formGroupFeatures }}>
           {features}
         </FormGroup>

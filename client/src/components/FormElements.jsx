@@ -351,6 +351,12 @@ export const formStyles = theme => ({
   formLabel: {
     margin: "10px 0"
   },
+  featuresLabel: {
+    fontSize: "1.2rem",
+    fontWeight: 700,
+    color: "red",
+    margin: "10px 0 20px 0"
+  },
   currency: {
     flexGrow: 0
   },
@@ -1030,7 +1036,7 @@ export const renderRadioGroup = ({
 );
 
 // custom MUI friendly checkbox group with translated label
-export const renderCheckboxGroup = ({
+export const useRenderCheckboxGroup = ({
   input,
   id,
   label,
@@ -1043,61 +1049,94 @@ export const renderCheckboxGroup = ({
   legendClass,
   additionalOnChange,
   ...custom
-}) => (
-  <FormControl
-    component="fieldset"
-    error={!!(touched && error)}
-    className={classes[formControlName] || classes.formControl}
-  >
-    <FormLabel component="legend" className={classes.radioLabel}>
-      {label}
-    </FormLabel>
-    <FormGroup
-      data-test="component-checkbox-group"
-      aria-label={formControlName}
-      name={formControlName}
-      className={
-        direction === "vert" ? classes.verticalGroup : classes.horizGroup
-      }
+}) => {
+  console.log(options);
+  const optionsObj = {};
+  for (const key of options) {
+    optionsObj[key] = false;
+  }
+  const [state, setState] = React.useState({
+    ...optionsObj
+  });
+
+  const handleChange = event => {
+    console.log(handleChange);
+    console.log(state);
+    console.log(event.target.name);
+    setState({
+      ...state,
+      [event.target.name]: event.target.checked
+    });
+    console.log(state);
+  };
+
+  // const [checked, setChecked] = React.useState(true);
+  // const handleCBChange = (event) => {
+  //   setChecked(event.target.checked);
+  // };
+  return (
+    <FormControl
+      component="fieldset"
+      error={!!(touched && error)}
+      className={classes[formControlName] || classes.formControl}
     >
-      {options.map(item => {
-        return (
-          <FormControlLabel
-            key={shortid()}
-            value={item}
-            className={legendClass}
-            control={
-              <Checkbox
-                checked={item.toString() === input.value.toString()}
-                color="primary"
-                className={classes.checkbox}
-                name="checkbox"
-                {...custom}
-                {...input}
-                inputProps={{ id: id }}
-                data-test="component-checkbox"
-                onChange={(event, value) => {
-                  // console.log(value);
-                  // console.log(event.target.value);
-                  input.onChange(value);
-                  if (additionalOnChange) {
-                    additionalOnChange(value);
-                  }
-                }}
-              />
-            }
-            label={item}
-          />
-        );
-      })}
-    </FormGroup>
-    {touched && error && (
-      <FormHelperText className={classes.checkboxErrorText}>
-        {error}
-      </FormHelperText>
-    )}
-  </FormControl>
-);
+      <FormLabel component="legend" className={classes.featuresLabel}>
+        {label}
+      </FormLabel>
+      <FormGroup
+        data-test="component-checkbox-group"
+        aria-label={formControlName}
+        name={formControlName}
+        className={
+          direction === "vert" ? classes.verticalGroup : classes.horizGroup
+        }
+      >
+        {options.map(item => {
+          console.log(item);
+          return (
+            <FormControlLabel
+              key={shortid()}
+              value={item}
+              className={legendClass}
+              control={
+                <Checkbox
+                  checked={state[item]}
+                  onChange={handleChange}
+                  // checked={item.toString() === input.value.toString()}
+                  color="primary"
+                  className={classes.checkbox}
+                  name={item}
+                  // {...custom}
+                  // {...input}
+                  inputProps={{ id: id }}
+                  data-test="component-checkbox"
+                  // onChange={(event, value) => {
+                  //   // console.log(value);
+                  //   // console.log(event.target.value);
+                  //   console.log('onChange');
+                  //   console.log(state);
+                  //   console.log(event.target.name);
+                  //   setState({
+                  //     ...state,
+                  //     [event.target.name]: event.target.checked,
+                  //   });
+                  //   console.log(state);
+                  // }}
+                />
+              }
+              label={item}
+            />
+          );
+        })}
+      </FormGroup>
+      {touched && error && (
+        <FormHelperText className={classes.checkboxErrorText}>
+          {error}
+        </FormHelperText>
+      )}
+    </FormControl>
+  );
+};
 
 TextField.propTypes = {
   input: PropTypes.shape({
