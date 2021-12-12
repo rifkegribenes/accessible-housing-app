@@ -59,6 +59,28 @@ const styles = theme => ({
       paddingTop: 10
     }
   },
+  featuresLabel: {
+    fontSize: "1.2rem",
+    fontWeight: 700,
+    color: theme.palette.secondaryTextColor,
+    margin: "10px 0 0 0"
+  },
+  checkboxFieldSet: {
+    margin: "10px 40px 20px 0"
+  },
+  indCheckboxInGroup: {
+    marginTop: "-5px",
+    marginBottom: "-10px"
+  },
+  indCheckboxLabel: {
+    height: "26px",
+    verticalAlign: "middle",
+    marginTop: "10px",
+    "& span": {
+      marginTop: "5px",
+      lineHeight: "1em"
+    }
+  },
   searchZip: {
     maxWidth: 200,
     marginRight: 20,

@@ -351,12 +351,6 @@ export const formStyles = theme => ({
   formLabel: {
     margin: "10px 0"
   },
-  featuresLabel: {
-    fontSize: "1.2rem",
-    fontWeight: 700,
-    color: "red",
-    margin: "10px 0 20px 0"
-  },
   currency: {
     flexGrow: 0
   },
@@ -1050,7 +1044,6 @@ export const useRenderCheckboxGroup = ({
   additionalOnChange,
   ...custom
 }) => {
-  console.log(options);
   const optionsObj = {};
   for (const key of options) {
     optionsObj[key] = false;
@@ -1060,25 +1053,17 @@ export const useRenderCheckboxGroup = ({
   });
 
   const handleChange = event => {
-    console.log(handleChange);
-    console.log(state);
-    console.log(event.target.name);
     setState({
       ...state,
       [event.target.name]: event.target.checked
     });
-    console.log(state);
   };
 
-  // const [checked, setChecked] = React.useState(true);
-  // const handleCBChange = (event) => {
-  //   setChecked(event.target.checked);
-  // };
   return (
     <FormControl
       component="fieldset"
       error={!!(touched && error)}
-      className={classes[formControlName] || classes.formControl}
+      className={classes.checkboxFieldSet}
     >
       <FormLabel component="legend" className={classes.featuresLabel}>
         {label}
@@ -1092,36 +1077,21 @@ export const useRenderCheckboxGroup = ({
         }
       >
         {options.map(item => {
-          console.log(item);
           return (
             <FormControlLabel
               key={shortid()}
               value={item}
-              className={legendClass}
+              classes={{ root: classes.indCheckboxLabel }}
               control={
                 <Checkbox
                   checked={state[item]}
                   onChange={handleChange}
-                  // checked={item.toString() === input.value.toString()}
                   color="primary"
                   className={classes.checkbox}
+                  classes={{ root: classes.indCheckboxLabel }}
                   name={item}
-                  // {...custom}
-                  // {...input}
                   inputProps={{ id: id }}
                   data-test="component-checkbox"
-                  // onChange={(event, value) => {
-                  //   // console.log(value);
-                  //   // console.log(event.target.value);
-                  //   console.log('onChange');
-                  //   console.log(state);
-                  //   console.log(event.target.name);
-                  //   setState({
-                  //     ...state,
-                  //     [event.target.name]: event.target.checked,
-                  //   });
-                  //   console.log(state);
-                  // }}
                 />
               }
               label={item}

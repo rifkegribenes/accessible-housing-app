@@ -34,6 +34,7 @@ export const FeaturesSearch = props => {
         classes={classes}
         component={useRenderCheckboxGroup}
         options={featuresMap[feature][2]}
+        legendClass={classes.indCheckboxInGroup}
       />
     );
   });
@@ -51,7 +52,13 @@ export const FeaturesSearch = props => {
       anchor="right"
     >
       <div className={classes.featuresPanel}>
-        <FormGroup row classes={{ root: classes.formGroupFeatures }}>
+        <FormGroup
+          row
+          classes={{
+            root: classes.formGroupFeatures,
+            ...classes
+          }}
+        >
           {features}
         </FormGroup>
         <div className={classes.buttonWrap}>
