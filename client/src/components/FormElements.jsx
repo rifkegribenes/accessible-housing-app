@@ -15,6 +15,7 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormLabel from "@material-ui/core/FormLabel";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
+import FormGroup from "@material-ui/core/FormGroup";
 
 // import { formatDate, formatDateTime } from "../utils";
 
@@ -606,31 +607,29 @@ export const formStyles = theme => ({
 });
 
 export const featuresMap = {
-  dogs: "Dogs OK",
-  cats: "Cats OK",
-  no_pets: "No pets",
-  furnished: "Furnished",
-  no_smoking: "No smoking",
-  gated_entry: "Gated entry",
-  "60_in_circular_space_for_turning": "60-inch circular space for turning",
-  "32_in_wide_doorways": "32-inch wide doorways",
-  accessible_route_to_unit: "Accessible route to unit",
-  bathroom_wall_reinforcements: "Wall reinforcements in bathroom",
-  bathroom_grab_bars: "Grab bars in bathroom",
-  shower_seat: "Shower seat",
-  bathroom_56_x_60_in_floor_clearance: "56x60-inch floor clearance in bathroom",
-  kitchen_40_in_aisle: "40-inch aisle in kitchen",
-  kitchen_60_in_floor_clearance_if_U_shaped:
-    "60-inch floor clearance in U-shaped kitchen",
-  kitchen_sink_knee_and_toe_clearance: "Knee and toe clearance at kitchen sink",
-  kitchen_sink_34_in_above_floor:
-    "Kitchen sink no more than 34 inches above floor",
-  kitchen_work_surface_34_in_above_floor:
-    "Work surface in kitchen no more than 34 inches above floor",
-  front_control_range: "Front-control range",
-  visible_notification_alarm_system: "Visible notification alarm system",
-  operable_parts_48_in_above_floor:
-    "Operable parts (light switches, thermostats, peepholes) no more than 48 inches above floor"
+  pets: [
+    "Pets",
+    "checkbox",
+    [
+      "Pets Allowed",
+      "No Pets Allowed",
+      "Small pets allowed",
+      "Pets allowed only for people w/ section 8",
+      "Pets only allowed with reasonable accommodation note"
+    ]
+  ],
+  accessibility: [
+    "Accessibility",
+    "checkbox",
+    [
+      "Some accessible units",
+      "No accessible units",
+      "No accessible units but they can make modifications",
+      "Some accessible units, but no roll in showers"
+    ]
+  ],
+  age: ["Age Restrictions", "checkbox", ["55+", "62+"]],
+  laundry_type: ["Laundry Type", "checkbox", ["Hookup", "In-unit", "On-site"]]
 };
 
 const featuresList = Object.keys(featuresMap);
@@ -682,6 +681,7 @@ export const filterListings = (listings, query) => {
         if (listing.bedroomsPriceObj[key]["l"] !== null) {
           tempArray.push(key);
         }
+        return null;
       });
       console.log(tempArray);
       const cleanedArray = [];
@@ -1021,6 +1021,76 @@ export const renderRadioGroup = ({
         );
       })}
     </RadioGroup>
+    {touched && error && (
+      <FormHelperText className={classes.checkboxErrorText}>
+        {error}
+      </FormHelperText>
+    )}
+  </FormControl>
+);
+
+// custom MUI friendly checkbox group with translated label
+export const renderCheckboxGroup = ({
+  input,
+  id,
+  label,
+  options,
+  validate,
+  classes,
+  direction,
+  meta: { touched, error },
+  formControlName,
+  legendClass,
+  additionalOnChange,
+  ...custom
+}) => (
+  <FormControl
+    component="fieldset"
+    error={!!(touched && error)}
+    className={classes[formControlName] || classes.formControl}
+  >
+    <FormLabel component="legend" className={classes.radioLabel}>
+      {label}
+    </FormLabel>
+    <FormGroup
+      data-test="component-checkbox-group"
+      aria-label={formControlName}
+      name={formControlName}
+      className={
+        direction === "vert" ? classes.verticalGroup : classes.horizGroup
+      }
+    >
+      {options.map(item => {
+        return (
+          <FormControlLabel
+            key={shortid()}
+            value={item}
+            className={legendClass}
+            control={
+              <Checkbox
+                checked={item.toString() === input.value.toString()}
+                color="primary"
+                className={classes.checkbox}
+                name="checkbox"
+                {...custom}
+                {...input}
+                inputProps={{ id: id }}
+                data-test="component-checkbox"
+                onChange={(event, value) => {
+                  // console.log(value);
+                  // console.log(event.target.value);
+                  input.onChange(value);
+                  if (additionalOnChange) {
+                    additionalOnChange(value);
+                  }
+                }}
+              />
+            }
+            label={item}
+          />
+        );
+      })}
+    </FormGroup>
     {touched && error && (
       <FormHelperText className={classes.checkboxErrorText}>
         {error}
