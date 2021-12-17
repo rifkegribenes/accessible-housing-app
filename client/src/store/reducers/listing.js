@@ -47,7 +47,36 @@ export const INITIAL_STATE = {
     maxRent: "",
     dialogOpen: false,
     searchZip: "97206",
-    features: []
+    // pets: {
+    //   "Pets Allowed": false,
+    //   "No Pets Allowed": false,
+    //   "Small pets allowed": false,
+    //   "Pets allowed only for people w/ section 8": false,
+    //   "Pets only allowed with reasonable accommodation note": false,
+    //   "No Info": false
+    // },
+    // accessibility: {
+    //   "Some accessible units": false,
+    //   "No accessible units": false,
+    //   "No accessible units but can be modified": false,
+    //   "Some accessible units; no roll in showers": false,
+    //   "No Info": false
+    // },
+    // age: {
+    //   "55+": false,
+    //   "62+": false,
+    //   "No Info": false
+    // },
+    // laundry_type: {
+    //   "Hookup": false,
+    //   "In-unit": false,
+    //   "On-site": false,
+    //   "No Info": false
+    // }
+    pets: [],
+    accessibility: [],
+    age: [],
+    laundry_type: []
   },
   error: null
 };
@@ -113,9 +142,10 @@ function Listing(state = INITIAL_STATE, action) {
       console.log("clear features");
       return update(state, {
         search: {
-          features: {
-            $set: []
-          }
+          pets: { $set: [] },
+          accessibility: { $set: [] },
+          age: { $set: [] },
+          laundry_type: { $set: [] }
         }
       });
 

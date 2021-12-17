@@ -327,9 +327,11 @@ class ListingsMapUnconnected extends Component {
     this.setState({ ...newState });
   };
 
-  handleSubmit = () => {
+  handleSubmit = state => {
     console.log("handleSubmit");
     const { formValues } = this.props;
+    console.log(state);
+    console.log(formValues);
     // generate array of features from selected options
     let features = calcFeatures(formValues);
 
@@ -341,7 +343,8 @@ class ListingsMapUnconnected extends Component {
     };
     const filteredListings = filterListings(
       this.props.listing.allListings,
-      query
+      query,
+      state
     );
     console.log(filteredListings);
     this.props.apiListing.updateFilter(filteredListings);

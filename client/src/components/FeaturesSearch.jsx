@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import FormLabel from "@material-ui/core/FormLabel";
 import FormGroup from "@material-ui/core/FormGroup";
+import FormControl from "@material-ui/core/FormControl";
 import Button from "@material-ui/core/Button";
 import withWidth from "@material-ui/core/withWidth";
 import Drawer from "@material-ui/core/Drawer";
@@ -16,26 +17,42 @@ import {
   // getFormSubmitErrors
 } from "redux-form";
 
-const { useRenderCheckboxGroup, featuresMap } = formElements;
+const { renderCheckbox, featuresMap } = formElements;
 
 export const FeaturesSearch = props => {
   const { classes, clearForm, setAndClose, more, toggleDrawer } = props;
 
   const features = Object.keys(featuresMap).map(feature => {
-    // console.log(featuresMap[feature][2]);
     return (
-      <Field
-        label={featuresMap[feature][0]}
-        name={feature}
-        id={feature}
-        key={feature}
-        type={featuresMap[feature][1]}
-        formControlName="controlCheckbox"
-        classes={classes}
-        component={useRenderCheckboxGroup}
-        options={featuresMap[feature][2]}
-        legendClass={classes.indCheckboxInGroup}
-      />
+      <FormControl
+        component="fieldset"
+        className={classes.checkboxFieldSet}
+        key={featuresMap[feature][0]}
+      >
+        <FormLabel component="legend" className={classes.featuresLabel}>
+          {featuresMap[feature][0]}
+        </FormLabel>
+        <FormGroup
+          data-test="component-checkbox-group"
+          aria-label={featuresMap[feature][0]}
+          name={featuresMap[feature][0]}
+          className={classes.verticalGroup}
+        >
+          {featuresMap[feature][2].map(item => (
+            <Field
+              label={item}
+              name={item}
+              id={`${featuresMap[feature][0]}_${item}`}
+              key={item}
+              type="checkbox"
+              formControlName="controlCheckbox"
+              classes={classes}
+              component={renderCheckbox}
+              // legendClass={classes.indCheckboxInGroup}
+            />
+          ))}
+        </FormGroup>
+      </FormControl>
     );
   });
 
@@ -52,13 +69,7 @@ export const FeaturesSearch = props => {
       anchor="right"
     >
       <div className={classes.featuresPanel}>
-        <FormGroup
-          row
-          classes={{
-            root: classes.formGroupFeatures,
-            ...classes
-          }}
-        >
+        <FormGroup row classes={{ root: classes.formGroupFeatures }}>
           {features}
         </FormGroup>
         <div className={classes.buttonWrap}>

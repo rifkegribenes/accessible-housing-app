@@ -307,11 +307,10 @@ export class AppUnconnected extends Component {
               exact
               path="/"
               render={routeProps => (
-                <Home
+                <ListingsMap
+                  listing={this.props.listing}
+                  setRedirect={this.setRedirect}
                   {...routeProps}
-                  classes={this.props.classes}
-                  searchZip={this.searchZip}
-                  searchFunc={this.search}
                 />
               )}
             />

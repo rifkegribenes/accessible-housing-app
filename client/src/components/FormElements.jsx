@@ -615,7 +615,8 @@ export const featuresMap = {
       "No Pets Allowed",
       "Small pets allowed",
       "Pets allowed only for people w/ section 8",
-      "Pets only allowed with reasonable accommodation note"
+      "Pets only allowed with reasonable accommodation note",
+      "No info on pets"
     ]
   ],
   accessibility: [
@@ -624,17 +625,26 @@ export const featuresMap = {
     [
       "Some accessible units",
       "No accessible units",
-      "No accessible units but they can make modifications",
-      "Some accessible units, but no roll in showers"
+      "No accessible units but can be modified",
+      "Some accessible units; no roll in showers",
+      "No info on accessibility"
     ]
   ],
-  age: ["Age Restrictions", "checkbox", ["55+", "62+"]],
-  laundry_type: ["Laundry Type", "checkbox", ["Hookup", "In-unit", "On-site"]]
+  age: ["Age Restrictions", "checkbox", ["55+", "62+", "No age restrictions"]],
+  laundry_type: [
+    "Laundry Type",
+    "checkbox",
+    ["Hookup", "In-unit", "On-site", "No info on laundry"]
+  ]
 };
 
-const featuresList = Object.keys(featuresMap);
+const featuresList = Object.keys(featuresMap)
+  .map(key => featuresMap[key][2])
+  .flat();
 
 export const calcFeatures = values => {
+  console.log("calcFeatures");
+  console.log(values);
   let featuresArray = [];
   featuresList.forEach(feature => {
     if (values[feature]) {
@@ -645,10 +655,11 @@ export const calcFeatures = values => {
   return featuresArray;
 };
 
-export const filterListings = (listings, query) => {
+export const filterListings = (listings, query, state) => {
   console.log("filterListings");
   console.log(listings);
   console.log(query);
+  console.log(state);
   let filteredListings = [...listings];
   if (query.max_rent) {
     // console.log(`max_rent: ${parseFloat(query.max_rent)}`);
@@ -729,7 +740,15 @@ export const filterListings = (listings, query) => {
     const featuresFilterArray = [...filteredListings];
     filteredListings.forEach(listing => {
       query.features.forEach((feature, index) => {
-        if (!listing.features.includes(feature)) {
+        const listingFeatures = [];
+        listingFeatures.push(
+          listing.pets,
+          listing.accessibility,
+          listing.age,
+          listing.laundry_type
+        );
+        console.log(listingFeatures);
+        if (!listingFeatures.includes(feature)) {
           console.log(`${listing.property_name} doesn't match ${feature}`);
           featuresFilterArray.splice(index, 1);
         }
@@ -1042,22 +1061,25 @@ export const useRenderCheckboxGroup = ({
   formControlName,
   legendClass,
   additionalOnChange,
+  handleCBChange,
+  handleCheck,
+  checked,
   ...custom
 }) => {
-  const optionsObj = {};
-  for (const key of options) {
-    optionsObj[key] = false;
-  }
-  const [state, setState] = React.useState({
-    ...optionsObj
-  });
+  // const optionsObj = {};
+  // for (const key of options) {
+  //   optionsObj[key] = false;
+  // }
+  // const [state, setState] = React.useState({
+  //   ...optionsObj
+  // });
 
-  const handleChange = event => {
-    setState({
-      ...state,
-      [event.target.name]: event.target.checked
-    });
-  };
+  // const handleChange = event => {
+  //   setState({
+  //     ...state,
+  //     [event.target.name]: event.target.checked
+  //   });
+  // };
 
   return (
     <FormControl
@@ -1084,13 +1106,13 @@ export const useRenderCheckboxGroup = ({
               classes={{ root: classes.indCheckboxLabel }}
               control={
                 <Checkbox
-                  checked={state[item]}
-                  onChange={handleChange}
+                  checked={checked.includes(item)}
+                  onClick={handleCheck}
                   color="primary"
                   className={classes.checkbox}
                   classes={{ root: classes.indCheckboxLabel }}
                   name={item}
-                  inputProps={{ id: id }}
+                  inputProps={{ id: `${id}_${item}` }}
                   data-test="component-checkbox"
                 />
               }
