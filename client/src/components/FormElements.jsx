@@ -739,6 +739,7 @@ export const filterListings = (listings, query, state) => {
   if (query.features) {
     const featuresFilterArray = [...filteredListings];
     filteredListings.forEach(listing => {
+      console.log(listing.property_name);
       query.features.forEach((feature, index) => {
         const listingFeatures = [];
         listingFeatures.push(
@@ -747,7 +748,7 @@ export const filterListings = (listings, query, state) => {
           listing.age,
           listing.laundry_type
         );
-        // console.log(listingFeatures);
+        console.log(listingFeatures);
         if (!listingFeatures.includes(feature)) {
           console.log(`${listing.property_name} doesn't match ${feature}`);
           featuresFilterArray.splice(index, 1);
