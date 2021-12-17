@@ -36,7 +36,7 @@ exports.up = function(knex) {
           table.string("notes");
           table.decimal("lease_length", 2, 0);
           table.decimal("square_feet", 4, 0);
-          table.decimal("age", 2, 0);
+          table.string("age");
           table.string("primary_image");
           table.string("availability");
           table.string("laundry_type");

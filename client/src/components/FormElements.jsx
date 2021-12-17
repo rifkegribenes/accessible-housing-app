@@ -611,8 +611,8 @@ export const featuresMap = {
     "Pets",
     "checkbox",
     [
-      "Pets Allowed",
-      "No Pets Allowed",
+      "Pets allowed",
+      "No pets allowed",
       "Small pets allowed",
       "Pets allowed only for people w/ section 8",
       "Pets only allowed with reasonable accommodation note",
@@ -747,7 +747,7 @@ export const filterListings = (listings, query, state) => {
           listing.age,
           listing.laundry_type
         );
-        console.log(listingFeatures);
+        // console.log(listingFeatures);
         if (!listingFeatures.includes(feature)) {
           console.log(`${listing.property_name} doesn't match ${feature}`);
           featuresFilterArray.splice(index, 1);
