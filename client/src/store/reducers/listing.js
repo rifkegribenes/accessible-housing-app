@@ -27,9 +27,34 @@ import {
   HANDLE_DELETE_CLOSE,
   CLEAR_FORM,
   CLEAR_SEARCH,
-  CLEAR_FEATURES,
+  // CLEAR_FEATURES,
   UPDATE_FILTER
 } from "../actions/apiListingActions";
+
+const emptySearch = {
+  bedrooms: "",
+  maxRent: "",
+  dialogOpen: false,
+  searchZip: "",
+  "Pets Allowed": false,
+  "No Pets Allowed": false,
+  "Small pets allowed": false,
+  "Pets allowed only for people w/ section 8": false,
+  "Pets only allowed with reasonable accommodation note": false,
+  "No info on pets": false,
+  "Some accessible units": false,
+  "No accessible units": false,
+  "No accessible units but can be modified": false,
+  "Some accessible units; no roll in showers": false,
+  "No info on accessibility": false,
+  "55+": false,
+  "62+": false,
+  "No age restrictions": false,
+  Hookup: false,
+  "In-unit": false,
+  "On-site": false,
+  "No info on laundry": false
+};
 
 export const INITIAL_STATE = {
   filteredListings: [],
@@ -43,40 +68,7 @@ export const INITIAL_STATE = {
     updated_at: ""
   },
   search: {
-    bedrooms: "",
-    maxRent: "",
-    dialogOpen: false,
-    searchZip: "97206",
-    // pets: {
-    //   "Pets Allowed": false,
-    //   "No Pets Allowed": false,
-    //   "Small pets allowed": false,
-    //   "Pets allowed only for people w/ section 8": false,
-    //   "Pets only allowed with reasonable accommodation note": false,
-    //   "No Info": false
-    // },
-    // accessibility: {
-    //   "Some accessible units": false,
-    //   "No accessible units": false,
-    //   "No accessible units but can be modified": false,
-    //   "Some accessible units; no roll in showers": false,
-    //   "No Info": false
-    // },
-    // age: {
-    //   "55+": false,
-    //   "62+": false,
-    //   "No Info": false
-    // },
-    // laundry_type: {
-    //   "Hookup": false,
-    //   "In-unit": false,
-    //   "On-site": false,
-    //   "No Info": false
-    // }
-    pets: [],
-    accessibility: [],
-    age: [],
-    laundry_type: []
+    ...emptySearch
   },
   error: null
 };
@@ -132,22 +124,26 @@ function Listing(state = INITIAL_STATE, action) {
 
     case CLEAR_SEARCH:
       console.log("clear search");
-      return update(state, {
-        search: {
-          $set: {}
-        }
-      });
+      return update(
+        state,
+        {
+          search: {
+            $set: { ...emptySearch }
+          }
+        },
+        console.log(state)
+      );
 
-    case CLEAR_FEATURES:
-      console.log("clear features");
-      return update(state, {
-        search: {
-          pets: { $set: [] },
-          accessibility: { $set: [] },
-          age: { $set: [] },
-          laundry_type: { $set: [] }
-        }
-      });
+    // case CLEAR_FEATURES:
+    //   console.log("clear features");
+    //   return update(state, {
+    //     search: {
+    //       pets: { $set: [] },
+    //       accessibility: { $set: [] },
+    //       age: { $set: [] },
+    //       laundry_type: { $set: [] }
+    //     }
+    //   });
 
     case UPDATE_FILTER:
       console.log("UPDATE_FILTER");

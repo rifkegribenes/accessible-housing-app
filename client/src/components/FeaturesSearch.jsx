@@ -20,7 +20,14 @@ import {
 const { renderCheckbox, featuresMap } = formElements;
 
 export const FeaturesSearch = props => {
-  const { classes, clearForm, setAndClose, more, toggleDrawer } = props;
+  const {
+    classes,
+    clearSearch,
+    setAndClose,
+    more,
+    toggleDrawer,
+    searchState
+  } = props;
 
   const features = Object.keys(featuresMap).map(feature => {
     return (
@@ -42,11 +49,12 @@ export const FeaturesSearch = props => {
             <Field
               label={item}
               name={item}
-              id={`${featuresMap[feature][0]}_${item}`}
+              id={item}
               key={item}
               type="checkbox"
               formControlName="controlCheckbox"
               classes={classes}
+              searchState={searchState}
               component={renderCheckbox}
               // legendClass={classes.indCheckboxInGroup}
             />
@@ -69,6 +77,26 @@ export const FeaturesSearch = props => {
       anchor="right"
     >
       <div className={classes.featuresPanel}>
+        <div className={classes.buttonWrap}>
+          <Button
+            type="button"
+            color="secondary"
+            className={classes.leftButton}
+            variant="outlined"
+            onClick={clearSearch}
+          >
+            Clear
+          </Button>
+          <Button
+            type="button"
+            color="primary"
+            className={classes.next}
+            variant="contained"
+            onClick={setAndClose}
+          >
+            Done
+          </Button>
+        </div>
         <FormGroup row classes={{ root: classes.formGroupFeatures }}>
           {features}
         </FormGroup>
@@ -78,7 +106,7 @@ export const FeaturesSearch = props => {
             color="secondary"
             className={classes.leftButton}
             variant="outlined"
-            onClick={clearForm}
+            onClick={clearSearch}
           >
             Clear
           </Button>

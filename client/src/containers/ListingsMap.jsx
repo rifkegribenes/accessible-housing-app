@@ -275,7 +275,7 @@ class ListingsMapUnconnected extends Component {
       .getAllListings(authToken)
       .then(result => {
         console.log("getAllListings:");
-        console.log(result.payload);
+        // console.log(result.payload);
         if (
           result.type === "GET_ALL_LISTINGS_FAILURE" ||
           this.props.listing.error
@@ -334,7 +334,7 @@ class ListingsMapUnconnected extends Component {
     console.log(formValues);
     // generate array of features from selected options
     let features = calcFeatures(formValues);
-
+    console.log(features);
     const query = {
       features,
       property_zip: formValues.searchZip,
@@ -383,8 +383,10 @@ class ListingsMapUnconnected extends Component {
             more={this.state.more}
             setAndClose={this.setAndClose}
             clearSearch={this.clearSearch}
+            clearFeatures={this.clearFeatures}
             onSubmit={this.handleSubmit}
             hideSearch={this.hideSearch}
+            searchState={this.props.listing.search}
           />
         )}
         <GoogleMapReact

@@ -288,7 +288,7 @@ export class NavBar extends React.Component {
       </div>
     );
     const mobile = !isWidthUp("sm", this.props.width);
-    console.log(`mobile: ${mobile}`);
+    // console.log(`mobile: ${mobile}`);
 
     return (
       <div className={classes.root} data-test="component-navbar">

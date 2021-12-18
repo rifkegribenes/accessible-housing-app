@@ -953,6 +953,7 @@ export const renderCheckbox = ({
   classes,
   meta: { touched, error },
   formControlName,
+  searchState,
   ...custom
 }) => (
   <FormControl
@@ -964,7 +965,7 @@ export const renderCheckbox = ({
       control={
         <Checkbox
           color="primary"
-          checked={input.value ? true : false}
+          checked={searchState[label]}
           {...custom}
           {...input}
           className={classes.checkbox}
