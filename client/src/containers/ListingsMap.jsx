@@ -46,7 +46,8 @@ const styles = theme => ({
     padding: 20,
     position: "fixed",
     zIndex: 2,
-    width: "100%"
+    width: "100%",
+    maxWidth: 1200
   },
   searchForm: {
     display: "flex",
@@ -171,7 +172,7 @@ const styles = theme => ({
     }
   },
   drawer: {
-    width: 500,
+    minWidth: 500,
     maxWidth: "50%",
     [theme.breakpoints.down("sm")]: {
       maxWidth: "100%"
@@ -185,7 +186,7 @@ const styles = theme => ({
     minHeight: "100vh"
   },
   drawerPaper: {
-    width: 500,
+    minWidth: 500,
     padding: 20,
     position: "absolute",
     top: 0,

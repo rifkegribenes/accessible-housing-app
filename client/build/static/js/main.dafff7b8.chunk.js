@@ -21,10 +21,10 @@
           return w;
         }),
         n.d(a, "logout", function() {
-          return _;
+          return k;
         }),
         n.d(a, "setLoggedIn", function() {
-          return k;
+          return _;
         }),
         n.d(a, "setSpinner", function() {
           return L;
@@ -181,10 +181,10 @@
           return we;
         }),
         n.d(r, "getAllListings", function() {
-          return _e;
+          return ke;
         }),
         n.d(r, "addListing", function() {
-          return ke;
+          return _e;
         }),
         n.d(r, "updateListing", function() {
           return Le;
@@ -211,10 +211,10 @@
         S = "SET_LOGGEDIN",
         v = "SET_SPINNER",
         w = "SET_REDIRECT_URL";
-      function _() {
+      function k() {
         return { type: O };
       }
-      function k(e, t) {
+      function _(e, t) {
         return { type: S, payload: { userId: e, token: t } };
       }
       function L() {
@@ -399,7 +399,7 @@
           }
         });
       }
-      function _e() {
+      function ke() {
         return Object(b.a)({}, E.RSAA, {
           endpoint: "".concat(T, "/api/listing"),
           method: "GET",
@@ -418,7 +418,7 @@
           ]
         });
       }
-      function ke(e, t) {
+      function _e(e, t) {
         return (
           console.log(t),
           console.log(JSON.stringify(t)),
@@ -712,119 +712,116 @@
                       })
                     }),
                     p = !Object(Ne.b)("sm", this.props.width);
-                  return (
-                    console.log("mobile: ".concat(p)),
-                    Object(Je.jsx)("div", {
-                      className: t.root,
-                      "data-test": "component-navbar",
-                      children: Object(Je.jsx)(Ie.a, {
-                        position: "fixed",
-                        className: t.appBar,
-                        children: Object(Je.jsxs)(Re.a, {
-                          className: t.toolbar,
-                          children: [
-                            Object(Je.jsx)(De.a, {
-                              color: "primary",
-                              variant: "contained",
-                              className: t.skip,
-                              onClick: this.skipToMain,
-                              "data-test": "skiplink-button",
-                              children: "Skip to content \u203a"
-                            }),
-                            Object(Je.jsxs)(s.a.Fragment, {
-                              children: [
-                                Object(Je.jsxs)(Ue.a, {
-                                  className: t.menuButton,
-                                  color: "secondary",
-                                  "aria-label": "Menu",
-                                  "aria-owns": n ? "nav-menu" : null,
-                                  "aria-haspopup": "true",
-                                  onClick: function(t) {
-                                    return e.handleClick(t);
-                                  },
-                                  "data-test": "menu-button",
-                                  children: [
-                                    Object(Je.jsx)(Ge.a, {}),
-                                    Object(Je.jsx)(Ae.a, {
-                                      className: t.menuLabel,
-                                      children: "Menu"
-                                    })
-                                  ]
-                                }),
-                                Object(Je.jsx)(Fe.a, {
-                                  id: "nav-menu",
-                                  anchorEl: n,
-                                  open: Boolean(n),
-                                  onClose: this.handleClose,
-                                  component: "nav",
-                                  className: "drawer",
-                                  elevation: 0,
-                                  anchorOrigin: {
-                                    horizontal: "left",
-                                    vertical: "top"
-                                  },
-                                  transformOrigin: {
-                                    horizontal: "left",
-                                    vertical: "top"
-                                  },
-                                  TransitionComponent: ze.a,
-                                  TransitionProps: { direction: "right" },
-                                  PaperProps: { className: t.drawer },
-                                  "data-test": "menu",
-                                  children: c
-                                })
-                              ]
-                            }),
-                            Object(Je.jsx)(l.b, {
-                              to: "/",
-                              className: t.logoLink,
-                              "data-test": "logo-link",
-                              children: Object(Je.jsx)("img", {
-                                src: Ye,
-                                alt: "Community Vision",
-                                className: t.logo,
-                                "data-test": "logo-image"
-                              })
-                            }),
-                            Object(Je.jsx)(Ae.a, {
-                              variant: "h6",
-                              color: "inherit",
-                              className: t.title,
-                              "data-test": "title",
-                              children: Object(Je.jsx)(l.b, {
-                                to: "/",
-                                className: t.title,
-                                children: "Accessible Housing Hotsheet"
-                              })
-                            }),
-                            a
-                              ? Object(Je.jsx)("div", {
-                                  className: t.admin,
-                                  children: Object(Je.jsx)($e.a, {
-                                    alt: this.props.profile.profile.name,
-                                    src: this.props.profile.profile.avatarUrl,
-                                    className: t.avatar
+                  return Object(Je.jsx)("div", {
+                    className: t.root,
+                    "data-test": "component-navbar",
+                    children: Object(Je.jsx)(Ie.a, {
+                      position: "fixed",
+                      className: t.appBar,
+                      children: Object(Je.jsxs)(Re.a, {
+                        className: t.toolbar,
+                        children: [
+                          Object(Je.jsx)(De.a, {
+                            color: "primary",
+                            variant: "contained",
+                            className: t.skip,
+                            onClick: this.skipToMain,
+                            "data-test": "skiplink-button",
+                            children: "Skip to content \u203a"
+                          }),
+                          Object(Je.jsxs)(s.a.Fragment, {
+                            children: [
+                              Object(Je.jsxs)(Ue.a, {
+                                className: t.menuButton,
+                                color: "secondary",
+                                "aria-label": "Menu",
+                                "aria-owns": n ? "nav-menu" : null,
+                                "aria-haspopup": "true",
+                                onClick: function(t) {
+                                  return e.handleClick(t);
+                                },
+                                "data-test": "menu-button",
+                                children: [
+                                  Object(Je.jsx)(Ge.a, {}),
+                                  Object(Je.jsx)(Ae.a, {
+                                    className: t.menuLabel,
+                                    children: "Menu"
                                   })
-                                })
-                              : Object(Je.jsx)("a", {
-                                  className: t.loginLinkNavBar,
-                                  href: "".concat("", "/api/auth/google"),
-                                  children: p ? "Log in" : "Log in / Sign up"
-                                }),
-                            Object(Je.jsx)(De.a, {
-                              className: t.buttonRight,
-                              "data-test": "button-right",
-                              href: "/new",
-                              type: "button",
-                              children: p
-                                ? Object(Je.jsx)(Me.a, {})
-                                : "Add a Listing"
+                                ]
+                              }),
+                              Object(Je.jsx)(Fe.a, {
+                                id: "nav-menu",
+                                anchorEl: n,
+                                open: Boolean(n),
+                                onClose: this.handleClose,
+                                component: "nav",
+                                className: "drawer",
+                                elevation: 0,
+                                anchorOrigin: {
+                                  horizontal: "left",
+                                  vertical: "top"
+                                },
+                                transformOrigin: {
+                                  horizontal: "left",
+                                  vertical: "top"
+                                },
+                                TransitionComponent: ze.a,
+                                TransitionProps: { direction: "right" },
+                                PaperProps: { className: t.drawer },
+                                "data-test": "menu",
+                                children: c
+                              })
+                            ]
+                          }),
+                          Object(Je.jsx)(l.b, {
+                            to: "/",
+                            className: t.logoLink,
+                            "data-test": "logo-link",
+                            children: Object(Je.jsx)("img", {
+                              src: Ye,
+                              alt: "Community Vision",
+                              className: t.logo,
+                              "data-test": "logo-image"
                             })
-                          ]
-                        })
+                          }),
+                          Object(Je.jsx)(Ae.a, {
+                            variant: "h6",
+                            color: "inherit",
+                            className: t.title,
+                            "data-test": "title",
+                            children: Object(Je.jsx)(l.b, {
+                              to: "/",
+                              className: t.title,
+                              children: "Accessible Housing Hotsheet"
+                            })
+                          }),
+                          a
+                            ? Object(Je.jsx)("div", {
+                                className: t.admin,
+                                children: Object(Je.jsx)($e.a, {
+                                  alt: this.props.profile.profile.name,
+                                  src: this.props.profile.profile.avatarUrl,
+                                  className: t.avatar
+                                })
+                              })
+                            : Object(Je.jsx)("a", {
+                                className: t.loginLinkNavBar,
+                                href: "".concat("", "/api/auth/google"),
+                                children: p ? "Log in" : "Log in / Sign up"
+                              }),
+                          Object(Je.jsx)(De.a, {
+                            className: t.buttonRight,
+                            "data-test": "button-right",
+                            href: "/new",
+                            type: "button",
+                            children: p
+                              ? Object(Je.jsx)(Me.a, {})
+                              : "Add a Listing"
+                          })
+                        ]
                       })
                     })
-                  );
+                  });
                 }
               }
             ]),
@@ -1116,8 +1113,8 @@
         St = n(208),
         vt = n.n(St),
         wt = ["classes", "className", "message", "onClose", "variant"],
-        _t = { success: ft.a, warning: jt.a, error: Ot.a, info: vt.a },
-        kt = Object(x.a)(function(e) {
+        kt = { success: ft.a, warning: jt.a, error: Ot.a, info: vt.a },
+        _t = Object(x.a)(function(e) {
           return {
             success: { backgroundColor: ut.a[600] },
             error: { backgroundColor: e.palette.error.dark },
@@ -1135,7 +1132,7 @@
             o = e.onClose,
             r = e.variant,
             i = Object(it.a)(e, wt),
-            s = _t[r];
+            s = kt[r];
           return Object(Je.jsx)(
             gt.a,
             Object(d.a)(
@@ -1230,7 +1227,7 @@
                     autoHideDuration: 6e3,
                     onClose: this.handleSnackbarClose,
                     "data-test": "component-notifier",
-                    children: Object(Je.jsx)(kt, {
+                    children: Object(Je.jsx)(_t, {
                       variant: this.state.variant,
                       message: e,
                       open: this.state.open,
@@ -1546,7 +1543,8 @@
           "validate",
           "classes",
           "meta",
-          "formControlName"
+          "formControlName",
+          "searchState"
         ],
         yn = function(e) {
           return Et(
@@ -1945,7 +1943,7 @@
             })
           });
         },
-        _n = function(e) {
+        kn = function(e) {
           var t = e.input,
             n = e.id,
             a = (e.name, e.label),
@@ -2004,7 +2002,7 @@
             )
           );
         },
-        kn = function(e) {
+        _n = function(e) {
           return "right" === e ? { direction: "ltr" } : {};
         },
         Ln = function(e) {
@@ -2072,7 +2070,7 @@
                             "option",
                             {
                               value: e ? e.toLowerCase() : "",
-                              style: kn(i),
+                              style: _n(i),
                               children: e
                             },
                             Kt()()
@@ -2095,38 +2093,46 @@
             i = r.touched,
             s = r.error,
             c = e.formControlName,
-            l = Object(it.a)(e, fn);
-          return Object(Je.jsxs)(cn.a, {
-            error: !(!i || !s),
-            className: o[c] || o.formControl,
-            children: [
-              Object(Je.jsx)(ln.a, {
-                label: n,
-                control: Object(Je.jsx)(
-                  on.a,
-                  Object(d.a)(
+            l = e.searchState,
+            p = Object(it.a)(e, fn);
+          return (
+            console.log(l),
+            console.log(n),
+            console.log(a),
+            console.log(t.name),
+            console.log(l[n]),
+            Object(Je.jsxs)(cn.a, {
+              error: !(!i || !s),
+              className: o[c] || o.formControl,
+              children: [
+                Object(Je.jsx)(ln.a, {
+                  label: n,
+                  control: Object(Je.jsx)(
+                    on.a,
                     Object(d.a)(
-                      Object(d.a)({ color: "primary", checked: !!t.value }, l),
-                      t
-                    ),
-                    {},
-                    {
-                      className: o.checkbox,
-                      "data-test": "component-checkbox",
-                      name: "checkbox",
-                      inputProps: { id: a }
-                    }
+                      Object(d.a)(
+                        Object(d.a)({ color: "primary", checked: l[n] }, p),
+                        t
+                      ),
+                      {},
+                      {
+                        className: o.checkbox,
+                        "data-test": "component-checkbox",
+                        name: "checkbox",
+                        inputProps: { id: a }
+                      }
+                    )
                   )
-                )
-              }),
-              i &&
-                s &&
-                Object(Je.jsx)(pn.a, {
-                  className: o.checkboxErrorText,
-                  children: s
-                })
-            ]
-          });
+                }),
+                i &&
+                  s &&
+                  Object(Je.jsx)(pn.a, {
+                    className: o.checkboxErrorText,
+                    children: s
+                  })
+              ]
+            })
+          );
         };
       (tn.a.propTypes = {
         input: en.a.shape({
@@ -2227,7 +2233,7 @@
           return e.unshift(""), e;
         },
         In = Ln,
-        Rn = _n,
+        Rn = kn,
         An = function(e) {
           var t = e.input,
             n = e.id,
@@ -3926,7 +3932,7 @@
           })(da)
         ),
         ma = Ln,
-        ha = _n,
+        ha = kn,
         ga = Object(Vt.a)({
           form: "updateUser",
           validate: function(e) {
@@ -4472,8 +4478,8 @@
         Sa = n.n(Oa),
         va = n(509),
         wa = Cn,
-        _a = xn,
-        ka = Object(Vt.a)({
+        ka = xn,
+        _a = Object(Vt.a)({
           form: "listingSearch",
           destroyOnUnmount: !1,
           forceUnregisterOnUnmount: !1,
@@ -4482,11 +4488,12 @@
           updateUnregisteredFields: !0
         })(function(e) {
           var t = e.classes,
-            n = e.clearForm,
+            n = e.clearSearch,
             a = e.setAndClose,
             o = e.more,
             r = e.toggleDrawer,
-            i = Object.keys(_a).map(function(e) {
+            i = e.searchState,
+            s = Object.keys(ka).map(function(e) {
               return Object(Je.jsxs)(
                 cn.a,
                 {
@@ -4496,32 +4503,33 @@
                     Object(Je.jsx)(qt.a, {
                       component: "legend",
                       className: t.featuresLabel,
-                      children: _a[e][0]
+                      children: ka[e][0]
                     }),
                     Object(Je.jsx)(Qt.a, {
                       "data-test": "component-checkbox-group",
-                      "aria-label": _a[e][0],
-                      name: _a[e][0],
+                      "aria-label": ka[e][0],
+                      name: ka[e][0],
                       className: t.verticalGroup,
-                      children: _a[e][2].map(function(n) {
+                      children: ka[e][2].map(function(e) {
                         return Object(Je.jsx)(
                           Zt.a,
                           {
-                            label: n,
-                            name: n,
-                            id: "".concat(_a[e][0], "_").concat(n),
+                            label: e,
+                            name: e,
+                            id: e,
                             type: "checkbox",
                             formControlName: "controlCheckbox",
                             classes: t,
+                            searchState: i,
                             component: wa
                           },
-                          n
+                          e
                         );
                       })
                     })
                   ]
                 },
-                _a[e][0]
+                ka[e][0]
               );
             });
           return Object(Je.jsx)(va.a, {
@@ -4535,10 +4543,31 @@
             children: Object(Je.jsxs)("div", {
               className: t.featuresPanel,
               children: [
+                Object(Je.jsxs)("div", {
+                  className: t.buttonWrap,
+                  children: [
+                    Object(Je.jsx)(De.a, {
+                      type: "button",
+                      color: "secondary",
+                      className: t.leftButton,
+                      variant: "outlined",
+                      onClick: n,
+                      children: "Clear"
+                    }),
+                    Object(Je.jsx)(De.a, {
+                      type: "button",
+                      color: "primary",
+                      className: t.next,
+                      variant: "contained",
+                      onClick: a,
+                      children: "Done"
+                    })
+                  ]
+                }),
                 Object(Je.jsx)(Qt.a, {
                   row: !0,
                   classes: { root: t.formGroupFeatures },
-                  children: i
+                  children: s
                 }),
                 Object(Je.jsxs)("div", {
                   className: t.buttonWrap,
@@ -4565,9 +4594,9 @@
             })
           });
         }),
-        La = Object(Ne.a)()(ka),
+        La = Object(Ne.a)()(_a),
         Ca = Ln,
-        Ea = _n;
+        Ea = kn;
       var Ta = Object(Vt.a)({
           form: "listingSearch",
           destroyOnUnmount: !1,
@@ -4577,7 +4606,8 @@
           updateUnregisteredFields: !0
         })(function(e) {
           var t = e.onSubmit,
-            n = e.classes;
+            n = e.classes,
+            a = e.searchState;
           return Object(Je.jsx)("div", {
             className: n.searchBar,
             "data-test": "component-search-bar",
@@ -4662,7 +4692,8 @@
                     setAndClose: e.setAndClose,
                     clearSearch: e.clearSearch,
                     more: e.more,
-                    toggleDrawer: e.toggleDrawer
+                    toggleDrawer: e.toggleDrawer,
+                    searchState: a
                   })
               ]
             })
@@ -4720,7 +4751,6 @@
                   .getAllListings(e)
                   .then(function(e) {
                     console.log("getAllListings:"),
-                      console.log(e.payload),
                       ("GET_ALL_LISTINGS_FAILURE" === e.type ||
                         a.props.listing.error) &&
                         (console.log(
@@ -4763,13 +4793,15 @@
                 console.log("handleSubmit");
                 var t = a.props.formValues;
                 console.log(e), console.log(t);
-                var n = {
-                    features: Sn(t),
+                var n = Sn(t);
+                console.log(n);
+                var o = {
+                    features: n,
                     property_zip: t.searchZip,
                     bedrooms: t.bedrooms,
                     max_rent: t.maxRent
                   },
-                  o = (function(e, t, n) {
+                  r = (function(e, t, n) {
                     console.log("filterListings"),
                       console.log(e),
                       console.log(t),
@@ -4875,10 +4907,10 @@
                       console.log("filteredListings after features filter", a),
                       a.length ? a : []
                     );
-                  })(a.props.listing.allListings, n, e);
-                console.log(o),
-                  a.props.apiListing.updateFilter(o),
-                  o.length ||
+                  })(a.props.listing.allListings, o, e);
+                console.log(r),
+                  a.props.apiListing.updateFilter(r),
+                  r.length ||
                     Et(
                       "error",
                       "No listings match your search criteria. Try broadening your search."
@@ -4925,8 +4957,10 @@
                           more: this.state.more,
                           setAndClose: this.setAndClose,
                           clearSearch: this.clearSearch,
+                          clearFeatures: this.clearFeatures,
                           onSubmit: this.handleSubmit,
-                          hideSearch: this.hideSearch
+                          hideSearch: this.hideSearch,
+                          searchState: this.props.listing.search
                         }),
                       Object(Je.jsx)(Sa.a, {
                         bootstrapURLKeys: {
@@ -4986,7 +5020,8 @@
               padding: 20,
               position: "fixed",
               zIndex: 2,
-              width: "100%"
+              width: "100%",
+              maxWidth: 1200
             },
             searchForm: Object(b.a)(
               { display: "flex", flexDirection: "row", height: 55 },
@@ -5094,7 +5129,7 @@
               { width: "100%", padding: 0, boxShadow: "none" }
             ),
             drawer:
-              ((t = { width: 500, maxWidth: "50%" }),
+              ((t = { minWidth: 500, maxWidth: "50%" }),
               Object(b.a)(t, e.breakpoints.down("sm"), { maxWidth: "100%" }),
               Object(b.a)(t, "position", "absolute"),
               Object(b.a)(t, "right", 0),
@@ -5105,7 +5140,7 @@
               t),
             drawerPaper: Object(b.a)(
               {
-                width: 500,
+                minWidth: 500,
                 padding: 20,
                 position: "absolute",
                 top: 0,
@@ -5751,6 +5786,30 @@
           }
         },
         no = {
+          bedrooms: "",
+          maxRent: "",
+          dialogOpen: !1,
+          searchZip: "",
+          "Pets Allowed": !1,
+          "No Pets Allowed": !1,
+          "Small pets allowed": !1,
+          "Pets allowed only for people w/ section 8": !1,
+          "Pets only allowed with reasonable accommodation note": !1,
+          "No info on pets": !1,
+          "Some accessible units": !1,
+          "No accessible units": !1,
+          "No accessible units but can be modified": !1,
+          "Some accessible units; no roll in showers": !1,
+          "No info on accessibility": !1,
+          "55+": !1,
+          "62+": !1,
+          "No age restrictions": !1,
+          Hookup: !1,
+          "In-unit": !1,
+          "On-site": !1,
+          "No info on laundry": !1
+        },
+        ao = {
           filteredListings: [],
           allListings: [],
           userListings: [],
@@ -5761,28 +5820,19 @@
             created_at: "",
             updated_at: ""
           },
-          search: {
-            bedrooms: "",
-            maxRent: "",
-            dialogOpen: !1,
-            searchZip: "97206",
-            pets: [],
-            accessibility: [],
-            age: [],
-            laundry_type: []
-          },
+          search: Object(d.a)({}, no),
           error: null
         };
-      var ao = function() {
+      var oo = function() {
           var e,
             t =
               arguments.length > 0 && void 0 !== arguments[0]
                 ? arguments[0]
-                : no,
+                : ao,
             n = arguments.length > 1 ? arguments[1] : void 0;
           switch (n.type) {
             case O:
-              return no;
+              return ao;
             case $:
               return Ja()(t, {
                 form: Object(b.a)({}, n.payload.name, { $set: n.payload.value })
@@ -5817,19 +5867,12 @@
               return console.log("clear form"), Ja()(t, { form: { $set: {} } });
             case q:
               return (
-                console.log("clear search"), Ja()(t, { search: { $set: {} } })
-              );
-            case Q:
-              return (
-                console.log("clear features"),
-                Ja()(t, {
-                  search: {
-                    pets: { $set: [] },
-                    accessibility: { $set: [] },
-                    age: { $set: [] },
-                    laundry_type: { $set: [] }
-                  }
-                })
+                console.log("clear search"),
+                Ja()(
+                  t,
+                  { search: { $set: Object(d.a)({}, no) } },
+                  console.log(t)
+                )
               );
             case Y:
               return (
@@ -5931,20 +5974,20 @@
               return t;
           }
         },
-        oo = Object(y.c)({
+        ro = Object(y.c)({
           appState: Xa,
           profile: to,
-          listing: ao,
+          listing: oo,
           form: Qa.a
         }),
-        ro = Object(y.a)(E.apiMiddleware),
-        io = [E.apiMiddleware],
-        so =
-          (y.a.apply(void 0, io)(y.e),
+        io = Object(y.a)(E.apiMiddleware),
+        so = [E.apiMiddleware],
+        co =
+          (y.a.apply(void 0, so)(y.e),
           Object(y.e)(
-            oo,
+            ro,
             Object(y.d)(
-              ro,
+              io,
               window.__REDUX_DEVTOOLS_EXTENSION__
                 ? window.__REDUX_DEVTOOLS_EXTENSION__()
                 : function(e) {
@@ -5959,11 +6002,11 @@
             /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
           )
       );
-      var co = n(511),
-        lo = n(235),
-        po = n(154),
-        uo = n.n(po),
-        mo = {
+      var lo = n(511),
+        po = n(235),
+        uo = n(154),
+        mo = n.n(uo),
+        ho = {
           palette: {
             primary: {
               main: "rgb(0, 170, 164)",
@@ -5971,7 +6014,7 @@
               contrastText: "white"
             },
             secondary: { main: "#c77137", light: "#d3a900" },
-            danger: { main: uo.a[900], light: uo.a[700] },
+            danger: { main: mo.a[900], light: mo.a[700] },
             success: { main: ut.a[600], light: ut.a[400] },
             textColor: "#333",
             secondaryTextColor: "rgb(0, 170, 164)",
@@ -6037,8 +6080,8 @@
             }
           }
         },
-        ho = Object(lo.a)(mo),
-        go = (function(e) {
+        go = Object(po.a)(ho),
+        bo = (function(e) {
           Object(h.a)(n, e);
           var t = Object(g.a)(n);
           function n() {
@@ -6064,14 +6107,14 @@
             n
           );
         })(s.a.Component),
-        bo = Object(f.f)(go);
+        fo = Object(f.f)(bo);
       Object(c.render)(
         Object(Je.jsx)(p.a, {
-          store: so,
+          store: co,
           children: Object(Je.jsx)(l.a, {
-            children: Object(Je.jsx)(bo, {
-              children: Object(Je.jsx)(co.a, {
-                theme: ho,
+            children: Object(Je.jsx)(fo, {
+              children: Object(Je.jsx)(lo.a, {
+                theme: go,
                 children: Object(Je.jsx)(qa, {})
               })
             })
@@ -6087,4 +6130,4 @@
   },
   [[427, 1, 2]]
 ]);
-//# sourceMappingURL=main.1587c67d.chunk.js.map
+//# sourceMappingURL=main.dafff7b8.chunk.js.map

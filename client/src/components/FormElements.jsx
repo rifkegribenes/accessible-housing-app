@@ -955,33 +955,40 @@ export const renderCheckbox = ({
   formControlName,
   searchState,
   ...custom
-}) => (
-  <FormControl
-    error={!!(touched && error)}
-    className={classes[formControlName] || classes.formControl}
-  >
-    <FormControlLabel
-      label={label}
-      control={
-        <Checkbox
-          color="primary"
-          checked={searchState[label]}
-          {...custom}
-          {...input}
-          className={classes.checkbox}
-          data-test="component-checkbox"
-          name="checkbox"
-          inputProps={{ id: id }}
-        />
-      }
-    />
-    {touched && error && (
-      <FormHelperText className={classes.checkboxErrorText}>
-        {error}
-      </FormHelperText>
-    )}
-  </FormControl>
-);
+}) => {
+  console.log(searchState);
+  console.log(label);
+  console.log(id);
+  console.log(input.name);
+  console.log(searchState[label]);
+  return (
+    <FormControl
+      error={!!(touched && error)}
+      className={classes[formControlName] || classes.formControl}
+    >
+      <FormControlLabel
+        label={label}
+        control={
+          <Checkbox
+            color="primary"
+            checked={searchState[label]}
+            {...custom}
+            {...input}
+            className={classes.checkbox}
+            data-test="component-checkbox"
+            name="checkbox"
+            inputProps={{ id: id }}
+          />
+        }
+      />
+      {touched && error && (
+        <FormHelperText className={classes.checkboxErrorText}>
+          {error}
+        </FormHelperText>
+      )}
+    </FormControl>
+  );
+};
 
 // custom MUI friendly RADIO group with translated label
 export const renderRadioGroup = ({
