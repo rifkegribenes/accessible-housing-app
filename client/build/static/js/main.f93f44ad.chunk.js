@@ -331,7 +331,7 @@
         var t = e.target,
           n = t.name,
           a = t.value;
-        return { type: $, payload: { name: n, value: a } };
+        return console.log(n, a), { type: $, payload: { name: n, value: a } };
       }
       function be(e) {
         var t = e.target,
@@ -806,7 +806,10 @@
                               })
                             : Object(Je.jsx)("a", {
                                 className: t.loginLinkNavBar,
-                                href: "".concat("", "/api/auth/google"),
+                                href: "".concat(
+                                  "http://localhost:3001",
+                                  "/api/auth/google"
+                                ),
                                 children: p ? "Log in" : "Log in / Sign up"
                               }),
                           Object(Je.jsx)(De.a, {
@@ -1042,7 +1045,10 @@
                         color: "primary",
                         className: this.props.classes.bigButton,
                         variant: "contained",
-                        href: "".concat("", "/api/auth/google"),
+                        href: "".concat(
+                          "http://localhost:3001",
+                          "/api/auth/google"
+                        ),
                         children: "Log in or Sign Up"
                       })
                     })
@@ -1544,7 +1550,8 @@
           "classes",
           "meta",
           "formControlName",
-          "searchState"
+          "searchState",
+          "handleCheck"
         ],
         yn = function(e) {
           return Et(
@@ -2094,13 +2101,10 @@
             s = r.error,
             c = e.formControlName,
             l = e.searchState,
-            p = Object(it.a)(e, fn);
+            p = e.handleCheck,
+            u = Object(it.a)(e, fn);
           return (
-            console.log(l),
-            console.log(n),
-            console.log(a),
-            console.log(t.name),
-            console.log(l[n]),
+            console.log(l["Pets Allowed"]),
             Object(Je.jsxs)(cn.a, {
               error: !(!i || !s),
               className: o[c] || o.formControl,
@@ -2111,15 +2115,19 @@
                     on.a,
                     Object(d.a)(
                       Object(d.a)(
-                        Object(d.a)({ color: "primary", checked: l[n] }, p),
+                        Object(d.a)({ color: "primary", checked: l[n] }, u),
                         t
                       ),
                       {},
                       {
                         className: o.checkbox,
                         "data-test": "component-checkbox",
-                        name: "checkbox",
-                        inputProps: { id: a }
+                        name: n,
+                        inputProps: { id: a },
+                        onChange: function(e) {
+                          return p(e);
+                        },
+                        value: !!l[n]
                       }
                     )
                   )
@@ -4493,7 +4501,8 @@
             o = e.more,
             r = e.toggleDrawer,
             i = e.searchState,
-            s = Object.keys(ka).map(function(e) {
+            s = e.handleCheck,
+            c = Object.keys(ka).map(function(e) {
               return Object(Je.jsxs)(
                 cn.a,
                 {
@@ -4521,7 +4530,8 @@
                             formControlName: "controlCheckbox",
                             classes: t,
                             searchState: i,
-                            component: wa
+                            component: wa,
+                            handleCheck: s
                           },
                           e
                         );
@@ -4567,7 +4577,7 @@
                 Object(Je.jsx)(Qt.a, {
                   row: !0,
                   classes: { root: t.formGroupFeatures },
-                  children: s
+                  children: c
                 }),
                 Object(Je.jsxs)("div", {
                   className: t.buttonWrap,
@@ -4607,7 +4617,8 @@
         })(function(e) {
           var t = e.onSubmit,
             n = e.classes,
-            a = e.searchState;
+            a = e.searchState,
+            o = e.handleCheck;
           return Object(Je.jsx)("div", {
             className: n.searchBar,
             "data-test": "component-search-bar",
@@ -4693,7 +4704,8 @@
                     clearSearch: e.clearSearch,
                     more: e.more,
                     toggleDrawer: e.toggleDrawer,
-                    searchState: a
+                    searchState: a,
+                    handleCheck: o
                   })
               ]
             })
@@ -4780,6 +4792,11 @@
               (a.clearFeatures = function() {
                 console.log("clearFeatures"),
                   a.props.apiListing.clearFeatures();
+              }),
+              (a.handleCheck = function(e) {
+                console.log("handleCheck"),
+                  console.log(e),
+                  a.props.apiListing.handleInput(e);
               }),
               (a.setAndClose = function() {
                 console.log("setAndClose"), a.toggleMore();
@@ -4960,7 +4977,8 @@
                           clearFeatures: this.clearFeatures,
                           onSubmit: this.handleSubmit,
                           hideSearch: this.hideSearch,
-                          searchState: this.props.listing.search
+                          searchState: this.props.listing.search,
+                          handleCheck: this.handleCheck
                         }),
                       Object(Je.jsx)(Sa.a, {
                         bootstrapURLKeys: {
@@ -5261,7 +5279,7 @@
                 value: function() {
                   var e = this;
                   if (
-                    (console.log("NODE_ENV front end: ".concat("production")),
+                    (console.log("NODE_ENV front end: ".concat("development")),
                     !this.props.appState.loggedIn &&
                       (!this.props.match || !this.props.match.params.id))
                   ) {
@@ -5392,7 +5410,7 @@
                                                   e.props.profile.profile.id
                                                 )
                                               : "".concat(
-                                                  "",
+                                                  "http://localhost:3001",
                                                   "/api/auth/google"
                                                 ),
                                           buttonText:
@@ -5834,9 +5852,16 @@
             case O:
               return ao;
             case $:
-              return Ja()(t, {
-                form: Object(b.a)({}, n.payload.name, { $set: n.payload.value })
-              });
+              return (
+                console.log(n.payload),
+                console.log(n.payload.name),
+                console.log(n.payload.value),
+                Ja()(t, {
+                  form: Object(b.a)({}, n.payload.name, {
+                    $set: n.payload.value
+                  })
+                })
+              );
             case H:
               return Ja()(t, {
                 search: Object(b.a)({}, n.payload.name, {
@@ -6130,4 +6155,4 @@
   },
   [[427, 1, 2]]
 ]);
-//# sourceMappingURL=main.dafff7b8.chunk.js.map
+//# sourceMappingURL=main.f93f44ad.chunk.js.map

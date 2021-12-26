@@ -316,6 +316,12 @@ class ListingsMapUnconnected extends Component {
     this.props.apiListing.clearFeatures();
   };
 
+  handleCheck = e => {
+    console.log("handleCheck");
+    console.log(e.target);
+    this.props.apiListing.handleCheck(e.target);
+  };
+
   setAndClose = () => {
     console.log("setAndClose");
     this.toggleMore();
@@ -388,6 +394,7 @@ class ListingsMapUnconnected extends Component {
             onSubmit={this.handleSubmit}
             hideSearch={this.hideSearch}
             searchState={this.props.listing.search}
+            handleCheck={this.handleCheck}
           />
         )}
         <GoogleMapReact

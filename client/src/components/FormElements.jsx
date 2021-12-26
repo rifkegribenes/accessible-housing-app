@@ -606,6 +606,31 @@ export const formStyles = theme => ({
   }
 });
 
+export const fMapTwo = {
+  "Pets allowed": "Petsallowed",
+  "No pets allowed": "Nopetsallowed",
+  "Small pets allowed": "Smallpetsallowed",
+  "Pets allowed only for people w/ section 8":
+    "Petsallowedonlyforpeoplewsection8",
+  "Pets only allowed with reasonable accommodation note":
+    "Petsonlyallowedwithreasonableaccommodationnote",
+  "No info on pets": "Noinfoonpets",
+  "Some accessible units": "Someaccessibleunits",
+  "No accessible units": "Noaccessibleunits",
+  "No accessible units but can be modified":
+    "Noaccessibleunitsbutcanbemodified",
+  "Some accessible units; no roll in showers":
+    "Someaccessibleunitsnorollinshowers",
+  "No info on accessibility": "Noinfoonaccessibility",
+  "55+": "55",
+  "62+": "62",
+  "No age restrictions": "Noagerestrictions",
+  Hookup: "Hookup",
+  "In-unit": "In-unit",
+  "On-site": "On-site",
+  "No info on laundry": "Noinfoonlaundry"
+};
+
 export const featuresMap = {
   pets: [
     "Pets",
@@ -954,13 +979,17 @@ export const renderCheckbox = ({
   meta: { touched, error },
   formControlName,
   searchState,
+  handleCheck,
   ...custom
 }) => {
-  console.log(searchState);
-  console.log(label);
-  console.log(id);
-  console.log(input.name);
-  console.log(searchState[label]);
+  console.log(searchState["Petsallowed"]);
+  if (label === "Pets allowed") {
+    console.log(label);
+    console.log(fMapTwo[label]);
+    console.log(searchState);
+    console.log(searchState[fMapTwo[label]]);
+    console.log(!!searchState[fMapTwo[label]]);
+  }
   return (
     <FormControl
       error={!!(touched && error)}
@@ -971,13 +1000,19 @@ export const renderCheckbox = ({
         control={
           <Checkbox
             color="primary"
-            checked={searchState[label]}
             {...custom}
             {...input}
             className={classes.checkbox}
             data-test="component-checkbox"
-            name="checkbox"
+            name={label}
             inputProps={{ id: id }}
+            onChange={e => {
+              handleCheck(e);
+              // console.log(searchState);
+              // console.log(!!searchState[fMapTwo[label]]);
+            }}
+            value={searchState[fMapTwo[label]]}
+            checked={searchState[fMapTwo[label]]}
           />
         }
       />

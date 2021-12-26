@@ -1,6 +1,7 @@
 import update from "immutability-helper";
 import * as utils from "../../utils";
 
+import * as formElements from "../../components/FormElements";
 import { LOGOUT } from "../actions";
 import {
   GET_LISTING_BY_ID_REQUEST,
@@ -22,6 +23,7 @@ import {
   GET_USER_LISTINGS_SUCCESS,
   GET_USER_LISTINGS_FAILURE,
   HANDLE_INPUT,
+  HANDLE_CHECK,
   HANDLE_SEARCH,
   HANDLE_DELETE_OPEN,
   HANDLE_DELETE_CLOSE,
@@ -36,24 +38,24 @@ const emptySearch = {
   maxRent: "",
   dialogOpen: false,
   searchZip: "",
-  "Pets Allowed": false,
-  "No Pets Allowed": false,
-  "Small pets allowed": false,
-  "Pets allowed only for people w/ section 8": false,
-  "Pets only allowed with reasonable accommodation note": false,
-  "No info on pets": false,
-  "Some accessible units": false,
-  "No accessible units": false,
-  "No accessible units but can be modified": false,
-  "Some accessible units; no roll in showers": false,
-  "No info on accessibility": false,
-  "55+": false,
-  "62+": false,
-  "No age restrictions": false,
+  Petsallowed: false,
+  Nopetsallowed: false,
+  Smallpetsallowed: false,
+  Petsallowedonlyforpeoplewsection8: false,
+  Petsonlyallowedwithreasonableaccommodationnote: false,
+  Noinfoonpets: false,
+  Someaccessibleunits: false,
+  Noaccessibleunits: false,
+  Noaccessibleunitsbutcanbemodified: false,
+  Someaccessibleunitsnorollinshowers: false,
+  Noinfoonaccessibility: false,
+  "55": false,
+  "62": false,
+  Noagerestrictions: false,
   Hookup: false,
   "In-unit": false,
   "On-site": false,
-  "No info on laundry": false
+  Noinfoonlaundry: false
 };
 
 export const INITIAL_STATE = {
@@ -84,6 +86,19 @@ function Listing(state = INITIAL_STATE, action) {
       return update(state, {
         form: {
           [action.payload.name]: { $set: action.payload.value }
+        }
+      });
+
+    case HANDLE_CHECK:
+      console.log(action.payload);
+      // console.log(action.payload.name);
+      // console.log(formElements.fMapTwo);
+      // console.log(formElements.fMapTwo[action.payload.name]);
+      const newKey = formElements.fMapTwo[action.payload.name];
+      console.log(action.payload.value);
+      return update(state, {
+        search: {
+          [newKey]: { $set: action.payload.value }
         }
       });
 

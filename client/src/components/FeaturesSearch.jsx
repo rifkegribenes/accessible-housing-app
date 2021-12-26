@@ -26,9 +26,10 @@ export const FeaturesSearch = props => {
     setAndClose,
     more,
     toggleDrawer,
-    searchState
+    searchState,
+    handleCheck
   } = props;
-
+  // console.log(handleCheck);
   const features = Object.keys(featuresMap).map(feature => {
     return (
       <FormControl
@@ -45,20 +46,26 @@ export const FeaturesSearch = props => {
           name={featuresMap[feature][0]}
           className={classes.verticalGroup}
         >
-          {featuresMap[feature][2].map(item => (
-            <Field
-              label={item}
-              name={item}
-              id={item}
-              key={item}
-              type="checkbox"
-              formControlName="controlCheckbox"
-              classes={classes}
-              searchState={searchState}
-              component={renderCheckbox}
-              // legendClass={classes.indCheckboxInGroup}
-            />
-          ))}
+          {featuresMap[feature][2].map(item => {
+            {
+              /*            console.log(item);*/
+            }
+            return (
+              <Field
+                label={item}
+                name={item}
+                id={item}
+                key={item}
+                type="checkbox"
+                formControlName="controlCheckbox"
+                classes={classes}
+                searchState={searchState}
+                component={renderCheckbox}
+                handleCheck={handleCheck}
+                // legendClass={classes.indCheckboxInGroup}
+              />
+            );
+          })}
         </FormGroup>
       </FormControl>
     );

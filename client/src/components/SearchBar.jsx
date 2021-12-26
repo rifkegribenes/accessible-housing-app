@@ -28,7 +28,8 @@ export function SearchBar(props) {
   // React.useEffect(() => {
   //   setLabelWidth(inputLabel.current.offsetWidth);
   // }, []);
-  const { onSubmit, classes, searchState } = props;
+  const { onSubmit, classes, searchState, handleCheck } = props;
+  // console.log(handleCheck);
   return (
     <div className={classes.searchBar} data-test="component-search-bar">
       <form
@@ -119,6 +120,7 @@ export function SearchBar(props) {
             more={props.more}
             toggleDrawer={props.toggleDrawer}
             searchState={searchState}
+            handleCheck={handleCheck}
           />
         )}
       </form>
