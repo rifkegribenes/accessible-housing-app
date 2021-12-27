@@ -303,7 +303,7 @@ export class NavBar extends React.Component {
             >
               Skip to content &rsaquo;
             </Button>
-            <React.Fragment>
+            {/*            <React.Fragment>
               <IconButton
                 className={classes.menuButton}
                 color="secondary"
@@ -333,7 +333,7 @@ export class NavBar extends React.Component {
               >
                 {mobileLinks}
               </Menu>
-            </React.Fragment>
+            </React.Fragment>*/}
             <Link to="/" className={classes.logoLink} data-test="logo-link">
               <img
                 src={cv_logo}
@@ -352,7 +352,7 @@ export class NavBar extends React.Component {
                 Accessible Housing Hotsheet
               </Link>
             </Typography>
-            {loggedIn ? (
+            {/*            {loggedIn ? (
               <div className={classes.admin}>
                 <Avatar
                   alt={this.props.profile.profile.name}
@@ -367,15 +367,15 @@ export class NavBar extends React.Component {
               >
                 {mobile ? "Log in" : "Log in / Sign up"}
               </a>
-            )}
-            <Button
+            )}*/}
+            {/*            <Button
               className={classes.buttonRight}
               data-test="button-right"
               href="/new"
               type="button"
             >
               {mobile ? <AddIcon /> : "Add a Listing"}
-            </Button>
+            </Button>*/}
           </Toolbar>
         </AppBar>
       </div>
