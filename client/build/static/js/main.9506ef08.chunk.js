@@ -1230,6 +1230,7 @@
                       Object(Me.jsxs)("a", {
                         href: f,
                         rel: "noopener noreferrer",
+                        target: "_blank",
                         className: t.cardAction,
                         children: [
                           Object(Me.jsx)("div", {
@@ -1258,7 +1259,7 @@
                                   Object(Me.jsx)(Je.a, { className: t.icon }),
                                   Object(Me.jsx)(Ue.a, {
                                     component: "span",
-                                    className: t.commsLink,
+                                    className: t.commsLinkPhone,
                                     "data-test": "body",
                                     children: b
                                   })
@@ -1328,7 +1329,11 @@
               e.breakpoints.down("sm"),
               { position: "absolute", right: 7, top: 20, flex: "1 1 auto" }
             ),
-            cardListing: { display: "flex", flexDirection: "column" },
+            cardListing: {
+              display: "flex",
+              flexDirection: "column",
+              paddingBottom: 60
+            },
             cardListingSmall: {
               display: "flex",
               flexDirection: "column",
@@ -1474,7 +1479,8 @@
             },
             icon: { marginRight: 15, color: "white" },
             svgIcon: { marginRight: 15, color: e.palette.secondary.main },
-            commsLink: { marginTop: 0, color: "white" }
+            commsLink: { marginTop: 0, color: "white" },
+            commsLinkPhone: { marginTop: 0, color: "white", minWidth: 100 }
           };
         })($t),
         Mt = (function(e) {
@@ -3748,8 +3754,6 @@
             children: [
               Object(Me.jsxs)("a", {
                 href: w,
-                rel: "noopener noreferrer",
-                target: "_blank",
                 className: t.cardAction,
                 children: [
                   Object(Me.jsx)(Ue.a, {
@@ -5042,7 +5046,8 @@
         Va = n(235),
         qa = n.n(Va),
         Qa = function(e) {
-          return Object(Me.jsx)("div", {
+          return Object(Me.jsx)("a", {
+            href: "/".concat(e.listing.id),
             "data-test": "component-map-marker",
             className: e.classes.mapMarker,
             children: Object(Me.jsx)(Ya, {
@@ -5450,7 +5455,10 @@
             ),
             drawer:
               ((t = { minWidth: 500, maxWidth: "50%" }),
-              Object(b.a)(t, e.breakpoints.down("sm"), { maxWidth: "100%" }),
+              Object(b.a)(t, e.breakpoints.down("sm"), {
+                maxWidth: "100%",
+                minWidth: "300px !important"
+              }),
               Object(b.a)(t, "position", "absolute"),
               Object(b.a)(t, "right", 0),
               Object(b.a)(t, "top", 0),
@@ -5467,7 +5475,11 @@
                 paddingBottom: 135
               },
               e.breakpoints.down("sm"),
-              { maxWidth: "100%", paddingBottom: 160 }
+              {
+                minWidth: "300px !important",
+                maxWidth: "100%",
+                paddingBottom: 160
+              }
             ),
             buttonWrap: {
               display: "flex",
@@ -6462,4 +6474,4 @@
   },
   [[430, 1, 2]]
 ]);
-//# sourceMappingURL=main.fc29f334.chunk.js.map
+//# sourceMappingURL=main.9506ef08.chunk.js.map
