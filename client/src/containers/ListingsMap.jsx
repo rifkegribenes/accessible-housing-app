@@ -299,7 +299,7 @@ class ListingsMapUnconnected extends Component {
   };
 
   toggleMore = () => {
-    console.log("toggleMore");
+    // console.log("toggleMore");
     const newState = { ...this.state };
     newState.more = !this.state.more;
     this.setState({ ...newState });
@@ -317,8 +317,8 @@ class ListingsMapUnconnected extends Component {
   };
 
   handleCheck = e => {
-    console.log("handleCheck");
-    console.log(e.target);
+    // console.log("handleCheck");
+    // console.log(e.target);
     this.props.apiListing.handleCheck(e.target);
   };
 
@@ -337,8 +337,8 @@ class ListingsMapUnconnected extends Component {
   handleSubmit = state => {
     console.log("handleSubmit");
     const { formValues } = this.props;
-    console.log(state);
-    console.log(formValues);
+    // console.log(state);
+    // console.log(formValues);
     // generate array of features from selected options
     let features = calcFeatures(formValues);
     console.log(features);

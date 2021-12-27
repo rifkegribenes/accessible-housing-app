@@ -90,12 +90,7 @@ function Listing(state = INITIAL_STATE, action) {
       });
 
     case HANDLE_CHECK:
-      console.log(action.payload);
-      // console.log(action.payload.name);
-      // console.log(formElements.fMapTwo);
-      // console.log(formElements.fMapTwo[action.payload.name]);
       const newKey = formElements.fMapTwo[action.payload.name];
-      console.log(action.payload.value);
       return update(state, {
         search: {
           [newKey]: { $set: action.payload.value }
@@ -130,7 +125,7 @@ function Listing(state = INITIAL_STATE, action) {
       });
 
     case CLEAR_FORM:
-      console.log("clear form");
+      // console.log("clear form");
       return update(state, {
         form: {
           $set: {}
@@ -138,27 +133,16 @@ function Listing(state = INITIAL_STATE, action) {
       });
 
     case CLEAR_SEARCH:
-      console.log("clear search");
+      // console.log("clear search");
       return update(
         state,
         {
           search: {
             $set: { ...emptySearch }
           }
-        },
-        console.log(state)
+        }
+        // console.log(state)
       );
-
-    // case CLEAR_FEATURES:
-    //   console.log("clear features");
-    //   return update(state, {
-    //     search: {
-    //       pets: { $set: [] },
-    //       accessibility: { $set: [] },
-    //       age: { $set: [] },
-    //       laundry_type: { $set: [] }
-    //     }
-    //   });
 
     case UPDATE_FILTER:
       console.log("UPDATE_FILTER");

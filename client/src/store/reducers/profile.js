@@ -41,7 +41,7 @@ function profile(state = INITIAL_STATE, action) {
 
     case GET_PROFILE_SUCCESS:
     case UPDATE_PROFILE_SUCCESS:
-      console.log(action.payload.name);
+      // console.log(action.payload.name);
       const name =
         action.payload.name &&
         action.payload.name.includes(":") &&

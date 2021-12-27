@@ -670,14 +670,29 @@ const featuresList = Object.keys(featuresMap)
 export const calcFeatures = values => {
   console.log("calcFeatures");
   console.log(values);
-  let featuresArray = [];
+  let featuresObj = {
+    pets: [],
+    accessibility: [],
+    age: [],
+    laundry_type: []
+  };
+  const featuresParent = child => {
+    const filteredKeys = Object.keys(featuresMap).filter(key =>
+      featuresMap[key][2].includes(child)
+    );
+    return filteredKeys[0];
+  };
   featuresList.forEach(feature => {
+    console.log(feature);
+    console.log("#########");
+    console.log(featuresParent(feature));
+    console.log(featuresObj[featuresParent(feature)]);
     if (values[feature]) {
-      featuresArray.push(feature);
+      featuresObj[featuresParent(feature)].push(feature);
     }
   });
-  console.log(featuresArray);
-  return featuresArray;
+  console.log(featuresObj);
+  return featuresObj;
 };
 
 export const filterListings = (listings, query, state) => {
@@ -762,20 +777,19 @@ export const filterListings = (listings, query, state) => {
     return [];
   }
   if (query.features) {
+    console.log(query.features);
+    // this is an object that matches queryFeatures in structure
     const featuresFilterArray = [...filteredListings];
     filteredListings.forEach(listing => {
-      console.log(listing.property_name);
-      query.features.forEach((feature, index) => {
-        const listingFeatures = [];
-        listingFeatures.push(
-          listing.pets,
-          listing.accessibility,
-          listing.age,
-          listing.laundry_type
-        );
-        console.log(listingFeatures);
-        if (!listingFeatures.includes(feature)) {
-          console.log(`${listing.property_name} doesn't match ${feature}`);
+      // console.log(listing.property_name);
+      Object.keys(query.features).forEach((key, index) => {
+        // console.log(key);
+        // console.log(query.features[key]); // <-- this will be an array of search values
+        if (
+          query.features[key].length &&
+          !query.features[key].includes(listing[key])
+        ) {
+          // console.log(`${listing.property_name} doesn't match ${query.features[key]} -- ${listing.property_name}'s value for ${key} is ${listing[key]}`);
           featuresFilterArray.splice(index, 1);
         }
       });
@@ -982,14 +996,6 @@ export const renderCheckbox = ({
   handleCheck,
   ...custom
 }) => {
-  console.log(searchState["Petsallowed"]);
-  if (label === "Pets allowed") {
-    console.log(label);
-    console.log(fMapTwo[label]);
-    console.log(searchState);
-    console.log(searchState[fMapTwo[label]]);
-    console.log(!!searchState[fMapTwo[label]]);
-  }
   return (
     <FormControl
       error={!!(touched && error)}

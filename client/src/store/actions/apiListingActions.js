@@ -38,9 +38,7 @@ export function handleInput({ target: { name, value } }) {
 }
 
 export function handleCheck({ name, value }) {
-  console.log(name, value);
   const boolValue = String(value).toLowerCase() === "true";
-  console.log(boolValue);
   value = !boolValue;
   return {
     type: HANDLE_CHECK,
