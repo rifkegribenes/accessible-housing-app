@@ -47,9 +47,6 @@ export const FeaturesSearch = props => {
           className={classes.verticalGroup}
         >
           {featuresMap[feature][2].map(item => {
-            {
-              /*            console.log(item);*/
-            }
             return (
               <Field
                 label={item}

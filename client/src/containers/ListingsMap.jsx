@@ -175,7 +175,8 @@ const styles = theme => ({
     minWidth: 500,
     maxWidth: "50%",
     [theme.breakpoints.down("sm")]: {
-      maxWidth: "100%"
+      maxWidth: "100%",
+      minWidth: "300px !important"
     },
     position: "absolute",
     right: 0,
@@ -192,6 +193,7 @@ const styles = theme => ({
     top: 0,
     paddingBottom: 135,
     [theme.breakpoints.down("sm")]: {
+      minWidth: "300px !important",
       maxWidth: "100%",
       paddingBottom: 160
     }
@@ -225,7 +227,11 @@ const styles = theme => ({
 });
 
 const MapMarker = props => (
-  <div data-test="component-map-marker" className={props.classes.mapMarker}>
+  <a
+    href={`/${props.listing.id}`}
+    data-test="component-map-marker"
+    className={props.classes.mapMarker}
+  >
     <HtmlTooltip
       title={
         <div className={props.classes.markerCard}>
@@ -235,7 +241,7 @@ const MapMarker = props => (
     >
       <RoomIcon className={props.classes.mapIcon} />
     </HtmlTooltip>
-  </div>
+  </a>
 );
 
 const TooltipInteractive = props => <Tooltip interactive {...props} />;

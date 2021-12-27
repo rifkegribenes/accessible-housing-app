@@ -52,7 +52,8 @@ export const styles = theme => ({
   },
   cardListing: {
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+    paddingBottom: 60
   },
   cardListingSmall: {
     display: "flex",
@@ -243,6 +244,11 @@ export const styles = theme => ({
   commsLink: {
     marginTop: 0,
     color: "white"
+  },
+  commsLinkPhone: {
+    marginTop: 0,
+    color: "white",
+    minWidth: 100
   }
 });
 
@@ -348,6 +354,7 @@ export class ListingFullContainer extends React.Component {
         <a
           href={listingUrl}
           rel="noopener noreferrer"
+          target="_blank"
           className={classes.cardAction}
         >
           <div
@@ -370,7 +377,7 @@ export class ListingFullContainer extends React.Component {
                 <PhoneIcon className={classes.icon} />
                 <Typography
                   component="span"
-                  className={classes.commsLink}
+                  className={classes.commsLinkPhone}
                   data-test="body"
                 >
                   {propertyPhone}

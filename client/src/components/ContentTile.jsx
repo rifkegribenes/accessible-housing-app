@@ -260,12 +260,7 @@ const ContentTile = props => {
 
   return (
     <div data-test="component-listing-tile" className={classes.tile}>
-      <a
-        href={listing_full}
-        rel="noopener noreferrer"
-        target="_blank"
-        className={classes.cardAction}
-      >
+      <a href={listing_full} className={classes.cardAction}>
         <Typography
           component="h2"
           className={small ? classes.titleSmall : classes.title}
