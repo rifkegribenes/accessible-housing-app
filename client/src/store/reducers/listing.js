@@ -226,6 +226,8 @@ function Listing(state = INITIAL_STATE, action) {
         notes: action.payload.notes,
         availability: action.payload.availability,
         pets: action.payload.pets,
+        age: action.payload.age,
+        accessibility: action.payload.accessibility,
         // leaseLength: action.payload.lease_length,
         // squareFt: action.payload.square_feet,
         laundryType: action.payload.laundry_type,
@@ -235,8 +237,10 @@ function Listing(state = INITIAL_STATE, action) {
         dialogOpen: false
       };
       const form = { ...mergeForm, ...formFeatures };
+      // console.log(form);
       return update(state, {
         form: { $set: form },
+        currentListing: { $set: form },
         error: { $set: null }
       });
 

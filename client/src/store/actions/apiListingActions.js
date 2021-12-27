@@ -103,6 +103,7 @@ export function updateFilter(filteredList) {
  *     If database error, hides spinner, displays error toastr
  */
 export function getListingById(id) {
+  console.log("getListingById");
   return {
     [RSAA]: {
       endpoint: `${BASE_URL}/api/listing/${id}`,

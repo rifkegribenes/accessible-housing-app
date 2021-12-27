@@ -14,7 +14,8 @@ import * as apiListingActions from "./store/actions/apiListingActions";
 import NavBar from "./containers/NavBar";
 import Footer from "./components/Footer";
 import NotFound from "./components/NotFound";
-import Home from "./components/Home";
+// import Home from "./components/Home";
+import ListingFull from "./containers/ListingFull";
 import Login from "./components/Login";
 import Logout from "./containers/Logout";
 import Dashboard from "./containers/Dashboard";
@@ -377,6 +378,12 @@ export class AppUnconnected extends Component {
                   setRedirect={this.setRedirect}
                   {...routeProps}
                 />
+              )}
+            />
+            <Route
+              path="/:id"
+              render={routeProps => (
+                <ListingFull setRedirect={this.setRedirect} {...routeProps} />
               )}
             />
             <Route

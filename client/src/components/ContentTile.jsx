@@ -218,6 +218,7 @@ export const styles = theme => ({
 const ContentTile = props => {
   const { classes, listingTile, small } = props;
   const {
+    id,
     primary_image,
     property_name,
     studio_l,
@@ -255,12 +256,12 @@ const ContentTile = props => {
   const imageStyle = {
     backgroundImage: `url(${primary_image ? primary_image : defaultImage})`
   };
-  // console.log(listingTile);
+  const listing_full = `/${id}`;
 
   return (
     <div data-test="component-listing-tile" className={classes.tile}>
       <a
-        href={listing_url}
+        href={listing_full}
         rel="noopener noreferrer"
         target="_blank"
         className={classes.cardAction}
