@@ -67,6 +67,7 @@ const createUser = (req, res, next) => {
       )
       .then(users => {
         const user = users[0];
+        res.locals.testData = user;
         res.status(200).json(user);
       })
       .catch(err => {

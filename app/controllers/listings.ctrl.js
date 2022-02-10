@@ -40,7 +40,7 @@ const geocoder = NodeGeocoder(options);
  *  @returns  {Object}                   New listing object OR error message.
  */
 const createListing = async (req, res, next) => {
-  console.log(`listings.ctrl.js > 32`, req.body, req.headers.authorization);
+  console.log(`listings.ctrl.js > 43`, req.body, req.headers.authorization);
   const {
     property_name,
     property_street,
@@ -52,19 +52,32 @@ const createListing = async (req, res, next) => {
     property_phone,
     property_email,
     listing_url,
-    vacant,
+    application_url,
     available_date,
-    monthly_rent,
-    deposit,
+    studio_l,
+    studio_h,
+    br1_l,
+    br1_h,
+    br2_l,
+    br2_h,
+    br3_l,
+    br3_h,
+    br4_l,
+    br4_h,
+    br5_l,
+    br5_h,
     primary_image,
+    availability,
     features,
     user_id,
-    bedrooms,
-    notes,
+    deposit,
     lease_length,
     square_feet,
+    age,
     laundry_type,
     parking_type,
+    accessibility,
+    pets,
     parking_fee
   } = req.body;
 
@@ -79,23 +92,12 @@ const createListing = async (req, res, next) => {
     "property_phone",
     "property_email",
     "listing_url",
-    "vacant",
-    "available_date",
-    "monthly_rent",
-    "primary_image",
     "features",
-    "user_id",
-    "bedrooms",
-    "lease_length",
-    "square_feet",
-    "laundry_type",
-    "parking_type",
-    "parking_fee"
+    "user_id"
   ];
-
   const missingField = requiredFields.find(field => !(field in req.body));
   if (missingField) {
-    console.log(`listings.ctrl.js > 71: missing ${missingField}`);
+    console.log(`listings.ctrl.js > 87: missing ${missingField}`);
     return res.status(422).json({
       reason: "ValidationError",
       message: `Missing required field ${missingField}`
@@ -109,6 +111,7 @@ const createListing = async (req, res, next) => {
     )
     .then(result => {
       const { latitude, longitude } = result[0];
+      console.log(`@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 112`);
       console.log(`listings.ctrl.js > 108`);
       console.log({ property_lat: latitude, property_lon: longitude });
       property_lat = latitude;
@@ -121,6 +124,7 @@ const createListing = async (req, res, next) => {
       }
     })
     .catch(err => {
+      console.log(`@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 124`);
       console.log(`listings.ctrl.js > 120`);
       console.error(err);
       return err;
@@ -132,7 +136,7 @@ const createListing = async (req, res, next) => {
   if (!property_lon) {
     property_lon = 0;
   }
-
+  console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 136");
   return listings
     .createListing(
       property_name,
@@ -147,23 +151,37 @@ const createListing = async (req, res, next) => {
       property_phone,
       property_email,
       listing_url,
-      vacant,
+      application_url,
       available_date,
-      monthly_rent,
-      deposit,
+      studio_l,
+      studio_h,
+      br1_l,
+      br1_h,
+      br2_l,
+      br2_h,
+      br3_l,
+      br3_h,
+      br4_l,
+      br4_h,
+      br5_l,
+      br5_h,
       primary_image,
-      user_id,
+      availability,
       features,
-      bedrooms,
-      notes,
+      user_id,
+      deposit,
       lease_length,
       square_feet,
+      age,
       laundry_type,
       parking_type,
+      accessibility,
+      pets,
       parking_fee
     )
     .then(listings => {
       const listing = listings[0];
+      res.locals.testData = listing;
       res.status(200).json(listing);
     })
     .catch(err => {
@@ -192,8 +210,8 @@ const createListing = async (req, res, next) => {
 
 const updateListing = async (req, res, next) => {
   const updates = { ...req.body };
-  // console.log(`listings.ctrl.js > 163`);
-  // console.log(updates);
+  console.log(`listings.ctrl.js > 187`);
+  console.log(updates);
   const { id } = req.params;
   if (!updates || !Object.keys(updates).length) {
     return res.status(404).json({ message: "No updates submitted" });
@@ -212,7 +230,7 @@ const updateListing = async (req, res, next) => {
       )
       .then(result => {
         const { latitude, longitude } = result[0];
-        console.log(`listings.ctrl.js > 192`);
+        console.log(`listings.ctrl.js > 207`);
         console.log({ property_lat: latitude, property_lon: longitude });
         property_lat = latitude;
         property_lon = longitude;
@@ -224,31 +242,42 @@ const updateListing = async (req, res, next) => {
         }
       })
       .catch(err => {
-        console.log(`listings.ctrl.js > 204`);
+        console.log(`listings.ctrl.js > 219`);
         console.error(err);
         return err;
       });
 
     updates.property_lat = property_lat;
     updates.property_lon = property_lon;
-    console.log(`listings.ctrl.js > 193: updates`);
+    console.log(`listings.ctrl.js > 226: updates`);
     console.log(updates);
   }
-
+  console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 229");
   return listings
     .updateListing(id, updates)
     .then(listing => {
+      console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 233");
+      console.log(listing);
       if (listing.message || !listing) {
+        console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 236");
+        console.log(listing);
         return res.status(404).json({
           message:
             listing.message ||
             "An error occured while trying to update this listing"
         });
       } else {
+        res.locals.testData = listing;
+        console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 245");
+        console.log(res.locals.testData);
         return res.status(200).json(listing);
       }
     })
-    .catch(err => res.status(500).json({ message: err.message }));
+    .catch(err => {
+      console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 251");
+      console.log(err.message);
+      res.status(500).json({ message: err.message });
+    });
 };
 
 /** Delete listing

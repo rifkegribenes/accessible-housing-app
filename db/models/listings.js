@@ -20,9 +20,7 @@ const { db, TABLES } = require("../../app/config/knex");
  *  @param {string}   property_phone      Property phone
  *  @param {string}   property_email      Property email
  *  @param {string}   listing_url         Property listing url
- *  @param {boolean}  vacant              Vacant?
  *  @param {date}     available_date      Date available
- *  @param {number}   monthly_rent        Monthly rent
  *  @param {string}   primary_image       Image url
  *  @param {array}    features            Array of amenities and features
  *  @param {uuid}     user_id             User ID of property owner
@@ -42,7 +40,6 @@ const createListing = (
   property_email,
   listing_url,
   application_url,
-  vacant,
   available_date,
   studio_l,
   studio_h,
@@ -56,13 +53,11 @@ const createListing = (
   br4_h,
   br5_l,
   br5_h,
-  monthly_rent,
   primary_image,
   availability,
   features,
   user_id,
   deposit,
-  bedrooms,
   lease_length,
   square_feet,
   age,
@@ -90,7 +85,6 @@ const createListing = (
       property_email,
       listing_url,
       application_url,
-      vacant,
       available_date,
       studio_l,
       studio_h,
@@ -104,13 +98,11 @@ const createListing = (
       br4_h,
       br5_l,
       br5_h,
-      monthly_rent,
       primary_image,
       availability,
       features,
       user_id,
       deposit,
-      bedrooms,
       lease_length,
       square_feet,
       age,
@@ -121,7 +113,8 @@ const createListing = (
       parking_fee
     })
     .into(TABLES.LISTINGS)
-    .returning("*");
+    .returning("*")
+    .catch(err => console.log(err));
 };
 
 /** Update a listing
@@ -139,9 +132,7 @@ const createListing = (
  *  @param {string}   property_phone      Property phone
  *  @param {string}   property_email      Property_email
  *  @param {string}   listing_url         Property listing url
- *  @param {boolean}  vacant              Vacant?
  *  @param {date}     available_date      Date available
- *  @param {number}   monthly_rent        Monthly rent
  *  @param {string}   primary_image       Image url
  *  @param {array}    features            Array of amenities and features
  *  @param {number}   views               # times listing viewed
