@@ -5,7 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.4.1",
-    "aws-sdk": "^2.1028.0",
+    "aws-sdk": "^2.1354.0",
     "chokidar-cli": "^2.0.0",
     "classnames": "^2.2.6",
     "env-path": "^1.0.7",
